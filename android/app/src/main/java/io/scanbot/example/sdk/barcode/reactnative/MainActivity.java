@@ -1,4 +1,4 @@
-package com.scanbotbarcodeexamplereact;
+package io.scanbot.example.sdk.barcode.reactnative;
 
 import com.facebook.react.ReactActivity;
 
