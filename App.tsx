@@ -16,7 +16,7 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar, FlatList,
+  StatusBar, FlatList, TouchableWithoutFeedback,
 } from 'react-native';
 
 import {
@@ -26,9 +26,52 @@ import {
 import ScanbotBarcodeSdk, {
   BarcodeScannerConfiguration,
 } from 'react-native-scanbot-barcode-sdk';
+import {BarcodeFormat} from "react-native-scanbot-barcode-sdk/enums";
 
 const LICENSE_KEY = "";
 
+const ListSource = [
+  {
+    id: "1",
+    label: "RTU-UI"
+  }
+];
+
+function onItemClick(item) {
+  console.log("what");
+}
+
+function ListItem({ item }) {
+  return (
+      <TouchableWithoutFeedback onPress={ () => onItemClick(item)}>
+        <View>
+          <Text>{item.title}</Text>
+        </View>
+      </TouchableWithoutFeedback>
+  );
+}
+function startBarcodeScanner() {
+  ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
+
+  const config: BarcodeScannerConfiguration = {
+    topBarBackgroundColor: '#ffffff',
+    barcodeImageGenerationType: 'FROM_VIDEO_FRAME',
+    barcodeFormats: ['AZTEC', 'DATA_MATRIX'],
+  };
+
+  ScanbotBarcodeSdk.startBarcodeScanner(config)
+      .then(result => {
+        if (result.status === 'OK') {
+          console.log(`${result.barcodes.length} barcode(s) found`);
+          console.log(JSON.stringify(result));
+        } else {
+          console.log('Scanner canceled');
+        }
+      })
+      .catch(error => {
+        console.log("error");
+      });
+}
 export class App extends React.Component {
 
   constructor(props) {
@@ -42,9 +85,11 @@ export class App extends React.Component {
     }).catch((error) => {
       console.log("Initialization error: ", error)
     });
-    console.log("asdf");
+    // console.log("asdf");
     // const formats = Object.keys(BarcodeFormat);
     // console.log(formats);
+
+    startBarcodeScanner();
   }
 
   render() {
@@ -53,23 +98,16 @@ export class App extends React.Component {
           <StatusBar barStyle="dark-content" />
           <SafeAreaView>
             <Text>asdf</Text>
-            {/*<ScrollView*/}
-            {/*    contentInsetAdjustmentBehavior="automatic"*/}
-            {/*    style={styles.scrollView}>*/}
-            {/*  <Text style={styles.title}>REACT-NATIVE INTERNAL DEV APP</Text>*/}
-            {/*  <Text style={styles.subtitle}>DOCUMENT SCANNER</Text>*/}
-            {/*  <FlatList*/}
-            {/*      data={Model.DocumentScannerItems}*/}
-            {/*      renderItem={({ item }) => <ListItem item={item}/>}*/}
-            {/*      keyExtractor={item => item.id}*/}
-            {/*  />*/}
-            {/*  <Text style={styles.subtitle}>DATA DETECTORS</Text>*/}
-            {/*  <FlatList*/}
-            {/*      data={Model.DataDetectorItems}*/}
-            {/*      renderItem={({ item }) => <ListItem item={item}/>}*/}
-            {/*      keyExtractor={item => item.id}*/}
-            {/*  />*/}
-            {/*</ScrollView>*/}
+            <ScrollView
+                contentInsetAdjustmentBehavior="automatic"
+                style={styles.scrollView}>
+              <Text style={styles.title}>REACT-NATIVE INTERNAL DEV APP</Text>
+              <FlatList
+                  data={ListSource}
+                  renderItem={({ item }) => <ListItem item={item}/>}
+                  keyExtractor={item => item.id}
+              />
+            </ScrollView>
           </SafeAreaView>
         </Fragment>
     );
@@ -77,6 +115,14 @@ export class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: Colors.black,
+    textAlign: "center",
+    marginBottom: 20,
+    marginTop: 20
+  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },
