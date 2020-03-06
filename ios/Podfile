@@ -28,6 +28,8 @@ target 'ScanbotBarcodeExampleReact' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNScanbotBarcodeSDK', :podspec => '../node_modules/react-native-scanbot-barcode-sdk/react-native-scanbot-barcode-sdk.podspec'
+
   target 'ScanbotBarcodeExampleReactTests' do
     inherit! :search_paths
     # Pods for testing

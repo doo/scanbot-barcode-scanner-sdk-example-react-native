@@ -8,6 +8,7 @@
  * @format
  */
 
+// @ts-ignore
 import React, {Fragment} from 'react';
 import {
   SafeAreaView,
@@ -15,64 +16,65 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
+  StatusBar, FlatList,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+import ScanbotBarcodeSdk, {
+  BarcodeScannerConfiguration,
+} from 'react-native-scanbot-barcode-sdk';
+
+const LICENSE_KEY = "";
+
+export class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    console.log("lol1");
+    ScanbotBarcodeSdk.initializeSdk({
+      loggingEnabled: true,
+      licenseKey: LICENSE_KEY,
+    }).then(() => {
+      console.log('Scanbot Barcode SDK Initialized');
+    }).catch((error) => {
+      console.log("Initialization error: ", error)
+    });
+    console.log("asdf");
+    // const formats = Object.keys(BarcodeFormat);
+    // console.log(formats);
+  }
+
+  render() {
+    return (
+        <Fragment>
+          <StatusBar barStyle="dark-content" />
+          <SafeAreaView>
+            <Text>asdf</Text>
+            {/*<ScrollView*/}
+            {/*    contentInsetAdjustmentBehavior="automatic"*/}
+            {/*    style={styles.scrollView}>*/}
+            {/*  <Text style={styles.title}>REACT-NATIVE INTERNAL DEV APP</Text>*/}
+            {/*  <Text style={styles.subtitle}>DOCUMENT SCANNER</Text>*/}
+            {/*  <FlatList*/}
+            {/*      data={Model.DocumentScannerItems}*/}
+            {/*      renderItem={({ item }) => <ListItem item={item}/>}*/}
+            {/*      keyExtractor={item => item.id}*/}
+            {/*  />*/}
+            {/*  <Text style={styles.subtitle}>DATA DETECTORS</Text>*/}
+            {/*  <FlatList*/}
+            {/*      data={Model.DataDetectorItems}*/}
+            {/*      renderItem={({ item }) => <ListItem item={item}/>}*/}
+            {/*      keyExtractor={item => item.id}*/}
+            {/*  />*/}
+            {/*</ScrollView>*/}
+          </SafeAreaView>
+        </Fragment>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {
