@@ -25,6 +25,7 @@ import {Colors,} from 'react-native/Libraries/NewAppScreen';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-sdk';
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/configuration";
+import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 
 const LICENSE_KEY = "";
 
@@ -85,18 +86,20 @@ export class App extends React.Component {
       console.log('Scanbot Barcode SDK Initialized');
     }).catch((error) => {
       console.log("Initialization error: ", error)
+
     });
   }
 
   render() {
     return (
-        <Fragment>
-          <StatusBar backgroundColor="blue" barStyle="light-content" />
+        <View style={{ flex: 1 }}>
+          <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
+          <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
           <SafeAreaView>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.scrollView}>
-              <Text style={styles.title}>REACT-NATIVE EXAMPLE</Text>
+
               <FlatList
                   data={ListSource}
                   renderItem={({ item }) => <ListItem item={item}/>}
@@ -104,7 +107,7 @@ export class App extends React.Component {
               />
             </ScrollView>
           </SafeAreaView>
-        </Fragment>
+        </View>
     );
   }
 }
@@ -116,7 +119,9 @@ const styles = StyleSheet.create({
     color: Colors.white,
     textAlign: "center",
     marginBottom: 20,
-    backgroundColor: "#c8193c"
+    backgroundColor: "#c8193c",
+    height: 60,
+    lineHeight: 70
   },
   scrollView: {
 
@@ -129,12 +134,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   sectionContainer: {
-    marginTop: 32,
+    // marginTop: 32,
     paddingHorizontal: 24,
   },
   sectionTitle: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: '500',
     color: Colors.black,
   },
   sectionDescription: {
@@ -159,7 +164,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 30,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: '500',
     color: "#007AFF"
   }
 });
