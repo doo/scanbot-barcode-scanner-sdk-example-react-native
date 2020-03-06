@@ -11,22 +11,20 @@
 // @ts-ignore
 import React, {Fragment} from 'react';
 import {
+  FlatList,
   SafeAreaView,
-  StyleSheet,
   ScrollView,
-  View,
+  StatusBar,
+  StyleSheet,
   Text,
-  StatusBar, FlatList, TouchableWithoutFeedback,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors,} from 'react-native/Libraries/NewAppScreen';
 
-import ScanbotBarcodeSdk, {
-  BarcodeScannerConfiguration,
-} from 'react-native-scanbot-barcode-sdk';
-import {BarcodeFormat} from "react-native-scanbot-barcode-sdk/enums";
+import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-sdk';
+import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/configuration";
 
 const LICENSE_KEY = "";
 
@@ -38,6 +36,7 @@ const ListSource = [
 ];
 
 function onItemClick(item) {
+  startBarcodeScanner();
   console.log("what");
 }
 
@@ -45,18 +44,19 @@ function ListItem({ item }) {
   return (
       <TouchableWithoutFeedback onPress={ () => onItemClick(item)}>
         <View>
-          <Text>{item.title}</Text>
+          <Text style={styles.button}>{item.label}</Text>
         </View>
       </TouchableWithoutFeedback>
   );
 }
+
 function startBarcodeScanner() {
   ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: '#ffffff',
-    barcodeImageGenerationType: 'FROM_VIDEO_FRAME',
-    barcodeFormats: ['AZTEC', 'DATA_MATRIX'],
+    barcodeImageGenerationType: "FROM_VIDEO_FRAME",
+    barcodeFormats: [ "AZTEC" ],
   };
 
   ScanbotBarcodeSdk.startBarcodeScanner(config)
@@ -72,6 +72,7 @@ function startBarcodeScanner() {
         console.log("error");
       });
 }
+
 export class App extends React.Component {
 
   constructor(props) {
@@ -85,23 +86,17 @@ export class App extends React.Component {
     }).catch((error) => {
       console.log("Initialization error: ", error)
     });
-    // console.log("asdf");
-    // const formats = Object.keys(BarcodeFormat);
-    // console.log(formats);
-
-    startBarcodeScanner();
   }
 
   render() {
     return (
         <Fragment>
-          <StatusBar barStyle="dark-content" />
+          <StatusBar backgroundColor="blue" barStyle="light-content" />
           <SafeAreaView>
-            <Text>asdf</Text>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.scrollView}>
-              <Text style={styles.title}>REACT-NATIVE INTERNAL DEV APP</Text>
+              <Text style={styles.title}>REACT-NATIVE EXAMPLE</Text>
               <FlatList
                   data={ListSource}
                   renderItem={({ item }) => <ListItem item={item}/>}
@@ -118,13 +113,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '600',
-    color: Colors.black,
+    color: Colors.white,
     textAlign: "center",
     marginBottom: 20,
-    marginTop: 20
+    backgroundColor: "#c8193c"
   },
   scrollView: {
-    backgroundColor: Colors.lighter,
+
   },
   engine: {
     position: 'absolute',
@@ -159,6 +154,14 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  button: {
+    textAlign: "center",
+    width: "100%",
+    height: 30,
+    fontSize: 18,
+    fontWeight: '400',
+    color: "#007AFF"
+  }
 });
 
 export default App;
