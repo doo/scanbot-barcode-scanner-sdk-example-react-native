@@ -7,7 +7,7 @@ The Scanbot Barcode Scanner SDK brings barcode scanning capabilities to your mob
 It provides functionality for scanning 1D and 2D barcodes, like EAN, UPC, QR code, Data Matrix, PDF 417, etc.
 For more details visit our website https://scanbot.io/sdk
 
-The SDK for React Native is available as an npm package package:
+The SDK for React Native is available as an npm package:
 - TODO
 
 
@@ -15,6 +15,14 @@ The SDK for React Native is available as an npm package package:
 * `react-native` v3.0.1
 * `node` v12.13.0
 * `npm` v6.12.0
+
+### What else can go wrong?
+
+Problem: `> Keystore file '../scanbot-barcode-scanner-sdk-example-
+react-native/android/app/debug.keystore' not found for signing config 'debug'.`
+
+Solution: `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey 
+-keypass android -keyalg RSA -keysize 2048 -validity 10000`
 
 ## Documentation
 For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this 
