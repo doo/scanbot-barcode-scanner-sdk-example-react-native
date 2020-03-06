@@ -25,6 +25,8 @@ import {Colors,} from 'react-native/Libraries/NewAppScreen';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-sdk';
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/configuration";
+import {BarcodeFormats} from "react-native-scanbot-barcode-sdk/enum";
+
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
 
@@ -70,7 +72,8 @@ const ListSource = [
   {
     id: "4", label: "Set accepted barcode types",
     action: function() {
-      startBarcodeScanner(true);
+
+      console.log(BarcodeFormats.List());
     }
   },
   {
@@ -144,6 +147,7 @@ export class App extends React.Component {
       console.log("Initialization error: ", error)
 
     });
+
   }
 
   render() {
@@ -191,7 +195,7 @@ const styles = StyleSheet.create({
   },
   sectionContainer: {
     // marginTop: 32,
-    paddingHorizontal: 24,
+    paddingHorizontal: 22,
   },
   sectionTitle: {
     fontSize: 24,
