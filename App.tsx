@@ -133,27 +133,6 @@ function ListItem({ context, item }) {
   );
 }
 
-function BarcodeListItem({ context, item }) {
-  return (
-      <TouchableWithoutFeedback onPress={ () => onBarcodeClick(context, item)}>
-        <View style={styles.barcodeListItem}>
-          <Text style={styles.barcodeButton}>{item.name}</Text>
-          <Switch disabled={true} style={styles.barcodeSwitch} value={item.isAccepted} onValueChange={(value) => {
-            console.log("TODO: update model");
-            context.setState({
-              hasRead: value
-            })
-          }
-          }/>
-        </View>
-      </TouchableWithoutFeedback>
-  );
-}
-
-function onBarcodeClick(context, item) {
-  console.log(item);
-}
-
 function startBarcodeScanner(withImage: boolean) {
 
   ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
@@ -294,37 +273,11 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: "#007AFF"
   },
-  barcodeFlatList: {
-    flex: 1,
-    maxHeight: "80%",
-    width: "90%",
-    backgroundColor: "yellow"
-  },
+
   overlay: {
     maxHeight: "90% !important"
   },
-  barcodeListItem: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "row",
-    width: "100%"
-  },
-  barcodeButton: {
-    display: "flex",
-    alignContent: "flex-start",
-    // textAlign: "left",
-    height: 40,
-    lineHeight: 40,
-    fontSize: 14,
-    color: "#000000"
-  },
-  barcodeSwitch: {
-    display: "flex",
-    alignContent: "flex-end",
-    height: 40,
-    right: 0,
-    opacity: 1
-  },
+
   overlaySaveButton: {
     borderTopColor: "#c8193c"
   }
