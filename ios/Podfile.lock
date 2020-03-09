@@ -83,10 +83,10 @@ PODS:
   - React-RCTWebSocket (0.60.3):
     - React-Core (= 0.60.3)
     - React-fishhook (= 0.60.3)
-  - RNScanbotBarcodeSDK (0.9.0):
+  - RNScanbotBarcodeSDK (1.0.0-rc1):
     - React
-    - ScanbotBarcodeScannerSDK (= 1.3.1)
-  - ScanbotBarcodeScannerSDK (1.3.1)
+    - ScanbotBarcodeScannerSDK (= 1.2.0)
+  - ScanbotBarcodeScannerSDK (1.2.0)
   - yoga (0.60.3.React)
 
 DEPENDENCIES:
@@ -194,10 +194,10 @@ SPEC CHECKSUMS:
   React-RCTText: b026f8350c2cbe0daeb9880dd9c6e018fce0daf7
   React-RCTVibration: 5d9ed4a968e9d42880ddcc7c29bee3417c745408
   React-RCTWebSocket: 69d8565d66043f244b4129f3d7154c5689fb7d3e
-  RNScanbotBarcodeSDK: ed4c8f97cf13ddba89f877c248ca3b1499db1794
-  ScanbotBarcodeScannerSDK: 48ea7c549b82ebaf6ef05c410d4b324ff062f579
+  RNScanbotBarcodeSDK: aae04d109480042a84de503fe56a3413484b7224
+  ScanbotBarcodeScannerSDK: b503f589092268eab4b63c94375a3bed0d776ca3
   yoga: 843fe25849b56131275bf3e5da2c468e96f68aff
 
-PODFILE CHECKSUM: 0428805eef43f610784f9891346a707ad50f37be
+PODFILE CHECKSUM: 58ed98b51429a85bcf4037bad1d71183fc3b0dde
 
 COCOAPODS: 1.8.4

@@ -10,7 +10,7 @@
     "react": "16.8.6",
     "react-native": "0.60.3",
     "react-native-image-picker": "2.2.1",
-    "react-native-scanbot-barcode-sdk": "file:../react-native-scanbot-barcode-sdk/react-native-scanbot-barcode-sdk-0.9.0.tgz"
+    "react-native-scanbot-barcode-sdk": "file:../react-native-scanbot-barcode-sdk/react-native-scanbot-barcode-sdk-1.0.0-rc1.tgz"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",

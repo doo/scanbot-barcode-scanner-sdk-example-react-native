@@ -25,9 +25,9 @@ Solution: `keytool -genkey -v -keystore debug.keystore -storepass android -alias
 -keypass android -keyalg RSA -keysize 2048 -validity 10000`
 
 ## Documentation
+
 For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this 
 [documentation](TODO).
-
 
 ## Please note
 
@@ -37,3 +37,13 @@ After the trial period is over all SDK functions as well as the UI components (l
 You have to restart the app to get another trial period.
 
 To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/sdk/trial.html) on our website.
+
+## Appendices
+
+If to download a local version of the pod, change pod source directory as such:
+
+```
+# s.source       = { :http => 'https://download.scanbot.io/sdk/react-native/react-native-scanbot-barcode-scanner-sdk-' + package['version'] + '.tgz' }
+  s.source = { :http => 'file:///<full-path-to-package>/react-native-scanbot-barcode-sdk-1.0.0-rc1.tgz' }
+```
+
