@@ -35,13 +35,21 @@ const LICENSE_KEY = "";
 const ListSource = [
   {
     id: "1", label: "RTU-UI",
-    action: function() {
+    action: async function() {
+
+      if (!await checkLicense()) {
+        return;
+      }
       startBarcodeScanner(false);
     }
   },
   {
     id: "2", label: "RTU-UI With Image",
-    action: function() {
+    action: async function() {
+
+      if (!await checkLicense()) {
+        return;
+      }
       startBarcodeScanner(true);
     }
   },
@@ -52,6 +60,9 @@ const ListSource = [
         ImagePicker.launchImageLibrary({}, resolve);
       });
 
+      if (!await checkLicense()) {
+        return;
+      }
       if (response.didCancel) {
         console.log('Image picker canceled');
         return;
@@ -79,6 +90,10 @@ const ListSource = [
   {
     id: "5", label: "View license info",
     action: async function() {
+
+      if (!await checkLicense()) {
+        return;
+      }
       const result = await ScanbotBarcodeSdk.getLicenseInfo();
       alert("License info", JSON.stringify(result));
     }
@@ -86,11 +101,24 @@ const ListSource = [
   {
     id: "6", label: "Clear image storage",
     action: async function() {
+
+      if (!await checkLicense()) {
+        return;
+      }
       const result = await ScanbotBarcodeSdk.cleanup();
       alert("Operation result", JSON.stringify(result));
     }
   }
 ];
+
+async function checkLicense() {
+  const info = await ScanbotBarcodeSdk.getLicenseInfo();
+  if (!info.isLicenseValid) {
+    const message = "Your license is corrupted or expired, Scanbot features are disabled";
+    alert("Invalid license", message);
+  }
+  return info.isLicenseValid;
+}
 
 function onItemClick(item) {
   item.action();
@@ -108,6 +136,7 @@ function ListItem({ item }) {
 }
 
 function startBarcodeScanner(withImage: boolean) {
+
   ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
 
   const config: BarcodeScannerConfiguration = {
