@@ -35,7 +35,7 @@ const LICENSE_KEY = "";
 const ListSource = [
   {
     id: "1", label: "RTU-UI",
-    action: async function() {
+    action: async function(context) {
 
       if (!await checkLicense()) {
         return;
@@ -45,7 +45,7 @@ const ListSource = [
   },
   {
     id: "2", label: "RTU-UI With Image",
-    action: async function() {
+    action: async function(context) {
 
       if (!await checkLicense()) {
         return;
@@ -55,7 +55,7 @@ const ListSource = [
   },
   {
     id: "3", label: "Pick image from Gallery",
-    action: async function() {
+    action: async function(context) {
       const response = await new Promise((resolve, reject) => {
         ImagePicker.launchImageLibrary({}, resolve);
       });
@@ -82,14 +82,15 @@ const ListSource = [
   },
   {
     id: "4", label: "Set accepted barcode types",
-    action: function() {
+    action: async function(context) {
 
       console.log(BarcodeFormats.List());
+      context.setState({ barcodeModalVisible: true});
     }
   },
   {
     id: "5", label: "View license info",
-    action: async function() {
+    action: async function(context) {
 
       if (!await checkLicense()) {
         return;
@@ -100,7 +101,7 @@ const ListSource = [
   },
   {
     id: "6", label: "Clear image storage",
-    action: async function() {
+    action: async function(context) {
 
       if (!await checkLicense()) {
         return;
@@ -120,14 +121,15 @@ async function checkLicense() {
   return info.isLicenseValid;
 }
 
-function onItemClick(item) {
-  item.action();
+function onItemClick(context, item) {
+  item.action(context);
   console.log("what");
 }
 
-function ListItem({ item }) {
+function ListItem({ context, item }) {
+  console.log("test:", context.test);
   return (
-      <TouchableWithoutFeedback onPress={ () => onItemClick(item)}>
+      <TouchableWithoutFeedback onPress={ () => onItemClick(context, item)}>
         <View>
           <Text style={styles.button}>{item.label}</Text>
         </View>
@@ -164,6 +166,10 @@ function startBarcodeScanner(withImage: boolean) {
 
 export class App extends React.Component {
 
+  state = {
+    barcodeModalVisible: false
+  };
+
   constructor(props) {
     super(props);
     console.log("lol1");
@@ -184,6 +190,7 @@ export class App extends React.Component {
         <View style={{ flex: 1 }}>
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
+          {this.state.barcodeModalVisible ? <Text style={styles.title}>VISIBLE BASED ON STATE</Text> : null}
           <SafeAreaView>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
@@ -191,7 +198,7 @@ export class App extends React.Component {
 
               <FlatList
                   data={ListSource}
-                  renderItem={({ item }) => <ListItem item={item}/>}
+                  renderItem={({item}) => <ListItem context={this} item={item}/>}
                   keyExtractor={item => item.id}
               />
             </ScrollView>
