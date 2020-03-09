@@ -8,7 +8,6 @@
  * @format
  */
 
-// @ts-ignore
 import React from 'react';
 import {
   Alert, Button,
@@ -26,10 +25,10 @@ import Overlay from 'react-native-modal-overlay';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-sdk';
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/configuration";
-import {BarcodeFormats} from "react-native-scanbot-barcode-sdk/enum";
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
+import BarcodeList from './src/BarcodeList'
 
 const LICENSE_KEY = "";
 
@@ -84,8 +83,6 @@ const ListSource = [
   {
     id: "4", label: "Set accepted barcode types",
     action: async function(context) {
-
-      console.log(BarcodeFormats.List());
       context.setState({ barcodeModalVisible: true});
     }
   },
@@ -124,11 +121,9 @@ async function checkLicense() {
 
 function onItemClick(context, item) {
   item.action(context);
-  console.log("what");
 }
 
 function ListItem({ context, item }) {
-  console.log("test:", context.test);
   return (
       <TouchableWithoutFeedback onPress={ () => onItemClick(context, item)}>
         <View>
@@ -139,12 +134,17 @@ function ListItem({ context, item }) {
 }
 
 function BarcodeListItem({ context, item }) {
-  console.log("test:", context.test);
   return (
       <TouchableWithoutFeedback onPress={ () => onBarcodeClick(context, item)}>
         <View style={styles.barcodeListItem}>
-          <Text style={styles.barcodeButton}>{item}</Text>
-          <Switch style={styles.barcodeSwitch}/>
+          <Text style={styles.barcodeButton}>{item.name}</Text>
+          <Switch disabled={true} style={styles.barcodeSwitch} value={item.isAccepted} onValueChange={(value) => {
+            console.log("TODO: update model");
+            context.setState({
+              hasRead: value
+            })
+          }
+          }/>
         </View>
       </TouchableWithoutFeedback>
   );
@@ -189,7 +189,7 @@ export class App extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("lol1");
+
     ScanbotBarcodeSdk.initializeSdk({
       loggingEnabled: true,
       licenseKey: LICENSE_KEY,
@@ -209,15 +209,8 @@ export class App extends React.Component {
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
           <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
             <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}>
-              <FlatList
-                  data={BarcodeFormats.List()}
-                  renderItem={({item}) => <BarcodeListItem context={this} item={item}/>}
-                  keyExtractor={item => item}
-              />
-            </ScrollView>
+
+            <BarcodeList/>
             <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
           </Overlay>
           <SafeAreaView>
@@ -251,10 +244,8 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: Colors.white,
     textAlign: "center",
     marginBottom: 10,
-    backgroundColor: "#c8193c",
     height: 50,
     lineHeight: 50,
     alignSelf: "stretch"
@@ -270,7 +261,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   sectionContainer: {
-    // marginTop: 32,
     paddingHorizontal: 22,
   },
   sectionTitle: {
@@ -304,14 +294,20 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: "#007AFF"
   },
+  barcodeFlatList: {
+    flex: 1,
+    maxHeight: "80%",
+    width: "90%",
+    backgroundColor: "yellow"
+  },
   overlay: {
-    margin: 20,
-    padding: 20
+    maxHeight: "90% !important"
   },
   barcodeListItem: {
     flex: 1,
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    width: "100%"
   },
   barcodeButton: {
     display: "flex",
@@ -326,7 +322,8 @@ const styles = StyleSheet.create({
     display: "flex",
     alignContent: "flex-end",
     height: 40,
-    right: 0
+    right: 0,
+    opacity: 1
   },
   overlaySaveButton: {
     borderTopColor: "#c8193c"
