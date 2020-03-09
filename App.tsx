@@ -11,7 +11,7 @@
 // @ts-ignore
 import React from 'react';
 import {
-  Alert,
+  Alert, Button,
   FlatList,
   SafeAreaView,
   ScrollView,
@@ -207,8 +207,8 @@ export class App extends React.Component {
         <View style={{ flex: 1 }}>
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
-          <Overlay visible={this.state.barcodeModalVisible} onClose={this.onClose} closeOnTouchOutside>
-            <Text>ACCEPTED BARCODE TYPES</Text>
+          <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
+            <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.scrollView}>
@@ -218,6 +218,7 @@ export class App extends React.Component {
                   keyExtractor={item => item}
               />
             </ScrollView>
+            <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
           </Overlay>
           <SafeAreaView>
             <ScrollView
@@ -246,6 +247,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#c8193c",
     height: 60,
     lineHeight: 70
+  },
+  subtitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: Colors.white,
+    textAlign: "center",
+    marginBottom: 10,
+    backgroundColor: "#c8193c",
+    height: 50,
+    lineHeight: 50,
+    alignSelf: "stretch"
   },
   scrollView: {
 
@@ -292,7 +304,12 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: "#007AFF"
   },
+  overlay: {
+    margin: 20,
+    padding: 20
+  },
   barcodeListItem: {
+    flex: 1,
     display: "flex",
     flexDirection: "row"
   },
@@ -300,16 +317,19 @@ const styles = StyleSheet.create({
     display: "flex",
     alignContent: "flex-start",
     // textAlign: "left",
-    height: 30,
-    lineHeight: 30,
+    height: 40,
+    lineHeight: 40,
     fontSize: 14,
-    color: "#000000",
-    width: 50,
+    color: "#000000"
   },
   barcodeSwitch: {
     display: "flex",
     alignContent: "flex-end",
-    height: 30
+    height: 40,
+    right: 0
+  },
+  overlaySaveButton: {
+    borderTopColor: "#c8193c"
   }
 });
 
