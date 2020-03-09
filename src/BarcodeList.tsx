@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, { Component } from 'react';
-import {FlatList, StyleSheet, Text, View, Switch, ScrollView} from 'react-native';
+import {FlatList, StyleSheet, Text, View, Switch, ScrollView, TouchableWithoutFeedback} from 'react-native';
 import {BarcodeFormats} from "react-native-scanbot-barcode-sdk/enum";
 
 class BarcodeFormat {
@@ -49,13 +49,15 @@ class BarcodeList extends Component {
     };
 
     listItem = ({item, index}) => (
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.item}>{item.name}</Text>
-            <Switch
-                onValueChange={(value) => this.setSwitchValue(value, index)}
-                value={item.isAccepted}
-            />
-        </View>
+        <TouchableWithoutFeedback onPress={()=>{}}>
+            <View style={styles.listItemContainer}>
+                <Text style={styles.item}>{item.name}</Text>
+                <Switch
+                    onValueChange={(value) => this.setSwitchValue(value, index)}
+                    value={item.isAccepted}
+                />
+            </View>
+        </TouchableWithoutFeedback>
     );
 
     render() {
@@ -75,6 +77,11 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 22,
         height: "80%"
+    },
+    listItemContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     item: {
         padding: 10,
