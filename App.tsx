@@ -15,13 +15,14 @@ import {
   FlatList,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
+  StyleSheet, Switch,
   Text,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
 import {Colors,} from 'react-native/Libraries/NewAppScreen';
+import Overlay from 'react-native-modal-overlay';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-sdk';
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/configuration";
@@ -137,6 +138,22 @@ function ListItem({ context, item }) {
   );
 }
 
+function BarcodeListItem({ context, item }) {
+  console.log("test:", context.test);
+  return (
+      <TouchableWithoutFeedback onPress={ () => onBarcodeClick(context, item)}>
+        <View style={styles.barcodeListItem}>
+          <Text style={styles.barcodeButton}>{item}</Text>
+          <Switch style={styles.barcodeSwitch}/>
+        </View>
+      </TouchableWithoutFeedback>
+  );
+}
+
+function onBarcodeClick(context, item) {
+  console.log(item);
+}
+
 function startBarcodeScanner(withImage: boolean) {
 
   ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
@@ -180,17 +197,28 @@ export class App extends React.Component {
       console.log('Scanbot Barcode SDK Initialized');
     }).catch((error) => {
       console.log("Initialization error: ", error)
-
     });
-
   }
+
+  onClose = () => this.setState({ barcodeModalVisible: false});
 
   render() {
     return (
         <View style={{ flex: 1 }}>
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
-          {this.state.barcodeModalVisible ? <Text style={styles.title}>VISIBLE BASED ON STATE</Text> : null}
+          <Overlay visible={this.state.barcodeModalVisible} onClose={this.onClose} closeOnTouchOutside>
+            <Text>ACCEPTED BARCODE TYPES</Text>
+            <ScrollView
+                contentInsetAdjustmentBehavior="automatic"
+                style={styles.scrollView}>
+              <FlatList
+                  data={BarcodeFormats.List()}
+                  renderItem={({item}) => <BarcodeListItem context={this} item={item}/>}
+                  keyExtractor={item => item}
+              />
+            </ScrollView>
+          </Overlay>
           <SafeAreaView>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
@@ -263,6 +291,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     color: "#007AFF"
+  },
+  barcodeListItem: {
+    display: "flex",
+    flexDirection: "row"
+  },
+  barcodeButton: {
+    display: "flex",
+    alignContent: "flex-start",
+    // textAlign: "left",
+    height: 30,
+    lineHeight: 30,
+    fontSize: 14,
+    color: "#000000",
+    width: 50,
+  },
+  barcodeSwitch: {
+    display: "flex",
+    alignContent: "flex-end",
+    height: 30
   }
 });
 
