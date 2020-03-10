@@ -113,9 +113,6 @@ const ListSource = [
     id: "5", label: "View license info",
     action: async function(context) {
 
-      if (!await checkLicense()) {
-        return;
-      }
       const result = await ScanbotBarcodeSdk.getLicenseInfo();
       alert("License info", JSON.stringify(result));
     }
