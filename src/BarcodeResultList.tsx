@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
         width: "100%"
     },
     snappedImage: {
+        marginBottom: 10,
+        backgroundColor: "#DCDCDC",
         width: "100%",
         height: "30%"
     },
