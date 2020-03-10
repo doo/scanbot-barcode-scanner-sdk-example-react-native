@@ -11,8 +11,8 @@ class BarcodeResult {
 
     static update(barcodeResult) {
 
-        BarcodeResult.imageUri = barcodeResult.imageUri;
-
+        BarcodeResult.imageUri = null;
+        BarcodeResult.imageUri = 'file://' + barcodeResult.imageUri;
         BarcodeResult.clear();
 
         for (let i = 0; i < barcodeResult.barcodes.length; i++) {

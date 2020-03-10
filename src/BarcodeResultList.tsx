@@ -29,7 +29,7 @@ class BarcodeResultList extends Component {
             <View style={styles.container}>
                 {
                     BarcodeResult.imageUri ?
-                    <Image style={styles.snappedImage} source={{uri: 'file://' + BarcodeResult.imageUri, scale:1}}/> :
+                    <Image style={styles.snappedImage} source={{uri: BarcodeResult.imageUri, scale:1}}/> :
                     null
                 }
                 <FlatList

@@ -91,6 +91,7 @@ const ListSource = [
 
       if (barcodeResult.status === "OK") {
         BarcodeResult.update(barcodeResult);
+        BarcodeResult.imageUri = "data:image/png;base64," + response.data;
         context.setState({ barcodeResultModalVisible: true});
       } else {
         alert("Oops!", "Something went terribly wrong. Please try again");
