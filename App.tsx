@@ -52,7 +52,7 @@ const ListSource = [
       if (!await checkLicense()) {
         return;
       }
-      startBarcodeScanner(false);
+      startBarcodeScanner(context, false);
     }
   },
   {
@@ -62,7 +62,7 @@ const ListSource = [
       if (!await checkLicense()) {
         return;
       }
-      startBarcodeScanner(true);
+      startBarcodeScanner(context, true);
     }
   },
   {
@@ -89,14 +89,8 @@ const ListSource = [
 
       const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
 
-      BarcodeResult.clear();
       if (barcodeResult.status === "OK") {
-        for (let i = 0; i < barcodeResult.barcodes.length; i++) {
-          const barcode = barcodeResult.barcodes[i];
-          barcode.id = i.toString();
-          console.log("i:", i);
-          BarcodeResult.list.push(barcode);
-        }
+        BarcodeResult.update(barcodeResult);
         context.setState({ barcodeResultModalVisible: true});
       } else {
         alert("Oops!", "Something went terribly wrong. Please try again");
@@ -153,7 +147,7 @@ function ListItem({ context, item }) {
   );
 }
 
-function startBarcodeScanner(withImage: boolean) {
+function startBarcodeScanner(context, withImage: boolean) {
 
   ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
 
@@ -168,15 +162,17 @@ function startBarcodeScanner(withImage: boolean) {
   ScanbotBarcodeSdk.startBarcodeScanner(config)
       .then(result => {
         if (result.status === 'OK') {
-          console.log(`${result.barcodes.length} barcode(s) found`);
-          console.log(JSON.stringify(result));
+          BarcodeResult.update(result);
+          context.setState({ barcodeResultModalVisible: true});
         } else {
-          console.log('Scanner canceled');
+          alert("Cancelled!", "Barcode scan has been stopped");
         }
       })
       .catch(error => {
-        console.log("error");
-      });
+        console.log("error:", JSON.stringify(error));
+        alert("Error!", error);
+      })
+  ;
 }
 
 export class App extends React.Component {

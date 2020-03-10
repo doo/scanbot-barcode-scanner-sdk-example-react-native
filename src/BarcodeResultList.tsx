@@ -27,6 +27,11 @@ class BarcodeResultList extends Component {
     render() {
         return (
             <View style={styles.container}>
+                {
+                    BarcodeResult.imageUri ?
+                    <Image style={styles.snappedImage} source={{uri: 'file://' + BarcodeResult.imageUri, scale:1}}/> :
+                    null
+                }
                 <FlatList
                     data={BarcodeResult.list}
                     keyExtractor={item => item.id}
@@ -42,6 +47,10 @@ const styles = StyleSheet.create({
         paddingTop: 22,
         height: "85%",
         width: "100%"
+    },
+    snappedImage: {
+        width: "100%",
+        height: "30%"
     },
     listItemContainer: {
         flex: 1,
