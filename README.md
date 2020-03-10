@@ -26,15 +26,19 @@ The SDK for React Native is available as an npm package:
 
 ### What else can go wrong?
 
-**Problem**: `> Keystore file '../scanbot-barcode-scanner-sdk-example-
-react-native/android/app/debug.keystore' not found for signing config 'debug'.`
+###### Keystore file '../scanbot-barcode-scanner-sdk-example-react-native/android/app/debug.keystore' not found for signing config 'debug'.`
 
-Solution: `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey 
+ `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey 
 -keypass android -keyalg RSA -keysize 2048 -validity 10000`
 
-**Problem**: `Pod not found`
+###### Pod not found
 
-Solution: `pod repo update`
+`pod repo update`
+
+###### Still at a loss? It's a probably a cache issue
+
+* `npm cache clean --force`
+* Restart metro server! (Yes, apparently that thing has its own cache as well)
 
 ## Documentation
 

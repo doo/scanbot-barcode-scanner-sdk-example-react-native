@@ -23,8 +23,8 @@ import {
 import {Colors,} from 'react-native/Libraries/NewAppScreen';
 import Overlay from 'react-native-modal-overlay';
 
-import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-sdk';
-import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/configuration";
+import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
+import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk/configuration";
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';

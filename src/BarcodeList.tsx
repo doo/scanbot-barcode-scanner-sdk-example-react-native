@@ -1,7 +1,7 @@
 // @ts-ignore
 import React, { Component } from 'react';
 import {FlatList, StyleSheet, Text, View, Switch, TouchableWithoutFeedback} from 'react-native';
-import {BarcodeFormats} from "react-native-scanbot-barcode-sdk/enum";
+import {BarcodeFormats} from "react-native-scanbot-barcode-scanner-sdk/enum";
 
 class BarcodeFormat {
     id: string;
