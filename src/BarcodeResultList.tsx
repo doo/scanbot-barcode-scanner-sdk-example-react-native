@@ -46,25 +46,25 @@ const styles = StyleSheet.create({
     listItemContainer: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        height: 60
     },
     listItemTextContainer: {
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-    },
-    smallText: {
-        padding: 5,
-        fontSize: 14,
-        height: 20,
-        fontWeight: "400"
+        flexDirection: 'column'
     },
     smallTextBold: {
         paddingLeft: 5,
         paddingBottom: 5,
         fontSize: 14,
-        height: 20,
+        height: 25,
         fontWeight: "600"
+    },
+    smallText: {
+        paddingLeft: 5,
+        fontSize: 14,
+        height: 25,
+        fontWeight: "400"
     },
     image: {
         padding: 5,

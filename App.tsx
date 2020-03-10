@@ -89,6 +89,7 @@ const ListSource = [
 
       const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
 
+      BarcodeResult.clear();
       if (barcodeResult.status === "OK") {
         for (let i = 0; i < barcodeResult.barcodes.length; i++) {
           const barcode = barcodeResult.barcodes[i];
