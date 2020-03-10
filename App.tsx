@@ -94,11 +94,17 @@ const ListSource = [
          *  }]
          * }
          */
-        BarcodeResult.list = barcodeResult.barcodes;
-        console.log("BarcodeResults.list:", JSON.stringify(BarcodeResult.list));
+        // BarcodeResult.list = barcodeResult.barcodes;
+
+        for (let i = 0; i < barcodeResult.barcodes.length; i++) {
+          const barcode = barcodeResult.barcodes[i];
+          barcode.id = i.toString();
+          console.log("i:", i);
+          BarcodeResult.list.push(barcode);
+        }
+
         context.setState({ barcodeResultModalVisible: true});
       }
-      // console.log("result:", JSON.stringify(barcodeResult));
     }
   },
   {

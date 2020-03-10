@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, {Component} from "react";
-import {FlatList, StyleSheet, Switch, Text, TouchableWithoutFeedback, View} from "react-native";
+import {FlatList, StyleSheet, Switch, Text, Image, TouchableWithoutFeedback, View} from "react-native";
 import BarcodeResult from './model/BarcodeResult'
 
 class BarcodeResultList extends Component {
@@ -11,13 +11,15 @@ class BarcodeResultList extends Component {
 
     constructor(props) {
         super(props);
-
-        console.log("BarcodeResults.list in BarcodeResultList:", JSON.stringify(BarcodeResult.list));
     }
     listItem = ({item, index}) => (
         <TouchableWithoutFeedback onPress={()=>{}}>
             <View style={styles.listItemContainer}>
-                <Text style={styles.item}>{item.text}</Text>
+                <Image style={styles.image} source={{uri: 'file://' + item.sourceImageUri, scale:1}}/>
+                <View style={styles.listItemTextContainer}>
+                    <Text style={styles.smallTextBold}>{item.type}</Text>
+                    <Text style={styles.smallText}>{item.text}</Text>
+                </View>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -27,7 +29,7 @@ class BarcodeResultList extends Component {
             <View style={styles.container}>
                 <FlatList
                     data={BarcodeResult.list}
-                    keyExtractor={item => item.text}
+                    keyExtractor={item => item.id}
                     renderItem={this.listItem}
                 />
             </View>
@@ -46,11 +48,29 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    item: {
-        padding: 10,
-        fontSize: 16,
-        height: 44,
+    listItemTextContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
+    smallText: {
+        padding: 5,
+        fontSize: 14,
+        height: 20,
+        fontWeight: "400"
+    },
+    smallTextBold: {
+        paddingLeft: 5,
+        paddingBottom: 5,
+        fontSize: 14,
+        height: 20,
+        fontWeight: "600"
+    },
+    image: {
+        padding: 5,
+        height: 50,
+        width: 50
+    }
 });
 
 export default BarcodeResultList;
