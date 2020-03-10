@@ -10,24 +10,36 @@ For more details visit our website https://scanbot.io/sdk
 The SDK for React Native is available as an npm package:
 - TODO
 
+## Installation
+
+* `npm install`
+* `cd ios && pod install`
+* `react-native run-ios --device` or `react-native run-android`
 
 ## Requirements
+
+### Built using
+
 * `react-native` v3.0.1
 * `node` v12.13.0
 * `npm` v6.12.0
 
 ### What else can go wrong?
 
-Problem: `> Keystore file '../scanbot-barcode-scanner-sdk-example-
+**Problem**: `> Keystore file '../scanbot-barcode-scanner-sdk-example-
 react-native/android/app/debug.keystore' not found for signing config 'debug'.`
 
 Solution: `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey 
 -keypass android -keyalg RSA -keysize 2048 -validity 10000`
 
+**Problem**: `Pod not found`
+
+Solution: `pod repo update`
+
 ## Documentation
 
 For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this 
-[documentation](TODO).
+[documentation](https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/react-native/).
 
 ## Please note
 
@@ -40,10 +52,12 @@ To get an unrestricted "no-strings-attached" 30 day trial license, please submit
 
 ## Appendices
 
+### Developer notes
+
 If to download a local version of the pod, change pod source directory as such:
 
 ```
-# s.source       = { :http => 'https://download.scanbot.io/sdk/react-native/react-native-scanbot-barcode-scanner-sdk-' + package['version'] + '.tgz' }
-  s.source = { :http => 'file:///<full-path-to-package>/react-native-scanbot-barcode-sdk-1.0.0-rc1.tgz' }
+#s.source       = { :http => 'https://download.scanbot.io/sdk/react-native/react-native-scanbot-barcode-scanner-sdk-' + package['version'] + '.tgz' }
+s.source = { :http => 'file:///<full-path-to-package>/react-native-scanbot-barcode-sdk-1.0.0-rc1.tgz' }
 ```
 
