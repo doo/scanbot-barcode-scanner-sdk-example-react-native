@@ -29,6 +29,9 @@ import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-sdk/conf
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
 import BarcodeList from './src/BarcodeList'
+import BarcodeResultList from "./src/BarcodeResultList";
+
+import BarcodeResult from './src/model/BarcodeResult'
 
 const LICENSE_KEY = "";
 
@@ -75,9 +78,27 @@ const ListSource = [
         uri: response.uri,
       };
 
-      const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(
-          detectOptions,
-      );
+      const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
+
+      if (barcodeResult.status === "OK") {
+        /**
+         * Result will be formatted as the following:
+         *
+         * {
+         * "status":"OK",
+         * "barcodes":[
+         *  {
+         *  "sourceImageUri":"<uri>",
+         *  "text":"https://scanbot.io/download",
+         *  "type":"Aztec"
+         *  }]
+         * }
+         */
+        BarcodeResult.list = barcodeResult.barcodes;
+        console.log("BarcodeResults.list:", JSON.stringify(BarcodeResult.list));
+        context.setState({ barcodeResultModalVisible: true});
+      }
+      // console.log("result:", JSON.stringify(barcodeResult));
     }
   },
   {
@@ -163,7 +184,8 @@ function startBarcodeScanner(withImage: boolean) {
 export class App extends React.Component {
 
   state = {
-    barcodeModalVisible: false
+    barcodeModalVisible: false,
+    barcodeResultModalVisible: false,
   };
 
   constructor(props) {
@@ -179,18 +201,15 @@ export class App extends React.Component {
     });
   }
 
-  onClose = () => this.setState({ barcodeModalVisible: false});
+  onSave = () => this.setState({ barcodeModalVisible: false});
+
+  onClose = () => this.setState({ barcodeResultModalVisible: false});
 
   render() {
     return (
         <View style={{ flex: 1 }}>
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
-          <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
-            <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
-            <BarcodeList/>
-            <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
-          </Overlay>
           <SafeAreaView>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
@@ -203,6 +222,19 @@ export class App extends React.Component {
               />
             </ScrollView>
           </SafeAreaView>
+
+          <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onSave} closeOnTouchOutside>
+            <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
+            <BarcodeList/>
+            <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onSave}/>
+          </Overlay>
+
+          <Overlay visible={this.state.barcodeResultModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
+            <Text style={styles.subtitle}>DETECTED BARCODES</Text>
+            <BarcodeResultList/>
+            <Button title={"CLOSE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
+          </Overlay>
+
         </View>
     );
   }
