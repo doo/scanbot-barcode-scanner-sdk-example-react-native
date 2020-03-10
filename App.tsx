@@ -14,7 +14,7 @@ import {
   FlatList,
   SafeAreaView,
   ScrollView,
-  StyleSheet, Switch,
+  StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
@@ -31,8 +31,17 @@ import ImagePicker from 'react-native-image-picker';
 import BarcodeList from './src/BarcodeList'
 import BarcodeResultList from "./src/BarcodeResultList";
 
+import Utils from "./src/utils/Utils"
 import BarcodeResult from './src/model/BarcodeResult'
 
+/**
+ * TODO Add License key here.
+ * Please note: Scanbot Barcode Scanner SDK will run without a license key for one minute per session!
+ * After the trial period is over all SDK features as well as the UI components will stop working
+ * or may be terminated. You can get an unrestricted "no-strings-attached" 30 day trial license key for free.
+ * Please submit the trial license form (https://scanbot.io/sdk/trial.html) on our website by using
+ * the app identifier "io.scanbot.example.sdk.barcode.reactnative" of this example app.
+ */
 const LICENSE_KEY = "";
 
 const ListSource = [
@@ -81,29 +90,15 @@ const ListSource = [
       const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
 
       if (barcodeResult.status === "OK") {
-        /**
-         * Result will be formatted as the following:
-         *
-         * {
-         * "status":"OK",
-         * "barcodes":[
-         *  {
-         *  "sourceImageUri":"<uri>",
-         *  "text":"https://scanbot.io/download",
-         *  "type":"Aztec"
-         *  }]
-         * }
-         */
-        // BarcodeResult.list = barcodeResult.barcodes;
-
         for (let i = 0; i < barcodeResult.barcodes.length; i++) {
           const barcode = barcodeResult.barcodes[i];
           barcode.id = i.toString();
           console.log("i:", i);
           BarcodeResult.list.push(barcode);
         }
-
         context.setState({ barcodeResultModalVisible: true});
+      } else {
+        alert("Oops!", "Something went terribly wrong. Please try again");
       }
     }
   },
@@ -166,7 +161,6 @@ function startBarcodeScanner(withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: [ "AZTEC" ],
   };
 
   if (withImage) {
@@ -198,8 +192,13 @@ export class App extends React.Component {
     super(props);
 
     ScanbotBarcodeSdk.initializeSdk({
+      // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
       licenseKey: LICENSE_KEY,
+      storageImageFormat: 'JPG',
+      storageImageQuality: 80,
+      // Optional storage path. See the method description!
+      storageBaseDirectory: Utils.getCustomStoragePath()
     }).then(() => {
       console.log('Scanbot Barcode SDK Initialized');
     }).catch((error) => {
@@ -217,10 +216,7 @@ export class App extends React.Component {
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
           <SafeAreaView>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}>
-
+            <ScrollView contentInsetAdjustmentBehavior="automatic">
               <FlatList
                   data={ListSource}
                   renderItem={({item}) => <ListItem context={this} item={item}/>}
@@ -266,41 +262,6 @@ const styles = StyleSheet.create({
     lineHeight: 50,
     alignSelf: "stretch"
   },
-  scrollView: {
-
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    paddingHorizontal: 22,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '500',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
   button: {
     textAlign: "center",
     width: "100%",
@@ -310,7 +271,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: "#007AFF"
   },
-
   overlay: {
     maxHeight: "90% !important"
   },

@@ -30,6 +30,8 @@ target 'ScanbotBarcodeExampleReact' do
 
   pod 'RNScanbotBarcodeSDK', :podspec => '../node_modules/react-native-scanbot-barcode-sdk/react-native-scanbot-barcode-sdk.podspec'
 
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+  
   target 'ScanbotBarcodeExampleReactTests' do
     inherit! :search_paths
     # Pods for testing

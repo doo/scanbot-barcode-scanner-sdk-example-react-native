@@ -83,6 +83,8 @@ PODS:
   - React-RCTWebSocket (0.60.3):
     - React-Core (= 0.60.3)
     - React-fishhook (= 0.60.3)
+  - RNFS (2.16.6):
+    - React
   - RNScanbotBarcodeSDK (1.0.0-rc1):
     - React
     - ScanbotBarcodeScannerSDK (= 1.2.0)
@@ -112,6 +114,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNScanbotBarcodeSDK (from `../node_modules/react-native-scanbot-barcode-sdk/react-native-scanbot-barcode-sdk.podspec`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -165,6 +168,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNScanbotBarcodeSDK:
     :podspec: "../node_modules/react-native-scanbot-barcode-sdk/react-native-scanbot-barcode-sdk.podspec"
   yoga:
@@ -194,10 +199,11 @@ SPEC CHECKSUMS:
   React-RCTText: b026f8350c2cbe0daeb9880dd9c6e018fce0daf7
   React-RCTVibration: 5d9ed4a968e9d42880ddcc7c29bee3417c745408
   React-RCTWebSocket: 69d8565d66043f244b4129f3d7154c5689fb7d3e
+  RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNScanbotBarcodeSDK: aae04d109480042a84de503fe56a3413484b7224
   ScanbotBarcodeScannerSDK: b503f589092268eab4b63c94375a3bed0d776ca3
   yoga: 843fe25849b56131275bf3e5da2c468e96f68aff
 
-PODFILE CHECKSUM: 58ed98b51429a85bcf4037bad1d71183fc3b0dde
+PODFILE CHECKSUM: d8dfa1ff7660c98cbabe20ed296bdc175c725a55
 
 COCOAPODS: 1.8.4
