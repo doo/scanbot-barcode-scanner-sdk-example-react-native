@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, { Component } from 'react';
-import {FlatList, StyleSheet, Text, View, Switch, ScrollView, TouchableWithoutFeedback} from 'react-native';
+import {FlatList, StyleSheet, Text, View, Switch, TouchableWithoutFeedback} from 'react-native';
 import {BarcodeFormats} from "react-native-scanbot-barcode-sdk/enum";
 
 class BarcodeFormat {
@@ -62,13 +62,13 @@ class BarcodeList extends Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <FlatList
                     data={this.state.listKeys}
                     keyExtractor={item => item.id}
                     renderItem={this.listItem}
                 />
-            </ScrollView>
+            </View>
         );
     }
 }
@@ -76,7 +76,8 @@ class BarcodeList extends Component {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 22,
-        height: "80%"
+        height: "85%",
+        width: "100%"
     },
     listItemContainer: {
         flex: 1,

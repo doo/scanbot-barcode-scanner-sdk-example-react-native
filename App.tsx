@@ -188,7 +188,6 @@ export class App extends React.Component {
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
           <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
             <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
-
             <BarcodeList/>
             <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
           </Overlay>
