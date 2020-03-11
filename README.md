@@ -20,18 +20,11 @@ The SDK for React Native is available as an npm package:
 
 ### Built using
 
-* `react-native` v3.0.1
+* `react-native-cli` v3.0.1
 * `node` v12.13.0
 * `npm` v6.12.0
 
 ### What else can go wrong?
-
-###### Keystore file '../scanbot-barcode-scanner-sdk-example-react-native/android/app/debug.keystore' not found for signing config 'debug'.`
-
-* `cd android/app `
-*  `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000`
-
-Note that 
 
 ###### Pod not found
 
