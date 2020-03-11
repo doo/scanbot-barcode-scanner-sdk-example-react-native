@@ -20,7 +20,7 @@ The SDK for React Native is available as an npm package:
 
 ### Built using
 
-* `react-native-cli` v3.0.1
+* `react-native-cli` `latest`
 * `node` v12.13.0
 * `npm` v6.12.0
 
@@ -48,15 +48,4 @@ After the trial period is over all SDK functions as well as the UI components (l
 You have to restart the app to get another trial period.
 
 To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/sdk/trial.html) on our website.
-
-## Appendices
-
-### Developer notes
-
-If to download a local version of the pod, change pod source directory as such:
-
-```
-#s.source       = { :http => 'https://download.scanbot.io/sdk/react-native/react-native-scanbot-barcode-scanner-sdk-' + package['version'] + '.tgz' }
-s.source = { :http => 'file:///<full-path-to-package>/react-native-scanbot-barcode-sdk-1.0.0-rc1.tgz' }
-```
 
