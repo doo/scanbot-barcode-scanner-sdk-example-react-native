@@ -70,13 +70,14 @@ const ListSource = [
   {
     id: "3", label: "Pick image from Gallery",
     action: async function(context) {
-      const response = await new Promise((resolve, reject) => {
-        ImagePicker.launchImageLibrary({}, resolve);
-      });
 
       if (!await checkLicense()) {
         return;
       }
+      const response = await new Promise((resolve, reject) => {
+        ImagePicker.launchImageLibrary({}, resolve);
+      });
+
       if (response.didCancel) {
         console.log('Image picker canceled');
         return;
