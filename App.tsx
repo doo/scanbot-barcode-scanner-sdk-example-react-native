@@ -10,6 +10,7 @@
 
 import React from 'react';
 import {
+  ActivityIndicator,
   Alert, Button,
   FlatList,
   SafeAreaView,
@@ -85,6 +86,9 @@ const ListSource = [
         setError('ImagePicker Error: ' + response.error);
         return;
       }
+
+      context.setState({ isLoading: true});
+
       const detectOptions = {
         storeImages: true,
         uri: response.uri,
@@ -95,7 +99,10 @@ const ListSource = [
       if (barcodeResult.status === "OK") {
         BarcodeResult.update(barcodeResult);
         BarcodeResult.imageUri = "data:image/png;base64," + response.data;
-        context.setState({ barcodeResultModalVisible: true});
+        context.setState({
+          barcodeResultModalVisible: true,
+          isLoading: false
+        });
       } else {
         alert("Oops!", "Something went terribly wrong. Please try again");
       }
@@ -185,6 +192,7 @@ export class App extends React.Component {
   state = {
     barcodeModalVisible: false,
     barcodeResultModalVisible: false,
+    isLoading: false,
   };
 
   constructor(props) {
@@ -235,6 +243,8 @@ export class App extends React.Component {
             <BarcodeResultList/>
             <Button title={"CLOSE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
           </Overlay>
+
+          <ActivityIndicator animating={this.state.isLoading} size="large" color="#c8193c" />
 
         </View>
     );
