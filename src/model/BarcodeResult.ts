@@ -12,7 +12,12 @@ class BarcodeResult {
     static update(barcodeResult) {
 
         BarcodeResult.imageUri = null;
-        BarcodeResult.imageUri = 'file://' + barcodeResult.imageUri;
+        if (barcodeResult.imageUri == undefined) {
+            BarcodeResult.imageUri = undefined;
+        } else {
+            BarcodeResult.imageUri = 'file://' + barcodeResult.imageUri;
+        }
+
         BarcodeResult.clear();
 
         for (let i = 0; i < barcodeResult.barcodes.length; i++) {
