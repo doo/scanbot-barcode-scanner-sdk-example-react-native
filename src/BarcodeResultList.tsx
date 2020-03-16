@@ -57,8 +57,7 @@ const styles = StyleSheet.create({
     listItemContainer: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        height: 60
+        justifyContent: 'space-between'
     },
     listItemTextContainer: {
         flex: 1,
@@ -68,13 +67,11 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingBottom: 5,
         fontSize: 14,
-        height: 25,
         fontWeight: "600"
     },
     smallText: {
         paddingLeft: 5,
         fontSize: 14,
-        height: 25,
         fontWeight: "400"
     },
     image: {

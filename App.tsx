@@ -202,8 +202,6 @@ export class App extends React.Component {
       // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
       licenseKey: LICENSE_KEY,
-      storageImageFormat: 'JPG',
-      storageImageQuality: 80,
       // Optional storage path. See the method description!
       storageBaseDirectory: Utils.getCustomStoragePath()
     }).then(() => {
