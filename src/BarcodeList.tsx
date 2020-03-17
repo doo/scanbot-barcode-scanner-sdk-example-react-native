@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {FlatList, StyleSheet, Text, View, Switch, TouchableWithoutFeedback} from 'react-native';
 import BarcodeType from "./model/BarcodeType";
 import BarcodeTypes from "./model/BarcodeTypes";
-import {BarcodeFormats} from 'react-native-scanbot-barcode-scanner-sdk/enum';
 
 class BarcodeList extends Component {
 
@@ -15,13 +14,7 @@ class BarcodeList extends Component {
         super(props);
 
         if (BarcodeTypes.list.length == 0) {
-            const list = BarcodeFormats.List();
-
-            for (let i = 0; i < list.length; i++) {
-                const id = "" + i;
-                const name = list[i];
-                BarcodeTypes.list.push(new BarcodeType(id, name, true));
-            }
+            BarcodeTypes.initialize();
         }
 
         this.state = {
