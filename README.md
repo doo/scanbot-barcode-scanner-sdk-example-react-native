@@ -8,7 +8,7 @@ It provides functionality for scanning 1D and 2D barcodes, like EAN, UPC, QR cod
 For more details visit our website https://scanbot.io/sdk
 
 The SDK for React Native is available as an npm package:
-- TODO
+- https://www.npmjs.com/package/react-native-scanbot-barcode-scanner-sdk
 
 ## Installation
 
