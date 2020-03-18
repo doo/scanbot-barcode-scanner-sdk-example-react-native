@@ -230,6 +230,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				3ABBD980861FF2EE969F4358 /* [CP] Embed Pods Frameworks */,
+				6417E3AC24228323004C68B7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -432,6 +433,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6417E3AC24228323004C68B7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework.dSYM",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${PODS_ROOT}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework/strip-SBSDK-Framework.sh\"\n";
 		};
 		78DE1578D33C623ECD5E75E0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
