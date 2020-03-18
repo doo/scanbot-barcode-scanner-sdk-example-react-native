@@ -85,7 +85,7 @@ PODS:
     - React-fishhook (= 0.60.3)
   - RNFS (2.16.6):
     - React
-  - RNScanbotBarcodeSDK (1.0.0-rc12):
+  - RNScanbotBarcodeSDK (1.0.0-rc13):
     - React
     - ScanbotBarcodeScannerSDK (= 1.3.1)
   - ScanbotBarcodeScannerSDK (1.3.1)
@@ -200,7 +200,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 5d9ed4a968e9d42880ddcc7c29bee3417c745408
   React-RCTWebSocket: 69d8565d66043f244b4129f3d7154c5689fb7d3e
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNScanbotBarcodeSDK: cff4aae721be140434d83f2821a94ebac2378fb1
+  RNScanbotBarcodeSDK: 6f170dd015eb696583938bd722086f5196d1b7ba
   ScanbotBarcodeScannerSDK: 48ea7c549b82ebaf6ef05c410d4b324ff062f579
   yoga: 843fe25849b56131275bf3e5da2c468e96f68aff
 
