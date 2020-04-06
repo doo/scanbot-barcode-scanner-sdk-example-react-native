@@ -5,7 +5,7 @@ These example apps show how to integrate the Scanbot Barcode Scanner SDK for And
 ## What is Scanbot Barcode Scanner SDK?
 The Scanbot Barcode Scanner SDK brings barcode scanning capabilities to your mobile apps.
 It provides functionality for scanning 1D and 2D barcodes, like EAN, UPC, QR code, Data Matrix, PDF 417, etc.
-For more details visit our website https://scanbot.io/sdk
+For more details visit our website https://scanbot.io
 
 The SDK for React Native is available as an npm package:
 - https://www.npmjs.com/package/react-native-scanbot-barcode-scanner-sdk
@@ -47,5 +47,4 @@ The Scanbot Barcode Scanner SDK will run without a license for one minute per se
 After the trial period is over all SDK functions as well as the UI components (like Barcode Scanner UI) will stop working.
 You have to restart the app to get another trial period.
 
-To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/sdk/trial.html) on our website.
-
+To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/en/sdk/demo/trial) on our website.
