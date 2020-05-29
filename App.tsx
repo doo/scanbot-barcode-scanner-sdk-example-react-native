@@ -151,7 +151,7 @@ function onItemClick(context, item) {
 function ListItem({ context, item }) {
   return (
       <TouchableWithoutFeedback onPress={ () => onItemClick(context, item)}>
-        <View>
+        <View style={styles.buttonContainer}>
           <Text style={styles.button}>{item.label}</Text>
         </View>
       </TouchableWithoutFeedback>
@@ -269,14 +269,21 @@ const styles = StyleSheet.create({
     lineHeight: 50,
     alignSelf: "stretch"
   },
+  buttonContainer: {
+    marginLeft: 15,
+    marginRight: 15,
+    borderBottomColor: 'rgb(200, 200, 200)',
+    borderBottomWidth: 1
+  },
   button: {
-    textAlign: "center",
+    marginLeft: 5,
+    marginTop: 10,
     width: "100%",
-    height: 50,
-    lineHeight: 50,
-    fontSize: 18,
+    height: 40,
+    lineHeight: 40,
+    fontSize: 16,
     fontWeight: '500',
-    color: "#007AFF"
+    color: "#007AFF",
   },
   overlay: {
     maxHeight: "90% !important"
