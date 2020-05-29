@@ -14,14 +14,11 @@ import {
   Alert, Button,
   FlatList,
   SafeAreaView,
-  ScrollView,
-  StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
-import {Colors,} from 'react-native/Libraries/NewAppScreen';
 import Overlay from 'react-native-modal-overlay';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
@@ -36,6 +33,7 @@ import BarcodeResultList from "./src/BarcodeResultList";
 import Utils from "./src/utils/Utils"
 import BarcodeResult from './src/model/BarcodeResult'
 import BarcodeTypes from "./src/model/BarcodeTypes";
+import Styles from "./src/model/Styles";
 
 /**
  * TODO Add License key here.
@@ -151,8 +149,8 @@ function onItemClick(context, item) {
 function ListItem({ context, item }) {
   return (
       <TouchableWithoutFeedback onPress={ () => onItemClick(context, item)}>
-        <View style={styles.buttonContainer}>
-          <Text style={styles.button}>{item.label}</Text>
+        <View style={Styles.ITEMS.buttonContainer}>
+          <Text style={Styles.ITEMS.button}>{item.label}</Text>
         </View>
       </TouchableWithoutFeedback>
   );
@@ -219,27 +217,26 @@ export class App extends React.Component {
     return (
         <View style={{ flex: 1 }}>
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
-          <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
+          <Text style={Styles.ITEMS.title}>REACT NATIVE BARCODE SCANNER</Text>
           <SafeAreaView>
-            <ScrollView contentInsetAdjustmentBehavior="automatic">
               <FlatList
+                  style={Styles.ITEMS.list}
                   data={ListSource}
                   renderItem={({item}) => <ListItem context={this} item={item}/>}
                   keyExtractor={item => item.id}
               />
-            </ScrollView>
           </SafeAreaView>
 
-          <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onSave} closeOnTouchOutside>
-            <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
+          <Overlay visible={this.state.barcodeModalVisible} style={Styles.ITEMS.overlay} onClose={this.onSave} closeOnTouchOutside>
+            <Text style={Styles.ITEMS.subtitle}>ACCEPTED BARCODE TYPES</Text>
             <BarcodeList/>
-            <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onSave}/>
+            <Button title={"SAVE"} style={Styles.ITEMS.overlaySaveButton} onPress={this.onSave}/>
           </Overlay>
 
-          <Overlay visible={this.state.barcodeResultModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
-            <Text style={styles.subtitle}>DETECTED BARCODES</Text>
+          <Overlay visible={this.state.barcodeResultModalVisible} style={Styles.ITEMS.overlay} onClose={this.onClose} closeOnTouchOutside>
+            <Text style={Styles.ITEMS.subtitle}>DETECTED BARCODES</Text>
             <BarcodeResultList/>
-            <Button title={"CLOSE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
+            <Button title={"CLOSE"} style={Styles.ITEMS.overlaySaveButton} onPress={this.onClose}/>
           </Overlay>
 
           <ActivityIndicator animating={this.state.isLoading} size="large" color="#c8193c" />
@@ -248,51 +245,6 @@ export class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: Colors.white,
-    textAlign: "center",
-    marginBottom: 20,
-    backgroundColor: "#c8193c",
-    height: 60,
-    lineHeight: 70
-  },
-  subtitle: {
-    fontSize: 16,
-    fontWeight: '500',
-    textAlign: "center",
-    marginBottom: 10,
-    height: 50,
-    lineHeight: 50,
-    alignSelf: "stretch"
-  },
-  buttonContainer: {
-    marginLeft: 15,
-    marginRight: 15,
-    borderBottomColor: 'rgb(200, 200, 200)',
-    borderBottomWidth: 1
-  },
-  button: {
-    marginLeft: 5,
-    marginTop: 10,
-    width: "100%",
-    height: 40,
-    lineHeight: 40,
-    fontSize: 16,
-    fontWeight: '500',
-    color: "#007AFF",
-  },
-  overlay: {
-    maxHeight: "90% !important"
-  },
-
-  overlaySaveButton: {
-    borderTopColor: "#c8193c"
-  }
-});
 
 function alert(title: string, body: string) {
     Alert.alert(title, body, [ {text: 'OK', onPress: () => console.log('OK Pressed')} ]);
