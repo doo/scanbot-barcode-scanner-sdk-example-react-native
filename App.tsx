@@ -176,8 +176,6 @@ function startBarcodeScanner(context, withImage: boolean) {
         if (result.status === 'OK') {
           BarcodeResult.update(result);
           context.setState({ barcodeResultModalVisible: true});
-        } else {
-          alert("Cancelled!", "Barcode scan has been stopped");
         }
       })
       .catch(error => {
