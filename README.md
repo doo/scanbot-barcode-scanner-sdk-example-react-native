@@ -1,5 +1,5 @@
 # Scanbot Barcode Scanner SDK React Native Examples
-These example apps show how to integrate the Scanbot Barcode Scanner SDK for Android and iOS with React Native
+These example apps demonstrate how to integrate the Scanbot Barcode Scanner SDK for Android and iOS with React Native
 
 
 ## What is Scanbot Barcode Scanner SDK?
@@ -30,21 +30,21 @@ The SDK for React Native is available as an npm package:
 
 `pod repo update`
 
-###### Still at a loss? It's a probably a cache issue
+###### Still at a loss? It is probably a cache issue
 
 * `npm cache clean --force`
 * Restart metro server! (Yes, apparently that thing has its own cache as well)
 
 ## Documentation
 
-For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this 
+For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this
 [documentation](https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/react-native/).
 
 ## Please note
 
 The Scanbot Barcode Scanner SDK will run without a license for one minute per session!
 
-After the trial period is over all SDK functions as well as the UI components (like Barcode Scanner UI) will stop working.
+After the trial period has expired all SDK functions as well as the UI components (like Barcode Scanner UI) will stop working.
 You have to restart the app to get another trial period.
 
-To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/en/sdk/demo/trial) on our website.
+To get an unrestricted, "no-strings-attached" 30-day trial license, please submit the [Trial License Form](https://scanbot.io/en/sdk/demo/trial) on our website.
