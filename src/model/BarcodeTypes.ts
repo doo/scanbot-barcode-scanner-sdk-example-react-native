@@ -17,8 +17,23 @@ class BarcodeTypes {
     }
 
     static initialize() {
-        const list = [ "AZTEC", "CODABAR", "CODE_39", "CODE_93", "CODE_128", "DATA_MATRIX", "EAN_8",
-            "EAN_13", "ITF", "PDF_417", "QR_CODE", "RSS_14", "RSS_EXPANDED", "UPC_A", "UPC_E", "UNKNOWN"
+        const list = [ 
+            "AZTEC", 
+            "CODABAR", 
+            "CODE_39", 
+            "CODE_93", 
+            "CODE_128", 
+            "DATA_MATRIX", 
+            "EAN_8",
+            "EAN_13", 
+            "ITF", 
+            "PDF_417", 
+            "QR_CODE", 
+            "RSS_14", 
+            "RSS_EXPANDED", 
+            "UPC_A", 
+            "UPC_E", 
+            "MSI_PLESSEY"
         ];
 
         for (let i = 0; i < list.length; i++) {

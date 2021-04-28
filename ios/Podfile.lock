@@ -85,10 +85,10 @@ PODS:
     - React-fishhook (= 0.60.3)
   - RNFS (2.16.6):
     - React
-  - RNScanbotBarcodeSDK (1.0.0):
+  - RNScanbotBarcodeSDK (1.1.0-beta2):
     - React
-    - ScanbotBarcodeScannerSDK (= 1.3.1)
-  - ScanbotBarcodeScannerSDK (1.3.1)
+    - ScanbotBarcodeScannerSDK (= 1.5.1)
+  - ScanbotBarcodeScannerSDK (1.5.1)
   - yoga (0.60.3.React)
 
 DEPENDENCIES:
@@ -188,7 +188,7 @@ SPEC CHECKSUMS:
   React-jsi: c2b6e57836bcae2677a036384111dc2c58e94369
   React-jsiexecutor: d9023c5c199114d2b6f38ec861a4d923c73d0735
   React-jsinspector: 817b64f3c8a807f09d78620f4f505868d89b26f3
-  react-native-image-picker: 7e19aefccd42aad840a758181e16ce05d4e95578
+  react-native-image-picker: 23b053a5ac85fec5d95a6a2e3487c306682c12eb
   React-RCTActionSheet: 9c42321fd5652515d706dd722c5a10b1970d7ec8
   React-RCTAnimation: fabb087dde8964c9a835a7fabd0e7e5701787913
   React-RCTBlob: 93f34281d9c9c9e216b25824309eed9fe22a5d41
@@ -200,10 +200,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: 5d9ed4a968e9d42880ddcc7c29bee3417c745408
   React-RCTWebSocket: 69d8565d66043f244b4129f3d7154c5689fb7d3e
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNScanbotBarcodeSDK: 904c513f2b45de0c629bcee71b602f2667037bd5
-  ScanbotBarcodeScannerSDK: 48ea7c549b82ebaf6ef05c410d4b324ff062f579
+  RNScanbotBarcodeSDK: a947d5deb9deb386b162040fe9951c0b000b8103
+  ScanbotBarcodeScannerSDK: d67f4f537fe489f22a63c01780285b6093728f82
   yoga: 843fe25849b56131275bf3e5da2c468e96f68aff
 
 PODFILE CHECKSUM: eefa521dc42373ed427a152603ebf0d11c025d53
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

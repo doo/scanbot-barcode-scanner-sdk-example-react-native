@@ -164,7 +164,11 @@ function startBarcodeScanner(context, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: BarcodeTypes.getAcceptedFormats()
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    finderAspectRatio: {
+      width: 2,
+      height: 1
+    }
   };
 
   if (withImage) {
@@ -176,8 +180,6 @@ function startBarcodeScanner(context, withImage: boolean) {
         if (result.status === 'OK') {
           BarcodeResult.update(result);
           context.setState({ barcodeResultModalVisible: true});
-        } else {
-          alert("Cancelled!", "Barcode scan has been stopped");
         }
       })
       .catch(error => {
