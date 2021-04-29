@@ -32,8 +32,7 @@ class BarcodeTypes {
             "RSS_14", 
             "RSS_EXPANDED", 
             "UPC_A", 
-            "UPC_E", 
-            "MSI_PLESSEY"
+            "UPC_E"
         ];
 
         for (let i = 0; i < list.length; i++) {

@@ -1,3 +1,4 @@
+import { BarcodeScannerResult } from "react-native-scanbot-barcode-scanner-sdk/result";
 
 class BarcodeResult {
 
@@ -9,19 +10,19 @@ class BarcodeResult {
         BarcodeResult.list = [];
     }
 
-    static update(barcodeResult) {
+    static update(barcodeResult: BarcodeScannerResult) {
 
         BarcodeResult.imageUri = null;
-        if (barcodeResult.imageUri == undefined) {
+        if (barcodeResult.imageFileUri == undefined) {
             BarcodeResult.imageUri = undefined;
         } else {
-            BarcodeResult.imageUri = 'file://' + barcodeResult.imageUri;
+            BarcodeResult.imageUri = barcodeResult.imageFileUri;
         }
 
         BarcodeResult.clear();
 
         for (let i = 0; i < barcodeResult.barcodes.length; i++) {
-            const barcode = barcodeResult.barcodes[i];
+            const barcode: any = barcodeResult.barcodes[i];
             barcode.id = i.toString();
             BarcodeResult.list.push(barcode);
         }

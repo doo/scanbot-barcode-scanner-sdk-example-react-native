@@ -15,7 +15,7 @@ class BarcodeResultList extends Component {
     listItem = ({item, index}) => (
         <TouchableWithoutFeedback onPress={()=>{}}>
             <View style={styles.listItemContainer}>
-                <Image style={styles.image} source={{uri: 'file://' + item.sourceImageUri, scale:1}}/>
+                <Image style={styles.image} source={{uri: item.imageFileUri, scale:1}}/>
                 <View style={styles.listItemTextContainer}>
                     <Text style={styles.smallTextBold}>{item.type}</Text>
                     <Text style={styles.smallText}>{item.text}</Text>

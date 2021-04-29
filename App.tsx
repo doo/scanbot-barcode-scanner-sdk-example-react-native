@@ -26,10 +26,10 @@ import Overlay from 'react-native-modal-overlay';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
 
-import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk/configuration";
+import {BarcodeScannerConfiguration, BatchBarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk/configuration";
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
-import ImagePicker from 'react-native-image-picker';
+import ImagePicker, { ImagePickerResponse } from 'react-native-image-picker';
 import BarcodeList from './src/BarcodeList'
 import BarcodeResultList from "./src/BarcodeResultList";
 
@@ -45,11 +45,12 @@ import BarcodeTypes from "./src/model/BarcodeTypes";
  * Please submit the trial license form (https://scanbot.io/sdk/trial.html) on our website by using
  * the app identifier "io.scanbot.example.sdk.barcode.reactnative" of this example app.
  */
+
 const LICENSE_KEY = "";
 
 const ListSource = [
   {
-    id: "1", label: "RTU-UI",
+    id: "1", label: "RTU-UI: Barcode Scanner",
     action: async function(context) {
 
       if (!await checkLicense()) {
@@ -59,7 +60,7 @@ const ListSource = [
     }
   },
   {
-    id: "2", label: "RTU-UI With Image",
+    id: "2", label: "RTU-UI: Barcode Scanner with Image",
     action: async function(context) {
 
       if (!await checkLicense()) {
@@ -69,13 +70,22 @@ const ListSource = [
     }
   },
   {
-    id: "3", label: "Pick image from Gallery",
+    id: "3", label: "RTU-UI: Batch Barcode Scanner",
+    action: async function(context) {
+      if (!await checkLicense()) {
+        return;
+      }
+      startBatchBarcodeScanner(context);
+    }
+  },
+  {
+    id: "4", label: "Pick image from Gallery",
     action: async function(context) {
 
       if (!await checkLicense()) {
         return;
       }
-      const response = await new Promise((resolve, reject) => {
+      const response: ImagePickerResponse = await new Promise((resolve, reject) => {
         ImagePicker.launchImageLibrary({}, resolve);
       });
 
@@ -83,18 +93,16 @@ const ListSource = [
         console.log('Image picker canceled');
         return;
       } else if (response.error) {
-        setError('ImagePicker Error: ' + response.error);
+        alert("Error", 'ImagePicker Error: ' + response.error);
         return;
       }
 
       context.setState({ isLoading: true});
 
-      const detectOptions = {
-        storeImages: true,
-        uri: response.uri,
-      };
-
-      const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
+      const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage({
+        imageFileUri: response.uri,
+        barcodeFormats: BarcodeTypes.getAcceptedFormats()
+      });
 
       if (barcodeResult.status === "OK") {
         BarcodeResult.update(barcodeResult);
@@ -109,13 +117,13 @@ const ListSource = [
     }
   },
   {
-    id: "4", label: "Set accepted barcode types",
+    id: "5", label: "Set accepted barcode types",
     action: async function(context) {
       context.setState({ barcodeModalVisible: true});
     }
   },
   {
-    id: "5", label: "View license info",
+    id: "6", label: "View license info",
     action: async function(context) {
 
       const result = await ScanbotBarcodeSdk.getLicenseInfo();
@@ -123,7 +131,7 @@ const ListSource = [
     }
   },
   {
-    id: "6", label: "Clear image storage",
+    id: "7", label: "Clear image storage",
     action: async function(context) {
 
       if (!await checkLicense()) {
@@ -158,35 +166,62 @@ function ListItem({ context, item }) {
   );
 }
 
-function startBarcodeScanner(context, withImage: boolean) {
-
-  ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
+async function startBarcodeScanner(context, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
     barcodeFormats: BarcodeTypes.getAcceptedFormats(),
     finderAspectRatio: {
-      width: 2,
-      height: 1
-    }
+      width: 4,
+      height: 3
+    },
+    enableGS1Decoding: false,
+    // Additional Configs...
+    // cameraZoomFactor: 1,
+    // acceptedDocumentFormats: ["AAMVA", "BOARDING_PASS"],
+    // minimumTextLength: 3,
+    // maximumTextLength: 7,
+    // minimum1DBarcodesQuietZone: 9
   };
 
   if (withImage) {
-    config.barcodeImageGenerationType = "FROM_VIDEO_FRAME";
+    config.barcodeImageGenerationType = "CAPTURED_IMAGE"
   }
 
-  ScanbotBarcodeSdk.startBarcodeScanner(config)
-      .then(result => {
-        if (result.status === 'OK') {
-          BarcodeResult.update(result);
-          context.setState({ barcodeResultModalVisible: true});
-        }
-      })
-      .catch(error => {
-        console.log("error:", JSON.stringify(error));
-        alert("Error!", error);
-      })
-  ;
+  try {
+    let result = await ScanbotBarcodeSdk.startBarcodeScanner(config);
+
+    if (result.status === 'OK') {
+      BarcodeResult.update(result);
+      context.setState({ barcodeResultModalVisible: true});
+    }
+  } catch (err) {
+    alert("Error", err);
+  }
+}
+
+async function startBatchBarcodeScanner(context) {
+  const config: BatchBarcodeScannerConfiguration = {
+    topBarBackgroundColor: "#c8193c",
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    acceptedDocumentFormats: [],
+    finderAspectRatio: {
+      width: 1,
+      height: 1
+    },
+    enableGS1Decoding: true
+  }
+
+  try {
+    let result = await ScanbotBarcodeSdk.startBatchBarcodeScanner(config);
+
+    if (result.status === 'OK') {
+      BarcodeResult.update(result);
+      context.setState({ barcodeResultModalVisible: true});
+    }
+  } catch (err) {
+    alert("Error", err);
+  }
 }
 
 export class App extends React.Component {
