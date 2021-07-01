@@ -27,7 +27,7 @@ import Overlay from 'react-native-modal-overlay';
 
 import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
 
-import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk/src/configuration";
+import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk";
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
