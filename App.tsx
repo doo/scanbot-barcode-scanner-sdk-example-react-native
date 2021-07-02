@@ -149,8 +149,7 @@ function onItemClick(context: any, item: any) {
   item.action(context);
 }
 
-// @ts-ignore
-function ListItem({context, item }) {
+function ListItem({ context, item }: { context:any, item:any }) {
   return (
       <TouchableWithoutFeedback onPress={ () => onItemClick(context, item)}>
         <View style={styles.buttonContainer}>
@@ -230,15 +229,13 @@ export class App extends React.Component {
           <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onSave} closeOnTouchOutside>
             <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
             <BarcodeList/>
-            {/*@ts-ignore*/}
-            <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onSave}/>
+            <Button title={"SAVE"} onPress={this.onSave}/>
           </Overlay>
 
           <Overlay visible={this.state.barcodeResultModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
             <Text style={styles.subtitle}>DETECTED BARCODES</Text>
             <BarcodeResultList/>
-            {/*@ts-ignore*/}
-            <Button title={"CLOSE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
+            <Button title={"CLOSE"} onPress={this.onClose}/>
           </Overlay>
 
           <ActivityIndicator animating={this.state.isLoading} size="large" color="#c8193c" />
@@ -286,10 +283,6 @@ const styles = StyleSheet.create({
   },
   overlay: {
     maxHeight: "90% !important"
-  },
-
-  overlaySaveButton: {
-    borderTopColor: "#c8193c"
   }
 });
 
