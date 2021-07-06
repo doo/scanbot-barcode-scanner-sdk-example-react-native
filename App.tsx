@@ -25,7 +25,7 @@ import {Colors,} from 'react-native/Libraries/NewAppScreen';
 // @ts-ignore
 import Overlay from 'react-native-modal-overlay';
 
-import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSdk, {EngineMode} from 'react-native-scanbot-barcode-scanner-sdk';
 
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk";
 
@@ -163,7 +163,8 @@ function startBarcodeScanner(context: any, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: BarcodeTypes.getAcceptedFormats()
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    engineMode: "LEGACY"
   };
 
   if (withImage) {

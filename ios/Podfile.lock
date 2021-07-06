@@ -385,7 +385,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: e1f943f8296b711b36884fa956d49c16f6448935
+  FBReactNativeSpec: ef73c5aed30e2cc3c3bd9706b25604c92786b894
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
@@ -398,7 +398,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-image-picker: 23b053a5ac85fec5d95a6a2e3487c306682c12eb
+  react-native-image-picker: 7e19aefccd42aad840a758181e16ce05d4e95578
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -412,7 +412,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNScanbotBarcodeSDK: 91c9852fe57723f0a62f6eba4f60ce60f8fd4f42
+  RNScanbotBarcodeSDK: 223b3d7ae24279e6debdd38a6cd633d5682d7808
   ScanbotBarcodeScannerSDK: 30cc819c0ed3eb4d19cb5d5fb8d284e479c45191
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
