@@ -161,9 +161,9 @@ function startBarcodeScanner(context: any, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: ["MSI_PLESSEY"],
-    engineMode: "NEXT_GEN",
-    msiPlesseyChecksumAlgorithm: "Mod10",
+    // barcodeFormats: ["MSI_PLESSEY"],
+    // engineMode: "NEXT_GEN",
+    // msiPlesseyChecksumAlgorithm: "Mod10",
   };
 
   if (withImage) {
