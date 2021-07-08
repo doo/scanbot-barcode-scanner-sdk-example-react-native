@@ -14,7 +14,6 @@ import {
   Alert, Button,
   FlatList,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -25,7 +24,7 @@ import {Colors,} from 'react-native/Libraries/NewAppScreen';
 // @ts-ignore
 import Overlay from 'react-native-modal-overlay';
 
-import ScanbotBarcodeSdk, {EngineMode} from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
 
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk";
 
@@ -36,7 +35,6 @@ import BarcodeResultList from "./src/BarcodeResultList";
 
 import Utils from "./src/utils/Utils"
 import BarcodeResult from './src/model/BarcodeResult'
-import BarcodeTypes from "./src/model/BarcodeTypes";
 
 /**
  * TODO Add License key here.
