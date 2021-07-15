@@ -24,7 +24,7 @@ import {Colors,} from 'react-native/Libraries/NewAppScreen';
 // @ts-ignore
 import Overlay from 'react-native-modal-overlay';
 
-import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSdk, { BatchBarcodeScannerConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
 import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk";
 
@@ -68,7 +68,18 @@ const ListSource = [
     }
   },
   {
-    id: "3", label: "Pick image from Gallery",
+    id: "3", label: "RTU-UI: Batch Barcode Scanner",
+    action: async function(context: any) {
+
+      if (!await checkLicense()) {
+        return;
+      }
+
+      startBatchBarcodeScanner(context);
+    }
+  },
+  {
+    id: "4", label: "Pick image from Gallery",
     action: async function(context: any) {
 
       if (!await checkLicense()) {
@@ -108,13 +119,13 @@ const ListSource = [
     }
   },
   {
-    id: "4", label: "Set accepted barcode types",
+    id: "5", label: "Set accepted barcode types",
     action: async function(context: any) {
       context.setState({ barcodeModalVisible: true});
     }
   },
   {
-    id: "5", label: "View license info",
+    id: "6", label: "View license info",
     action: async function(context: any) {
 
       const result = await ScanbotBarcodeSdk.getLicenseInfo();
@@ -122,7 +133,7 @@ const ListSource = [
     }
   },
   {
-    id: "6", label: "Clear image storage",
+    id: "7", label: "Clear image storage",
     action: async function(context: any) {
 
       if (!await checkLicense()) {
@@ -179,7 +190,29 @@ function startBarcodeScanner(context: any, withImage: boolean) {
       })
       .catch(error => {
         console.log("error:", JSON.stringify(error));
-        alert("Error!", error);
+        //alert("Error!", error);
+      })
+  ;
+}
+
+function startBatchBarcodeScanner(context: any) {
+
+  const config: BatchBarcodeScannerConfiguration = {
+    topBarBackgroundColor: "#c8193c",
+    barcodeFormats: ["MSI_PLESSEY"],
+    engineMode: "NEXT_GEN"
+  }
+
+  ScanbotBarcodeSdk.startBatchBarcodeScanner(config)
+      .then(result => {
+        if (result.status === 'OK') {
+          BarcodeResult.update(result);
+          context.setState({ barcodeResultModalVisible: true});
+        }
+      })
+      .catch(error => {
+        console.log("error:", JSON.stringify(error));
+        //alert("Error!", error);
       })
   ;
 }

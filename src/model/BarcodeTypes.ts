@@ -1,16 +1,16 @@
 import BarcodeType from "./BarcodeType";
-import { BarcodeFormat } from "react-native-scanbot-barcode-scanner-sdk/enum";
+import { BarcodeFormat } from "react-native-scanbot-barcode-scanner-sdk";
 
 class BarcodeTypes {
     public static list: BarcodeType[] = [];
 
     public static getAcceptedFormats() : BarcodeFormat[] {
-        const result = [];
+        const result: BarcodeFormat[] = [];
 
         for (let i = 0; i < BarcodeTypes.list.length; i++) {
             const type = BarcodeTypes.list[i];
             if (type.isAccepted) {
-                result.push(type.name);
+                result.push(type.name as BarcodeFormat);
             }
         }
         return result;
