@@ -13,10 +13,6 @@ class BarcodeList extends Component {
     constructor(props) {
         super(props);
 
-        if (BarcodeTypes.list.length == 0) {
-            BarcodeTypes.initialize();
-        }
-
         this.state = {
             listKeys: BarcodeTypes.list
         }

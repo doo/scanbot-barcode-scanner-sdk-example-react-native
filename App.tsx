@@ -229,6 +229,10 @@ export class App extends React.Component {
   constructor(props: any) {
     super(props);
 
+    if (BarcodeTypes.list.length == 0) {
+      BarcodeTypes.initialize();
+    }
+
     ScanbotBarcodeSdk.initializeSdk({
       // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
