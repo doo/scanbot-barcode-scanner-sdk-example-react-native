@@ -173,21 +173,18 @@ function startBarcodeScanner(context: any, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeImageGenerationType: (withImage ? "CAPTURED_IMAGE" : "NONE"),
+    barcodeImageGenerationType: (withImage ? "FROM_VIDEO_FRAME" : "NONE"),
     barcodeFormats: BarcodeTypes.getAcceptedFormats(),
     // barcodeFormats: ["MSI_PLESSEY"],
     // msiPlesseyChecksumAlgorithm: "Mod10",
     // engineMode: "NEXT_GEN",
   };
 
-  if (withImage) {
-    config.barcodeImageGenerationType = "FROM_VIDEO_FRAME";
-  }
-
   ScanbotBarcodeSdk.startBarcodeScanner(config)
       .then(result => {
         if (result.status === 'OK') {
           BarcodeResult.update(result);
+          BarcodeResult.imageUri = result.imageFileUri;
           context.setState({ barcodeResultModalVisible: true});
         }
       })
