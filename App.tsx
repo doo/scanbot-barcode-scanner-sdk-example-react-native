@@ -103,6 +103,7 @@ const ListSource = [
       const detectOptions = {
         storeImages: true,
         imageFileUri: response.uri,
+        barcodeFormats: BarcodeTypes.getAcceptedFormats(),
       };
 
       const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
