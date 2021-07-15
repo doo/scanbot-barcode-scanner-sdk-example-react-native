@@ -26,15 +26,16 @@ import Overlay from 'react-native-modal-overlay';
 
 import ScanbotBarcodeSdk, { BatchBarcodeScannerConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
-import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk";
+import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
-import BarcodeList from './src/BarcodeList'
-import BarcodeResultList from "./src/BarcodeResultList";
+import BarcodeList from './src/BarcodeList';
+import BarcodeResultList from './src/BarcodeResultList';
 
-import Utils from "./src/utils/Utils"
-import BarcodeResult from './src/model/BarcodeResult'
+import Utils from './src/utils/Utils';
+import BarcodeResult from './src/model/BarcodeResult';
+import BarcodeTypes from './src/model/BarcodeTypes';
 
 /**
  * TODO Add the license key here.
@@ -172,9 +173,11 @@ function startBarcodeScanner(context: any, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
+    barcodeImageGenerationType: (withImage ? "CAPTURED_IMAGE" : "NONE"),
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
     // barcodeFormats: ["MSI_PLESSEY"],
-    // engineMode: "NEXT_GEN",
     // msiPlesseyChecksumAlgorithm: "Mod10",
+    // engineMode: "NEXT_GEN",
   };
 
   if (withImage) {
@@ -199,8 +202,9 @@ function startBatchBarcodeScanner(context: any) {
 
   const config: BatchBarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: ["MSI_PLESSEY"],
-    engineMode: "NEXT_GEN"
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    //barcodeFormats: ["MSI_PLESSEY"],
+    //engineMode: "NEXT_GEN"
   }
 
   ScanbotBarcodeSdk.startBatchBarcodeScanner(config)
