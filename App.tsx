@@ -37,11 +37,11 @@ import Utils from "./src/utils/Utils"
 import BarcodeResult from './src/model/BarcodeResult'
 
 /**
- * TODO Add License key here.
+ * TODO Add the license key here.
  * Please note: Scanbot Barcode Scanner SDK will run without a license key for one minute per session!
- * After the trial period is over all SDK features as well as the UI components will stop working
+ * After the trial period has expired all SDK features as well as the UI components will stop working
  * or may be terminated. You can get an unrestricted "no-strings-attached" 30 day trial license key for free.
- * Please submit the trial license form (https://scanbot.io/sdk/trial.html) on our website by using
+ * Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
  * the app identifier "io.scanbot.example.sdk.barcode.reactnative" of this example app.
  */
 const LICENSE_KEY = "";
