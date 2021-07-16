@@ -41,7 +41,7 @@ The SDK for React Native is available as an npm package:
 
 ## Documentation
 
-For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this
+For more details about the Scanbot Barcode Scanner SDK for React Native please see this
 [documentation](https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/react-native/).
 
 ## Please note
