@@ -269,12 +269,12 @@ PODS:
     - React-cxxreact (= 0.64.2)
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
-  - RNFS (2.16.6):
+  - RNFS (2.18.0):
     - React
-  - RNScanbotBarcodeSDK (1.1.1):
+  - RNScanbotBarcodeSDK (3.0.0):
     - React
-    - ScanbotBarcodeScannerSDK (= 1.11.0)
-  - ScanbotBarcodeScannerSDK (1.11.0)
+    - ScanbotBarcodeScannerSDK (= 3.0.0)
+  - ScanbotBarcodeScannerSDK (3.0.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -385,7 +385,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: e1f943f8296b711b36884fa956d49c16f6448935
+  FBReactNativeSpec: 3bcf0be0123cb7659cce984e07d29a0c86a3f434
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
@@ -411,9 +411,9 @@ SPEC CHECKSUMS:
   React-RCTVibration: 24600e3b1aaa77126989bc58b6747509a1ba14f3
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
-  RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNScanbotBarcodeSDK: 91c9852fe57723f0a62f6eba4f60ce60f8fd4f42
-  ScanbotBarcodeScannerSDK: 30cc819c0ed3eb4d19cb5d5fb8d284e479c45191
+  RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
+  RNScanbotBarcodeSDK: 2ba0a038da0fab2f7e26d0a17342356991f6f34b
+  ScanbotBarcodeScannerSDK: 6ea342d55f608fa29668d2097277e2d2ad0781bb
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
 PODFILE CHECKSUM: 1827b829eb1008d12f0bb6f5033d80286a968aaf

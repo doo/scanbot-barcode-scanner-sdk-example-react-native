@@ -14,7 +14,6 @@ import {
   Alert, Button,
   FlatList,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -25,25 +24,25 @@ import {Colors,} from 'react-native/Libraries/NewAppScreen';
 // @ts-ignore
 import Overlay from 'react-native-modal-overlay';
 
-import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSdk, { BatchBarcodeScannerConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
-import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk";
+import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
-import BarcodeList from './src/BarcodeList'
-import BarcodeResultList from "./src/BarcodeResultList";
+import BarcodeList from './src/BarcodeList';
+import BarcodeResultList from './src/BarcodeResultList';
 
-import Utils from "./src/utils/Utils"
-import BarcodeResult from './src/model/BarcodeResult'
-import BarcodeTypes from "./src/model/BarcodeTypes";
+import Utils from './src/utils/Utils';
+import BarcodeResult from './src/model/BarcodeResult';
+import BarcodeTypes from './src/model/BarcodeTypes';
 
 /**
- * TODO Add License key here.
+ * TODO Add the license key here.
  * Please note: Scanbot Barcode Scanner SDK will run without a license key for one minute per session!
- * After the trial period is over all SDK features as well as the UI components will stop working
+ * After the trial period has expired all SDK features as well as the UI components will stop working
  * or may be terminated. You can get an unrestricted "no-strings-attached" 30 day trial license key for free.
- * Please submit the trial license form (https://scanbot.io/sdk/trial.html) on our website by using
+ * Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
  * the app identifier "io.scanbot.example.sdk.barcode.reactnative" of this example app.
  */
 const LICENSE_KEY = "";
@@ -70,7 +69,18 @@ const ListSource = [
     }
   },
   {
-    id: "3", label: "Pick image from Gallery",
+    id: "3", label: "RTU-UI: Batch Barcode Scanner",
+    action: async function(context: any) {
+
+      if (!await checkLicense()) {
+        return;
+      }
+
+      startBatchBarcodeScanner(context);
+    }
+  },
+  {
+    id: "4", label: "Pick image from Gallery",
     action: async function(context: any) {
 
       if (!await checkLicense()) {
@@ -93,6 +103,7 @@ const ListSource = [
       const detectOptions = {
         storeImages: true,
         imageFileUri: response.uri,
+        barcodeFormats: BarcodeTypes.getAcceptedFormats(),
       };
 
       const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
@@ -110,13 +121,13 @@ const ListSource = [
     }
   },
   {
-    id: "4", label: "Set accepted barcode types",
+    id: "5", label: "Set accepted barcode types",
     action: async function(context: any) {
       context.setState({ barcodeModalVisible: true});
     }
   },
   {
-    id: "5", label: "View license info",
+    id: "6", label: "View license info",
     action: async function(context: any) {
 
       const result = await ScanbotBarcodeSdk.getLicenseInfo();
@@ -124,7 +135,7 @@ const ListSource = [
     }
   },
   {
-    id: "6", label: "Clear image storage",
+    id: "7", label: "Clear image storage",
     action: async function(context: any) {
 
       if (!await checkLicense()) {
@@ -163,14 +174,38 @@ function startBarcodeScanner(context: any, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: BarcodeTypes.getAcceptedFormats()
+    barcodeImageGenerationType: (withImage ? "FROM_VIDEO_FRAME" : "NONE"),
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    // barcodeFormats: ["MSI_PLESSEY"],
+    // msiPlesseyChecksumAlgorithm: "Mod10",
+    // engineMode: "NEXT_GEN",
   };
 
-  if (withImage) {
-    config.barcodeImageGenerationType = "FROM_VIDEO_FRAME";
+  ScanbotBarcodeSdk.startBarcodeScanner(config)
+      .then(result => {
+        if (result.status === 'OK') {
+          BarcodeResult.update(result);
+          BarcodeResult.imageUri = result.imageFileUri;
+          context.setState({ barcodeResultModalVisible: true});
+        }
+      })
+      .catch(error => {
+        console.log("error:", JSON.stringify(error));
+        //alert("Error!", error);
+      })
+  ;
+}
+
+function startBatchBarcodeScanner(context: any) {
+
+  const config: BatchBarcodeScannerConfiguration = {
+    topBarBackgroundColor: "#c8193c",
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    //barcodeFormats: ["MSI_PLESSEY"],
+    //engineMode: "NEXT_GEN"
   }
 
-  ScanbotBarcodeSdk.startBarcodeScanner(config)
+  ScanbotBarcodeSdk.startBatchBarcodeScanner(config)
       .then(result => {
         if (result.status === 'OK') {
           BarcodeResult.update(result);
@@ -179,7 +214,7 @@ function startBarcodeScanner(context: any, withImage: boolean) {
       })
       .catch(error => {
         console.log("error:", JSON.stringify(error));
-        alert("Error!", error);
+        //alert("Error!", error);
       })
   ;
 }
@@ -194,6 +229,10 @@ export class App extends React.Component {
 
   constructor(props: any) {
     super(props);
+
+    if (BarcodeTypes.list.length == 0) {
+      BarcodeTypes.initialize();
+    }
 
     ScanbotBarcodeSdk.initializeSdk({
       // Consider switching logging OFF in production builds for security and performance reasons!
