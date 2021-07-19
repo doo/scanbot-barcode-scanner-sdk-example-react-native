@@ -16,6 +16,10 @@ The SDK for React Native is available as an npm package:
 * `cd ios && pod install`
 * `react-native run-ios --device` or `react-native run-android`
 
+- Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
+- Adjust *Provisioning* and *Signing* settings.
+- And run the app in Xcode or via `react-native run-ios`.
+
 ## Requirements
 
 ### Built using
@@ -37,7 +41,7 @@ The SDK for React Native is available as an npm package:
 
 ## Documentation
 
-For more details about the Scanbot Barcode Scanner SDK for Xamarin please see this
+For more details about the Scanbot Barcode Scanner SDK for React Native please see this
 [documentation](https://scanbotsdk.github.io/documentation/barcode-scanner-sdk/react-native/).
 
 ## Please note

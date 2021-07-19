@@ -1,17 +1,17 @@
 
 class BarcodeResult {
 
-    public static imageUri = null;
+    public static imageUri?: string ;
 
-    public static list = [];
+    public static list: any[] = [];
 
     static clear() {
         BarcodeResult.list = [];
     }
 
-    static update(barcodeResult) {
+    static update(barcodeResult: any) {
 
-        BarcodeResult.imageUri = null;
+        BarcodeResult.imageUri = undefined;
         if (barcodeResult.imageUri == undefined) {
             BarcodeResult.imageUri = undefined;
         } else {

@@ -14,7 +14,6 @@ import {
   Alert, Button,
   FlatList,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -22,27 +21,28 @@ import {
 } from 'react-native';
 
 import {Colors,} from 'react-native/Libraries/NewAppScreen';
+// @ts-ignore
 import Overlay from 'react-native-modal-overlay';
 
-import ScanbotBarcodeSdk from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSdk, { BatchBarcodeScannerConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
-import {BarcodeScannerConfiguration} from "react-native-scanbot-barcode-scanner-sdk/configuration";
+import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
 
 import ScanbotStatusBarColor from './src/components/ScanbotStatusBarColor';
 import ImagePicker from 'react-native-image-picker';
-import BarcodeList from './src/BarcodeList'
-import BarcodeResultList from "./src/BarcodeResultList";
+import BarcodeList from './src/BarcodeList';
+import BarcodeResultList from './src/BarcodeResultList';
 
-import Utils from "./src/utils/Utils"
-import BarcodeResult from './src/model/BarcodeResult'
-import BarcodeTypes from "./src/model/BarcodeTypes";
+import Utils from './src/utils/Utils';
+import BarcodeResult from './src/model/BarcodeResult';
+import BarcodeTypes from './src/model/BarcodeTypes';
 
 /**
- * TODO Add License key here.
+ * TODO Add the license key here.
  * Please note: Scanbot Barcode Scanner SDK will run without a license key for one minute per session!
- * After the trial period is over all SDK features as well as the UI components will stop working
+ * After the trial period has expired all SDK features as well as the UI components will stop working
  * or may be terminated. You can get an unrestricted "no-strings-attached" 30 day trial license key for free.
- * Please submit the trial license form (https://scanbot.io/sdk/trial.html) on our website by using
+ * Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
  * the app identifier "io.scanbot.example.sdk.barcode.reactnative" of this example app.
  */
 const LICENSE_KEY = "";
@@ -50,7 +50,7 @@ const LICENSE_KEY = "";
 const ListSource = [
   {
     id: "1", label: "RTU-UI",
-    action: async function(context) {
+    action: async function(context: any) {
 
       if (!await checkLicense()) {
         return;
@@ -60,7 +60,7 @@ const ListSource = [
   },
   {
     id: "2", label: "RTU-UI With Image",
-    action: async function(context) {
+    action: async function(context: any) {
 
       if (!await checkLicense()) {
         return;
@@ -69,13 +69,24 @@ const ListSource = [
     }
   },
   {
-    id: "3", label: "Pick image from Gallery",
-    action: async function(context) {
+    id: "3", label: "RTU-UI: Batch Barcode Scanner",
+    action: async function(context: any) {
 
       if (!await checkLicense()) {
         return;
       }
-      const response = await new Promise((resolve, reject) => {
+
+      startBatchBarcodeScanner(context);
+    }
+  },
+  {
+    id: "4", label: "Pick image from Gallery",
+    action: async function(context: any) {
+
+      if (!await checkLicense()) {
+        return;
+      }
+      const response: any = await new Promise((resolve, reject) => {
         ImagePicker.launchImageLibrary({}, resolve);
       });
 
@@ -83,7 +94,7 @@ const ListSource = [
         console.log('Image picker canceled');
         return;
       } else if (response.error) {
-        setError('ImagePicker Error: ' + response.error);
+        context.setError('ImagePicker Error: ' + response.error);
         return;
       }
 
@@ -91,7 +102,8 @@ const ListSource = [
 
       const detectOptions = {
         storeImages: true,
-        uri: response.uri,
+        imageFileUri: response.uri,
+        barcodeFormats: BarcodeTypes.getAcceptedFormats(),
       };
 
       const barcodeResult = await ScanbotBarcodeSdk.detectBarcodesOnImage(detectOptions);
@@ -109,22 +121,22 @@ const ListSource = [
     }
   },
   {
-    id: "4", label: "Set accepted barcode types",
-    action: async function(context) {
+    id: "5", label: "Set accepted barcode types",
+    action: async function(context: any) {
       context.setState({ barcodeModalVisible: true});
     }
   },
   {
-    id: "5", label: "View license info",
-    action: async function(context) {
+    id: "6", label: "View license info",
+    action: async function(context: any) {
 
       const result = await ScanbotBarcodeSdk.getLicenseInfo();
       alert("License info", JSON.stringify(result));
     }
   },
   {
-    id: "6", label: "Clear image storage",
-    action: async function(context) {
+    id: "7", label: "Clear image storage",
+    action: async function(context: any) {
 
       if (!await checkLicense()) {
         return;
@@ -144,11 +156,11 @@ async function checkLicense() {
   return info.isLicenseValid;
 }
 
-function onItemClick(context, item) {
+function onItemClick(context: any, item: any) {
   item.action(context);
 }
 
-function ListItem({ context, item }) {
+function ListItem({ context, item }: { context:any, item:any }) {
   return (
       <TouchableWithoutFeedback onPress={ () => onItemClick(context, item)}>
         <View style={styles.buttonContainer}>
@@ -158,31 +170,51 @@ function ListItem({ context, item }) {
   );
 }
 
-function startBarcodeScanner(context, withImage: boolean) {
-
-  ScanbotBarcodeSdk.barcodeImageGenerationType = 5;
+function startBarcodeScanner(context: any, withImage: boolean) {
 
   const config: BarcodeScannerConfiguration = {
     topBarBackgroundColor: "#c8193c",
-    barcodeFormats: BarcodeTypes.getAcceptedFormats()
+    barcodeImageGenerationType: (withImage ? "FROM_VIDEO_FRAME" : "NONE"),
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    // barcodeFormats: ["MSI_PLESSEY"],
+    // msiPlesseyChecksumAlgorithm: "Mod10",
+    // engineMode: "NEXT_GEN",
   };
-
-  if (withImage) {
-    config.barcodeImageGenerationType = "FROM_VIDEO_FRAME";
-  }
 
   ScanbotBarcodeSdk.startBarcodeScanner(config)
       .then(result => {
         if (result.status === 'OK') {
           BarcodeResult.update(result);
+          BarcodeResult.imageUri = result.imageFileUri;
           context.setState({ barcodeResultModalVisible: true});
-        } else {
-          alert("Cancelled!", "Barcode scan has been stopped");
         }
       })
       .catch(error => {
         console.log("error:", JSON.stringify(error));
-        alert("Error!", error);
+        //alert("Error!", error);
+      })
+  ;
+}
+
+function startBatchBarcodeScanner(context: any) {
+
+  const config: BatchBarcodeScannerConfiguration = {
+    topBarBackgroundColor: "#c8193c",
+    barcodeFormats: BarcodeTypes.getAcceptedFormats(),
+    //barcodeFormats: ["MSI_PLESSEY"],
+    //engineMode: "NEXT_GEN"
+  }
+
+  ScanbotBarcodeSdk.startBatchBarcodeScanner(config)
+      .then(result => {
+        if (result.status === 'OK') {
+          BarcodeResult.update(result);
+          context.setState({ barcodeResultModalVisible: true});
+        }
+      })
+      .catch(error => {
+        console.log("error:", JSON.stringify(error));
+        //alert("Error!", error);
       })
   ;
 }
@@ -195,8 +227,12 @@ export class App extends React.Component {
     isLoading: false,
   };
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
+
+    if (BarcodeTypes.list.length == 0) {
+      BarcodeTypes.initialize();
+    }
 
     ScanbotBarcodeSdk.initializeSdk({
       // Consider switching logging OFF in production builds for security and performance reasons!
@@ -217,29 +253,28 @@ export class App extends React.Component {
 
   render() {
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{flex: 1, backgroundColor: "white"}}>
           <ScanbotStatusBarColor backgroundColor="#c8193c" barStyle="light-content"/>
           <Text style={styles.title}>REACT NATIVE EXAMPLE</Text>
           <SafeAreaView>
-            <ScrollView contentInsetAdjustmentBehavior="automatic">
               <FlatList
                   data={ListSource}
                   renderItem={({item}) => <ListItem context={this} item={item}/>}
                   keyExtractor={item => item.id}
+                  contentInsetAdjustmentBehavior={"automatic"}
               />
-            </ScrollView>
           </SafeAreaView>
 
           <Overlay visible={this.state.barcodeModalVisible} style={styles.overlay} onClose={this.onSave} closeOnTouchOutside>
             <Text style={styles.subtitle}>ACCEPTED BARCODE TYPES</Text>
             <BarcodeList/>
-            <Button title={"SAVE"} style={styles.overlaySaveButton} onPress={this.onSave}/>
+            <Button title={"SAVE"} onPress={this.onSave}/>
           </Overlay>
 
           <Overlay visible={this.state.barcodeResultModalVisible} style={styles.overlay} onClose={this.onClose} closeOnTouchOutside>
             <Text style={styles.subtitle}>DETECTED BARCODES</Text>
             <BarcodeResultList/>
-            <Button title={"CLOSE"} style={styles.overlaySaveButton} onPress={this.onClose}/>
+            <Button title={"CLOSE"} onPress={this.onClose}/>
           </Overlay>
 
           <ActivityIndicator animating={this.state.isLoading} size="large" color="#c8193c" />
@@ -287,10 +322,6 @@ const styles = StyleSheet.create({
   },
   overlay: {
     maxHeight: "90% !important"
-  },
-
-  overlaySaveButton: {
-    borderTopColor: "#c8193c"
   }
 });
 
