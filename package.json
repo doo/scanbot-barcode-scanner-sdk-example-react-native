@@ -19,7 +19,7 @@
     "@babel/runtime": "^7.5.0",
     "@react-native-community/eslint-config": "0.0.3",
     "@types/jest": "24.9.1",
-    "@types/react": "16.14.8",
+    "@types/react": "17.0.27",
     "@types/react-native": "0.64.10",
     "@types/react-test-renderer": "17.0.1",
     "babel-jest": "24.9.0",
