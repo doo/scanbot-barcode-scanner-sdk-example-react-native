@@ -1,14 +1,15 @@
-
 class BarcodeType {
-    id: string;
-    name: string;
-    isAccepted: boolean;
+  id: string;
 
-    constructor(id: string, name: string, isAccepted: boolean) {
-        this.id = id;
-        this.name = name;
-        this.isAccepted = isAccepted;
-    }
+  name: string;
+
+  isAccepted: boolean;
+
+  constructor(id: string, name: string, isAccepted: boolean) {
+    this.id = id;
+    this.name = name;
+    this.isAccepted = isAccepted;
+  }
 }
 
-export default BarcodeType
+export default BarcodeType;
