@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint -c ./.eslintrc.js \"*/**/*.ts\" \"*/**/*.tsx\"  --max-warnings=0",
     "lint:fix": "npm run lint --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prettier": "prettier --write \"**/*.ts\" \"**/*.tsx\""
   },
   "dependencies": {
     "react": "17.0.1",

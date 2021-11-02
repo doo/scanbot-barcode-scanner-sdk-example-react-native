@@ -1,52 +1,6 @@
-// @ts-ignore
 import React, { Component } from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Switch,
-  Text,
-  Image,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, Text, Image, TouchableWithoutFeedback, View } from 'react-native';
 import BarcodeResult from './model/BarcodeResult';
-
-class BarcodeResultList extends Component {
-  state = {
-    listKeys: [],
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
-  listItem = ({ item, index:number }) => (
-    <TouchableWithoutFeedback onPress={() => {}}>
-      <View style={styles.listItemContainer}>
-        <Image style={styles.image} source={{ uri: 'file://' + item.sourceImageUri, scale: 1 }} />
-        <View style={styles.listItemTextContainer}>
-          <Text style={styles.smallTextBold}>{item.type}</Text>
-          <Text style={styles.smallText}>{item.text}</Text>
-        </View>
-      </View>
-    </TouchableWithoutFeedback>
-  );
-
-  render() {
-    return (
-      <View style={styles.container}>
-        {BarcodeResult.imageUri ? (
-          <Image style={styles.snappedImage} source={{ uri: BarcodeResult.imageUri, scale: 1 }} />
-        ) : null}
-        <FlatList
-          data={BarcodeResult.list}
-          keyExtractor={item => item.id}
-          renderItem={this.listItem}
-        />
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -86,5 +40,38 @@ const styles = StyleSheet.create({
     width: 50,
   },
 });
+
+class BarcodeResultList extends Component {
+  state = {
+    listKeys: [],
+  };
+
+  listItem = ({ item }) => (
+    <TouchableWithoutFeedback onPress={() => {}}>
+      <View style={styles.listItemContainer}>
+        <Image style={styles.image} source={{ uri: 'file://' + item.sourceImageUri, scale: 1 }} />
+        <View style={styles.listItemTextContainer}>
+          <Text style={styles.smallTextBold}>{item.type}</Text>
+          <Text style={styles.smallText}>{item.text}</Text>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+  );
+
+  render() {
+    return (
+      <View style={styles.container}>
+        {BarcodeResult.imageUri ? (
+          <Image style={styles.snappedImage} source={{ uri: BarcodeResult.imageUri, scale: 1 }} />
+        ) : null}
+        <FlatList
+          data={BarcodeResult.list}
+          keyExtractor={item => item.id}
+          renderItem={this.listItem}
+        />
+      </View>
+    );
+  }
+}
 
 export default BarcodeResultList;
