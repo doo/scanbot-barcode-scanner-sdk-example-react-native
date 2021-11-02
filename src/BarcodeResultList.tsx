@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 });
 
 class BarcodeResultList extends Component {
-  listItem = ({ item }) => (
+  listItem = (item: any) => (
     <TouchableWithoutFeedback onPress={() => {}}>
       <View style={styles.listItemContainer}>
         <Image style={styles.image} source={{ uri: 'file://' + item.sourceImageUri, scale: 1 }} />
