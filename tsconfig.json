@@ -1,3 +1,6 @@
 {
-  "extends": "@doo/ts-config/react-native"
+  "extends": "@doo/ts-config/react-native",
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  },
 }

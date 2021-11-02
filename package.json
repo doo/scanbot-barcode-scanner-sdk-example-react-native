@@ -6,7 +6,10 @@
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint -c ./.eslintrc.js \"*/**/*.ts\" \"*/**/*.tsx\"  --max-warnings=0",
+    "lint:fix": "npm run lint --fix",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "react": "17.0.1",
@@ -19,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "7.14.6",
     "@babel/runtime": "^7.5.0",
+    "@doo/eslint-config": "github:doo/eslint-config",
     "@doo/prettier-config": "github:doo/prettier-config",
     "@doo/ts-config": "github:doo/ts-config",
     "@react-native-community/eslint-config": "0.0.3",
@@ -30,7 +34,16 @@
     "jest": "24.9.0",
     "metro-react-native-babel-preset": "0.54.1",
     "react-test-renderer": "17.0.1",
-    "typescript": "3.9.10"
+    "typescript": "3.9.10",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/experimental-utils": "^5.1.0",
+    "eslint-config-airbnb-typescript": "^14.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
   },
   "jest": {
     "preset": "react-native",
