@@ -42,10 +42,6 @@ const styles = StyleSheet.create({
 });
 
 class BarcodeResultList extends Component {
-  state = {
-    listKeys: [],
-  };
-
   listItem = ({ item }) => (
     <TouchableWithoutFeedback onPress={() => {}}>
       <View style={styles.listItemContainer}>

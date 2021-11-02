@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FlatList, StyleSheet, Text, View, Switch, TouchableWithoutFeedback } from 'react-native';
 import BarcodeTypes from './model/BarcodeTypes';
+import BarcodeType from './model/BarcodeType';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +21,11 @@ const styles = StyleSheet.create({
   },
 });
 
-class BarcodeList extends Component {
+interface ListItemParameters {
+  item: BarcodeType;
+  index: number;
+}
+class BarcodeList extends React.Component {
   state = {
     listKeys: [],
   };
@@ -33,14 +38,14 @@ class BarcodeList extends Component {
     };
   }
 
-  setSwitchValue = (val, ind) => {
+  setSwitchValue = (val: boolean, ind: number) => {
     const tempData = JSON.parse(JSON.stringify(this.state.listKeys));
     tempData[ind].isAccepted = val;
     BarcodeTypes.list[ind].isAccepted = val;
     this.setState({ listKeys: tempData });
   };
 
-  listItem = ({ item, index }) => (
+  listItem = ({ item, index }: ListItemParameters) => (
     <TouchableWithoutFeedback onPress={() => {}}>
       <View style={styles.listItemContainer}>
         <Text style={styles.item}>{item.name}</Text>
