@@ -3,6 +3,7 @@ import {
     DocumentDirectoryPath,
     ExternalDirectoryPath
 } from "react-native-fs";
+import ScanbotBarcodeSDK from "react-native-scanbot-barcode-scanner-sdk";
 
 class Utils {
     /**
@@ -26,7 +27,7 @@ class Utils {
      - https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
      tslint:enable:max-line-length
      */
-    public static getCustomStoragePath(): string {
+    public static getCustomStoragePath(): string | null {
         if (Platform.OS === 'ios') {
             return DocumentDirectoryPath + '/my-custom-storage';
         } else if (Platform.OS === 'android') {
@@ -34,6 +35,18 @@ class Utils {
         }
         return null;
     }
+
+    public static async checkLicense(): Promise<boolean> {
+        const info = await ScanbotBarcodeSDK.getLicenseInfo();
+        if (info.isLicenseValid) {
+          // OK - we have a trial session, a valid trial license or valid production license.
+          return true;
+        }
+        // @ts-ignore
+        // eslint-disable-next-line no-alert
+        alert('Scanbot Barcode SDK trial period or license has expired!', 500);
+        return false;
+      }
 }
 
 export default Utils

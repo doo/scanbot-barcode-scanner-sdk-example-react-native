@@ -205,6 +205,8 @@ PODS:
   - React-jsinspector (0.64.2)
   - react-native-image-picker (2.2.1):
     - React
+  - react-native-safe-area-context (1.0.0):
+    - React
   - React-perflogger (0.64.2)
   - React-RCTActionSheet (0.64.2):
     - React-Core/RCTActionSheetHeaders (= 0.64.2)
@@ -271,10 +273,14 @@ PODS:
     - React-perflogger (= 0.64.2)
   - RNFS (2.18.0):
     - React
+  - RNGestureHandler (1.10.3):
+    - React-Core
   - RNScanbotBarcodeSDK (3.0.0):
     - React
-    - ScanbotBarcodeScannerSDK (= 3.0.0)
-  - ScanbotBarcodeScannerSDK (3.0.0)
+    - ScanbotBarcodeScannerSDK (= 3.0.2)
+  - RNScreens (2.7.0):
+    - React
+  - ScanbotBarcodeScannerSDK (3.0.2)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -296,6 +302,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -309,7 +316,9 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNFS (from `../node_modules/react-native-fs`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScanbotBarcodeSDK (from `../node_modules/react-native-scanbot-barcode-scanner-sdk`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -350,6 +359,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -376,8 +387,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNFS:
     :path: "../node_modules/react-native-fs"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNScanbotBarcodeSDK:
     :path: "../node_modules/react-native-scanbot-barcode-scanner-sdk"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -385,7 +400,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 3bcf0be0123cb7659cce984e07d29a0c86a3f434
+  FBReactNativeSpec: fe70becc189e54d55dd7ea501aabaf9925f078bb
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
@@ -398,7 +413,8 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-image-picker: 23b053a5ac85fec5d95a6a2e3487c306682c12eb
+  react-native-image-picker: 7e19aefccd42aad840a758181e16ce05d4e95578
+  react-native-safe-area-context: 5f3e081f937ab7c44c179d551f332fa494cfcf8f
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -412,8 +428,10 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
-  RNScanbotBarcodeSDK: 2ba0a038da0fab2f7e26d0a17342356991f6f34b
-  ScanbotBarcodeScannerSDK: 6ea342d55f608fa29668d2097277e2d2ad0781bb
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNScanbotBarcodeSDK: 2fb5a214a883e63afa52a20e6225370008467159
+  RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
+  ScanbotBarcodeScannerSDK: 39fb851467656b26e80855ebae2a9cedf4e8ea58
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
 PODFILE CHECKSUM: 1827b829eb1008d12f0bb6f5033d80286a968aaf

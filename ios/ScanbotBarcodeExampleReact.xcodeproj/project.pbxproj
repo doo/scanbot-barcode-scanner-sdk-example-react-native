@@ -373,7 +373,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-frameworks.sh",
-				"${PODS_ROOT}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework/ScanbotBarcodeScannerSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -427,7 +427,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks.sh",
-				"${PODS_ROOT}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework/ScanbotBarcodeScannerSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
