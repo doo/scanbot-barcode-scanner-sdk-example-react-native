@@ -128,7 +128,7 @@ export class HomeScreen extends BaseScreen {
       async startBarcodeScanner(withImage: boolean) {
         const config: BarcodeScannerConfiguration = {
           topBarBackgroundColor: "#c8193c",
-          barcodeImageGenerationType: (withImage ? "FROM_VIDEO_FRAME" : "NONE"),
+          barcodeImageGenerationType: (withImage ? "CAPTURED_IMAGE" : "NONE"),
           barcodeFormats: BarcodeTypes.getAcceptedFormats(),
         };
       
