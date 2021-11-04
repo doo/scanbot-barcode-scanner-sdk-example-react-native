@@ -1,7 +1,7 @@
+declare function alert(text: string): void;
+
 export class ViewUtils {
-    public static showAlert(text: string) {
-      // @ts-ignore
-      // eslint-disable-next-line no-alert
-      alert(text);
-    }
+  public static showAlert(text: string) {
+    alert(text);
   }
+}

@@ -1,18 +1,23 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import {Colors} from './Colors';
+import { Theme } from '@react-navigation/native';
+import { Dimensions, StyleSheet } from 'react-native';
+import { Colors } from './Colors';
 
 export class Styles {
   public static INSTANCE = new Styles();
+
   WINDOW_WIDTH = 0;
+
   GALLERY_CELL_PADDING = 20;
 
-  imageResults: any;
+  imageResults: StyleSheet.NamedStyles<unknown>;
 
   public static NEAR_WHITE = 'rgb(250, 250, 250)';
+
   public static LIGHT_GRAY = 'rgb(245, 245, 245)';
+
   public static SCANBOT_RED = '#c8193c';
 
-  public static ScanbotTheme = {
+  public static ScanbotTheme: Theme = {
     dark: false,
     colors: {
       primary: Styles.NEAR_WHITE,
@@ -20,6 +25,7 @@ export class Styles {
       card: Styles.SCANBOT_RED,
       text: Styles.NEAR_WHITE,
       border: Styles.NEAR_WHITE,
+      notification: Styles.SCANBOT_RED,
     },
   };
 

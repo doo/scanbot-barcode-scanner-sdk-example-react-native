@@ -1,13 +1,16 @@
 import React from 'react';
 
-export class BaseScreen extends React.Component {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export class BaseScreen extends React.Component<any> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
 
-    // @ts-ignore
-    this.props.navigation.addListener('focus', () => {
-      this.onScreenFocused();
-    });
+    if (this.props.navigation) {
+      this.props.navigation.addListener('focus', () => {
+        this.onScreenFocused();
+      });
+    }
   }
 
   onScreenFocused() {}
@@ -17,8 +20,9 @@ export class BaseScreen extends React.Component {
   }
 
   public pushPage(name: string) {
-    // @ts-ignore
-    this.props.navigation.push(name);
+    if (this.props.navigation) {
+      this.props.navigation.push(name);
+    }
   }
 
   public progressVisible = false;
