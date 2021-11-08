@@ -1,11 +1,11 @@
-import {Platform} from "react-native";
-import {
-    DocumentDirectoryPath,
-    ExternalDirectoryPath
-} from "react-native-fs";
+import { Platform } from 'react-native';
+import { DocumentDirectoryPath, ExternalDirectoryPath } from 'react-native-fs';
+import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+
+declare function alert(text: string): void;
 
 class Utils {
-    /**
+  /**
      !! Please note !!
      It is strongly recommended to use the default (secure) storage location of the Scanbot SDK.
      However, for demo purposes we overwrite the "storageBaseDirectory" of the Scanbot SDK by a custom storage directory.
@@ -26,14 +26,25 @@ class Utils {
      - https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
      tslint:enable:max-line-length
      */
-    public static getCustomStoragePath(): string {
-        if (Platform.OS === 'ios') {
-            return DocumentDirectoryPath + '/my-custom-storage';
-        } else if (Platform.OS === 'android') {
-            return ExternalDirectoryPath + '/my-custom-storage';
-        }
-        return null;
+  public static getCustomStoragePath(): string | null {
+    if (Platform.OS === 'ios') {
+      return DocumentDirectoryPath + '/my-custom-storage';
+    } else if (Platform.OS === 'android') {
+      return ExternalDirectoryPath + '/my-custom-storage';
     }
+    return null;
+  }
+
+  public static async checkLicense(): Promise<boolean> {
+    const info = await ScanbotBarcodeSDK.getLicenseInfo();
+    if (info.isLicenseValid) {
+      // OK - we have a trial session, a valid trial license or valid production license.
+      return true;
+    }
+
+    alert('Scanbot Barcode SDK trial period or license has expired!');
+    return false;
+  }
 }
 
-export default Utils
+export default Utils;
