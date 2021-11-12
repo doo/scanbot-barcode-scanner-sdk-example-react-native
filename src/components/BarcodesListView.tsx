@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, Text, View, Switch, TouchableWithoutFeedback } from 'react-native';
-import BarcodeType from './model/BarcodeType';
-import BarcodeTypesSettings from './model/BarcodeTypesSettings';
+import BarcodeType from '../model/BarcodeType';
+import BarcodeTypesSettings from '../model/BarcodeTypesSettings';
 
 const styles = StyleSheet.create({
   container: {
