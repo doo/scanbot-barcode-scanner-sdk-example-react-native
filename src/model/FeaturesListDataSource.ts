@@ -27,7 +27,7 @@ export interface FeaturesListItemData {
 export class FeaturesListDataSource {
   public static items: FeaturesListItem[] = [
     {
-      title: 'DOCUMENT SCANNER',
+      title: 'DEMO',
       data: [
         {
           id: FeatureId.BarcodeScanner,

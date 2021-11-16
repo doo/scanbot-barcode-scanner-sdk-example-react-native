@@ -26,13 +26,13 @@ class Utils {
      - https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
      tslint:enable:max-line-length
      */
-  public static getCustomStoragePath(): string | null {
+  public static getCustomStoragePath(): string | undefined {
     if (Platform.OS === 'ios') {
       return DocumentDirectoryPath + '/my-custom-storage';
     } else if (Platform.OS === 'android') {
       return ExternalDirectoryPath + '/my-custom-storage';
     }
-    return null;
+    return undefined;
   }
 
   public static async checkLicense(): Promise<boolean> {
