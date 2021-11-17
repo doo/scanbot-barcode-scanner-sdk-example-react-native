@@ -32,12 +32,12 @@ const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfi
   finderBackgroundOpacity: 0.5,
   barcodeFormats: BarcodeTypes.getAcceptedFormats(),
   // acceptedDocumentFormats: BarcodeDocumentFormats.getAcceptedFormats(),
-  msiPlesseyChecksumAlgorithm: 'Mod1010',
+  msiPlesseyChecksumAlgorithm: 'Mod10',
   engineMode: 'LEGACY',
   cameraZoomFactor: 0.2,
   gs1DecodingEnabled: false,
-  minimumTextLength: 2,
-  maximumTextLength: 6,
+  // minimumTextLength: 2,
+  // maximumTextLength: 6,
   flashEnabled: false,
 });
 
