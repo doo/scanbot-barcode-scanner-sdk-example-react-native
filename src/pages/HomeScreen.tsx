@@ -144,14 +144,10 @@ export class HomeScreen extends BaseScreen {
     // ==== TEST CODE (START) ====
 
     // Closes the Barcode Scanner after 5 seconds
-    const timer = BackgroundTimer.setInterval(() => {
-      ScanbotBarcodeSDK.closeBarcodeScanner();
+    const timer = BackgroundTimer.setInterval(async () => {
+      await ScanbotBarcodeSDK.closeBarcodeScanner();
       BackgroundTimer.clearInterval(timer);
-      ViewUtils.showAlert(
-        'The Barcode Scanner was force closed programmatically. Check for ==== TEST CODE in the code to remove this test.'
-      );
     }, 5000);
-
     // ==== TEST CODE (END) ====
 
     try {
@@ -176,16 +172,11 @@ export class HomeScreen extends BaseScreen {
     };
 
     // ==== TEST CODE (START) ====
-
     // Closes the Batch Barcode Scanner after 5 seconds
-    const timer = BackgroundTimer.setInterval(() => {
-      ScanbotBarcodeSDK.closeBatchBarcodeScanner();
+    const timer = BackgroundTimer.setInterval(async () => {
+      await ScanbotBarcodeSDK.closeBatchBarcodeScanner();
       BackgroundTimer.clearInterval(timer);
-      ViewUtils.showAlert(
-        'The Batch Barcode Scanner was force closed programmatically. Check for ==== TEST CODE in the code to remove this test.'
-      );
     }, 5000);
-
     // ==== TEST CODE (END) ====
 
     try {
