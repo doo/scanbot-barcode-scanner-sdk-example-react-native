@@ -26,6 +26,7 @@ import { Navigation } from '../utils/Navigation';
 import Utils from '../utils/Utils';
 import { ViewUtils } from '../utils/ViewUtils';
 import ImagePicker, { ImagePickerResponse } from 'react-native-image-picker';
+import BackgroundTimer from 'react-native-background-timer';
 
 export class HomeScreen extends BaseScreen {
   render() {
@@ -140,6 +141,19 @@ export class HomeScreen extends BaseScreen {
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
     };
 
+    // ==== TEST CODE (START) ====
+
+    // Closes the Barcode Scanner after 5 seconds
+    const timer = BackgroundTimer.setInterval(() => {
+      ScanbotBarcodeSDK.closeBarcodeScanner();
+      BackgroundTimer.clearInterval(timer);
+      ViewUtils.showAlert(
+        'The Barcode Scanner was force closed programmatically. Check for ==== TEST CODE in the code to remove this test.'
+      );
+    }, 5000);
+
+    // ==== TEST CODE (END) ====
+
     try {
       const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
       if (result.status === 'OK') {
@@ -156,9 +170,23 @@ export class HomeScreen extends BaseScreen {
     const config: BatchBarcodeScannerConfiguration = {
       topBarBackgroundColor: '#c8193c',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
+      msiPlesseyChecksumAlgorithm: 'Mod10',
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
     };
+
+    // ==== TEST CODE (START) ====
+
+    // Closes the Batch Barcode Scanner after 5 seconds
+    const timer = BackgroundTimer.setInterval(() => {
+      ScanbotBarcodeSDK.closeBatchBarcodeScanner();
+      BackgroundTimer.clearInterval(timer);
+      ViewUtils.showAlert(
+        'The Batch Barcode Scanner was force closed programmatically. Check for ==== TEST CODE in the code to remove this test.'
+      );
+    }, 5000);
+
+    // ==== TEST CODE (END) ====
 
     try {
       const result = await ScanbotBarcodeSDK.startBatchBarcodeScanner(config);
