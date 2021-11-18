@@ -279,10 +279,10 @@ PODS:
     - React-Core
   - RNScanbotBarcodeSDK (3.1.0-beta4):
     - React
-    - ScanbotBarcodeScannerSDK (= 3.0.2)
+    - ScanbotBarcodeScannerSDK (= 3.0.3)
   - RNScreens (2.7.0):
     - React
-  - ScanbotBarcodeScannerSDK (3.0.2)
+  - ScanbotBarcodeScannerSDK (3.0.3)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -435,11 +435,11 @@ SPEC CHECKSUMS:
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScanbotBarcodeSDK: d9e026a46e71158087aebc79aeba419c5e5362fd
+  RNScanbotBarcodeSDK: 67baaa5dd8cbc543f56398f0727b12056b04a750
   RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
-  ScanbotBarcodeScannerSDK: 39fb851467656b26e80855ebae2a9cedf4e8ea58
+  ScanbotBarcodeScannerSDK: 6070b73ad18751f84bc2f15d32c0e1e69bd20a4b
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
-PODFILE CHECKSUM: 1827b829eb1008d12f0bb6f5033d80286a968aaf
+PODFILE CHECKSUM: 5957e74fb24ed742b23bda166f901e7fcf400dd0
 
 COCOAPODS: 1.10.1
