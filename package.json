@@ -21,7 +21,7 @@
     "react-native-screens": "2.7.0"
   },
   "devDependencies": {
-    "@babel/core": "7.14.6",
+    "@babel/core": "7.16.0",
     "@babel/runtime": "^7.5.0",
     "@doo/eslint-config": "github:doo/eslint-config",
     "@doo/prettier-config": "github:doo/prettier-config",
