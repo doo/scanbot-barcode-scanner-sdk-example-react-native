@@ -36,6 +36,7 @@ const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfi
   engineMode: 'LEGACY',
   cameraZoomFactor: 0.2,
   gs1DecodingEnabled: false,
+  // stripCheckDigits: true,
   // minimumTextLength: 2,
   // maximumTextLength: 6,
   flashEnabled: false,

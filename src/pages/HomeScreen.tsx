@@ -26,7 +26,6 @@ import { Navigation } from '../utils/Navigation';
 import Utils from '../utils/Utils';
 import { ViewUtils } from '../utils/ViewUtils';
 import ImagePicker, { ImagePickerResponse } from 'react-native-image-picker';
-import BackgroundTimer from 'react-native-background-timer';
 
 export class HomeScreen extends BaseScreen {
   render() {
@@ -141,15 +140,6 @@ export class HomeScreen extends BaseScreen {
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
     };
 
-    // ==== TEST CODE (START) ====
-
-    // Closes the Barcode Scanner after 5 seconds
-    const timer = BackgroundTimer.setInterval(async () => {
-      await ScanbotBarcodeSDK.closeBarcodeScanner();
-      BackgroundTimer.clearInterval(timer);
-    }, 5000);
-    // ==== TEST CODE (END) ====
-
     try {
       const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
       if (result.status === 'OK') {
@@ -170,14 +160,6 @@ export class HomeScreen extends BaseScreen {
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
     };
-
-    // ==== TEST CODE (START) ====
-    // Closes the Batch Barcode Scanner after 5 seconds
-    const timer = BackgroundTimer.setInterval(async () => {
-      await ScanbotBarcodeSDK.closeBatchBarcodeScanner();
-      BackgroundTimer.clearInterval(timer);
-    }, 5000);
-    // ==== TEST CODE (END) ====
 
     try {
       const result = await ScanbotBarcodeSDK.startBatchBarcodeScanner(config);
