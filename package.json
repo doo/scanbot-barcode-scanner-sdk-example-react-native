@@ -27,7 +27,7 @@
     "@doo/prettier-config": "github:doo/prettier-config",
     "@doo/ts-config": "github:doo/ts-config",
     "@react-native-community/eslint-config": "0.0.3",
-    "@types/jest": "24.9.1",
+    "@types/jest": "27.4.0",
     "@types/react": "16.14.8",
     "@types/react-native": "0.64.10",
     "@types/react-native-background-timer": "^2.0.0",
