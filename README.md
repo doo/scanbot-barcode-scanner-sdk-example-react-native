@@ -52,3 +52,4 @@ After the trial period has expired all SDK functions as well as the UI component
 You have to restart the app to get another trial period.
 
 To get an unrestricted, "no-strings-attached" 30-day trial license, please submit the [Trial License Form](https://scanbot.io/en/sdk/demo/trial) on our website.
+
