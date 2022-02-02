@@ -138,6 +138,7 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
+      lowPowerMode: false,
     };
 
     try {
@@ -157,6 +158,7 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
       msiPlesseyChecksumAlgorithm: 'Mod10',
+      lowPowerMode: false,
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
     };
