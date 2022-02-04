@@ -2,7 +2,7 @@ Open Source libraries used in the Scanbot Barcode SDK for React Native version 3
 
 ------------------------------------------------------------------------------------------------------------------------
 
-Open Source libraries used in the Scanbot Barcode Scanner SDK for iOS version 3.1.0:
+Open Source libraries used in the Scanbot Barcode Scanner SDK for iOS version 3.1.1:
 
 BOOST C++ Libraries
 
