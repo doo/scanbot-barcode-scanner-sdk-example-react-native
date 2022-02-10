@@ -9,8 +9,8 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
-    "react": "17.0.1",
-    "react-native": "0.64.2",
+    "react": "17.0.2",
+    "react-native": "0.67.2",
     "react-native-fs": "2.18.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-image-picker": "2.2.1",
@@ -45,7 +45,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "24.9.0",
     "prettier": "^2.4.1",
-    "react-test-renderer": "17.0.1",
+    "react-test-renderer": "17.0.2",
     "typescript": "3.9.10"
   },
   "resolutions": {
