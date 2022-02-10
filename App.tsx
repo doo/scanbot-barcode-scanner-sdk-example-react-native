@@ -35,6 +35,7 @@ export class App extends React.Component {
     ScanbotBarcodeSDK.initializeSdk({
       // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
+      enableNativeLogging: false,
       licenseKey: LICENSE_KEY,
       // Optional storage path. See the method description!
       storageBaseDirectory: Utils.getCustomStoragePath(),
