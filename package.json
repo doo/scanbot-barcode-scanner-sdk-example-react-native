@@ -21,7 +21,7 @@
     "react-native-screens": "2.7.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.7",
+    "@babel/core": "7.17.5",
     "@babel/preset-flow": "7.16.7",
     "@babel/runtime": "7.16.7",
     "@babel/traverse": "7.16.7",
