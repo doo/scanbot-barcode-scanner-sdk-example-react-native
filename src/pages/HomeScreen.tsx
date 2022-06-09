@@ -138,6 +138,7 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
+      replaceCancelButtonWithIcon: true,
     };
 
     try {
@@ -159,6 +160,7 @@ export class HomeScreen extends BaseScreen {
       msiPlesseyChecksumAlgorithm: 'Mod10',
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
+      replaceCancelButtonWithIcon: true,
     };
 
     try {
