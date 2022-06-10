@@ -22,8 +22,8 @@
     "react-navigation-stack": "2.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/runtime": "^7.12.5",
+    "@babel/core": "^7.16.7",
+    "@babel/runtime": "^7.16.7",
     "@babel/preset-flow": "7.16.7",
     "@babel/traverse": "7.16.7",
     "@doo/eslint-config": "github:doo/eslint-config",
@@ -37,6 +37,7 @@
     "@types/react-test-renderer": "17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.3.0",
+    "metro-react-native-babel-preset": "^0.59.0",
     "babel-jest": "24.9.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-typescript": "^15.0.0",
