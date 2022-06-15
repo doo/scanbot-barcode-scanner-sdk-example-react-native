@@ -195,11 +195,11 @@ export class HomeScreen extends BaseScreen {
       return;
     }
 
-var selectedImageuri: string = "";
+    var selectedImageuri : string = "";
 
-if ((response?.assets?.length ?? 0) > 0) {
-selectedImageuri = response.assets[0].uri;
-}
+    if (response?.assets != null && (response?.assets?.length ?? 0) > 0) {
+      selectedImageuri =  response.assets[0].uri ?? "";
+    }
     const detectOptions = {
       storeImages: true,
       imageFileUri: selectedImageuri,
@@ -212,7 +212,7 @@ selectedImageuri = response.assets[0].uri;
 
     if (barcodeResult.status === 'OK') {
       CachedBarcodeResult.update(barcodeResult);
-      CachedBarcodeResult.imageUri = 'data:image/png;base64,' + selectedImageuri;
+      CachedBarcodeResult.imageUri = selectedImageuri;
       this.pushPage(Navigation.BARCODE_RESULTS);
     } else {
       ViewUtils.showAlert('Something went wrong. Please try again');
