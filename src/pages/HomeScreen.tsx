@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   ActivityIndicator,
   Linking,
@@ -25,7 +25,8 @@ import { Styles } from '../model/Styles';
 import { Navigation } from '../utils/Navigation';
 import Utils from '../utils/Utils';
 import { ViewUtils } from '../utils/ViewUtils';
-import ImagePicker, { ImagePickerResponse } from 'react-native-image-picker';
+import * as ImagePicker from 'react-native-image-picker';
+import { ImagePickerResponse } from 'react-native-image-picker';
 
 export class HomeScreen extends BaseScreen {
   render() {
@@ -138,6 +139,7 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
+      replaceCancelButtonWithIcon: true,
     };
 
     try {
@@ -159,6 +161,7 @@ export class HomeScreen extends BaseScreen {
       msiPlesseyChecksumAlgorithm: 'Mod10',
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
+      replaceCancelButtonWithIcon: true,
     };
 
     try {
@@ -177,20 +180,29 @@ export class HomeScreen extends BaseScreen {
       return;
     }
     const response: ImagePickerResponse = await new Promise(resolve => {
-      ImagePicker.launchImageLibrary({}, resolve);
+      var options: ImagePicker.ImageLibraryOptions = {
+        selectionLimit : 1,
+        mediaType : 'mixed',
+        }
+      ImagePicker.launchImageLibrary(options, resolve);
     });
 
     if (response.didCancel) {
       console.log('Image picker canceled');
       return;
-    } else if (response.error) {
-      ViewUtils.showAlert('ImagePicker Error: ' + response.error);
+    } else if (response.errorMessage) {
+      ViewUtils.showAlert('ImagePicker Error: ' + response.errorMessage);
       return;
     }
 
+    var selectedImageuri : string = "";
+
+    if (response?.assets != null && (response?.assets?.length ?? 0) > 0) {
+      selectedImageuri =  response.assets[0].uri ?? "";
+    }
     const detectOptions = {
       storeImages: true,
-      imageFileUri: response.uri,
+      imageFileUri: selectedImageuri,
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
     };
 
@@ -200,7 +212,7 @@ export class HomeScreen extends BaseScreen {
 
     if (barcodeResult.status === 'OK') {
       CachedBarcodeResult.update(barcodeResult);
-      CachedBarcodeResult.imageUri = 'data:image/png;base64,' + response.data;
+      CachedBarcodeResult.imageUri = selectedImageuri;
       this.pushPage(Navigation.BARCODE_RESULTS);
     } else {
       ViewUtils.showAlert('Something went wrong. Please try again');

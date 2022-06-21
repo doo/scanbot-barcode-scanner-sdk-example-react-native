@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import BarcodesListView from '../components/BarcodesListView';
 import { BaseScreen } from '../components/BaseScreen';
