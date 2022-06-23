@@ -29,7 +29,7 @@ The SDK for React Native is available as an npm package:
 * `npm` v6.12.0
 
 ### What else can go wrong?
-
+ 
 ###### Pod not found
 
 `pod repo update`
