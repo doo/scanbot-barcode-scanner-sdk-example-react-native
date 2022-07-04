@@ -1,5 +1,5 @@
 # Scanbot Barcode Scanner SDK React Native Examples
-These example apps demonstrate how to integrate the Scanbot Barcode Scanner SDK for Android and iOS with React Native
+These example apps demonstrate how to integrate the [Scanbot Barcode Scanner SDK for React Native](https://scanbot.io/developer/react-native-barcode-scanner/) for Android and iOS.
 
 
 ## What is Scanbot Barcode Scanner SDK?
