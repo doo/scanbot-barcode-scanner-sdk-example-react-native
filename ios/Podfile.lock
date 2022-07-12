@@ -275,7 +275,7 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScanbotBarcodeSDK (3.2.0):
+  - RNScanbotBarcodeSDK (3.2.1-beta1):
     - React
     - ScanbotBarcodeScannerSDK (= 3.2.1)
   - RNScreens (2.7.0):
@@ -400,7 +400,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 56ebab188a43b5225e211f2d9755097981e26dc0
+  FBReactNativeSpec: fe70becc189e54d55dd7ea501aabaf9925f078bb
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
@@ -413,8 +413,8 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-image-picker: e95b4785b685cfc06609bc50ed6fb55b59990c99
-  react-native-safe-area-context: a346c75f2288147527365ce27b59ca6d38c27805
+  react-native-image-picker: eb0a159c2a00bcfb49f0469fcc6b164329e9d4ca
+  react-native-safe-area-context: 5f3e081f937ab7c44c179d551f332fa494cfcf8f
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -429,11 +429,11 @@ SPEC CHECKSUMS:
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNFS: 751428ec3aa24945dad64640903833ad034b6d03
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScanbotBarcodeSDK: ac3c67a7cc68ea62224333c6bea2aaab189b8f82
+  RNScanbotBarcodeSDK: 3a2a36427ca0494908ae52b55c3729f63ee31132
   RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
   ScanbotBarcodeScannerSDK: 6a7e3d439867c9af7eaa2dd8efadaae1e6ca46d0
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
 PODFILE CHECKSUM: 1827b829eb1008d12f0bb6f5033d80286a968aaf
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

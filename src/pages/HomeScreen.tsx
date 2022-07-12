@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   SectionList,
   StatusBar,
+  Switch,
   Text,
   TouchableOpacity,
   View,
@@ -29,7 +30,15 @@ import * as ImagePicker from 'react-native-image-picker';
 import { ImagePickerResponse } from 'react-native-image-picker';
 
 export class HomeScreen extends BaseScreen {
+  constructor(props: unknown) {
+    super(props);
+    this.state = {
+      onlyAcceptCodesWithExtensions: false,
+    };
+  }
+
   render() {
+    const mState = this.state as any;
     return (
       <>
         <StatusBar barStyle="light-content" />
@@ -41,6 +50,15 @@ export class HomeScreen extends BaseScreen {
             style={Styles.INSTANCE.common.progress}
             animating={this.progressVisible}
           />
+          <View style={Styles.INSTANCE.home.debugSwitchContainer}>
+            <Text>Only Detect Barcodes With Extensions</Text>
+            <Switch
+              onValueChange={(value: boolean) =>
+                this.setState({ onlyAcceptCodesWithExtensions: value })
+              }
+              value={mState.onlyAcceptCodesWithExtensions}
+            />
+          </View>
           <SectionList
             style={Styles.INSTANCE.home.list}
             sections={FeaturesListDataSource.items}
@@ -135,11 +153,18 @@ export class HomeScreen extends BaseScreen {
   }
 
   async startBarcodeScanner(withImage: boolean) {
+    const onlyAcceptCodesWithExtensions = (this.state as any).onlyAcceptCodesWithExtensions;
+
+    console.log(
+      `Starting Barcode Scanner with onlyAcceptCodesWithExtensions = ${onlyAcceptCodesWithExtensions}`
+    );
+
     const config: BarcodeScannerConfiguration = {
       topBarBackgroundColor: '#c8193c',
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
       replaceCancelButtonWithIcon: true,
+      onlyAcceptCodesWithExtensions: onlyAcceptCodesWithExtensions,
     };
 
     try {
@@ -155,6 +180,12 @@ export class HomeScreen extends BaseScreen {
   }
 
   async startBatchBarcodeScanner() {
+    const onlyAcceptCodesWithExtensions = (this.state as any).onlyAcceptCodesWithExtensions;
+
+    console.log(
+      `Starting Batch Barcode Scanner with onlyAcceptCodesWithExtensions = ${onlyAcceptCodesWithExtensions}`
+    );
+
     const config: BatchBarcodeScannerConfiguration = {
       topBarBackgroundColor: '#c8193c',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
@@ -162,6 +193,7 @@ export class HomeScreen extends BaseScreen {
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
       replaceCancelButtonWithIcon: true,
+      onlyAcceptCodesWithExtensions: onlyAcceptCodesWithExtensions,
     };
 
     try {
@@ -180,10 +212,10 @@ export class HomeScreen extends BaseScreen {
       return;
     }
     const response: ImagePickerResponse = await new Promise(resolve => {
-      var options: ImagePicker.ImageLibraryOptions = {
-        selectionLimit : 1,
-        mediaType : 'mixed',
-        }
+      const options: ImagePicker.ImageLibraryOptions = {
+        selectionLimit: 1,
+        mediaType: 'mixed',
+      };
       ImagePicker.launchImageLibrary(options, resolve);
     });
 
@@ -195,11 +227,12 @@ export class HomeScreen extends BaseScreen {
       return;
     }
 
-    var selectedImageuri : string = "";
+    let selectedImageuri = '';
 
     if (response?.assets != null && (response?.assets?.length ?? 0) > 0) {
-      selectedImageuri =  response.assets[0].uri ?? "";
+      selectedImageuri = response.assets[0].uri ?? '';
     }
+
     const detectOptions = {
       storeImages: true,
       imageFileUri: selectedImageuri,

@@ -143,6 +143,7 @@ export class Styles {
       paddingRight: 12,
       textAlign: 'right',
     },
+    debugSwitchContainer: {},
   });
 
   public barcodeFormats = StyleSheet.create({
