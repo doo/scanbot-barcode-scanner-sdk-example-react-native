@@ -140,6 +140,7 @@ export class HomeScreen extends BaseScreen {
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
       replaceCancelButtonWithIcon: true,
+      barcodeFilter: 'WithEAN5Extension',
     };
 
     try {

@@ -69,7 +69,7 @@ class BarcodeResultList extends Component {
         />
         <View style={styles.listItemTextContainer}>
           <Text style={styles.smallTextBold}>{item.type}</Text>
-          <Text style={styles.smallText}>{item.text}</Text>
+          <Text style={styles.smallText}>{item.textWithExtension}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
