@@ -27,6 +27,7 @@ import Utils from '../utils/Utils';
 import { ViewUtils } from '../utils/ViewUtils';
 import * as ImagePicker from 'react-native-image-picker';
 import { ImagePickerResponse } from 'react-native-image-picker';
+import { DetectBarcodesOnImageArguments } from 'react-native-scanbot-barcode-scanner-sdk/src/configuration';
 
 export class HomeScreen extends BaseScreen {
   render() {
@@ -162,6 +163,7 @@ export class HomeScreen extends BaseScreen {
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
       replaceCancelButtonWithIcon: true,
+      barcodeFilter: 'WithEAN5Extension',
     };
 
     try {
@@ -201,10 +203,10 @@ export class HomeScreen extends BaseScreen {
       return;
     }
 
-    const detectOptions = {
-      storeImages: true,
+    const detectOptions: DetectBarcodesOnImageArguments = {
       imageFileUri: selectedImageUri,
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
+      barcodeFilter: 'WithEAN5Extension',
     };
 
     this.showProgress();
