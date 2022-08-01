@@ -197,7 +197,6 @@ export class HomeScreen extends BaseScreen {
       return;
     }
 
-    console.log('Assets: ' + JSON.stringify(response.assets, null, 4));
     const selectedImageUri = response?.assets?.[0]?.uri;
     if (!selectedImageUri) {
       ViewUtils.showAlert('Something went wrong. Please try again');
