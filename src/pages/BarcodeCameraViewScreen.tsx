@@ -159,8 +159,8 @@ export class BarcodeCameraViewScreen extends BaseScreen {
                   const optionalText = count > 4 ? `\n(and ${count - 4} more)` : '';
                   const text = result.barcodes
                     .map(
-                      (barcode: { text: string; type: string }) =>
-                        `${barcode.text} (${barcode.type})`
+                      (barcode: { textWithExtension: string; type: string }) =>
+                        `${barcode.textWithExtension} (${barcode.type})`
                     )
                     .join('\n');
                   this.setState({
