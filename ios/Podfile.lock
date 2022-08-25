@@ -275,7 +275,7 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScanbotBarcodeSDK (3.2.1-beta8):
+  - RNScanbotBarcodeSDK (3.2.1-beta9):
     - React
     - ScanbotBarcodeScannerSDK (= 3.2.1)
   - RNScreens (2.7.0):
@@ -400,7 +400,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: be435ebaa01e9761f163fc5d7728035287057a28
+  FBReactNativeSpec: fe70becc189e54d55dd7ea501aabaf9925f078bb
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
@@ -429,7 +429,7 @@ SPEC CHECKSUMS:
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNFS: 751428ec3aa24945dad64640903833ad034b6d03
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScanbotBarcodeSDK: 730f0292ef59c0ee18537576a94776282b9f955f
+  RNScanbotBarcodeSDK: 30beb79ebf110b79cc6aea5d25d9c4e4bb5a0c4d
   RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
   ScanbotBarcodeScannerSDK: 6a7e3d439867c9af7eaa2dd8efadaae1e6ca46d0
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
