@@ -180,10 +180,10 @@ export class HomeScreen extends BaseScreen {
       return;
     }
     const response: ImagePickerResponse = await new Promise(resolve => {
-      var options: ImagePicker.ImageLibraryOptions = {
-        selectionLimit : 1,
-        mediaType : 'mixed',
-        }
+      const options: ImagePicker.ImageLibraryOptions = {
+        selectionLimit: 1,
+        mediaType: 'mixed',
+      };
       ImagePicker.launchImageLibrary(options, resolve);
     });
 
@@ -195,10 +195,10 @@ export class HomeScreen extends BaseScreen {
       return;
     }
 
-    var selectedImageuri : string = "";
+    let selectedImageuri = '';
 
     if (response?.assets != null && (response?.assets?.length ?? 0) > 0) {
-      selectedImageuri =  response.assets[0].uri ?? "";
+      selectedImageuri = response.assets[0].uri ?? '';
     }
     const detectOptions = {
       storeImages: true,
