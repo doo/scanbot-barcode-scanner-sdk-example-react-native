@@ -13,12 +13,14 @@ import { BaseScreen } from '../components/BaseScreen';
 import { Styles } from '../model/Styles';
 
 import {
+  BarcodeResult,
   ScanbotBarcodeCameraView,
   ScanbotBarcodeCameraViewConfiguration,
-  ScanbotBarcodeCameraViewResult,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 import BarcodeTypes from '../model/BarcodeTypesSettings';
+import { BarcodeResultField } from 'react-native-scanbot-barcode-scanner-sdk/src/result';
+import { ByteArrayUtils } from '../utils/ByteArrayUtils';
 
 const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfiguration = () => ({
   shouldUseFinderView: true,
@@ -39,7 +41,6 @@ const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfi
   // minimumTextLength: 2,
   // maximumTextLength: 6,
   flashEnabled: false,
-  barcodeFilter: 'WithEAN2Extension',
 });
 
 export class BarcodeCameraViewScreen extends BaseScreen {
@@ -153,13 +154,13 @@ export class BarcodeCameraViewScreen extends BaseScreen {
             <ScanbotBarcodeCameraView
               style={this.styles.cameraView}
               configuration={barcodeCameraViewConfiguration}
-              onBarcodeScannerResult={(result: ScanbotBarcodeCameraViewResult) => {
+              onBarcodeScannerResult={(result: BarcodeResult) => {
                 if (result.barcodes.length > 0) {
                   const count = result.barcodes.length;
                   const optionalText = count > 4 ? `\n(and ${count - 4} more)` : '';
                   const text = result.barcodes
                     .map(
-                      (barcode: { textWithExtension: string; type: string }) =>
+                      (barcode: BarcodeResultField) =>
                         `${barcode.textWithExtension} (${barcode.type})`
                     )
                     .join('\n');

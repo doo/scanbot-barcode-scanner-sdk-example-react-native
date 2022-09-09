@@ -11,11 +11,12 @@ import {
 } from 'react-native';
 
 import CachedBarcodeResult, { CachedBarcode } from './model/CachedBarcodeResult';
+import { ByteArrayUtils } from './utils/ByteArrayUtils';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: 22,
-    height: '85%',
+    height: '100%',
     width: '100%',
   },
   snappedImage: {
@@ -33,11 +34,22 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
+  verticalContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
+  listSeparator: {
+    borderBottomColor: '#c2c2c2',
+    marginVertical: 8,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
   smallTextBold: {
     paddingLeft: 5,
     paddingBottom: 5,
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
+    color: 'black',
   },
   smallText: {
     paddingLeft: 5,
@@ -58,19 +70,24 @@ class BarcodeResultList extends Component {
 
   listItem = ({ item }: { item: CachedBarcode }) => (
     <TouchableWithoutFeedback onPress={() => {}}>
-      <View style={styles.listItemContainer}>
-        <Image
-          style={styles.image}
-          source={
-            CachedBarcodeResult.imageUri !== undefined
-              ? { uri: 'file://' + CachedBarcodeResult.imageUri, scale: 1 }
-              : (undefined as unknown as ImageSourcePropType)
-          }
-        />
-        <View style={styles.listItemTextContainer}>
-          <Text style={styles.smallTextBold}>{item.type}</Text>
-          <Text style={styles.smallText}>{item.textWithExtension}</Text>
+      <View style={styles.verticalContainer}>
+        <View style={styles.listItemContainer}>
+          <Image
+            style={styles.image}
+            source={
+              CachedBarcodeResult.imageUri !== undefined
+                ? { uri: 'file://' + CachedBarcodeResult.imageUri, scale: 1 }
+                : (undefined as unknown as ImageSourcePropType)
+            }
+          />
+          <View style={styles.listItemTextContainer}>
+            <Text style={styles.smallTextBold}>{item.type}</Text>
+            <Text style={styles.smallText}>{item.textWithExtension}</Text>
+            <Text style={styles.smallTextBold}>rawBytes:</Text>
+            <Text style={styles.smallText}>{ByteArrayUtils.toString(item.rawBytes)}</Text>
+          </View>
         </View>
+        <View style={styles.listSeparator} />
       </View>
     </TouchableWithoutFeedback>
   );

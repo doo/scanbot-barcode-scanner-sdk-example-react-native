@@ -163,7 +163,6 @@ export class HomeScreen extends BaseScreen {
       //barcodeFormats: ["MSI_PLESSEY"],
       //engineMode: "NEXT_GEN"
       replaceCancelButtonWithIcon: true,
-      barcodeFilter: 'WithEAN2Extension',
     };
 
     try {
