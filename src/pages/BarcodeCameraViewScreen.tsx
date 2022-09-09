@@ -20,7 +20,6 @@ import {
 
 import BarcodeTypes from '../model/BarcodeTypesSettings';
 import { BarcodeResultField } from 'react-native-scanbot-barcode-scanner-sdk/src/result';
-import { ByteArrayUtils } from '../utils/ByteArrayUtils';
 
 const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfiguration = () => ({
   shouldUseFinderView: true,

@@ -205,7 +205,6 @@ export class HomeScreen extends BaseScreen {
     const detectOptions: DetectBarcodesOnImageArguments = {
       imageFileUri: selectedImageUri,
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
-      barcodeFilter: 'WithEAN5Extension',
     };
 
     this.showProgress();
