@@ -21,12 +21,10 @@ class CachedBarcodeResult {
     }
 
     CachedBarcodeResult.clear();
-    if (barcodeResult.barcodes) {
-      for (let i = 0; i < barcodeResult.barcodes.length; i++) {
-        const barcode = barcodeResult.barcodes[i];
-        const cachedBarcode: CachedBarcode = { id: i.toString(), ...barcode };
-        CachedBarcodeResult.list.push(cachedBarcode);
-      }
+    for (let i = 0; i < barcodeResult.barcodes.length; i++) {
+      const barcode = barcodeResult.barcodes[i];
+      const cachedBarcode: CachedBarcode = { id: i.toString(), ...barcode };
+      CachedBarcodeResult.list.push(cachedBarcode);
     }
   }
 }
