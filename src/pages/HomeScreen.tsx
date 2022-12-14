@@ -139,7 +139,10 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
+      msiPlesseyChecksumAlgorithm: 'Mod10',
+      overlayConfiguration:{overlayEnabled:true, polygonColor: '#FFFC33', textColor: '#FFFC33', textContainerColor:'#000000'},
       replaceCancelButtonWithIcon: true,
+      codeDensity: 'HIGH',
     };
 
     try {
@@ -159,9 +162,10 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
       msiPlesseyChecksumAlgorithm: 'Mod10',
-      //barcodeFormats: ["MSI_PLESSEY"],
-      //engineMode: "NEXT_GEN"
+      overlayConfiguration: { overlayEnabled:true, polygonColor: '#FFFC33', textColor: '#FFFC33', textContainerColor:'#000000', 
+                              highlightedPolygonColor: '#EA295B', highlightedTextColor: '#EA295B', highlightedTextContainerColor: '#FFFFFF'},
       replaceCancelButtonWithIcon: true,
+      codeDensity: 'HIGH',
     };
 
     try {

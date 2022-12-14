@@ -16,30 +16,31 @@ import {
   ScanbotBarcodeCameraView,
   ScanbotBarcodeCameraViewConfiguration,
   ScanbotBarcodeCameraViewResult,
+  BarcodeDocumentFormat,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 import BarcodeTypes from '../model/BarcodeTypesSettings';
+import { Colors } from '../model/Colors';
 
 const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfiguration = () => ({
   shouldUseFinderView: true,
   finderAspectRatio: {
-    width: 2,
+    width: 1,
     height: 1,
   },
-  finderLineWidth: 4,
-  finderVerticalOffset: 32,
-  finderMinimumPadding: 64,
-  finderBackgroundOpacity: 0.5,
+  finderLineWidth: 5,
+  finderBackgroundOpacity: 0.7,
   barcodeFormats: BarcodeTypes.getAcceptedFormats(),
-  // acceptedDocumentFormats: BarcodeDocumentFormats.getAcceptedFormats(),
+  acceptedDocumentFormats: [],
   msiPlesseyChecksumAlgorithm: 'Mod10',
   engineMode: 'LEGACY',
-  cameraZoomFactor: 0.2,
+  finderInset: {left: 40, top:40, right: 40, bottom: 40 },
   gs1DecodingEnabled: false,
   // stripCheckDigits: true,
   // minimumTextLength: 2,
   // maximumTextLength: 6,
-  flashEnabled: false,
+  codeDensity: 'HIGH',
+  flashEnabled: false
 });
 
 export class BarcodeCameraViewScreen extends BaseScreen {
