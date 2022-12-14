@@ -27,6 +27,7 @@ import Utils from '../utils/Utils';
 import { ViewUtils } from '../utils/ViewUtils';
 import * as ImagePicker from 'react-native-image-picker';
 import { ImagePickerResponse } from 'react-native-image-picker';
+import { DetectBarcodesOnImageArguments } from 'react-native-scanbot-barcode-scanner-sdk/src/configuration';
 
 export class HomeScreen extends BaseScreen {
   render() {
@@ -184,10 +185,10 @@ export class HomeScreen extends BaseScreen {
       return;
     }
     const response: ImagePickerResponse = await new Promise(resolve => {
-      var options: ImagePicker.ImageLibraryOptions = {
-        selectionLimit : 1,
-        mediaType : 'mixed',
-        }
+      const options: ImagePicker.ImageLibraryOptions = {
+        selectionLimit: 1,
+        mediaType: 'mixed',
+      };
       ImagePicker.launchImageLibrary(options, resolve);
     });
 
@@ -199,14 +200,14 @@ export class HomeScreen extends BaseScreen {
       return;
     }
 
-    var selectedImageuri : string = "";
-
-    if (response?.assets != null && (response?.assets?.length ?? 0) > 0) {
-      selectedImageuri =  response.assets[0].uri ?? "";
+    const selectedImageUri = response?.assets?.[0]?.uri;
+    if (!selectedImageUri) {
+      ViewUtils.showAlert('Something went wrong. Please try again');
+      return;
     }
-    const detectOptions = {
-      storeImages: true,
-      imageFileUri: selectedImageuri,
+
+    const detectOptions: DetectBarcodesOnImageArguments = {
+      imageFileUri: selectedImageUri,
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
     };
 
@@ -216,7 +217,7 @@ export class HomeScreen extends BaseScreen {
 
     if (barcodeResult.status === 'OK') {
       CachedBarcodeResult.update(barcodeResult);
-      CachedBarcodeResult.imageUri = selectedImageuri;
+      CachedBarcodeResult.imageUri = selectedImageUri;
       this.pushPage(Navigation.BARCODE_RESULTS);
     } else {
       ViewUtils.showAlert('Something went wrong. Please try again');
