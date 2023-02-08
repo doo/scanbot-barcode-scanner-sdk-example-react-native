@@ -1,4 +1,4 @@
-Open Source libraries used in the Scanbot Barcode SDK for React Native version 3.3.0
+Open Source libraries used in the Scanbot Barcode SDK for React Native version 3.3.1
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -1972,7 +1972,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ------------------------------------------------------------------------------------------------------------------------
 
-Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 3.3.1
+Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 3.3.1.244-SNAPSHOT
 
 CWAC-Camera
 
