@@ -275,7 +275,7 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScanbotBarcodeSDK (3.5.0-beta.1):
+  - RNScanbotBarcodeSDK (3.5.0-beta.2):
     - React
     - ScanbotBarcodeScannerSDK (= 3.5.0)
   - RNScreens (2.7.0):
@@ -429,7 +429,7 @@ SPEC CHECKSUMS:
   ReactCommon: b4a65d2d6e9eeffd4b32dde1245962b3f43907d0
   RNFS: 751428ec3aa24945dad64640903833ad034b6d03
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScanbotBarcodeSDK: 1f686e7ec8b6c7a559bff0436b4271b35c16b19e
+  RNScanbotBarcodeSDK: 7878911ffe66a6fd26ff19c09d6ff27e3e1e166c
   RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
   ScanbotBarcodeScannerSDK: 49e6803352559d008b68dd983abc1d0562cf3e1a
   Yoga: d1fc3575b8b68891ff5ef3c276daa855e841eb32
