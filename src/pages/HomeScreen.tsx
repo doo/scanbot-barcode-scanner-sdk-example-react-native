@@ -141,8 +141,14 @@ export class HomeScreen extends BaseScreen {
       barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
       msiPlesseyChecksumAlgorithm: 'Mod10',
-      overlayConfiguration:{overlayEnabled:true, automaticSelectionEnabled:true, overlayTextFormat: 'CODE_AND_TYPE',
-        polygonColor: '#FFFC33', textColor: '#FFFC33', textContainerColor:'#000000'},
+      overlayConfiguration:{
+        overlayEnabled:true, 
+        automaticSelectionEnabled:true, 
+        overlayTextFormat: 'CODE_AND_TYPE',
+        polygonColor: '#FFFC33', 
+        textColor: '#FFFC33', 
+        textContainerColor:'#000000'
+      },
       replaceCancelButtonWithIcon: true,
       codeDensity: 'HIGH',
     };
@@ -164,8 +170,16 @@ export class HomeScreen extends BaseScreen {
       topBarBackgroundColor: '#c8193c',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
       msiPlesseyChecksumAlgorithm: 'Mod10',
-      overlayConfiguration: { overlayEnabled:true, automaticSelectionEnabled:true, polygonColor: '#FFFC33', textColor: '#FFFC33', textContainerColor:'#000000', 
-                              highlightedPolygonColor: '#EA295B', highlightedTextColor: '#EA295B', highlightedTextContainerColor: '#FFFFFF'},
+      overlayConfiguration: { 
+        overlayEnabled:true, 
+        automaticSelectionEnabled:true, 
+        polygonColor: '#FFFC33', 
+        textColor: '#FFFC33', 
+        textContainerColor:'#000000', 
+        highlightedPolygonColor: '#EA295B', 
+        highlightedTextColor: '#EA295B', 
+        highlightedTextContainerColor: '#FFFFFF'
+      },
       replaceCancelButtonWithIcon: true,
       codeDensity: 'HIGH'
     };
