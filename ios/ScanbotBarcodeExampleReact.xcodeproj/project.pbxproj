@@ -12,12 +12,12 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1467435B8AEA062F21B40846 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17521B3B054B4A98D4319B67 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ScanbotBarcodeExampleReactTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ScanbotBarcodeExampleReactTests.m */; };
-		4D90C9A942795F42E1B817BF /* libPods-ScanbotBarcodeExampleReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995E851716A7C3A01D69E503 /* libPods-ScanbotBarcodeExampleReact.a */; };
+		74F95875A58E825164219CCE /* libPods-ScanbotBarcodeExampleReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5A80A7CB0DEADCFB6C019C /* libPods-ScanbotBarcodeExampleReact.a */; };
+		A93ED6B0972CE7E1609413B0 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C35175B203F2288BDC46BC65 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,14 +49,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ScanbotBarcodeExampleReact/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotBarcodeExampleReact/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ScanbotBarcodeExampleReact/main.m; sourceTree = "<group>"; };
-		17521B3B054B4A98D4319B67 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C45FBAF23FA6CD4F960BF99 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* ScanbotBarcodeExampleReact-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotBarcodeExampleReact-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ScanbotBarcodeExampleReact-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ScanbotBarcodeExampleReact-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		995E851716A7C3A01D69E503 /* libPods-ScanbotBarcodeExampleReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScanbotBarcodeExampleReact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACBF357EFC9A293338B8778D /* Pods-ScanbotBarcodeExampleReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact.release.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact.release.xcconfig"; sourceTree = "<group>"; };
-		B75ACDB33A416865AE4BF5E1 /* Pods-ScanbotBarcodeExampleReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact.debug.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact.debug.xcconfig"; sourceTree = "<group>"; };
-		D3EE77D3B362FA3CD3F1F914 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig"; sourceTree = "<group>"; };
+		495D034F565BAE91E792E4CD /* Pods-ScanbotBarcodeExampleReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact.debug.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact.debug.xcconfig"; sourceTree = "<group>"; };
+		989C547B36AA6A7A343655C3 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2FE4E40C1724254DDFAA8C3 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig"; sourceTree = "<group>"; };
+		AE4F1CBC955FDBC8A8B3A782 /* Pods-ScanbotBarcodeExampleReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanbotBarcodeExampleReact.release.xcconfig"; path = "Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact.release.xcconfig"; sourceTree = "<group>"; };
+		BD5A80A7CB0DEADCFB6C019C /* libPods-ScanbotBarcodeExampleReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScanbotBarcodeExampleReact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C35175B203F2288BDC46BC65 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1467435B8AEA062F21B40846 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a in Frameworks */,
+				A93ED6B0972CE7E1609413B0 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D90C9A942795F42E1B817BF /* libPods-ScanbotBarcodeExampleReact.a in Frameworks */,
+				74F95875A58E825164219CCE /* libPods-ScanbotBarcodeExampleReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,8 +131,8 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				995E851716A7C3A01D69E503 /* libPods-ScanbotBarcodeExampleReact.a */,
-				17521B3B054B4A98D4319B67 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a */,
+				BD5A80A7CB0DEADCFB6C019C /* libPods-ScanbotBarcodeExampleReact.a */,
+				C35175B203F2288BDC46BC65 /* libPods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,10 +173,10 @@
 		9AED115C89EB41DC217DFE71 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B75ACDB33A416865AE4BF5E1 /* Pods-ScanbotBarcodeExampleReact.debug.xcconfig */,
-				ACBF357EFC9A293338B8778D /* Pods-ScanbotBarcodeExampleReact.release.xcconfig */,
-				2C45FBAF23FA6CD4F960BF99 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig */,
-				D3EE77D3B362FA3CD3F1F914 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig */,
+				495D034F565BAE91E792E4CD /* Pods-ScanbotBarcodeExampleReact.debug.xcconfig */,
+				AE4F1CBC955FDBC8A8B3A782 /* Pods-ScanbotBarcodeExampleReact.release.xcconfig */,
+				989C547B36AA6A7A343655C3 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig */,
+				A2FE4E40C1724254DDFAA8C3 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -188,12 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ScanbotBarcodeExampleReactTests" */;
 			buildPhases = (
-				D608BEE22CE272024148EA7F /* [CP] Check Pods Manifest.lock */,
+				3FB142476292AEB40839C4EB /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				B97FDD6D5BD85AAE9A550EF2 /* [CP] Embed Pods Frameworks */,
-				AB8EF8E91B5F69FC348A64D4 /* [CP] Copy Pods Resources */,
+				053A53A9745991F16795EFF2 /* [CP] Embed Pods Frameworks */,
+				398F9633C6B74C2BF16789E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,14 +209,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ScanbotBarcodeExampleReact" */;
 			buildPhases = (
-				8EDA45470AEC267336407490 /* [CP] Check Pods Manifest.lock */,
+				C84F5AD3394D6D9DDCF004FA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				87B220F1E4E3F3B3D6C50B19 /* [CP] Embed Pods Frameworks */,
-				6C81A1F429E48614613E0AD2 /* [CP] Copy Pods Resources */,
+				44FB9CA07B8EF37F9F275929 /* [CP] Embed Pods Frameworks */,
+				289BC3B8444157B8674FA365 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -364,97 +364,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		6C81A1F429E48614613E0AD2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87B220F1E4E3F3B3D6C50B19 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework/ScanbotBarcodeScannerSDK",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScanbotBarcodeScannerSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8EDA45470AEC267336407490 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ScanbotBarcodeExampleReact-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB8EF8E91B5F69FC348A64D4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B97FDD6D5BD85AAE9A550EF2 /* [CP] Embed Pods Frameworks */ = {
+		053A53A9745991F16795EFF2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -472,7 +382,57 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D608BEE22CE272024148EA7F /* [CP] Check Pods Manifest.lock */ = {
+		289BC3B8444157B8674FA365 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		398F9633C6B74C2BF16789E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FB142476292AEB40839C4EB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -488,6 +448,46 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44FB9CA07B8EF37F9F275929 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ScanbotBarcodeScannerSDK/ScanbotBarcodeScannerSDK.framework/ScanbotBarcodeScannerSDK",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScanbotBarcodeScannerSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C84F5AD3394D6D9DDCF004FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ScanbotBarcodeExampleReact-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -599,7 +599,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C45FBAF23FA6CD4F960BF99 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig */;
+			baseConfigurationReference = 989C547B36AA6A7A343655C3 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
@@ -623,7 +623,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3EE77D3B362FA3CD3F1F914 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig */;
+			baseConfigurationReference = A2FE4E40C1724254DDFAA8C3 /* Pods-ScanbotBarcodeExampleReact-ScanbotBarcodeExampleReactTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -644,7 +644,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B75ACDB33A416865AE4BF5E1 /* Pods-ScanbotBarcodeExampleReact.debug.xcconfig */;
+			baseConfigurationReference = 495D034F565BAE91E792E4CD /* Pods-ScanbotBarcodeExampleReact.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -668,7 +668,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACBF357EFC9A293338B8778D /* Pods-ScanbotBarcodeExampleReact.release.xcconfig */;
+			baseConfigurationReference = AE4F1CBC955FDBC8A8B3A782 /* Pods-ScanbotBarcodeExampleReact.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
