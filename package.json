@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@react-navigation/native": "5.4.0",
@@ -23,8 +24,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
-    "@babel/runtime": "^7.16.7",
     "@babel/preset-flow": "7.16.7",
+    "@babel/runtime": "^7.16.7",
     "@babel/traverse": "7.16.7",
     "@doo/eslint-config": "github:doo/eslint-config",
     "@doo/prettier-config": "github:doo/prettier-config",
@@ -37,7 +38,6 @@
     "@types/react-test-renderer": "17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.3.0",
-    "metro-react-native-babel-preset": "^0.64.0",
     "babel-jest": "24.9.0",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-typescript": "^15.0.0",
@@ -45,6 +45,8 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "26.6.3",
+    "metro-react-native-babel-preset": "^0.64.0",
+    "patch-package": "^7.0.0",
     "prettier": "^2.4.1",
     "react-test-renderer": "17.0.1",
     "typescript": "3.9.10"
