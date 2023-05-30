@@ -26,19 +26,20 @@ const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfi
     width: 1,
     height: 1,
   },
-  finderLineWidth: 5,
+  finderLineWidth: 40,
   finderBackgroundOpacity: 0.7,
   barcodeFormats: BarcodeTypes.getAcceptedFormats(),
   acceptedDocumentFormats: [],
   msiPlesseyChecksumAlgorithm: 'Mod10',
   engineMode: 'LEGACY',
-  finderInset: {left: 40, top:40, right: 40, bottom: 40 },
+  finderInset: { left: 50, top: 0, right: 0, bottom: 0 },
+  finderLineColor: '#9ed6f0',
   gs1DecodingEnabled: false,
   // stripCheckDigits: true,
   // minimumTextLength: 2,
   // maximumTextLength: 6,
   codeDensity: 'HIGH',
-  flashEnabled: false
+  flashEnabled: false,
 });
 
 export class BarcodeCameraViewScreen extends BaseScreen {
