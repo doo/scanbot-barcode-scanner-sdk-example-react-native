@@ -275,12 +275,12 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNScanbotBarcodeSDK (3.6.0):
+  - RNScanbotBarcodeSDK (3.7.0-beta.1):
     - React
-    - ScanbotBarcodeScannerSDK (= 3.6.0)
+    - ScanbotBarcodeScannerSDK (= 3.7.0)
   - RNScreens (2.7.0):
     - React
-  - ScanbotBarcodeScannerSDK (3.6.0)
+  - ScanbotBarcodeScannerSDK (3.7.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -400,7 +400,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: fa8275d5086566e22a26ddc385ab5772e7f9b1bd
-  FBReactNativeSpec: cabb0e31a5debda510d4a318bb655deba0ff9555
+  FBReactNativeSpec: 50ebc42b5165194961d6803ee4cfa959284604d8
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: f85fa00af016059cf88b90b8f8ff9a6af9e4b6c3
@@ -413,8 +413,8 @@ SPEC CHECKSUMS:
   React-jsi: 64f80675a66899bf0f4a58b8e3908966fa516234
   React-jsiexecutor: 8c077bef1c64430b6034f27df1000d194551e2eb
   React-jsinspector: d4f6973dd474357dbaaf6f52f31ffc713bf3e766
-  react-native-image-picker: eb0a159c2a00bcfb49f0469fcc6b164329e9d4ca
-  react-native-safe-area-context: 5f3e081f937ab7c44c179d551f332fa494cfcf8f
+  react-native-image-picker: e95b4785b685cfc06609bc50ed6fb55b59990c99
+  react-native-safe-area-context: a346c75f2288147527365ce27b59ca6d38c27805
   React-perflogger: 5a890ca0911669421b7611661e9b58f91c805f5c
   React-RCTActionSheet: bd180e0879f8424a73650c5c28fbef4f3b5b27fb
   React-RCTAnimation: 1004d2b4be1f2cedfdc4cb2326adc95b989e6c6b
@@ -429,11 +429,11 @@ SPEC CHECKSUMS:
   ReactCommon: b4a65d2d6e9eeffd4b32dde1245962b3f43907d0
   RNFS: 751428ec3aa24945dad64640903833ad034b6d03
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNScanbotBarcodeSDK: 442dd0e90ce9d2328b152e7b61604ca15ff9c42a
+  RNScanbotBarcodeSDK: b348ce632ccf6f9324104ee5d4633b1c90db56c8
   RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
-  ScanbotBarcodeScannerSDK: fac0c9f5da6a2a9c3c08d9bfcca9fc8e93d2b570
+  ScanbotBarcodeScannerSDK: a2d6930f2802cf2d43e72c7eee552b014503bae3
   Yoga: d1fc3575b8b68891ff5ef3c276daa855e841eb32
 
-PODFILE CHECKSUM: 5b7cc56f2f661be6ce0e895445e137fbe5b9d5c7
+PODFILE CHECKSUM: cb8cd36fe25d0b58f0662f612d8c26d9de6ad144
 
 COCOAPODS: 1.12.1
