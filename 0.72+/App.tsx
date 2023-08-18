@@ -1,118 +1,97 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import BarcodeTypesSettings from './src/model/BarcodeTypesSettings';
+import Utils from './src/utils/Utils';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {Navigation} from './src/utils/Navigation';
+import {HomeScreen} from './src/pages/HomeScreen';
+import {Styles} from './src/model/Styles';
+import {BarcodeCameraViewScreen} from './src/pages/BarcodeCameraViewScreen';
+import {BarcodeResultsListScreen} from './src/pages/BarcodeResultsListScreen';
+import {BarcodeTypesScreen} from './src/pages/BarcodeTypesScreen';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Stack = createStackNavigator();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+/**
+ * TODO Add the license key here.
+ * Please note: Scanbot Barcode Scanner SDK will run without a license key for one minute per session!
+ * After the trial period has expired all SDK features as well as the UI components will stop working
+ * or may be terminated. You can get an unrestricted "no-strings-attached" 30 day trial license key for free.
+ * Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
+ * the app identifier "io.scanbot.example.sdk.barcode.reactnative" of this example app.
+ */
+const LICENSE_KEY = '';
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+export class App extends React.Component {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(props: any) {
+    super(props);
+
+    if (BarcodeTypesSettings.list.length == 0) {
+      BarcodeTypesSettings.initialize();
+    }
+
+    ScanbotBarcodeSDK.initializeSdk({
+      // Consider switching logging OFF in production builds for security and performance reasons!
+      loggingEnabled: true,
+      enableNativeLogging: false,
+      licenseKey: LICENSE_KEY,
+      // Optional storage path. See the method description!
+      storageBaseDirectory: Utils.getCustomStoragePath(),
+    })
+      .then(() => {
+        console.log('Scanbot Barcode SDK Initialized');
+      })
+      .catch(error => {
+        console.log('Initialization error: ', error);
+      });
+  }
+
+  render() {
+    const sharedHeaderProps = {
+      headerStyle: {
+        borderBottomWidth: 0,
+        elevation: 0,
+        shadowColor: 'transparent',
+      },
+    };
+
+    return (
+      <NavigationContainer theme={Styles.ScanbotTheme}>
+        <Stack.Navigator initialRouteName={Navigation.HOME}>
+          <Stack.Screen name={Navigation.HOME} component={HomeScreen} />
+          <Stack.Screen
+            name={Navigation.BARCODE_RESULTS}
+            component={BarcodeResultsListScreen}
+            options={{
+              headerBackTitleVisible: false,
+              title: 'Barcode Results',
+              ...sharedHeaderProps,
+            }}
+          />
+          <Stack.Screen
+            name={Navigation.BARCODE_CAMERA_VIEW}
+            component={BarcodeCameraViewScreen}
+            options={{
+              headerBackTitleVisible: false,
+              title: 'Barcode Camera View',
+              ...sharedHeaderProps,
+            }}
+          />
+          <Stack.Screen
+            name={Navigation.BARCODE_TYPES}
+            component={BarcodeTypesScreen}
+            options={{
+              headerBackTitleVisible: false,
+              title: 'Barcode Types',
+              ...sharedHeaderProps,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
-
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

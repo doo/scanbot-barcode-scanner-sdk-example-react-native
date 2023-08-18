@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.scanbotbarcodeexamplereact"
+    namespace "io.scanbot.example.sdk.barcode.reactnative"
     defaultConfig {
-        applicationId "com.scanbotbarcodeexamplereact"
+        applicationId "io.scanbot.example.sdk.barcode.reactnative"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

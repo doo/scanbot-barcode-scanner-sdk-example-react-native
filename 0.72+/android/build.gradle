@@ -19,3 +19,20 @@ buildscript {
         classpath("com.facebook.react:react-native-gradle-plugin")
     }
 }
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+
+        google()
+        jcenter()
+
+        // Scanbot Barcode Scanner SDK Maven repositories:
+        maven { url 'https://nexus.scanbot.io/nexus/content/repositories/releases/' }
+        maven { url 'https://nexus.scanbot.io/nexus/content/repositories/snapshots/' }
+    }
+}
