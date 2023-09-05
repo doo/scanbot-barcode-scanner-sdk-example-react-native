@@ -92,7 +92,7 @@ Then run:
 npx react-native run-ios --device # Remove the --device flag to run the app on a simulator
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+If everything is set up _correctly_, you should see your new app running on your device, _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your device/emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively:
 
@@ -101,14 +101,17 @@ This is one way to run your app — you can also run it directly from within And
 Scanbot Barcode SDK supports the [new architecture](https://reactnative.dev/docs/new-architecture-intro). Here's how you can enable it in this app.
 
 **Android**
+
 Set `newArchEnabled` your `android/gradle.properties` file as true:
 
 *android/gradle.properties*
+
 ```properties
 newArchEnabled=true
 ```
 
 **iOS**
+
 Re-install the iOS dependencies by running the following commands:
 
 ```bash
