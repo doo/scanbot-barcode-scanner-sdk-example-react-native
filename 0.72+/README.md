@@ -1,79 +1,137 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Scanbot Barcode Scanner SDK Example Apps for React Native
+These example apps demonstrate how to integrate the [Scanbot Barcode Scanner SDK for React Native](https://scanbot.io/developer/react-native-barcode-scanner/) for Android and iOS.
 
-# Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## What is the Scanbot Barcode Scanner SDK?
 
-## Step 1: Start the Metro Server
+Scanbot Barcode Scanner SDK is a simple to use high level API, providing a collection of classes and functions for scanning and parsing 1D and 2D barcodes from your mobile device's camera or other image sources like your photo library.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+The SDK for React Native is available as an npm package:
+- https://www.npmjs.com/package/react-native-scanbot-barcode-scanner-sdk
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Trial License
+
+The Scanbot SDK will run without a license for one minute per session!
+
+After the trial period has expired, all SDK functions and UI components will stop working. You have to restart the app to get another one-minute trial period.
+
+To test the Scanbot SDK without crashing, you can get a free “no-strings-attached” trial license. Please submit the [Trial License Form](https://scanbot.io/trial/) on our website.
+
+## Free Developer Support
+
+We provide free "no-strings-attached" developer support for the implementation & testing of the Scanbot SDK.
+If you encounter technical issues with integrating the Scanbot SDK or need advice on choosing the appropriate
+framework or features, please visit our [Support Page](https://docs.scanbot.io/support/).
+
+
+## Supported Barcode Types
+
+- [1D Barcodes](https://scanbot.io/products/barcode-software/1d-barcode-scanner/): [Codabar](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/codabar), [Code 39](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/code-39), [Code 93](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-93/), [Code 128](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-128/), [IATA 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/standard-2-of-5/), [Industrial 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/industrial-2-of-5/), [ITF](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/itf), [EAN-8](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [EAN-13](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [MSI Plessey](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/msi-plessey), RSS 14, [RSS Expanded (Databar)](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [UPC-A](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc/), [UPC-E](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/upc-code).
+- [2D Barcodes](https://scanbot.io/products/barcode-software/2d-barcode-scanner/): [Aztec](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/aztec), [Data Matrix](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/datamatrix), [PDF417](https://scanbot.io/products/barcode-software/2d-barcode-scanner/pdf417/), [QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/qr-code/).
+
+💡 Also check out our blog post [Types of barcodes](https://scanbot.io/blog/types-of-barcodes/).
+
+
+## Supported Data Parsers:
+
+- [AAMVA](https://scanbot.io/blog/drivers-license-barcode-parser/): Parse the AAMVA data format from PDF-417 barcodes on US driver's licenses.
+- Boarding pass data from PDF417 barcodes.
+- Parser for German Medical Certificates (aka. Disability Certificate or AU-Bescheinigung) coded in a PDF-417 barcode.
+- [GS1](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/) encoded data from barcodes.
+- Data from PDF-417 barcodes on ID Cards.
+- Parse and extract data from XML of Data Matrix barcodes on Medical Plans (German Medikationsplan).
+- Data parser of QR-Code values printed on SEPA pay forms.
+- vCard data from a QR-Code (e.g. on business cards).
+- [Swiss QR](https://scanbot.io/products/barcode-software/2d-barcode-scanner/swiss-qr/) data from a QR-Code for easy, automatic and efficient payments.
+
+For more details please refer to the SDK documentation.
+
+
+## Documentation
+
+For more details about the Scanbot Barcode Scanner SDK for React Native please see this
+[documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/).
+
+# How to run this app
+
+## Step 1: Install Dependencies
+
+To install the project dependencies, run the following commands
 
 ```bash
-# using npm
-npm start
+# Install the required dependencies
+yarn
 
-# OR using Yarn
-yarn start
+# Install the iOS dependencies
+cd ios 
+bundle exec pod install --repo-update
+cd ..
 ```
+
 
 ## Step 2: Start your Application
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Plugin in your physical device via USB and run the following command to start your _Android_ or _iOS_ app:
 
 ### For Android
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+npx react-native run-android
 ```
 
 ### For iOS
 
-```bash
-# using npm
-npm run ios
+Setup the Provisioning and Signing settings:
 
-# OR using Yarn
-yarn ios
+- Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
+- Adjust *Provisioning* and *Signing* settings.
+
+Then run:
+
+```bash
+npx react-native run-ios --device # Remove the --device flag to run the app on a simulator
 ```
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively:
 
-## Step 3: Modifying your App
+## Using the new architecture
 
-Now that you have successfully run the app, let's modify it.
+Scanbot Barcode SDK supports the [new architecture](https://reactnative.dev/docs/new-architecture-intro). Here's how you can enable it in this app.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+**Android**
+Set `newArchEnabled` your `android/gradle.properties` file as true:
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+*android/gradle.properties*
+```properties
+newArchEnabled=true
+```
 
-## Congratulations! :tada:
+**iOS**
+Re-install the iOS dependencies by running the following commands:
 
-You've successfully run and modified your React Native App. :partying_face:
+```bash
+cd ios
+RCT_NEW_ARCH_ENABLED=1 bundle exec pod install --repo-update
+cd ..
+```
 
-### Now what?
+## Requirements
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+### Built using
 
-# Troubleshooting
+* `react-native-cli` `latest`
+* `node` v16.20.2
+* `npm` v8.19.4
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### What else can go wrong?
 
-# Learn More
+###### Pod not found
 
-To learn more about React Native, take a look at the following resources:
+`pod repo update`
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+###### Still at a loss? It is probably a cache issue
+
+* `npm cache clean --force && watchman watch-del-all`
+* Restart metro server!
