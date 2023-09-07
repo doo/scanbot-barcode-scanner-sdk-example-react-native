@@ -10,8 +10,8 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 
-import CachedBarcodeResult, {CachedBarcode} from './model/CachedBarcodeResult';
-import {ByteArrayUtils} from './utils/ByteArrayUtils';
+import CachedBarcodeResult, {CachedBarcode} from '../model/CachedBarcodeResult';
+import {ByteArrayUtils} from '../utils/ByteArrayUtils';
 
 const styles = StyleSheet.create({
   container: {
@@ -72,14 +72,11 @@ class BarcodeResultList extends Component {
     <TouchableWithoutFeedback onPress={() => {}}>
       <View style={styles.verticalContainer}>
         <View style={styles.listItemContainer}>
-          <Image
+          {CachedBarcodeResult.imageUri != null ? <Image
             style={styles.image}
-            source={
-              CachedBarcodeResult.imageUri !== undefined
-                ? {uri: 'file://' + CachedBarcodeResult.imageUri, scale: 1}
-                : (undefined as unknown as ImageSourcePropType)
-            }
-          />
+            source={{uri: CachedBarcodeResult.imageUri, scale: 1}}
+            /> : <View style={styles.image}/>
+          }
           <View style={styles.listItemTextContainer}>
             <Text style={styles.smallTextBold}>{item.type}</Text>
             <Text style={styles.smallText}>{item.textWithExtension}</Text>

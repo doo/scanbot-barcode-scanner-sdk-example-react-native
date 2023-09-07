@@ -54,6 +54,19 @@ For more details about the Scanbot Barcode Scanner SDK for React Native please s
 
 # How to run this app
 
+## Step 0: Install Command Line Tools
+
+The following command line tools are required in order to run this app:
+
+```bash
+# Install bundler
+sudo gem install bundler;
+
+# Install cocoapods
+sudo gem install cocoapods;
+```
+
+
 ## Step 1: Install Dependencies
 
 To install the project dependencies, run the following commands
@@ -64,6 +77,7 @@ yarn
 
 # Install the iOS dependencies
 cd ios 
+bundle install
 bundle exec pod install --repo-update
 cd ..
 ```

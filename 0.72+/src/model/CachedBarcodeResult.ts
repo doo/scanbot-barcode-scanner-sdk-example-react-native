@@ -17,7 +17,7 @@ class CachedBarcodeResult {
     if (barcodeResult.imageFileUri == undefined) {
       CachedBarcodeResult.imageUri = undefined;
     } else {
-      CachedBarcodeResult.imageUri = 'file://' + barcodeResult.imageFileUri;
+      CachedBarcodeResult.imageUri = barcodeResult.imageFileUri;
     }
 
     CachedBarcodeResult.clear();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
-import BarcodeResultList from '../BarcodeResultList';
+import BarcodeResultList from '../components/BarcodeResultList';
 import {BaseScreen} from '../components/BaseScreen';
 
 export class BarcodeResultsListScreen extends BaseScreen {
