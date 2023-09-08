@@ -20,7 +20,6 @@ class BarcodeTypesSettings {
     const list = [
       'AZTEC',
       'CODABAR',
-      'CODE_25',
       'CODE_39',
       'CODE_93',
       'CODE_128',
@@ -34,9 +33,11 @@ class BarcodeTypesSettings {
       'RSS_EXPANDED',
       'UPC_A',
       'UPC_E',
-      'MSI_PLESSEY',
       'IATA_2_OF_5',
       'INDUSTRIAL_2_OF_5',
+      'MSI_PLESSEY',
+      'CODE_25',
+      'MICRO_QR_CODE',    
     ];
 
     for (let i = 0; i < list.length; i++) {

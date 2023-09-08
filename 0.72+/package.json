@@ -18,7 +18,7 @@
     "react-native-gesture-handler": "^2.12.1",
     "react-native-image-picker": "^5.6.1",
     "react-native-safe-area-context": "^4.7.1",
-    "react-native-scanbot-barcode-scanner-sdk": "3.6.1-alpha.2",
+    "react-native-scanbot-barcode-scanner-sdk": "3.7.1-beta.1",
     "react-native-screens": "^3.24.0"
   },
   "devDependencies": {
