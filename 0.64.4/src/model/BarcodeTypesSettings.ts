@@ -36,7 +36,8 @@ class BarcodeTypesSettings {
       'UPC_E',
       'MSI_PLESSEY',
       "IATA_2_OF_5",
-      "INDUSTRIAL_2_OF_5" 
+      "INDUSTRIAL_2_OF_5",
+      "MICRO_QR_CODE"
     ];
 
     for (let i = 0; i < list.length; i++) {
