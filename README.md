@@ -56,7 +56,7 @@ For more details about the Scanbot Barcode Scanner SDK for React Native please s
 
 Starting from Scanbot React Native Barcode SDK v4.0.0, the required minimum version for React Native is v0.68+. 
 
-You can find the latest example project under the folder `0.72+`. This project will be updated frequently with the latest Scanbot SDK and React Native updates.
+You can find the latest example project under the folder `latest`. This project will be updated frequently with the latest Scanbot SDK and React Native updates.
 
 The previous example project is located inside the folder `0.64.4`. This project uses Scanbot React Native Barcode SDK v3.7.0 and React Native v0.64.4.
 
