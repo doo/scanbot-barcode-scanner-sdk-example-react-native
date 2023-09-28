@@ -147,7 +147,7 @@ export class HomeScreen extends BaseScreen {
       allowedInterfaceOrientations: 'ALL',
       successBeepEnabled: true,
       overlayConfiguration: {
-        overlayEnabled: true,
+        overlayEnabled: !withImage,
         automaticSelectionEnabled: false,
         overlayTextFormat: 'CODE_AND_TYPE',
         polygonColor: '#FFFC33',
