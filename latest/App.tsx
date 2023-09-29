@@ -32,6 +32,8 @@ export class App extends React.Component {
       BarcodeTypesSettings.initialize();
     }
 
+    this.printReactNativeInfo();
+
     ScanbotBarcodeSDK.initializeSdk({
       // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
@@ -46,6 +48,11 @@ export class App extends React.Component {
       .catch(error => {
         console.log('Initialization error: ', error);
       });
+  }
+
+  printReactNativeInfo() {
+    const uiManager = (global as any)?.nativeFabricUIManager ? 'New Architecture' : 'Old Architecture';
+    console.log(`Using ${uiManager}`);
   }
 
   render() {
