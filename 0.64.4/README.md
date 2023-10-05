@@ -26,7 +26,7 @@ framework or features, please visit our [Support Page](https://docs.scanbot.io/s
 
 ## Supported Barcode Types
 
-- [1D Barcodes](https://scanbot.io/products/barcode-software/1d-barcode-scanner/): [Codabar](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/codabar), [Code 39](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/code-39), [Code 93](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-93/), [Code 128](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-128/), [IATA 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/standard-2-of-5/), [Industrial 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/industrial-2-of-5/), [ITF](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/itf), [EAN-8](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [EAN-13](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [MSI Plessey](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/msi-plessey), [RSS 14](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [RSS Expanded (Databar)](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [UPC-A](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc/), [UPC-E](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/upc-code).
+- [1D Barcodes](https://scanbot.io/products/barcode-software/1d-barcode-scanner/): [Codabar](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/codabar), [Code 39](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/code-39), [Code 93](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-93/), [Code 128](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-128/), [IATA 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/standard-2-of-5/), [Industrial 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/industrial-2-of-5/), [ITF](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/itf), [EAN-8](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [EAN-13](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [MSI Plessey](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/msi-plessey), RSS 14, [RSS Expanded (Databar)](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [UPC-A](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc/), [UPC-E](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/upc-code).
 - [2D Barcodes](https://scanbot.io/products/barcode-software/2d-barcode-scanner/): [Aztec](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/aztec), [Data Matrix](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/datamatrix), [PDF417](https://scanbot.io/products/barcode-software/2d-barcode-scanner/pdf417/), [QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/qr-code/).
 
 💡 Also check out our blog post [Types of barcodes](https://scanbot.io/blog/types-of-barcodes/).
@@ -52,12 +52,31 @@ For more details please refer to the SDK documentation.
 For more details about the Scanbot Barcode Scanner SDK for React Native please see this
 [documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/).
 
-# How to run this app
+## How to run this app
 
-Starting from Scanbot React Native Barcode SDK v4.0.0, the required minimum version for React Native is v0.68+. 
+* `npm install`
+* `cd ios && pod install`
+* `react-native run-ios --device` or `react-native run-android`
 
-You can find the latest example project under the folder `latest`. This project will be updated frequently with the latest Scanbot SDK and React Native updates.
+- Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
+- Adjust *Provisioning* and *Signing* settings.
+- And run the app in Xcode or via `react-native run-ios`.
 
-The previous example project is located inside the folder `0.64.4`. This project uses Scanbot React Native Barcode SDK v3.7.0 and React Native v0.64.4.
+## Requirements
 
-You can find a detailed README inside each project, with instructions on how to run and debug the demo app.
+### Built using
+
+* `react-native-cli` `latest`
+* `node` v12.13.0
+* `npm` v6.12.0
+
+### What else can go wrong?
+
+###### Pod not found
+
+`pod repo update`
+
+###### Still at a loss? It is probably a cache issue
+
+* `npm cache clean --force`
+* Restart metro server! (Yes, apparently that thing has its own cache as well)
