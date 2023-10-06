@@ -5771,10 +5771,10 @@ react-native-safe-area-context@^4.7.1:
   resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.7.1.tgz"
   integrity sha512-X2pJG2ttmAbiGlItWedvDkZg1T1ikmEDiz+7HsiIwAIm2UbFqlhqn+B1JF53mSxPzdNaDcCQVHRNPvj8oFu6Yg==
 
-react-native-scanbot-barcode-scanner-sdk@4.0.1-beta.1:
-  version "4.0.1-beta.1"
-  resolved "https://registry.npmjs.org/react-native-scanbot-barcode-scanner-sdk/-/react-native-scanbot-barcode-scanner-sdk-4.0.1-beta.1.tgz"
-  integrity sha512-UDu9APqEIHvl2NBnJ3xxk4rSAJ6AgU6FxKeBxYNZPfnacidO8OGDKwq2ftTIUuSKki2/9eS95DVICu4aApqwfw==
+react-native-scanbot-barcode-scanner-sdk@4.0.1-beta.2:
+  version "4.0.1-beta.2"
+  resolved "https://registry.yarnpkg.com/react-native-scanbot-barcode-scanner-sdk/-/react-native-scanbot-barcode-scanner-sdk-4.0.1-beta.2.tgz#7b32bdf451d601bc67633d87ca9f159d4162056f"
+  integrity sha512-/3WOg04NQ0mjKm0xtrrURCiNjNBMmGG22z2C0li6jU0SfmkWXtDQKDR4SFZKBJnNxx9Cr/vW6e5na4KW9RRh3g==
 
 react-native-screens@^3.24.0:
   version "3.24.0"
