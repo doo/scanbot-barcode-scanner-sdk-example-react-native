@@ -2,7 +2,7 @@ Open Source libraries used in the Scanbot Barcode SDK for React Native version 4
 
 ```text
 
-Open Source libraries used in ScanbotBarcodeScannerSDK for iOS version 4.0.1:
+Open Source libraries used in ScanbotBarcodeScannerSDK for iOS version 4.0.2:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
