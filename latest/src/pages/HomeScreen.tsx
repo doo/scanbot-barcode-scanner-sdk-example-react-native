@@ -90,7 +90,17 @@ export class HomeScreen extends BaseScreen {
 
     if (item.id === FeatureId.ShowLicenseInfo) {
       const info = await ScanbotBarcodeSDK.getLicenseInfo();
-      ViewUtils.showAlert(JSON.stringify(info));
+
+      const fields = [
+        `License is ${info.isLicenseValid ? 'valid' : 'NOT VALID'}`,
+        info.licenseStatusMessage
+      ]
+
+      if (info.licenseExpirationDate != null) {
+        fields.push(`The license expires on ${new Date(info.licenseExpirationDate).toUTCString()}`)
+      }
+      
+      ViewUtils.showAlert(fields.join('\n'));
       return;
     }
 
