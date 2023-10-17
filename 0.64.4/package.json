@@ -26,7 +26,7 @@
     "@babel/core": "^7.16.7",
     "@babel/preset-flow": "7.16.7",
     "@babel/runtime": "^7.16.7",
-    "@babel/traverse": "7.16.7",
+    "@babel/traverse": "7.23.2",
     "@doo/eslint-config": "github:doo/eslint-config",
     "@doo/prettier-config": "github:doo/prettier-config",
     "@doo/ts-config": "github:doo/ts-config",
@@ -52,7 +52,7 @@
     "typescript": "3.9.10"
   },
   "resolutions": {
-    "@babel/traverse": "7.16.7"
+    "@babel/traverse": "7.23.2"
   },
   "jest": {
     "preset": "react-native",
