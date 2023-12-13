@@ -375,7 +375,7 @@ PODS:
   - React-jsinspector (0.72.4)
   - React-logger (0.72.4):
     - glog
-  - react-native-image-picker (5.6.1):
+  - react-native-image-picker (5.7.0):
     - React-Core
   - react-native-safe-area-context (4.7.1):
     - React-Core
@@ -491,7 +491,8 @@ PODS:
     - React-perflogger (= 0.72.4)
   - RNFS (2.20.0):
     - React-Core
-  - RNGestureHandler (2.12.1):
+  - RNGestureHandler (2.14.0):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - RNScanbotBarcodeSDK (4.0.3-beta.2):
     - RCT-Folly (= 2021.07.22.00)
@@ -723,7 +724,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c7f826e40fa9cab5d37cab6130b1af237332b594
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
   React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
-  react-native-image-picker: 5fcac5a5ffcb3737837f0617d43fd767249290de
+  react-native-image-picker: 3269f75c251cdcd61ab51b911dd30d6fff8c6169
   react-native-safe-area-context: 9697629f7b2cda43cf52169bb7e0767d330648c2
   React-NativeModulesApple: edb5ace14f73f4969df6e7b1f3e41bef0012740f
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
@@ -743,9 +744,9 @@ SPEC CHECKSUMS:
   React-utils: b79f2411931f9d3ea5781404dcbb2fa8a837e13a
   ReactCommon: 4b2bdcb50a3543e1c2b2849ad44533686610826d
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
-  RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
+  RNGestureHandler: 32a01c29ecc9bb0b5bf7bc0a33547f61b4dc2741
   RNScanbotBarcodeSDK: 15593d2033911e6f767d4fe0a638e9b07218f9b3
+  RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
   ScanbotBarcodeScannerSDK: 483b691cbcf4270a348b7b06fa560dc029289391
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 3efc43e0d48686ce2e8c60f99d4e6bd349aff981
@@ -753,4 +754,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f99c871e0d66d1c4be2b638eefd5ca015a22ff56
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.12.1
