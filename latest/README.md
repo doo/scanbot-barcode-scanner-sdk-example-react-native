@@ -97,7 +97,7 @@ npx react-native run-android
 
 Setup Environment, Provisioning and Signing settings:
 
-- Starting from React Native version 0.69 [suggested approach](https://reactnative.dev/docs/environment-setup#optional-configuring-your-environment) is to configure the Xcode environment using the `.xcode.env`. The `.xcode.env` file contains environment variable to export the path to the `node` executable in the `NODE_BINARY` variable. Please make sure that you've set the path correctly. You can also set the path from the terminal:
+- Starting from React Native version 0.69, the [suggested approach](https://reactnative.dev/docs/environment-setup#optional-configuring-your-environment) is to configure the Xcode environment using the `.xcode.env` file. The `.xcode.env` file contains an environment variable to export the path to the `node` executable in the `NODE_BINARY` variable. Please make sure that you've set the path correctly. You can also set the path from the terminal:
   
 ```bash
 cd ios
