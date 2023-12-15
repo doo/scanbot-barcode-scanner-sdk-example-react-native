@@ -95,7 +95,14 @@ npx react-native run-android
 
 ### For iOS
 
-Setup the Provisioning and Signing settings:
+Setup Environment, Provisioning and Signing settings:
+
+- Starting from React Native version 0.69, the [suggested approach](https://reactnative.dev/docs/environment-setup#optional-configuring-your-environment) is to configure the Xcode environment using the `.xcode.env` file. The `.xcode.env` file contains an environment variable to export the path to the `node` executable in the `NODE_BINARY` variable. Please make sure that you've set the path correctly. You can also set the path from the terminal:
+  
+```bash
+cd ios
+echo export NODE_BINARY=$(command -v node) > .xcode.env
+```
 
 - Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
 - Adjust *Provisioning* and *Signing* settings.
