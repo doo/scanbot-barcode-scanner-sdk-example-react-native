@@ -27,7 +27,7 @@ import {Navigation} from '../utils/Navigation';
 import {ViewUtils} from '../utils/ViewUtils';
 import * as ImagePicker from 'react-native-image-picker';
 import {ImagePickerResponse} from 'react-native-image-picker';
-import DocumentPicker from 'react-native-document-picker'
+import DocumentPicker from 'react-native-document-picker';
 import {DetectBarcodesOnImageArguments} from 'react-native-scanbot-barcode-scanner-sdk';
 import ImageResultsList from '../components/ImageResultsList';
 
@@ -77,17 +77,19 @@ export class HomeScreen extends BaseScreen {
   async checkLicense(): Promise<boolean> {
     try {
       const info = await ScanbotBarcodeSDK.getLicenseInfo();
-      
+
       if (info.data?.isLicenseValid === true) {
-        return true
+        return true;
       } else {
-        ViewUtils.showAlert('Your license is corrupted or expired, Scanbot features are disabled');
+        ViewUtils.showAlert(
+          'Your license is corrupted or expired, Scanbot features are disabled',
+        );
       }
-    } catch(error: any) {
+    } catch (error: any) {
       console.log('Error: ', error.message);
     }
 
-    return false
+    return false;
   }
 
   async onListItemClick(item: FeaturesListItemData) {
@@ -101,15 +103,22 @@ export class HomeScreen extends BaseScreen {
         const info = await ScanbotBarcodeSDK.getLicenseInfo();
 
         const fields = [
-          info.data?.licenseStatusMessage ?? `License is ${info.data?.isLicenseValid === true ? 'valid' : 'NOT VALID'}`
+          info.data?.licenseStatusMessage ??
+            `License is ${
+              info.data?.isLicenseValid === true ? 'valid' : 'NOT VALID'
+            }`,
         ];
 
         if (info.data?.licenseExpirationDate) {
-          fields.push(`The license expires on ${new Date(Number(info.data?.licenseExpirationDate)).toUTCString()}`)
+          fields.push(
+            `The license expires on ${new Date(
+              Number(info.data?.licenseExpirationDate),
+            ).toUTCString()}`,
+          );
+
+          ViewUtils.showAlert(fields.join('\n'));
         }
-        
-        ViewUtils.showAlert(fields.join('\n'));
-      } catch(error: any) {
+      } catch (error: any) {
         console.log('Error: ', error.message);
       }
 
@@ -125,7 +134,7 @@ export class HomeScreen extends BaseScreen {
         this.startBarcodeScanner();
         break;
 
-        case FeatureId.BatchBarcodeScanner:
+      case FeatureId.BatchBarcodeScanner:
         this.startBatchBarcodeScanner();
         break;
 
@@ -167,7 +176,7 @@ export class HomeScreen extends BaseScreen {
         textContainerColor: '#000000',
         highlightedPolygonColor: '#EA295B',
         highlightedTextColor: '#EA295B',
-        highlightedTextContainerColor: '#FFFFFF'
+        highlightedTextContainerColor: '#FFFFFF',
       },
       replaceCancelButtonWithIcon: true,
       codeDensity: 'HIGH',
@@ -267,7 +276,9 @@ export class HomeScreen extends BaseScreen {
 
   async importPdfAndExtractImages() {
     try {
-      const pdfFileUri = (await DocumentPicker.pickSingle({ type: [DocumentPicker.types.pdf] })).uri;
+      const pdfFileUri = (
+        await DocumentPicker.pickSingle({type: [DocumentPicker.types.pdf]})
+      ).uri;
       if (!pdfFileUri) {
         ViewUtils.showAlert('PDF file is not selected');
         return;
@@ -279,11 +290,13 @@ export class HomeScreen extends BaseScreen {
         pdfFilePath: pdfFileUri,
       };
 
-      const result = await ScanbotBarcodeSDK.extractImagesFromPDF(extractArguments);
+      const result = await ScanbotBarcodeSDK.extractImagesFromPDF(
+        extractArguments,
+      );
       this.hideProgress();
 
       if (result.status === 'OK' && result.data) {
-        ImageResultsList.imageUrls = result.data
+        ImageResultsList.imageUrls = result.data;
         this.pushPage(Navigation.IMAGE_RESULTS);
       }
     } catch (error: any) {

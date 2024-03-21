@@ -1,4 +1,7 @@
-import {BarcodeResultField, BarcodeScannerResult} from 'react-native-scanbot-barcode-scanner-sdk';
+import {
+  BarcodeResultField,
+  BarcodeScannerResult,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export type CachedBarcode = {id: string} & BarcodeResultField;
 
@@ -11,7 +14,7 @@ class CachedBarcodeResult {
 
   static update(barcodeResult: BarcodeScannerResult) {
     CachedBarcodeResult.clear();
-    
+
     if (barcodeResult.barcodes) {
       for (let i = 0; i < barcodeResult.barcodes.length; i++) {
         const barcode = barcodeResult.barcodes[i];

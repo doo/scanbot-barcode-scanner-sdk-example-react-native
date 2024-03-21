@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 
-import {
-  FlatList,
-  StyleSheet,
-  Image,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, Image, View} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,14 +27,13 @@ const styles = StyleSheet.create({
 });
 
 class ImageResultsList extends Component {
+  static imageUrls: string[];
 
-  static imageUrls: string[]
-
-  imageItem = ({item} : {item: string}) => (
-      <View style={styles.verticalContainer}>
-        <Image style={styles.image} source={{uri: item, scale: 1}} />
-        <View style={styles.listSeparator} />
-      </View>
+  imageItem = ({item}: {item: string}) => (
+    <View style={styles.verticalContainer}>
+      <Image style={styles.image} source={{uri: item, scale: 1}} />
+      <View style={styles.listSeparator} />
+    </View>
   );
 
   render() {

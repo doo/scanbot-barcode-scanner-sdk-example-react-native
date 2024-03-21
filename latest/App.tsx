@@ -25,11 +25,10 @@ const Stack = createStackNavigator();
 const LICENSE_KEY = '';
 
 export class App extends React.Component {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
 
-    if (BarcodeTypesSettings.list.length == 0) {
+    if (BarcodeTypesSettings.list.length === 0) {
       BarcodeTypesSettings.initialize();
     }
 
@@ -43,7 +42,7 @@ export class App extends React.Component {
       // Optional storage path. See the method description!
       storageBaseDirectory: Utils.getCustomStoragePath(),
     })
-      .then((result) => {
+      .then(result => {
         console.log(result.data);
       })
       .catch(error => {
@@ -52,7 +51,9 @@ export class App extends React.Component {
   }
 
   printReactNativeInfo() {
-    const uiManager = (global as any)?.nativeFabricUIManager ? 'New Architecture' : 'Old Architecture';
+    const uiManager = (global as any)?.nativeFabricUIManager
+      ? 'New Architecture'
+      : 'Old Architecture';
     console.log(`Using ${uiManager}`);
   }
 
