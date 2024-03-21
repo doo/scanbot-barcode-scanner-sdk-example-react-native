@@ -4,10 +4,8 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  Image,
   TouchableWithoutFeedback,
   View,
-  ImageSourcePropType,
 } from 'react-native';
 
 import CachedBarcodeResult, {CachedBarcode} from '../model/CachedBarcodeResult';
@@ -72,11 +70,6 @@ class BarcodeResultList extends Component {
     <TouchableWithoutFeedback onPress={() => {}}>
       <View style={styles.verticalContainer}>
         <View style={styles.listItemContainer}>
-          {CachedBarcodeResult.imageUri != null ? <Image
-            style={styles.image}
-            source={{uri: CachedBarcodeResult.imageUri, scale: 1}}
-            /> : <View style={styles.image}/>
-          }
           <View style={styles.listItemTextContainer}>
             <Text style={styles.smallTextBold}>{item.type}</Text>
             <Text style={styles.smallText}>{item.textWithExtension}</Text>
@@ -94,12 +87,6 @@ class BarcodeResultList extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {CachedBarcodeResult.imageUri ? (
-          <Image
-            style={styles.snappedImage}
-            source={{uri: CachedBarcodeResult.imageUri, scale: 1}}
-          />
-        ) : null}
         <FlatList
           data={CachedBarcodeResult.list}
           keyExtractor={item => item.id}

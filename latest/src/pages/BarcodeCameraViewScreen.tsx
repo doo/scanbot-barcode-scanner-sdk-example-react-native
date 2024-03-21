@@ -12,12 +12,12 @@ import {BaseScreen} from '../components/BaseScreen';
 import {Styles} from '../model/Styles';
 
 import {
-  BarcodeResult,
+  BarcodeScannerResult,
   ScanbotBarcodeCameraView,
   ScanbotBarcodeCameraViewConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 import BarcodeTypes from '../model/BarcodeTypesSettings';
-import {BarcodeResultField} from 'react-native-scanbot-barcode-scanner-sdk/src/result';
+import {BarcodeResultField} from 'react-native-scanbot-barcode-scanner-sdk';
 import {Colors} from '../model/Colors';
 
 const RESULT_VIEW_VERTICAL_OFFSET = 32;
@@ -33,7 +33,7 @@ const defaultBarcodeCameraViewConfiguration: () => ScanbotBarcodeCameraViewConfi
     finderBackgroundOpacity: 0.7,
     barcodeFormats: BarcodeTypes.getAcceptedFormats(),
     acceptedDocumentFormats: [],
-    msiPlesseyChecksumAlgorithm: 'Mod10',
+    msiPlesseyChecksumAlgorithm: 'MOD_10',
     engineMode: 'NEXT_GEN',
     finderInset: {
       left: 48,
@@ -156,8 +156,8 @@ export class BarcodeCameraViewScreen extends BaseScreen {
             <ScanbotBarcodeCameraView
               style={this.styles.cameraView}
               configuration={barcodeCameraViewConfiguration}
-              onBarcodeScannerResult={(result: BarcodeResult) => {
-                if (result.barcodes.length > 0) {
+              onBarcodeScannerResult={(result: BarcodeScannerResult) => {
+                if (result.barcodes && result.barcodes.length > 0) {
                   const count = result.barcodes.length;
                   const optionalText =
                     count > 4 ? `\n(and ${count - 4} more)` : '';

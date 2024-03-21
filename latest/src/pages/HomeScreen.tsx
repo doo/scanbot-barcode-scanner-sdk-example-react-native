@@ -12,6 +12,7 @@ import {
 import ScanbotBarcodeSDK, {
   BarcodeScannerConfiguration,
   BatchBarcodeScannerConfiguration,
+  ExtractImagesFromPdfArguments,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 import {BaseScreen} from '../components/BaseScreen';
 import CachedBarcodeResult from '../model/CachedBarcodeResult';
@@ -23,11 +24,12 @@ import {
 } from '../model/FeaturesListDataSource';
 import {Styles} from '../model/Styles';
 import {Navigation} from '../utils/Navigation';
-import Utils from '../utils/Utils';
 import {ViewUtils} from '../utils/ViewUtils';
 import * as ImagePicker from 'react-native-image-picker';
 import {ImagePickerResponse} from 'react-native-image-picker';
-import {DetectBarcodesOnImageArguments} from 'react-native-scanbot-barcode-scanner-sdk/src/configuration';
+import DocumentPicker from 'react-native-document-picker';
+import {DetectBarcodesOnImageArguments} from 'react-native-scanbot-barcode-scanner-sdk';
+import ImageResultsList from '../components/ImageResultsList';
 
 export class HomeScreen extends BaseScreen {
   render() {
@@ -72,14 +74,22 @@ export class HomeScreen extends BaseScreen {
     );
   }
 
-  async checkLicense() {
-    const info = await ScanbotBarcodeSDK.getLicenseInfo();
-    if (!info.isLicenseValid) {
-      ViewUtils.showAlert(
-        'Your license is corrupted or expired, Scanbot features are disabled',
-      );
+  async checkLicense(): Promise<boolean> {
+    try {
+      const info = await ScanbotBarcodeSDK.getLicenseInfo();
+
+      if (info.data?.isLicenseValid === true) {
+        return true;
+      } else {
+        ViewUtils.showAlert(
+          'Your license is corrupted or expired, Scanbot features are disabled',
+        );
+      }
+    } catch (error: any) {
+      console.log('Error: ', error.message);
     }
-    return info.isLicenseValid;
+
+    return false;
   }
 
   async onListItemClick(item: FeaturesListItemData) {
@@ -89,44 +99,42 @@ export class HomeScreen extends BaseScreen {
     }
 
     if (item.id === FeatureId.ShowLicenseInfo) {
-      const info = await ScanbotBarcodeSDK.getLicenseInfo();
+      try {
+        const info = await ScanbotBarcodeSDK.getLicenseInfo();
 
-      const fields = [
-        `License is ${info.isLicenseValid ? 'valid' : 'NOT VALID'}`,
-        info.licenseStatusMessage
-      ]
+        const fields = [
+          info.data?.licenseStatusMessage ??
+            `License is ${
+              info.data?.isLicenseValid === true ? 'valid' : 'NOT VALID'
+            }`,
+        ];
 
-      if (info.licenseExpirationDate != null) {
-        fields.push(`The license expires on ${new Date(info.licenseExpirationDate).toUTCString()}`)
+        if (info.data?.licenseExpirationDate) {
+          fields.push(
+            `The license expires on ${new Date(
+              Number(info.data?.licenseExpirationDate),
+            ).toUTCString()}`,
+          );
+
+          ViewUtils.showAlert(fields.join('\n'));
+        }
+      } catch (error: any) {
+        console.log('Error: ', error.message);
       }
-      
-      ViewUtils.showAlert(fields.join('\n'));
+
       return;
     }
 
-    if (!(await Utils.checkLicense())) {
+    if (!(await this.checkLicense())) {
       return;
     }
 
     switch (item.id) {
       case FeatureId.BarcodeScanner:
-        if (!(await this.checkLicense())) {
-          return;
-        }
-        this.startBarcodeScanner(false);
-        break;
-
-      case FeatureId.BarcodeScannerWithImage:
-        if (!(await this.checkLicense())) {
-          return;
-        }
-        this.startBarcodeScanner(true);
+        this.startBarcodeScanner();
         break;
 
       case FeatureId.BatchBarcodeScanner:
-        if (!(await this.checkLicense())) {
-          return;
-        }
         this.startBatchBarcodeScanner();
         break;
 
@@ -136,6 +144,10 @@ export class HomeScreen extends BaseScreen {
 
       case FeatureId.PickImageFromGallery:
         this.importImageAndDetectBarcodes();
+        break;
+
+      case FeatureId.ExtractImagesFromPDF:
+        this.importPdfAndExtractImages();
         break;
 
       case FeatureId.AcceptedBarcodeTypesFilter:
@@ -148,21 +160,23 @@ export class HomeScreen extends BaseScreen {
     }
   }
 
-  async startBarcodeScanner(withImage: boolean) {
+  async startBarcodeScanner() {
     const config: BarcodeScannerConfiguration = {
       topBarBackgroundColor: '#c8193c',
-      barcodeImageGenerationType: withImage ? 'CAPTURED_IMAGE' : 'NONE',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
-      msiPlesseyChecksumAlgorithm: 'Mod10',
-      allowedInterfaceOrientations: 'ALL',
+      msiPlesseyChecksumAlgorithm: 'MOD_10',
+      orientationLockMode: 'NONE',
       successBeepEnabled: true,
       overlayConfiguration: {
-        overlayEnabled: !withImage,
+        overlayEnabled: true,
         automaticSelectionEnabled: false,
-        overlayTextFormat: 'CODE_AND_TYPE',
+        textFormat: 'CODE_AND_TYPE',
         polygonColor: '#FFFC33',
         textColor: '#FFFC33',
         textContainerColor: '#000000',
+        highlightedPolygonColor: '#EA295B',
+        highlightedTextColor: '#EA295B',
+        highlightedTextContainerColor: '#FFFFFF',
       },
       replaceCancelButtonWithIcon: true,
       codeDensity: 'HIGH',
@@ -170,13 +184,12 @@ export class HomeScreen extends BaseScreen {
 
     try {
       const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
-      if (result.status === 'OK') {
-        CachedBarcodeResult.update(result);
-        CachedBarcodeResult.imageUri = result.imageFileUri;
+      if (result.status === 'OK' && result.data) {
+        CachedBarcodeResult.update(result.data);
         this.pushPage(Navigation.BARCODE_RESULTS);
       }
-    } catch (error) {
-      console.log('error:', JSON.stringify(error));
+    } catch (error: any) {
+      console.log('Error: ', error.message);
     }
   }
 
@@ -184,12 +197,12 @@ export class HomeScreen extends BaseScreen {
     const config: BatchBarcodeScannerConfiguration = {
       topBarBackgroundColor: '#c8193c',
       barcodeFormats: BarcodeTypesSettings.getAcceptedFormats(),
-      msiPlesseyChecksumAlgorithm: 'Mod10',
-      clearButtonTitle: 'TEST',
+      msiPlesseyChecksumAlgorithm: 'MOD_10',
       detailsActionColor: '#00ff00',
       overlayConfiguration: {
         overlayEnabled: true,
         automaticSelectionEnabled: true,
+        textFormat: 'CODE_AND_TYPE',
         polygonColor: '#FFFC33',
         textColor: '#FFFC33',
         textContainerColor: '#000000',
@@ -203,19 +216,16 @@ export class HomeScreen extends BaseScreen {
 
     try {
       const result = await ScanbotBarcodeSDK.startBatchBarcodeScanner(config);
-      if (result.status === 'OK') {
-        CachedBarcodeResult.update(result);
+      if (result.status === 'OK' && result.data) {
+        CachedBarcodeResult.update(result.data);
         this.pushPage(Navigation.BARCODE_RESULTS);
       }
-    } catch (error) {
-      console.log('error:', JSON.stringify(error));
+    } catch (error: any) {
+      console.log('Error: ', error.message);
     }
   }
 
   async importImageAndDetectBarcodes() {
-    if (!(await this.checkLicense())) {
-      return;
-    }
     const response: ImagePickerResponse = await new Promise(resolve => {
       const options: ImagePicker.ImageLibraryOptions = {
         selectionLimit: 1,
@@ -244,24 +254,60 @@ export class HomeScreen extends BaseScreen {
     };
 
     this.showProgress();
-    const barcodeResult = await ScanbotBarcodeSDK.detectBarcodesOnImage(
-      detectOptions,
-    );
-    this.hideProgress();
 
-    if (barcodeResult.status === 'OK') {
-      CachedBarcodeResult.update(barcodeResult);
-      CachedBarcodeResult.imageUri = selectedImageUri;
-      this.pushPage(Navigation.BARCODE_RESULTS);
-    } else {
-      ViewUtils.showAlert('Something went wrong. Please try again');
+    try {
+      const barcodeResult = await ScanbotBarcodeSDK.detectBarcodesOnImage(
+        detectOptions,
+      );
+      this.hideProgress();
+
+      if (barcodeResult.status === 'OK' && barcodeResult.data) {
+        CachedBarcodeResult.update(barcodeResult.data);
+        this.pushPage(Navigation.BARCODE_RESULTS);
+      } else {
+        ViewUtils.showAlert('Something went wrong. Please try again');
+      }
+    } catch (error: any) {
+      this.hideProgress();
+
+      ViewUtils.showAlert('Something went wrong. ' + error.message);
+    }
+  }
+
+  async importPdfAndExtractImages() {
+    try {
+      const pdfFileUri = (
+        await DocumentPicker.pickSingle({type: [DocumentPicker.types.pdf]})
+      ).uri;
+      if (!pdfFileUri) {
+        ViewUtils.showAlert('PDF file is not selected');
+        return;
+      }
+
+      this.showProgress();
+
+      const extractArguments: ExtractImagesFromPdfArguments = {
+        pdfFilePath: pdfFileUri,
+      };
+
+      const result = await ScanbotBarcodeSDK.extractImagesFromPDF(
+        extractArguments,
+      );
+      this.hideProgress();
+
+      if (result.status === 'OK' && result.data) {
+        ImageResultsList.imageUrls = result.data;
+        this.pushPage(Navigation.IMAGE_RESULTS);
+      }
+    } catch (error: any) {
+      this.hideProgress();
+
+      ViewUtils.showAlert('Something went wrong. ' + error.message);
+      return;
     }
   }
 
   async clearImageStorage() {
-    if (!(await this.checkLicense())) {
-      return;
-    }
     const result = await ScanbotBarcodeSDK.cleanup();
     ViewUtils.showAlert(JSON.stringify(result));
   }

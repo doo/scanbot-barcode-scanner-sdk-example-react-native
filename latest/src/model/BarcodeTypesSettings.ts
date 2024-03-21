@@ -20,6 +20,7 @@ class BarcodeTypesSettings {
     const list = [
       'AZTEC',
       'CODABAR',
+      'CODE_25',
       'CODE_39',
       'CODE_93',
       'CODE_128',
@@ -29,15 +30,21 @@ class BarcodeTypesSettings {
       'ITF',
       'PDF_417',
       'QR_CODE',
+      'MICRO_QR_CODE',
       'RSS_14',
       'RSS_EXPANDED',
       'UPC_A',
       'UPC_E',
+      'MSI_PLESSEY',
       'IATA_2_OF_5',
       'INDUSTRIAL_2_OF_5',
-      'MSI_PLESSEY',
-      'CODE_25',
-      'MICRO_QR_CODE',    
+      'USPS_INTELLIGENT_MAIL',
+      'ROYAL_MAIL',
+      'JAPAN_POST',
+      'ROYAL_TNT_POST',
+      'AUSTRALIA_POST',
+      'DATABAR_LIMITED',
+      'GS1_COMPOSITE',
     ];
 
     for (let i = 0; i < list.length; i++) {

@@ -3,10 +3,10 @@ import {Colors} from './Colors';
 
 export enum FeatureId {
   BarcodeScanner = 1,
-  BarcodeScannerWithImage,
   BatchBarcodeScanner,
   BarcodeCameraView,
   PickImageFromGallery,
+  ExtractImagesFromPDF,
   AcceptedBarcodeTypesFilter,
   ShowLicenseInfo,
   ClearImageStorage,
@@ -34,10 +34,6 @@ export class FeaturesListDataSource {
           title: 'RTU-UI',
         },
         {
-          id: FeatureId.BarcodeScannerWithImage,
-          title: 'RTU-UI With Image',
-        },
-        {
           id: FeatureId.BatchBarcodeScanner,
           title: 'RTU-UI: Batch Barcode Scanner',
         },
@@ -48,6 +44,10 @@ export class FeaturesListDataSource {
         {
           id: FeatureId.PickImageFromGallery,
           title: 'Pick image from Gallery',
+        },
+        {
+          id: FeatureId.ExtractImagesFromPDF,
+          title: 'Extract images From PDF',
         },
         {
           id: FeatureId.AcceptedBarcodeTypesFilter,
