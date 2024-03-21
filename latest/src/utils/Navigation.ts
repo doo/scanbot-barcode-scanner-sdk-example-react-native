@@ -3,6 +3,8 @@ export class Navigation {
 
   public static BARCODE_RESULTS = 'Barcode Results';
 
+  public static IMAGE_RESULTS = 'Image Results';
+
   public static BARCODE_CAMERA_VIEW = 'Barcode Camera View (EXPERIMENTAL)';
 
   public static BARCODE_TYPES = 'Barcode Types';

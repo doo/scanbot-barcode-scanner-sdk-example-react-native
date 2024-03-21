@@ -9,6 +9,7 @@ import {HomeScreen} from './src/pages/HomeScreen';
 import {Styles} from './src/model/Styles';
 import {BarcodeCameraViewScreen} from './src/pages/BarcodeCameraViewScreen';
 import {BarcodeResultsListScreen} from './src/pages/BarcodeResultsListScreen';
+import {ImageResultsListScreen} from './src/pages/ImageResultsListScreen';
 import {BarcodeTypesScreen} from './src/pages/BarcodeTypesScreen';
 
 const Stack = createStackNavigator();
@@ -42,11 +43,11 @@ export class App extends React.Component {
       // Optional storage path. See the method description!
       storageBaseDirectory: Utils.getCustomStoragePath(),
     })
-      .then(() => {
-        console.log('Scanbot Barcode SDK Initialized');
+      .then((result) => {
+        console.log(result.data);
       })
       .catch(error => {
-        console.log('Initialization error: ', error);
+        console.log('Initialization error: ', error.message);
       });
   }
 
@@ -74,6 +75,15 @@ export class App extends React.Component {
             options={{
               headerBackTitleVisible: false,
               title: 'Barcode Results',
+              ...sharedHeaderProps,
+            }}
+          />
+          <Stack.Screen
+            name={Navigation.IMAGE_RESULTS}
+            component={ImageResultsListScreen}
+            options={{
+              headerBackTitleVisible: false,
+              title: 'Image Results',
               ...sharedHeaderProps,
             }}
           />
