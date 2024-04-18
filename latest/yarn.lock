@@ -5897,6 +5897,13 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-document-picker@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-9.1.1.tgz#54390c500396b61ed697095ef8a6f9cbe0977bc9"
+  integrity sha512-BW+7DbsILuFThlBm7NUFVUmKKf6Awkcf9R0q8wiCU2DlGGtAKQTt2iHpO5+Dn/7WMPB+rqNv3X1HsmJQ0t5R3g==
+  dependencies:
+    invariant "^2.2.4"
+
 react-native-fs@^2.20.0:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/react-native-fs/-/react-native-fs-2.20.0.tgz#05a9362b473bfc0910772c0acbb73a78dbc810f6"
@@ -5926,10 +5933,10 @@ react-native-safe-area-context@4.7.1:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.7.1.tgz#b7be2d68dee909717cfa439bb5c7966042d231e8"
   integrity sha512-X2pJG2ttmAbiGlItWedvDkZg1T1ikmEDiz+7HsiIwAIm2UbFqlhqn+B1JF53mSxPzdNaDcCQVHRNPvj8oFu6Yg==
 
-react-native-scanbot-barcode-scanner-sdk@4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-scanbot-barcode-scanner-sdk/-/react-native-scanbot-barcode-scanner-sdk-4.0.4.tgz#00c8a1d2dd663a7ae7cf7868b6ec546bcf6d035b"
-  integrity sha512-iT+wCSftPvcasRWsW4KsLVvzNU9145gIGKYKP5WcdkcHgx/jFPgdEm6NPBa4TJdscTBweQ/hSFlONWmFtjurlw==
+react-native-scanbot-barcode-scanner-sdk@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-scanbot-barcode-scanner-sdk/-/react-native-scanbot-barcode-scanner-sdk-4.2.0.tgz#0b61d743c5034282972a2578b67a7ed88da10a6d"
+  integrity sha512-m+Ho130ItaZDpKeFmU6bG6jA+XZrir64UZx/h77YojYNmTKl1JuUysZQU5HorMHo5jNtgisIpaDKnf8bSyOmiQ==
 
 react-native-screens@3.24.0:
   version "3.24.0"

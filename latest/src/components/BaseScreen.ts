@@ -1,8 +1,6 @@
 import React from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class BaseScreen extends React.Component<any> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
 
