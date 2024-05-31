@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "eslint latest",
     "start": "react-native start",
     "test": "jest",
     "switch-architecture": "sh switch-rct-architecture.sh",

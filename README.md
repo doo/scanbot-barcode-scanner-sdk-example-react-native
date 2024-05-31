@@ -26,8 +26,8 @@ framework or features, please visit our [Support Page](https://docs.scanbot.io/s
 
 ## Supported Barcode Types
 
-- [1D Barcodes](https://scanbot.io/products/barcode-software/1d-barcode-scanner/): [Codabar](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/codabar), [Code 39](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/code-39), [Code 93](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-93/), [Code 128](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-128/), [IATA 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/standard-2-of-5/), [Industrial 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/industrial-2-of-5/), [ITF](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/itf), [EAN-8](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [EAN-13](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [MSI Plessey](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/msi-plessey), [RSS 14](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [RSS Expanded (Databar)](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [UPC-A](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc/), [UPC-E](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/upc-code).
-- [2D Barcodes](https://scanbot.io/products/barcode-software/2d-barcode-scanner/): [Aztec](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/aztec), [Data Matrix](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/datamatrix), [PDF417](https://scanbot.io/products/barcode-software/2d-barcode-scanner/pdf417/), [QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/qr-code/).
+- [1D Barcodes](https://scanbot.io/products/barcode-software/1d-barcode-scanner/): [Codabar](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/codabar), [Code 39](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/code-39), [Code 93](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-93/), [Code 128](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-128/), [IATA 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/standard-2-of-5/), [Industrial 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/industrial-2-of-5/), [ITF](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/itf), [EAN-8](https://scanbot.io/products/barcode-software/1d-barcode-scanner/ean-8), [EAN-13](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [MSI Plessey](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/msi-plessey), [RSS 14](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [RSS Expanded (Databar)](https://scanbot.io/products/barcode-software/1d-barcode-scanner/rss-expanded/), [UPC-A](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc/), [UPC-E](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc-e/), [Code 25](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-25/), [USPS Intelligent Mail](https://scanbot.io/products/barcode-software/1d-barcode-scanner/intelligent-mail-barcode/), [RM4SCC](https://scanbot.io/products/barcode-software/1d-barcode-scanner/rm4scc/), [Japan Post 4-State](https://scanbot.io/products/barcode-software/1d-barcode-scanner/japan-post-4-state-customer-code/), [Australia Post 4-State](https://scanbot.io/products/barcode-software/1d-barcode-scanner/australia-post-4-state-customer-code/), [KIX](https://scanbot.io/products/barcode-software/1d-barcode-scanner/kix/), RSS Limited (Databar), GS1 Composite.
+- [2D Barcodes](https://scanbot.io/products/barcode-software/2d-barcode-scanner/): [Aztec](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/aztec), [Data Matrix](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/datamatrix), [PDF417](https://scanbot.io/products/barcode-software/2d-barcode-scanner/pdf417/), [QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/qr-code/), [Micro QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/micro-qr-code/).
 
 💡 Also check out our blog post [Types of barcodes](https://scanbot.io/blog/types-of-barcodes/).
 
@@ -54,10 +54,108 @@ For more details about the Scanbot Barcode Scanner SDK for React Native please s
 
 # How to run this app
 
-Starting from Scanbot React Native Barcode SDK v4.0.0, the required minimum version for React Native is v0.68+. 
+## Step 0: Install Command Line Tools
 
-You can find the latest example project under the folder `latest`. This project will be updated frequently with the latest Scanbot SDK and React Native updates.
+The following command line tools are required in order to run this app:
 
-The previous example project is located inside the folder `0.64.4`. This project uses Scanbot React Native Barcode SDK v3.7.0 and React Native v0.64.4.
+```bash
+# Install bundler
+sudo gem install bundler;
 
-You can find a detailed README inside each project, with instructions on how to run and debug the demo app.
+# Install cocoapods
+sudo gem install cocoapods;
+```
+
+
+## Step 1: Install Dependencies
+
+To install the project dependencies, run the following commands
+
+```bash
+# Install the required dependencies
+yarn
+
+# Install the iOS dependencies
+cd ios 
+bundle install
+bundle exec pod install --repo-update
+cd ..
+```
+
+
+## Step 2: Start your Application
+
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Plugin in your physical device via USB and run the following command to start your _Android_ or _iOS_ app:
+
+### For Android
+
+```bash
+npx react-native run-android
+```
+
+### For iOS
+
+Setup Environment, Provisioning and Signing settings:
+
+- Starting from React Native version 0.69, the [suggested approach](https://reactnative.dev/docs/environment-setup#optional-configuring-your-environment) is to configure the Xcode environment using the `.xcode.env` file. The `.xcode.env` file contains an environment variable to export the path to the `node` executable in the `NODE_BINARY` variable. Please make sure that you've set the path correctly. You can also set the path from the terminal:
+  
+```bash
+cd ios
+echo export NODE_BINARY=$(command -v node) > .xcode.env
+```
+
+- Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
+- Adjust *Provisioning* and *Signing* settings.
+
+Then run:
+
+```bash
+npx react-native run-ios --device # Remove the --device flag to run the app on a simulator
+```
+
+If everything is set up _correctly_, you should see your new app running on your device, _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your device/emulator/simulator correctly.
+
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively:
+
+## Using the new architecture
+
+Scanbot Barcode SDK supports the [new architecture](https://reactnative.dev/docs/new-architecture-intro). Here's how you can enable it in this app.
+
+**Android**
+
+Set `newArchEnabled` your `android/gradle.properties` file as true:
+
+*android/gradle.properties*
+
+```properties
+newArchEnabled=true
+```
+
+**iOS**
+
+Re-install the iOS dependencies by running the following commands:
+
+```bash
+cd ios
+RCT_NEW_ARCH_ENABLED=1 bundle exec pod install --repo-update
+cd ..
+```
+
+## Requirements
+
+### Built using
+
+* `react-native-cli` `latest`
+* `node` v16.20.2
+* `npm` v8.19.4
+
+### What else can go wrong?
+
+###### Pod not found
+
+`pod repo update`
+
+###### Still at a loss? It is probably a cache issue
+
+* `npm cache clean --force && watchman watch-del-all`
+* Restart metro server!
