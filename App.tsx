@@ -1,18 +1,16 @@
 import React from 'react';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
-import BarcodeTypesSettings from './src/model/BarcodeTypesSettings';
-import Utils from './src/utils/Utils';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {Navigation} from './src/utils/Navigation';
-import {HomeScreen} from './src/pages/HomeScreen';
-import {Styles} from './src/model/Styles';
-import {BarcodeCameraViewScreen} from './src/pages/BarcodeCameraViewScreen';
-import {BarcodeResultsListScreen} from './src/pages/BarcodeResultsListScreen';
-import {ImageResultsListScreen} from './src/pages/ImageResultsListScreen';
-import {BarcodeTypesScreen} from './src/pages/BarcodeTypesScreen';
+import {Styles} from './src/model/Styles.ts';
+import {Navigation} from './src/utils/Navigation.ts';
+import {HomeScreen} from './src/pages/HomeScreen.tsx';
+import {BarcodeResultsListScreen} from './src/pages/BarcodeResultsListScreen.tsx';
+import {ImageResultsListScreen} from './src/pages/ImageResultsListScreen.tsx';
+import {BarcodeCameraViewScreen} from './src/pages/BarcodeCameraViewScreen.tsx';
+import {BarcodeTypesScreen} from './src/pages/BarcodeTypesScreen.tsx';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 /**
  * TODO Add the license key here.
@@ -24,92 +22,73 @@ const Stack = createStackNavigator();
  */
 const LICENSE_KEY = '';
 
-export class App extends React.Component {
-  constructor(props: any) {
-    super(props);
-
-    if (BarcodeTypesSettings.list.length === 0) {
-      BarcodeTypesSettings.initialize();
-    }
-
-    this.printReactNativeInfo();
-
-    ScanbotBarcodeSDK.initializeSdk({
-      // Consider switching logging OFF in production builds for security and performance reasons!
-      loggingEnabled: true,
-      enableNativeLogging: false,
-      licenseKey: LICENSE_KEY,
-      // Optional storage path. See the method description!
-      storageBaseDirectory: Utils.getCustomStoragePath(),
+export default function App() {
+  ScanbotBarcodeSDK.initializeSdk({
+    // Consider switching logging OFF in production builds for security and performance reasons!
+    loggingEnabled: true,
+    enableNativeLogging: false,
+    licenseKey: LICENSE_KEY,
+    // Optional storage path. See the method description!
+    // storageBaseDirectory: Utils.getCustomStoragePath(),
+  })
+    .then(result => {
+      console.log(result.data);
     })
-      .then(result => {
-        console.log(result.data);
-      })
-      .catch(error => {
-        console.log('Initialization error: ', error.message);
-      });
-  }
+    .catch(error => {
+      console.log('Initialization error: ', error.message);
+    });
 
-  printReactNativeInfo() {
-    const uiManager = (global as any)?.nativeFabricUIManager
-      ? 'New Architecture'
-      : 'Old Architecture';
-    console.log(`Using ${uiManager}`);
-  }
+  console.log(
+    `Using ${
+      (global as any)?.nativeFabricUIManager
+        ? 'New Architecture'
+        : 'Old Architecture'
+    }`,
+  );
 
-  render() {
-    const sharedHeaderProps = {
-      headerStyle: {
-        borderBottomWidth: 0,
-        elevation: 0,
-        shadowColor: 'transparent',
-      },
-    };
-
-    return (
-      <NavigationContainer theme={Styles.ScanbotTheme}>
-        <Stack.Navigator initialRouteName={Navigation.HOME}>
-          <Stack.Screen name={Navigation.HOME} component={HomeScreen} />
-          <Stack.Screen
-            name={Navigation.BARCODE_RESULTS}
-            component={BarcodeResultsListScreen}
-            options={{
-              headerBackTitleVisible: false,
-              title: 'Barcode Results',
-              ...sharedHeaderProps,
-            }}
-          />
-          <Stack.Screen
-            name={Navigation.IMAGE_RESULTS}
-            component={ImageResultsListScreen}
-            options={{
-              headerBackTitleVisible: false,
-              title: 'Image Results',
-              ...sharedHeaderProps,
-            }}
-          />
-          <Stack.Screen
-            name={Navigation.BARCODE_CAMERA_VIEW}
-            component={BarcodeCameraViewScreen}
-            options={{
-              headerBackTitleVisible: false,
-              title: 'Barcode Camera View',
-              ...sharedHeaderProps,
-            }}
-          />
-          <Stack.Screen
-            name={Navigation.BARCODE_TYPES}
-            component={BarcodeTypesScreen}
-            options={{
-              headerBackTitleVisible: false,
-              title: 'Barcode Types',
-              ...sharedHeaderProps,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
+  return (
+    <NavigationContainer theme={Styles.ScanbotTheme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerBackTitleVisible: false,
+        }}
+        initialRouteName={Navigation.HOME}>
+        <Stack.Screen
+          options={{
+            headerBackTitleVisible: false,
+          }}
+          name={Navigation.HOME}
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name={Navigation.BARCODE_RESULTS}
+          component={BarcodeResultsListScreen}
+          options={{
+            title: 'Barcode Results',
+          }}
+        />
+        <Stack.Screen
+          name={Navigation.IMAGE_RESULTS}
+          component={ImageResultsListScreen}
+          options={{
+            title: 'Image Results',
+          }}
+        />
+        <Stack.Screen
+          name={Navigation.BARCODE_CAMERA_VIEW}
+          component={BarcodeCameraViewScreen}
+          options={{
+            title: 'Barcode Camera View',
+          }}
+        />
+        <Stack.Screen
+          name={Navigation.BARCODE_TYPES}
+          component={BarcodeTypesScreen}
+          options={{
+            title: 'Barcode Types',
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
-export default App;
