@@ -1,14 +1,24 @@
 import React from 'react';
+import {ActivityIndicator, SafeAreaView, StyleSheet} from 'react-native';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {Styles} from './src/model/Styles.ts';
-import {Navigation} from './src/utils/Navigation.ts';
-import {HomeScreen} from './src/pages/HomeScreen.tsx';
-import {BarcodeResultsListScreen} from './src/pages/BarcodeResultsListScreen.tsx';
-import {ImageResultsListScreen} from './src/pages/ImageResultsListScreen.tsx';
-import {BarcodeCameraViewScreen} from './src/pages/BarcodeCameraViewScreen.tsx';
-import {BarcodeTypesScreen} from './src/pages/BarcodeTypesScreen.tsx';
+import {Screens, ScreenTitles} from './src/utils/Navigation.ts';
+import {
+  BarcodeDocumentFormatsScreen,
+  BarcodeFormatsScreen,
+  HomeScreen,
+} from './src/screens';
+import {
+  ActivityIndicatorContext,
+  BarcodeDocumentFormatContext,
+  BarcodeFormatsContext,
+  useBarcodeDocumentFormats,
+  useBarcodeFormats,
+  useLoading,
+} from './src/context';
+import {COLORS} from './src/theme';
+import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen.tsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,49 +56,58 @@ export default function App() {
     }`,
   );
 
+  const barcodeDocumentFormatsValues = useBarcodeDocumentFormats();
+  const barcodeFormatsValues = useBarcodeFormats();
+  const [loading, setLoading] = useLoading();
+
   return (
-    <NavigationContainer theme={Styles.ScanbotTheme}>
-      <Stack.Navigator
-        screenOptions={{
-          headerBackTitleVisible: false,
-        }}
-        initialRouteName={Navigation.HOME}>
-        <Stack.Screen
-          options={{
-            headerBackTitleVisible: false,
-          }}
-          name={Navigation.HOME}
-          component={HomeScreen}
-        />
-        <Stack.Screen
-          name={Navigation.BARCODE_RESULTS}
-          component={BarcodeResultsListScreen}
-          options={{
-            title: 'Barcode Results',
-          }}
-        />
-        <Stack.Screen
-          name={Navigation.IMAGE_RESULTS}
-          component={ImageResultsListScreen}
-          options={{
-            title: 'Image Results',
-          }}
-        />
-        <Stack.Screen
-          name={Navigation.BARCODE_CAMERA_VIEW}
-          component={BarcodeCameraViewScreen}
-          options={{
-            title: 'Barcode Camera View',
-          }}
-        />
-        <Stack.Screen
-          name={Navigation.BARCODE_TYPES}
-          component={BarcodeTypesScreen}
-          options={{
-            title: 'Barcode Types',
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={styles.container}>
+      <BarcodeDocumentFormatContext.Provider
+        value={barcodeDocumentFormatsValues}>
+        <BarcodeFormatsContext.Provider value={barcodeFormatsValues}>
+          <ActivityIndicatorContext.Provider value={{setLoading}}>
+            <NavigationContainer>
+              <Stack.Navigator
+                screenOptions={navigation => ({
+                  title: ScreenTitles[navigation.route.name as Screens],
+                })}>
+                <Stack.Screen name={Screens.HOME} component={HomeScreen} />
+                <Stack.Screen
+                  name={Screens.BARCODE_FORMATS}
+                  component={BarcodeFormatsScreen}
+                />
+                <Stack.Screen
+                  name={Screens.BARCODE_DOCUMENTS}
+                  component={BarcodeDocumentFormatsScreen}
+                />
+                <Stack.Screen
+                  name={Screens.BARCODE_CAMERA_VIEW}
+                  component={BarcodeCameraViewScreen}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+            <ActivityIndicator
+              size="large"
+              color={COLORS.SCANBOT_RED}
+              style={styles.loadingIndicator}
+              animating={loading}
+            />
+          </ActivityIndicatorContext.Provider>
+        </BarcodeFormatsContext.Provider>
+      </BarcodeDocumentFormatContext.Provider>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  loadingIndicator: {
+    elevation: 6,
+    position: 'absolute',
+    left: '47%',
+    top: '40%',
+    width: '6%',
+  },
+});
