@@ -1,10 +1,12 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RouteProp} from '@react-navigation/native';
 
 export enum Screens {
   HOME = 'home',
   BARCODE_FORMATS = 'barcode_formats',
   BARCODE_DOCUMENTS = 'barcode_documents',
   BARCODE_CAMERA_VIEW = 'barcode_camera_view',
+  IMAGE_RESULTS = 'image_results',
 }
 
 export const ScreenTitles: Record<Screens, string> = {
@@ -12,6 +14,7 @@ export const ScreenTitles: Record<Screens, string> = {
   [Screens.BARCODE_FORMATS]: 'Barcode Formats',
   [Screens.BARCODE_DOCUMENTS]: 'Barcode Documents',
   [Screens.BARCODE_CAMERA_VIEW]: 'Barcode Camera View',
+  [Screens.IMAGE_RESULTS]: 'Image Results',
 };
 
 export type PrimaryRouteParamList = {
@@ -19,9 +22,15 @@ export type PrimaryRouteParamList = {
   [Screens.BARCODE_FORMATS]: undefined;
   [Screens.BARCODE_DOCUMENTS]: undefined;
   [Screens.BARCODE_CAMERA_VIEW]: undefined;
+  [Screens.IMAGE_RESULTS]: string[];
 };
 
 export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
   PrimaryRouteParamList,
   keyof PrimaryRouteParamList
+>;
+
+export type ImageResultsScreenRouteProp = RouteProp<
+  PrimaryRouteParamList,
+  Screens.IMAGE_RESULTS
 >;

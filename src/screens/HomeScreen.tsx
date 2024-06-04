@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import {SupportSection} from '../components/SupportSection.tsx';
 import {HomeItem} from '../components/HomeItem.tsx';
@@ -12,6 +11,12 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {PrimaryRouteNavigationProp, Screens} from '../utils/Navigation.ts';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import {
+  deleteAllConfirmationAlert,
+  errorMessageAlert,
+  infoMessageAlert,
+  resultMessageAlert,
+} from '../utils/Alerts.ts';
 
 export function HomeScreen() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -20,8 +25,28 @@ export function HomeScreen() {
   const onDetectBarcodeOnImage = useDetectBarcodesOnStillImage();
   const onExtractImagesFromPDF = useExtractImagesFromPDF();
 
-  const onClearImageStorage = useCallback(() => {
-    ScanbotBarcodeSDK.cleanup();
+  const onClearStorage = useCallback(() => {
+    ScanbotBarcodeSDK.cleanup()
+      .then(result => resultMessageAlert(result.data!!))
+      .catch(error => errorMessageAlert(error.message));
+  }, []);
+
+  const onViewLicenseInfo = useCallback(() => {
+    ScanbotBarcodeSDK.getLicenseInfo()
+      .then(result =>
+        infoMessageAlert(
+          `Licence valid: ${result.data?.isLicenseValid} \n` +
+            `Licence status: ${result.data?.licenseStatus} \n` +
+            `Expiration date: ${
+              result.data && result.data.licenseExpirationDate
+                ? new Date(
+                    parseInt(String(result.data.licenseExpirationDate), 10),
+                  ).toLocaleDateString()
+                : ''
+            } \n`,
+        ),
+      )
+      .catch(error => errorMessageAlert(error.message));
   }, []);
 
   return (
@@ -56,8 +81,11 @@ export function HomeScreen() {
             title={'Set barcode document types'}
             onPress={() => navigation.navigate(Screens.BARCODE_DOCUMENTS)}
           />
-          <HomeItem title={'View license info'} onPress={() => {}} />
-          <HomeItem title={'Clear image storage'} onPress={() => {}} />
+          <HomeItem title={'View license info'} onPress={onViewLicenseInfo} />
+          <HomeItem
+            title={'Clear image storage'}
+            onPress={() => deleteAllConfirmationAlert(onClearStorage)}
+          />
         </View>
       </ScrollView>
       <SupportSection />

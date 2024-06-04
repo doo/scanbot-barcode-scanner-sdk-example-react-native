@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, SafeAreaView, StyleSheet} from 'react-native';
+import {ActivityIndicator, StatusBar, StyleSheet, View} from 'react-native';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -17,8 +17,9 @@ import {
   useBarcodeFormats,
   useLoading,
 } from './src/context';
-import {COLORS} from './src/theme';
+import {COLORS, NavigationTheme} from './src/theme';
 import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen.tsx';
+import {ImageResultsScreen} from './src/screens/ImageResultsScreen.tsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,15 +62,20 @@ export default function App() {
   const [loading, setLoading] = useLoading();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <StatusBar
+        backgroundColor={COLORS.SCANBOT_RED}
+        barStyle="light-content"
+      />
       <BarcodeDocumentFormatContext.Provider
         value={barcodeDocumentFormatsValues}>
         <BarcodeFormatsContext.Provider value={barcodeFormatsValues}>
           <ActivityIndicatorContext.Provider value={{setLoading}}>
-            <NavigationContainer>
+            <NavigationContainer theme={NavigationTheme}>
               <Stack.Navigator
                 screenOptions={navigation => ({
                   title: ScreenTitles[navigation.route.name as Screens],
+                  headerBackTitleVisible: false,
                 })}>
                 <Stack.Screen name={Screens.HOME} component={HomeScreen} />
                 <Stack.Screen
@@ -84,6 +90,10 @@ export default function App() {
                   name={Screens.BARCODE_CAMERA_VIEW}
                   component={BarcodeCameraViewScreen}
                 />
+                <Stack.Screen
+                  name={Screens.IMAGE_RESULTS}
+                  component={ImageResultsScreen}
+                />
               </Stack.Navigator>
             </NavigationContainer>
             <ActivityIndicator
@@ -95,7 +105,7 @@ export default function App() {
           </ActivityIndicatorContext.Provider>
         </BarcodeFormatsContext.Provider>
       </BarcodeDocumentFormatContext.Provider>
-    </SafeAreaView>
+    </View>
   );
 }
 

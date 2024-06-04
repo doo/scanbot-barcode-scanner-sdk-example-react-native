@@ -4,8 +4,11 @@ import {ActivityIndicatorContext} from '../context';
 import {checkLicense} from '../utils/SDKUtils.ts';
 import {errorMessageAlert} from '../utils/Alerts.ts';
 import {selectPDFFileUri} from '../utils/FileUtils.ts';
+import {useNavigation} from '@react-navigation/native';
+import {PrimaryRouteNavigationProp, Screens} from '../utils/Navigation.ts';
 
 export function useExtractImagesFromPDF() {
+  const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const {setLoading} = useContext(ActivityIndicatorContext);
 
   return useCallback(async () => {
@@ -28,8 +31,6 @@ export function useExtractImagesFromPDF() {
       }
       /**
        * Extract the images from the pdf with the desired configuration options
-       * Check if the status is 'CANCELED' to see if the user cancelled the operation
-       * Check if the resulting Page Array is returned
        */
       const sdkResult = await ScanbotBarcodeSDK.extractImagesFromPDF({
         pdfFilePath: fileUrl,
@@ -39,9 +40,9 @@ export function useExtractImagesFromPDF() {
         return;
       }
       /**
-       * Handle the result by displaying an Alert
+       * Handle the result
        */
-      // resultMessageAlert(JSON.stringify(imageFilesUrls, null, 2));
+      navigation.navigate(Screens.IMAGE_RESULTS, imageFilesUrls);
     } catch (e: any) {
       errorMessageAlert(e.message);
     } finally {

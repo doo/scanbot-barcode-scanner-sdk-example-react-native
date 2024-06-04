@@ -1,9 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   BarcodeResultField,
+  BarcodeScannerResult,
   ScanbotBarcodeCameraView,
   ScanbotBarcodeCameraViewConfiguration,
-  BarcodeScannerResult,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 import {
   Image,
@@ -17,17 +17,11 @@ import {COLORS} from '../theme';
 
 export function BarcodeCameraViewScreen() {
   const [config, setConfig] = useState<ScanbotBarcodeCameraViewConfiguration>({
-    flashEnabled: false,
+    flashEnabled: true,
     barcodeFormats: [],
     finderBackgroundColor: '#ff0000',
   });
   const [lastDetectedBarcode, setLastDetectedBarcode] = useState('');
-
-  useEffect(() => {
-    return () => {
-      console.log('IZLAZI');
-    };
-  }, []);
 
   const toggleFinderView = useCallback(() => {
     setConfig({...config, shouldUseFinderView: !config.shouldUseFinderView});

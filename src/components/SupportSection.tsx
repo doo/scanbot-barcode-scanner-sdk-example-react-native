@@ -1,4 +1,4 @@
-import {Button, Linking, StyleSheet, Text, View} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useCallback} from 'react';
 import {COLORS} from '../theme';
 
@@ -20,7 +20,11 @@ export function SupportSection() {
   return (
     <View style={styles.container}>
       <Text style={styles.questionText}>Having trouble with integrating ?</Text>
-      <Button title={'Contact support'} onPress={onContactSupportPress} />
+      <TouchableOpacity
+        style={styles.supportContainer}
+        onPress={onContactSupportPress}>
+        <Text style={styles.supportText}>Contact support</Text>
+      </TouchableOpacity>
       <Text onPress={onGetTrialLicense} style={styles.trialText}>
         Get your trial license now -&gt;
       </Text>
@@ -36,13 +40,27 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     gap: 16,
   },
+  supportContainer: {
+    backgroundColor: COLORS.SCANBOT_RED,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  supportText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+  },
   questionText: {
     fontWeight: 'bold',
     letterSpacing: 0.4,
     fontSize: 18,
   },
   trialText: {
-    fontSize: 14,
+    fontSize: 16,
     color: COLORS.SCANBOT_RED,
   },
 });
