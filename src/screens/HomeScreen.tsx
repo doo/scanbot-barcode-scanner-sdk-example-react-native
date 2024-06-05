@@ -62,7 +62,7 @@ export function HomeScreen() {
             onPress={onBatchBarcodeScannerPress}
           />
           <HomeItem
-            title={'Barcode Camera View'}
+            title={'Barcode Camera View ( Classic Component )'}
             onPress={() => navigation.navigate(Screens.BARCODE_CAMERA_VIEW)}
           />
           <HomeItem
@@ -70,7 +70,7 @@ export function HomeScreen() {
             onPress={onDetectBarcodeOnImage}
           />
           <HomeItem
-            title={'Extract images From PDF'}
+            title={'Extract images from PDF'}
             onPress={onExtractImagesFromPDF}
           />
           <HomeItem
@@ -81,7 +81,10 @@ export function HomeScreen() {
             title={'Set barcode document types'}
             onPress={() => navigation.navigate(Screens.BARCODE_DOCUMENTS)}
           />
-          <HomeItem title={'View license info'} onPress={onViewLicenseInfo} />
+          <HomeItem
+            title={'ScanbotSDK license info'}
+            onPress={onViewLicenseInfo}
+          />
           <HomeItem
             title={'Clear image storage'}
             onPress={() => deleteAllConfirmationAlert(onClearStorage)}

@@ -10,7 +10,7 @@ export function ImageResultsScreen() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={[...params, ...params]}
+        data={[...params]}
         contentContainerStyle={styles.flatListContentContainer}
         renderItem={({item}) => (
           <View style={styles.imageContainer}>
