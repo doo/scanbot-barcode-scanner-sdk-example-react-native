@@ -1,16 +1,18 @@
 import {useCallback, useContext} from 'react';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 import {useNavigation} from '@react-navigation/native';
-import {PrimaryRouteNavigationProp} from '../utils/Navigation.ts';
+import {
+  checkLicense,
+  errorMessageAlert,
+  logBarcodeDocument,
+  PrimaryRouteNavigationProp,
+  selectImagesFromLibrary,
+} from '@utils';
 import {
   ActivityIndicatorContext,
   BarcodeDocumentFormatContext,
   BarcodeFormatsContext,
-} from '../context';
-import {checkLicense} from '../utils/SDKUtils.ts';
-import {errorMessageAlert} from '../utils/Alerts.ts';
-import {selectImagesFromLibrary} from '../utils/FileUtils.ts';
-import {logBarcodeDocument} from '../utils/BarcodeUtils.ts';
+} from '@context';
 
 export function useDetectBarcodesOnStillImage() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();

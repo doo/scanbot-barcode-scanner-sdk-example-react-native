@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import {BarcodeFormatsContext} from '../context/useBarcodeFormats';
-import {SwitchOptionsList} from '../components/SwitchOptionsList';
+import {SwitchOptionsList} from '@components';
+import {BarcodeFormatsContext} from '@context';
 
 export function BarcodeFormatsScreen() {
   const {barcodeFormats, toggleBarcodeFormat} = useContext(

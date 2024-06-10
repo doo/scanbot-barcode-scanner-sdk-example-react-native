@@ -1,22 +1,23 @@
 import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
-import {SupportSection} from '../components/SupportSection.tsx';
-import {HomeItem} from '../components/HomeItem.tsx';
+import {useNavigation} from '@react-navigation/native';
+import {
+  deleteAllConfirmationAlert,
+  errorMessageAlert,
+  infoMessageAlert,
+  PrimaryRouteNavigationProp,
+  resultMessageAlert,
+  Screens,
+} from '@utils';
 import {
   useBarcodeScanner,
   useBatchBarcodesScanner,
   useDetectBarcodesOnStillImage,
   useExtractImagesFromPDF,
-} from '../hooks';
-import {useNavigation} from '@react-navigation/native';
-import {PrimaryRouteNavigationProp, Screens} from '../utils/Navigation.ts';
+} from '@hooks';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
-import {
-  deleteAllConfirmationAlert,
-  errorMessageAlert,
-  infoMessageAlert,
-  resultMessageAlert,
-} from '../utils/Alerts.ts';
+import {HomeItem} from '@components';
+import {SupportSection} from '@components';
 
 export function HomeScreen() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();

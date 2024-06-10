@@ -1,8 +1,8 @@
 import React from 'react';
 import {FlatList, Image, StyleSheet, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
-import {ImageResultsScreenRouteProp} from '../utils/Navigation.ts';
-import {COLORS} from '../theme';
+import {ImageResultsScreenRouteProp} from '@utils';
+import {COLORS} from '@theme';
 
 export function ImageResultsScreen() {
   const {params} = useRoute<ImageResultsScreenRouteProp>();

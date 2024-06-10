@@ -1,11 +1,14 @@
 import {useCallback, useContext} from 'react';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
-import {ActivityIndicatorContext} from '../context';
-import {checkLicense} from '../utils/SDKUtils.ts';
-import {errorMessageAlert} from '../utils/Alerts.ts';
-import {selectPDFFileUri} from '../utils/FileUtils.ts';
 import {useNavigation} from '@react-navigation/native';
-import {PrimaryRouteNavigationProp, Screens} from '../utils/Navigation.ts';
+import {
+  checkLicense,
+  errorMessageAlert,
+  PrimaryRouteNavigationProp,
+  Screens,
+  selectPDFFileUri,
+} from '@utils';
+import {ActivityIndicatorContext} from '@context';
 
 export function useExtractImagesFromPDF() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();

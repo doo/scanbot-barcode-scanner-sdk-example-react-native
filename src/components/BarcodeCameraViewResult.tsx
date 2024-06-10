@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {COLORS} from '../theme';
+import {COLORS} from '@theme';
 
 export function BarcodeCameraViewResult(props: {
   lastDetectedBarcode: string;

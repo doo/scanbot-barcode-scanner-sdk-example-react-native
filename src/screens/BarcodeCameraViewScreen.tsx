@@ -4,7 +4,7 @@ import {
   ScanbotBarcodeCameraView,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import {BarcodeCameraViewResult} from '../components/BarcodeCameraViewResult.tsx';
+import {BarcodeCameraViewResult} from '@components';
 
 export function BarcodeCameraViewScreen() {
   const [lastDetectedBarcode, setLastDetectedBarcode] = useState('');

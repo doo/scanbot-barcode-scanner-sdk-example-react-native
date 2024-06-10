@@ -3,12 +3,6 @@ import {ActivityIndicator, StatusBar, StyleSheet, View} from 'react-native';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {Screens, ScreenTitles} from './src/utils/Navigation.ts';
-import {
-  BarcodeDocumentFormatsScreen,
-  BarcodeFormatsScreen,
-  HomeScreen,
-} from './src/screens';
 import {
   ActivityIndicatorContext,
   BarcodeDocumentFormatContext,
@@ -16,9 +10,13 @@ import {
   useBarcodeDocumentFormats,
   useBarcodeFormats,
   useLoading,
-} from './src/context';
-import {COLORS, NavigationTheme} from './src/theme';
+} from '@context';
+import {COLORS, NavigationTheme} from '@theme';
+import {Screens, ScreenTitles} from '@utils';
+import {BarcodeDocumentFormatsScreen} from './src/screens/BarcodeDocumentFormatsScreen.tsx';
 import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen.tsx';
+import {BarcodeFormatsScreen} from './src/screens/BarcodeFormatsScreen.tsx';
+import {HomeScreen} from './src/screens/HomeScreen.tsx';
 import {ImageResultsScreen} from './src/screens/ImageResultsScreen.tsx';
 
 const Stack = createNativeStackNavigator();
