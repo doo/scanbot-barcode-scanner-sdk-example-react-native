@@ -9,6 +9,7 @@ import {
   errorMessageAlert,
   logBarcodeDocument,
   PrimaryRouteNavigationProp,
+  Screens,
 } from '@utils';
 
 export function useBatchBarcodesScanner() {
@@ -50,10 +51,10 @@ export function useBatchBarcodesScanner() {
         result.data.barcodes.forEach(barcodeItem =>
           logBarcodeDocument(barcodeItem),
         );
-        // navigation.navigate(Screens.BARCODE_RESULT, result);
+        navigation.navigate(Screens.BARCODE_RESULTS, result.data);
       }
     } catch (e: any) {
       errorMessageAlert(e.message);
     }
-  }, [acceptedBarcodeDocumentFormats, acceptedBarcodeFormats]);
+  }, [acceptedBarcodeDocumentFormats, acceptedBarcodeFormats, navigation]);
 }

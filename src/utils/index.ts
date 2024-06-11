@@ -10,6 +10,7 @@ import {
   ImageResultsScreenRouteProp,
   PrimaryRouteNavigationProp,
   PrimaryRouteParamList,
+  BarcodeResultsScreenRouteProp,
   Screens,
   ScreenTitles,
 } from './Navigation.ts';
@@ -32,4 +33,5 @@ export type {
   ImageResultsScreenRouteProp,
   PrimaryRouteParamList,
   PrimaryRouteNavigationProp,
+  BarcodeResultsScreenRouteProp,
 };

@@ -6,6 +6,7 @@ import {
   errorMessageAlert,
   logBarcodeDocument,
   PrimaryRouteNavigationProp,
+  Screens,
   selectImagesFromLibrary,
 } from '@utils';
 import {
@@ -63,12 +64,17 @@ export function useDetectBarcodesOnStillImage() {
         result.data.barcodes.forEach(barcodeItem =>
           logBarcodeDocument(barcodeItem),
         );
-        // navigation.navigate(Screens.BARCODE_RESULT, result);
+        navigation.navigate(Screens.BARCODE_RESULTS, result.data);
       }
     } catch (e: any) {
       errorMessageAlert(e.message);
     } finally {
       setLoading(false);
     }
-  }, [acceptedBarcodeDocumentFormats, acceptedBarcodeFormats, setLoading]);
+  }, [
+    acceptedBarcodeDocumentFormats,
+    acceptedBarcodeFormats,
+    navigation,
+    setLoading,
+  ]);
 }

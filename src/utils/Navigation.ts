@@ -1,5 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
+import {BarcodeScannerResult} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export enum Screens {
   HOME = 'home',
@@ -7,6 +8,7 @@ export enum Screens {
   BARCODE_DOCUMENTS = 'barcode_documents',
   BARCODE_CAMERA_VIEW = 'barcode_camera_view',
   IMAGE_RESULTS = 'image_results',
+  BARCODE_RESULTS = 'barcode_results',
 }
 
 export const ScreenTitles: Record<Screens, string> = {
@@ -15,6 +17,7 @@ export const ScreenTitles: Record<Screens, string> = {
   [Screens.BARCODE_DOCUMENTS]: 'Barcode Documents',
   [Screens.BARCODE_CAMERA_VIEW]: 'Barcode Camera View',
   [Screens.IMAGE_RESULTS]: 'Image Results',
+  [Screens.BARCODE_RESULTS]: 'Barcode Results',
 };
 
 export type PrimaryRouteParamList = {
@@ -23,6 +26,7 @@ export type PrimaryRouteParamList = {
   [Screens.BARCODE_DOCUMENTS]: undefined;
   [Screens.BARCODE_CAMERA_VIEW]: undefined;
   [Screens.IMAGE_RESULTS]: string[];
+  [Screens.BARCODE_RESULTS]: BarcodeScannerResult;
 };
 
 export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
@@ -33,4 +37,9 @@ export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
 export type ImageResultsScreenRouteProp = RouteProp<
   PrimaryRouteParamList,
   Screens.IMAGE_RESULTS
+>;
+
+export type BarcodeResultsScreenRouteProp = RouteProp<
+  PrimaryRouteParamList,
+  Screens.BARCODE_RESULTS
 >;
