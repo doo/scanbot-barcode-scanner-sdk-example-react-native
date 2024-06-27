@@ -1191,7 +1191,7 @@ PODS:
     - React-utils (= 0.74.1)
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (5.1.0):
+  - RNScanbotBarcodeSDK (5.1.0-beta.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1211,7 +1211,7 @@ PODS:
     - React-utils
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScanbotBarcodeSDKWrapper (= 5.1.1.0)
+    - ScanbotBarcodeSDKWrapper (= 5.1.3.1)
     - Yoga
   - RNScreens (3.31.1):
     - DoubleConversion
@@ -1235,9 +1235,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - ScanbotBarcodeScannerSDK (5.1.1)
-  - ScanbotBarcodeSDKWrapper (5.1.1.0):
-    - ScanbotBarcodeScannerSDK (= 5.1.1)
+  - ScanbotBarcodeScannerSDK (5.1.3)
+  - ScanbotBarcodeSDKWrapper (5.1.3.1):
+    - ScanbotBarcodeScannerSDK (= 5.1.3)
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
 
@@ -1442,7 +1442,7 @@ SPEC CHECKSUMS:
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 16b8530de1b383cdada1476cf52d1b52f0692cbc
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
-  RCTDeprecation: efb313d8126259e9294dc4ee0002f44a6f676aba
+  RCTDeprecation: 4dc9c8fbcb15bc9e8f3cfa601ddc190e120f099b
   RCTRequired: f49ea29cece52aee20db633ae7edc4b271435562
   RCTTypeSafety: a11979ff0570d230d74de9f604f7d19692157bc4
   React: 88794fad7f460349dbc9df8a274d95f37a009f5d
@@ -1492,13 +1492,13 @@ SPEC CHECKSUMS:
   React-utils: 3285151c9d1e3a28a9586571fc81d521678c196d
   ReactCommon: f42444e384d82ab89184aed5d6f3142748b54768
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: 83755923c61e8b36913a415be5dfe55a0343d81a
+  RNScanbotBarcodeSDK: 233d6135088f12739137e9818dc49c5400ae115a
   RNScreens: b32a9ff15bea7fcdbe5dff6477bc503f792b1208
-  ScanbotBarcodeScannerSDK: f6c8865d6d425817796e736e34b10070013524c9
-  ScanbotBarcodeSDKWrapper: edb05f96f2180c5284eeb52a7ee81770d998189b
+  ScanbotBarcodeScannerSDK: c65f2885d64870c2ffba173381107b3515a3a252
+  ScanbotBarcodeSDKWrapper: f1678de3363c9d4e4a9847324b36a717d218f12e
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  Yoga: 348f8b538c3ed4423eb58a8e5730feec50bce372
+  Yoga: b9a182ab00cf25926e7f79657d08c5d23c2d03b0
 
 PODFILE CHECKSUM: bdbfa3dbc1dd8d7ec5609202fe1dc7a6eee5c9bc
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.12.1
