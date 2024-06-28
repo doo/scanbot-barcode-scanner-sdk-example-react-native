@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ActivityIndicator, StatusBar, StyleSheet, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -34,27 +34,29 @@ const Stack = createNativeStackNavigator();
  */
 const LICENSE_KEY = '';
 
-ScanbotBarcodeSDK.initializeSdk({
-  // Consider switching logging OFF in production builds for security and performance reasons!
-  loggingEnabled: true,
-  enableNativeLogging: false,
-  licenseKey: LICENSE_KEY,
-  // Optional storage path. See the method description!
-  // storageBaseDirectory: Utils.getCustomStoragePath(),
-})
-  .then(result => {
-    console.log(result.data);
-  })
-  .catch(error => {
-    console.log('Initialization error: ', error.message);
-  });
-
-console.log(`Using ${(global as any)?.nativeFabricUIManager ? 'New' : 'Old'} Architecture`);
-
 export default function App() {
   const barcodeDocumentFormatsValues = useBarcodeDocumentFormats();
   const barcodeFormatsValues = useBarcodeFormats();
   const [loading, setLoading] = useLoading();
+
+  useEffect(() => {
+    ScanbotBarcodeSDK.initializeSdk({
+      // Consider switching logging OFF in production builds for security and performance reasons!
+      loggingEnabled: true,
+      enableNativeLogging: false,
+      licenseKey: LICENSE_KEY,
+      // Optional storage path. See the method description!
+      // storageBaseDirectory: Utils.getCustomStoragePath(),
+    })
+      .then(result => {
+        console.log(result.data);
+      })
+      .catch(error => {
+        console.log('Initialization error: ', error.message);
+      });
+
+    console.log(`Using ${(global as any)?.nativeFabricUIManager ? 'New' : 'Old'} Architecture`);
+  }, []);
 
   return (
     <View style={styles.container}>
