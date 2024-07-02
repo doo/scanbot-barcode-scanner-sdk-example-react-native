@@ -1,7 +1,0 @@
-{
-  "extends": "@doo/ts-config/react-native",
-  "compilerOptions": {
-    "types": ["jest", "node"],
-    "skipLibCheck": true
-  },
-}
