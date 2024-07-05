@@ -13,6 +13,7 @@ export function HomeItem(props: {title: string; onPress: () => void}) {
 
 const styles = StyleSheet.create({
   sectionItemContainer: {
+    paddingVertical: 4,
     borderBottomColor: '#bdbdbd',
     borderBottomWidth: 1,
   },
