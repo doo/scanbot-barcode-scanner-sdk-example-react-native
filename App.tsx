@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, StatusBar, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -60,7 +60,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={COLORS.SCANBOT_RED} barStyle="light-content" />
       <BarcodeDocumentFormatContext.Provider value={barcodeDocumentFormatsValues}>
         <BarcodeFormatsContext.Provider value={barcodeFormatsValues}>
           <ActivityIndicatorContext.Provider value={{setLoading}}>
