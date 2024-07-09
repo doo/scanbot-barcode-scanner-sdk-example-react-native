@@ -2525,11 +2525,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.14.9
-  resolution: "@types/node@npm:20.14.9"
+  version: 20.14.10
+  resolution: "@types/node@npm:20.14.10"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 5e9eda1ac8c6cc6bcd1063903ae195eaede9aad1bdad00408a919409cfbcdd2d6535aa3d50346f0d385528f9e03dafc7d1b3bad25aedb1dcd79a6ad39d06c35d
+  checksum: 2f397d393de8cddb126e0b7999402ea450215ac69d49666ddef4f730a73325054499ce7345f86095e7b935c55b2e02139f3b8b9afc72fb978ed29edf6bb956b0
   languageName: node
   linkType: hard
 
@@ -2814,7 +2814,7 @@ __metadata:
     react-native-fs: ^2.20.0
     react-native-image-picker: ^7.1.2
     react-native-safe-area-context: ^4.10.3
-    react-native-scanbot-barcode-scanner-sdk: 5.1.0-beta.4
+    react-native-scanbot-barcode-scanner-sdk: 5.1.0
     react-native-screens: ^3.31.1
     typescript: 5.0.4
   languageName: unknown
@@ -3873,9 +3873,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.796":
-  version: 1.4.816
-  resolution: "electron-to-chromium@npm:1.4.816"
-  checksum: 5abaa04cee77af4889e68d7fd7305c50b98eaa9b4016b228c85de5713a933767e423e2e6bcd71007fff1c405c5bea79d6e9e9d18efddaa966040fe9e97f43e2e
+  version: 1.4.820
+  resolution: "electron-to-chromium@npm:1.4.820"
+  checksum: bec81477f0828094a5c6f4911afdf76fdadb6b999f74bdb132d4e7661e3461ec734f80e705cbe0b111bcb83602fa5d234f7136e94a7768e6aa756414a42c2850
   languageName: node
   linkType: hard
 
@@ -4354,11 +4354,11 @@ __metadata:
   linkType: hard
 
 "esquery@npm:^1.4.2":
-  version: 1.5.0
-  resolution: "esquery@npm:1.5.0"
+  version: 1.6.0
+  resolution: "esquery@npm:1.6.0"
   dependencies:
     estraverse: ^5.1.0
-  checksum: aefb0d2596c230118656cd4ec7532d447333a410a48834d80ea648b1e7b5c9bc9ed8b5e33a89cb04e487b60d622f44cf5713bf4abed7c97343edefdc84a35900
+  checksum: 08ec4fe446d9ab27186da274d979558557fbdbbd10968fa9758552482720c54152a5640e08b9009e5a30706b66aba510692054d4129d32d0e12e05bbc0b96fb2
   languageName: node
   linkType: hard
 
@@ -4616,9 +4616,9 @@ __metadata:
   linkType: hard
 
 "flow-parser@npm:0.*":
-  version: 0.239.0
-  resolution: "flow-parser@npm:0.239.0"
-  checksum: 20d75183560a901f458878958f8e59c9ca82f118bbb5d265bc67143d4ae6db2b2ee52bc38391d9a4053e623de6ef9c0ca11d24b66cf5b64e5c6ceb873f38192d
+  version: 0.239.1
+  resolution: "flow-parser@npm:0.239.1"
+  checksum: b0852c611fc4e3e401f26e2680b7b924460807c1f79f81da5a0f61b98a0cea6ad10ba62826bb7c6134b73356101df2e1ca43a7c3ba5ea2b6a564500e48ab385a
   languageName: node
   linkType: hard
 
@@ -4793,8 +4793,8 @@ __metadata:
   linkType: hard
 
 "glob@npm:^10.2.2, glob@npm:^10.3.10":
-  version: 10.4.2
-  resolution: "glob@npm:10.4.2"
+  version: 10.4.5
+  resolution: "glob@npm:10.4.5"
   dependencies:
     foreground-child: ^3.1.0
     jackspeak: ^3.1.2
@@ -4804,7 +4804,7 @@ __metadata:
     path-scurry: ^1.11.1
   bin:
     glob: dist/esm/bin.mjs
-  checksum: bd7c0e30701136e936f414e5f6f82c7f04503f01df77408f177aa584927412f0bde0338e6ec541618cd21eacc57dde33e7b3c6c0a779cc1c6e6a0e14f3d15d9b
+  checksum: 0bc725de5e4862f9f387fd0f2b274baf16850dcd2714502ccf471ee401803997983e2c05590cb65f9675a3c6f2a58e7a53f9e365704108c6ad3cbf1d60934c4a
   languageName: node
   linkType: hard
 
@@ -5523,15 +5523,15 @@ __metadata:
   linkType: hard
 
 "jackspeak@npm:^3.1.2":
-  version: 3.4.0
-  resolution: "jackspeak@npm:3.4.0"
+  version: 3.4.2
+  resolution: "jackspeak@npm:3.4.2"
   dependencies:
     "@isaacs/cliui": ^8.0.2
     "@pkgjs/parseargs": ^0.11.0
   dependenciesMeta:
     "@pkgjs/parseargs":
       optional: true
-  checksum: 350f6f311018bb175ffbe736b19c26ac0b134bb5a17a638169e89594eb0c24ab1c658ab3a2fda24ff63b3b19292e1a5ec19d2255bc526df704e8168d392bef85
+  checksum: 1c5c1ae84bd047d473ccfea0433d1dbb1677f87511d32f7c005ae3e4a4263439784022e308cf20a9d1fcc6c2e61ab86994b5f81f9f599849d75f58883ac7e151
   languageName: node
   linkType: hard
 
@@ -5939,9 +5939,9 @@ __metadata:
   linkType: hard
 
 "lru-cache@npm:^10.0.1, lru-cache@npm:^10.2.0":
-  version: 10.3.0
-  resolution: "lru-cache@npm:10.3.0"
-  checksum: f2289639bd94cf3c87bfd8a77ac991f9afe3af004ddca3548c3dae63ead1c73bba449a60a4e270992e16cf3261b3d4130943234d52ca3a4d4de2fc074a3cc7b5
+  version: 10.4.2
+  resolution: "lru-cache@npm:10.4.2"
+  checksum: f238a74c619596bcb6a4ded500fa831b025cdce43a08abcce4087c5086f6f186f117caf7b8c36dd5980a83fa2315f85f44e1682775b89c86eb618af0844f1ed5
   languageName: node
   linkType: hard
 
@@ -7232,22 +7232,22 @@ __metadata:
   linkType: hard
 
 "react-native-safe-area-context@npm:^4.10.3":
-  version: 4.10.7
-  resolution: "react-native-safe-area-context@npm:4.10.7"
+  version: 4.10.8
+  resolution: "react-native-safe-area-context@npm:4.10.8"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: a8b27b92e7a11b3874c1a48b8b2d3f89f7aba1df79ea3b3df2b4317d90f4785f047494cc402a083137f28e3927657e3eddfe6d0f747b5122180feeee4e448cae
+  checksum: eced388ae7cc712f75e43cba302b612c8fecceb8ec8b39cff21b6bc29debe2fdc24423f67609af244d919c3ed871dd1d36c6adc97a8960a938984d333490e653
   languageName: node
   linkType: hard
 
-"react-native-scanbot-barcode-scanner-sdk@npm:5.1.0-beta.4":
-  version: 5.1.0-beta.4
-  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:5.1.0-beta.4"
+"react-native-scanbot-barcode-scanner-sdk@npm:5.1.0":
+  version: 5.1.0
+  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:5.1.0"
   peerDependencies:
     react: "*"
     react-native: ">=0.68"
-  checksum: 305e85b0cee6e7c476075fd71494f3004d2b72c255b8efb450f762d40b4420c39fc54768b089cc5795bcb48eb3ec8ca001eaa0690c008603113ce9e37c48106a
+  checksum: 8da4135d29695ce007a0eb845e8952ec260c4aea5a4fc7fcea3de4ca3446ac87febb8988771b3408d58856c335b3d0565d73c21dd35a9ed7e11e3e44daec3a6b
   languageName: node
   linkType: hard
 
@@ -8548,11 +8548,11 @@ __metadata:
   linkType: hard
 
 "use-latest-callback@npm:^0.1.9":
-  version: 0.1.9
-  resolution: "use-latest-callback@npm:0.1.9"
+  version: 0.1.11
+  resolution: "use-latest-callback@npm:0.1.11"
   peerDependencies:
     react: ">=16.8"
-  checksum: 620969d85763b65aca5f9b601c31eb476a8f7602cfccfb3c0f9dc60ff3b863e04dd64360ada255e15606771513de33b25e4631607d702605b26630f61381b3d4
+  checksum: cc6df404a4ed3a39d0eb014a815c2e568a6abbe8c5ff09f9205a08bf68e86201826ed633865a6056ca0fd9581e0e7e70f18ca26c592a9eaccea5d244cf283b1f
   languageName: node
   linkType: hard
 
