@@ -1497,7 +1497,7 @@ SPEC CHECKSUMS:
   ScanbotBarcodeScannerSDK: b846b1584559e50cc360595b8b84f1dafbb639be
   ScanbotBarcodeSDKWrapper: e20530e1be630013450126dc16857bd3e86eb974
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  Yoga: b9a182ab00cf25926e7f79657d08c5d23c2d03b0
+  Yoga: 348f8b538c3ed4423eb58a8e5730feec50bce372
 
 PODFILE CHECKSUM: bdbfa3dbc1dd8d7ec5609202fe1dc7a6eee5c9bc
 
