@@ -63,7 +63,7 @@ export function useMultiScanning() {
 
         // If image from URL is used, on Android platform INTERNET permission is required.
         const image =
-          'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png';
+          'https://avatars.githubusercontent.com/u/1454920';
         // To show captured barcode image use BarcodeMappedData.barcodeImageKey
         // const image = BarcodeMappedData.barcodeImageKey;
 
