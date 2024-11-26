@@ -12,14 +12,12 @@ import {
 import {
   useDetectBarcodesOnStillImage,
   useExtractImagesFromPDF,
-  useLegacyBarcodeScanner,
-  useLegacyBatchBarcodesScanner,
-  useSingleScanning,
+  useFindAndPickScanning,
   useMultiScanning,
   useMultiScanningAR,
-  useFindAndPickScanning,
+  useSingleScanning,
 } from '@hooks';
-import {HomeItem, SupportSection} from '@components';
+import {FeatureHeader, FeatureItem, ScanbotLearnMore} from '@components';
 
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
@@ -29,15 +27,15 @@ export function HomeScreen() {
   const onMultiScanPress = useMultiScanning();
   const onMultiScanARPress = useMultiScanningAR();
   const onFindAndPickScanPress = useFindAndPickScanning();
-  const onLegacyBarcodeScannerPress = useLegacyBarcodeScanner();
-  const onLegacyBatchBarcodeScannerPress = useLegacyBatchBarcodesScanner();
   const onDetectBarcodesOnImage = useDetectBarcodesOnStillImage();
   const onExtractImagesFromPDF = useExtractImagesFromPDF();
 
   const onClearStorage = useCallback(() => {
-    ScanbotBarcodeSDK.cleanup()
-      .then(result => resultMessageAlert(result.data))
-      .catch(error => errorMessageAlert(error.message));
+    deleteConfirmationAlert('Deleting storage', 'Are you sure you want to proceed?', () => {
+      ScanbotBarcodeSDK.cleanup()
+        .then(result => resultMessageAlert(result.data))
+        .catch(error => errorMessageAlert(error.message));
+    });
   }, []);
 
   const onViewLicenseInfo = useCallback(() => {
@@ -60,48 +58,39 @@ export function HomeScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView style={[styles.container]}>
         <View style={styles.featureContainer}>
-          <Text style={styles.headerText}>Barcode Scanner</Text>
-          <HomeItem title={'RTU UI Single Scanning'} onPress={onSingleScanPress} />
-          <HomeItem title={'RTU UI Multi Scanning'} onPress={onMultiScanPress} />
-          <HomeItem title={'RTU UI Multi AR Scanning'} onPress={onMultiScanARPress} />
-          <HomeItem title={'RTU UI Find And Pick Scanning'} onPress={onFindAndPickScanPress} />
-          <Text style={styles.headerText}>Other Features</Text>
-          <HomeItem
-            title={'Barcode Camera View ( Classic Component )'}
-            onPress={() => navigation.navigate(Screens.BARCODE_CAMERA_VIEW)}
-          />
-          <HomeItem title={'Detect Barcodes on Image'} onPress={onDetectBarcodesOnImage} />
-          <HomeItem title={'Extract images from PDF'} onPress={onExtractImagesFromPDF} />
-          <HomeItem
+          <FeatureHeader title={'Barcode Scanner'} />
+          <FeatureItem title={'RTU UI Single Scanning'} onPress={onSingleScanPress} />
+          <FeatureItem title={'RTU UI Multi Scanning'} onPress={onMultiScanPress} />
+          <FeatureItem title={'RTU UI Multi AR Scanning'} onPress={onMultiScanARPress} />
+          <FeatureItem title={'RTU UI Find And Pick Scanning'} onPress={onFindAndPickScanPress} />
+
+          <FeatureHeader title={'Barcode Formats'} />
+          <FeatureItem
             title={'Barcode formats'}
             onPress={() => navigation.navigate(Screens.BARCODE_FORMATS)}
           />
-          <HomeItem
+          <FeatureItem
             title={'Barcode document formats'}
             onPress={() => navigation.navigate(Screens.BARCODE_DOCUMENTS)}
           />
-          <HomeItem title={'ScanbotSDK license info'} onPress={onViewLicenseInfo} />
-          <HomeItem
-            title={'Cleanup SDK storage'}
-            onPress={() =>
-              deleteConfirmationAlert(
-                'Deleting storage',
-                'Are you sure you want to proceed?',
-                onClearStorage,
-              )
-            }
+
+          <FeatureHeader title={'Other Features'} />
+          <FeatureItem
+            title={'Barcode Camera View ( Classic Component )'}
+            onPress={() => navigation.navigate(Screens.BARCODE_CAMERA_VIEW)}
           />
-          <View>
-            <Text style={styles.headerText}>Legacy Barcode Scanner</Text>
-            <HomeItem title={'RTU UI Barcode Scanner'} onPress={onLegacyBarcodeScannerPress} />
-            <HomeItem
-              title={'RTU UI Batch Barcode Scanner'}
-              onPress={onLegacyBatchBarcodeScannerPress}
-            />
-          </View>
+          <FeatureItem title={'Recognize Barcodes on Image'} onPress={onDetectBarcodesOnImage} />
+          <FeatureItem title={'Extract images from PDF'} onPress={onExtractImagesFromPDF} />
+
+          <FeatureHeader title={'MISCELLANEOUS'} />
+          <FeatureItem title={'ScanbotSDK license info'} onPress={onViewLicenseInfo} />
+          <FeatureItem title={'Cleanup SDK storage'} onPress={onClearStorage} />
+          <ScanbotLearnMore />
         </View>
       </ScrollView>
-      <SupportSection />
+      <Text style={styles.copyrightLabel}>
+        Copyright {new Date().getFullYear()} doo GmbH. All rights reserved.
+      </Text>
     </SafeAreaView>
   );
 }
@@ -114,9 +103,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: '4%',
   },
-  headerText: {
-    marginTop: '4%',
-    fontSize: 18,
-    fontWeight: 'bold',
+  copyrightLabel: {
+    textAlign: 'center',
+    lineHeight: 40,
+    width: '100%',
+    height: 40,
+    color: 'gray',
+    fontSize: 12,
   },
 });

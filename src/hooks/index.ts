@@ -1,5 +1,3 @@
-import {useLegacyBarcodeScanner} from './useLegacyBarcodeScanner.ts';
-import {useLegacyBatchBarcodesScanner} from './useLegacyBatchBarcodesScanner.ts';
 import {useDetectBarcodesOnStillImage} from './useDetectBarcodesOnStillImage.ts';
 import {useExtractImagesFromPDF} from './useExtractImagesFromPDF.ts';
 import {useSingleScanning} from './useSingleScanning.ts';
@@ -12,8 +10,6 @@ export {
   useMultiScanning,
   useMultiScanningAR,
   useFindAndPickScanning,
-  useLegacyBatchBarcodesScanner,
-  useLegacyBarcodeScanner,
   useDetectBarcodesOnStillImage,
   useExtractImagesFromPDF,
 };

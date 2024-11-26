@@ -45,8 +45,12 @@ export default function App() {
       loggingEnabled: true,
       enableNativeLogging: false,
       licenseKey: LICENSE_KEY,
-      // Optional storage path. See the method description!
-      // storageBaseDirectory: Utils.getCustomStoragePath(),
+      // Optional custom storage directory
+      // storageBaseDirectory: Platform.select({
+      //   ios: DocumentDirectoryPath + '/my-custom-storage',
+      //   android: ExternalDirectoryPath + '/my-custom-storage',
+      //   default: undefined,
+      // }),
     })
       .then(result => {
         console.log(result.data);
