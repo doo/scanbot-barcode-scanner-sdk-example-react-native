@@ -30,10 +30,8 @@ export function PreviewImage({imageUri, style}: PreviewImageProps) {
     if (FILE_ENCRYPTION_ENABLED) {
       // File encryption is enabled, so we need to load the decrypted image data
       // as base64 from SDK. The SDK decrypts the image data under the hood.
-      console.log('Decyption needed', imageUri);
       loadDecryptedImageData();
     } else {
-      console.log('not needed', imageUri);
       setUri(imageUri!);
     }
   }, [imageUri, setLoading]);
