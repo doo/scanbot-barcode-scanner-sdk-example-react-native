@@ -1,22 +1,28 @@
-import React from 'react';
-import {FlatList, Image, StyleSheet, View} from 'react-native';
+import React, {useCallback} from 'react';
+import {FlatList, StyleSheet, useWindowDimensions, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {ImageResultsScreenRouteProp} from '@utils';
-import {COLORS} from '@theme';
+import {PreviewImage} from '../components/PreviewImage.tsx';
 
 export function ImageResultsScreen() {
   const {params} = useRoute<ImageResultsScreenRouteProp>();
+  const dimen = useWindowDimensions();
+
+  const onRenderItem = useCallback(
+    ({item}: {item: string}) => {
+      return (
+        <PreviewImage
+          imageUri={item}
+          style={[{width: dimen.width, height: dimen.height / 2}, styles.imageContainer]}
+        />
+      );
+    },
+    [dimen.height, dimen.width],
+  );
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={[...params]}
-        renderItem={({item}) => (
-          <View style={styles.imageContainer}>
-            <Image style={styles.image} source={{uri: item}} />
-          </View>
-        )}
-      />
+      <FlatList data={[...params]} renderItem={onRenderItem} />
     </View>
   );
 }
@@ -26,13 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageContainer: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    marginBottom: 12,
-    borderBottomColor: COLORS.SCANBOT_RED,
-  },
-  image: {
-    width: '100%',
-    height: 500,
+    marginTop: '12%',
+    resizeMode: 'contain',
   },
 });

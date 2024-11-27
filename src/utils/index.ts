@@ -14,7 +14,7 @@ import {
   Screens,
   ScreenTitles,
 } from './Navigation.ts';
-import {checkLicense} from './SDKUtils.ts';
+import {checkLicense, FILE_ENCRYPTION_ENABLED} from './SDKUtils.ts';
 
 export {
   errorMessageAlert,
@@ -26,6 +26,7 @@ export {
   Screens,
   ScreenTitles,
   checkLicense,
+  FILE_ENCRYPTION_ENABLED,
 };
 
 export type {
