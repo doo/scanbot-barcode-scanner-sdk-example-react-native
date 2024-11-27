@@ -11,7 +11,7 @@ import {
   useLoading,
 } from '@context';
 import {COLORS, NavigationTheme} from '@theme';
-import {Screens, ScreenTitles} from '@utils';
+import {FILE_ENCRYPTION_ENABLED, Screens, ScreenTitles} from '@utils';
 import {BarcodeDocumentFormatsScreen} from './src/screens/BarcodeDocumentFormatsScreen.tsx';
 import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen.tsx';
 import {BarcodeFormatsScreen} from './src/screens/BarcodeFormatsScreen.tsx';
@@ -21,6 +21,7 @@ import {BarcodeResultScreen} from './src/screens/BarcodeResultScreen.tsx';
 import {BarcodeV2ResultsScreen} from './src/screens/BarcodeV2ResultsScreen.tsx';
 
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import {ScanbotBarcodeSdkConfiguration} from 'react-native-scanbot-barcode-scanner-sdk/lib/typescript/src/configurations';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +41,7 @@ export default function App() {
   const [loading, setLoading] = useLoading();
 
   useEffect(() => {
-    ScanbotBarcodeSDK.initializeSdk({
+    const configuration: ScanbotBarcodeSdkConfiguration = {
       // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
       enableNativeLogging: false,
@@ -51,7 +52,15 @@ export default function App() {
       //   android: ExternalDirectoryPath + '/my-custom-storage',
       //   default: undefined,
       // }),
-    })
+    };
+
+    // Set the following properties to enable encryption.
+    if (FILE_ENCRYPTION_ENABLED) {
+      configuration.fileEncryptionMode = 'AES256';
+      configuration.fileEncryptionPassword = 'SomeSecretPa$$w0rdForFileEncryption';
+    }
+
+    ScanbotBarcodeSDK.initializeSdk(configuration)
       .then(result => {
         console.log(result.data);
       })
