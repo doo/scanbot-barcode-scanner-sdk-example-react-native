@@ -1,9 +1,9 @@
-/* eslint @typescript-eslint/no-unused-vars: 0 */
-
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSDK, {
+  ScanbotBarcodeSdkConfiguration,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 async function initScanbotBarcodeScannerSdkWithLogging() {
-  const config = {
+  const config: ScanbotBarcodeSdkConfiguration = {
     licenseKey: '',
     loggingEnabled: true,
   };

@@ -1,5 +1,3 @@
-/* eslint @typescript-eslint/no-unused-vars: 0 */
-
 import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
 
 async function statRtuUiV2WithUserGuidanceConfiguration() {

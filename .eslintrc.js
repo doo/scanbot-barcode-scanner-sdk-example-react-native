@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ['src/codeSnippets/*'],
   extends: '@react-native',
   rules: {
     'prettier/prettier': [

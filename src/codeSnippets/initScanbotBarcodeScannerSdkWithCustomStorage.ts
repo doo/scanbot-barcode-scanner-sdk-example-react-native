@@ -1,5 +1,3 @@
-/* eslint @typescript-eslint/no-unused-vars: 0 */
-
 import ScanbotBarcodeSDK, {
   ScanbotBarcodeSdkConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
