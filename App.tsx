@@ -20,7 +20,9 @@ import {ImageResultsScreen} from './src/screens/ImageResultsScreen.tsx';
 import {BarcodeResultScreen} from './src/screens/BarcodeResultScreen.tsx';
 import {BarcodeV2ResultsScreen} from './src/screens/BarcodeV2ResultsScreen.tsx';
 
-import ScanbotBarcodeSDK, {ScanbotBarcodeSdkConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSDK, {
+  ScanbotBarcodeSdkConfiguration,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 const Stack = createNativeStackNavigator();
 
