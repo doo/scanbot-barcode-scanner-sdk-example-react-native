@@ -56,6 +56,10 @@ export function useMultiScanning() {
       config.useCase.barcodeInfoMapping.barcodeItemMapper = (barcodeItem, onResult, onError) => {
         /** TODO: process scan result as needed to get your mapped data,
          * e.g. query your server to get product image, title and subtitle.
+         * 
+         * Note: The built-in fetch API won't work properly in this case.
+         * To request from the server, please use XMLHttpRequest API or another 3rd party library such as axios.
+         * 
          * See example below.
          */
         const title = `Some product ${barcodeItem.textWithExtension}`;
