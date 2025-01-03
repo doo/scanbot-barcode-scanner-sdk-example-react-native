@@ -2846,9 +2846,9 @@ __metadata:
     react-native-document-picker: ^9.3.0
     react-native-fs: ^2.20.0
     react-native-image-picker: ^7.1.2
-    react-native-safe-area-context: ^4.10.3
+    react-native-safe-area-context: ^4.12.0
     react-native-scanbot-barcode-scanner-sdk: 6.1.0
-    react-native-screens: 3.32.0
+    react-native-screens: 3.35.0
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -7483,7 +7483,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:^4.10.3":
+"react-native-safe-area-context@npm:^4.12.0":
   version: 4.14.1
   resolution: "react-native-safe-area-context@npm:4.14.1"
   peerDependencies:
@@ -7505,16 +7505,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-screens@npm:3.32.0":
-  version: 3.32.0
-  resolution: "react-native-screens@npm:3.32.0"
+"react-native-screens@npm:3.35.0":
+  version: 3.35.0
+  resolution: "react-native-screens@npm:3.35.0"
   dependencies:
-    react-freeze: "npm:^1.0.0"
-    warn-once: "npm:^0.1.0"
+    react-freeze: ^1.0.0
+    warn-once: ^0.1.0
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: afcb93e9cd48d5071278213bbc4ddc18112dbdbd16c11e3c7129368614396d8aae13fd70bb299f3c84f52a28e34af06ccdc514de1e97a99f4197069301dab136
+  checksum: cb8a0c8d8a41a8a1065cc2253e4272a970366a7d80bc54e889b2f48de7ccccd3e828e2701de39c0453a67956ec0cad140fb506324cce04419b5e2eb495c038c2
   languageName: node
   linkType: hard
 
