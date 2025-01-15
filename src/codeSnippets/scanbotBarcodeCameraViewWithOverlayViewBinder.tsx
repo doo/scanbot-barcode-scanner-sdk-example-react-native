@@ -1,11 +1,4 @@
-import React from 'react';
-
-import {
-  BarcodeItemOverlayViewConfig,
-  BarcodeResultField,
-  BarcodeScannerResult,
-  ScanbotBarcodeCameraView,
-} from 'react-native-scanbot-barcode-scanner-sdk';
+import { BarcodeItemOverlayViewConfig, BarcodeResultField, BarcodeScannerResult, ScanbotBarcodeCameraView, } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function BarcodeCameraViewWithOverlayViewBinder() {
   return (
