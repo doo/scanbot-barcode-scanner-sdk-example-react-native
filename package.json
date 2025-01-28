@@ -1,6 +1,6 @@
 {
   "name": "ScanbotBarcodeExampleReact",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android --terminal ./",
@@ -20,7 +20,7 @@
     "react-native-fs": "^2.20.0",
     "react-native-image-picker": "^7.1.2",
     "react-native-safe-area-context": "^4.5.0",
-    "react-native-scanbot-barcode-scanner-sdk": "6.1.0",
+    "react-native-scanbot-barcode-scanner-sdk": "6.2.0-beta.3",
     "react-native-screens": "4.5.0"
   },
   "devDependencies": {

@@ -1609,7 +1609,7 @@ PODS:
     - React-utils (= 0.77.0)
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (6.1.0):
+  - RNScanbotBarcodeSDK (6.2.0-beta.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1629,7 +1629,7 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScanbotBarcodeSDKWrapper (= 6.1.1.2)
+    - ScanbotBarcodeSDKWrapper (= 6.2.0.1)
     - Yoga
   - RNScreens (4.5.0):
     - DoubleConversion
@@ -1676,9 +1676,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - ScanbotBarcodeScannerSDK (6.1.1)
-  - ScanbotBarcodeSDKWrapper (6.1.1.2):
-    - ScanbotBarcodeScannerSDK (= 6.1.1)
+  - ScanbotBarcodeScannerSDK (6.2.0)
+  - ScanbotBarcodeSDKWrapper (6.2.0.1):
+    - ScanbotBarcodeScannerSDK (= 6.2.0)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
@@ -1912,12 +1912,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  boost: 1dca942403ed9342f98334bf4c3621f011aa7946
-  DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
+  boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
+  DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
   FBLazyVector: 2bc03a5cf64e29c611bbc5d7eb9d9f7431f37ee6
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
-  glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
+  glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
   hermes-engine: 1f783c3d53940aed0d2c84586f0b7a85ab7827ef
   RCT-Folly: 36fe2295e44b10d831836cc0d1daec5f8abcf809
   RCTDeprecation: f5c19ebdb8804b53ed029123eb69914356192fc8
@@ -1981,10 +1981,10 @@ SPEC CHECKSUMS:
   ReactCodegen: 1baa534318b19e95fb0f02db0a1ae1e3c271944d
   ReactCommon: 6014af4276bb2debc350e2620ef1bd856b4d981c
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: c152751f96aa1914409add177f0058e6be07a2e0
+  RNScanbotBarcodeSDK: c90c0821dfa3e3fb29205aad7ec91d854b08c4f6
   RNScreens: d0854539b51a53e38b61bcc9fb402439a9c73b26
-  ScanbotBarcodeScannerSDK: db1f315f9ae7c422986540c619e2a3ed929e0fa7
-  ScanbotBarcodeSDKWrapper: 94c821949a7ed0c6602409e0ee9bd23109205164
+  ScanbotBarcodeScannerSDK: 8b46b7204d07b0f07bb1589aa625f48327e93aa2
+  ScanbotBarcodeSDKWrapper: 7b95221f5a068b97561f7e7f48e8a45adae56735
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: c0d8564af14a858f962607cd7306539cb2ace926
 
