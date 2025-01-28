@@ -56,7 +56,7 @@ For more details about the Scanbot Barcode Scanner SDK for React Native please s
 
 ## Step 0: Install Command Line Tools
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/set-up-your-environment) before proceeding.
+> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
 ## Step 1: Install Dependencies
 
@@ -64,13 +64,24 @@ To install the project dependencies, run the following commands
 
 ```bash
 # Install the required dependencies
-yarn
+yarn install
+# OR using npm
+npm install
+```
 
-# Install the iOS dependencies
-cd ios 
+For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+
+The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+
+```sh
 bundle install
-bundle exec pod install --repo-update
-cd ..
+```
+
+Then, and every time you update your native dependencies, run:
+
+```sh
+cd ios 
+bundle exec pod install
 ```
 
 ## Step 2: Start your Application
@@ -79,71 +90,37 @@ Plugin in your physical device via USB and run the following command to start yo
 
 ### For Android
 
-```bash
-yarn run android
-```
-or 
-```bash
+```sh
+# Using npm
 npm run android
+
+# OR using Yarn
+yarn android
 ```
 
 ### For iOS
 
-Setup Environment, Provisioning and Signing settings:
+```sh
+# Using npm
+npm run ios
 
-- Starting from React Native version 0.69, the [suggested approach](https://reactnative.dev/docs/set-up-your-environment?platform=ios#optional-configuring-your-environment) is to configure the Xcode environment using the `.xcode.env` file. The `.xcode.env` file contains an environment variable to export the path to the `node` executable in the `NODE_BINARY` variable. Please make sure that you've set the path correctly. You can also set the path from the terminal:
-  
-```bash
-cd ios
-echo export NODE_BINARY=$(command -v node) > .xcode.env.local
+# OR using Yarn
+yarn ios
 ```
 
-- Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
-- Adjust *Provisioning* and *Signing* settings.
-
-Then run:
-
-```bash
-yarn run ios
-```
-or
-```bash
-npm run android
-```
-
-If everything is set up _correctly_, you should see your new app running on your device.
+If everything is set up correctly, you should see your new app running in new app running on your device.
 
 This is not the only way to run your app — you can also run it directly from within Android Studio and Xcode respectively:
 
-## Using the new architecture
-
-Scanbot Barcode SDK supports the [new architecture](https://reactnative.dev/docs/new-architecture-intro). Here's how you can enable it in this app.
-
-**Android**
-
-Set `newArchEnabled` your `android/gradle.properties` file as true:
-
-*android/gradle.properties*
-
-```properties
-newArchEnabled=true
-```
-
-**iOS**
-
-Re-install the iOS dependencies by running the following commands:
-
-```bash
-cd ios
-RCT_NEW_ARCH_ENABLED=1 bundle exec pod install --repo-update
-cd ..
-```
 
 ### What else can go wrong?
 
 ###### Pod not found
 
-`pod repo update`
+```bash
+cd ios
+bundle exec pod repo update
+```
 
 ###### Still at a loss? It is probably a cache issue
 

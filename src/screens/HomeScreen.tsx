@@ -89,7 +89,7 @@ export function HomeScreen() {
         </View>
       </ScrollView>
       <Text style={styles.copyrightLabel}>
-        Copyright {new Date().getFullYear()} ScanbotSDK GmbH. All rights reserved.
+        Copyright {new Date().getFullYear()} Scanbot SDK GmbH. All rights reserved.
       </Text>
     </SafeAreaView>
   );
