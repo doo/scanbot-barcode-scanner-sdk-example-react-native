@@ -2,11 +2,11 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@components": ["src/components"],
-      "@context": ["src/context"],
-      "@hooks": ["src/hooks"],
-      "@utils": ["src/utils"],
-      "@theme": ["src/theme"]
+      "@components": ["./src/components"],
+      "@context": ["./src/context"],
+      "@hooks": ["./src/hooks"],
+      "@utils": ["./src/utils"],
+      "@theme": ["./src/theme"]
     }
   }
 }

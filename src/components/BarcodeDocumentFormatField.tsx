@@ -4,13 +4,13 @@ import {BarcodeFieldRow} from './BarcodeFieldRow.tsx';
 
 import {
   AAMVA,
+  BarcodeDocumentModelRootType,
   BoardingPass,
   Field,
   GenericDocument,
   GS1,
   IDCardPDF417,
   MedicalCertificate,
-  RootTypeName,
   SEPA,
   SwissQR,
   VCard,
@@ -180,7 +180,7 @@ export function BarcodeDocumentFormatField({
       </View>
     );
   } else {
-    switch (document.type.name as RootTypeName) {
+    switch (document.type.name as BarcodeDocumentModelRootType) {
       case 'AAMVA':
         Document = <AAMVADocumentFields document={new AAMVA(document)} />;
         break;

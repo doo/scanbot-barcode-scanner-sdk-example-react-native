@@ -54,9 +54,9 @@ cd ios
 rm -f Podfile.lock
 rm -rf Pods
 if [ "$NEW_VALUE" = "$TRUE_VALUE" ]; then
-    RCT_NEW_ARCH_ENABLED=1 bundle exec pod install --repo-update
+    bundle exec pod install --repo-update
 else
-    pod install --repo-update
+    RCT_NEW_ARCH_ENABLED=0 bundle exec pod install
 fi
 
 cd ..
