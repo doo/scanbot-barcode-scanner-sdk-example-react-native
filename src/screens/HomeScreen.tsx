@@ -76,7 +76,7 @@ export function HomeScreen() {
 
           <FeatureHeader title={'Other Features'} />
           <FeatureItem
-            title={'Barcode Camera View ( Classic Component )'}
+            title={'Barcode Camera View (Classic UI)'}
             onPress={() => navigation.navigate(Screens.BARCODE_CAMERA_VIEW)}
           />
           <FeatureItem title={'Recognize Barcodes on Image'} onPress={onDetectBarcodesOnImage} />
@@ -89,7 +89,7 @@ export function HomeScreen() {
         </View>
       </ScrollView>
       <Text style={styles.copyrightLabel}>
-        Copyright {new Date().getFullYear()} doo GmbH. All rights reserved.
+        Copyright {new Date().getFullYear()} Scanbot SDK GmbH. All rights reserved.
       </Text>
     </SafeAreaView>
   );
