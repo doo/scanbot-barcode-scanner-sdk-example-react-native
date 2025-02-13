@@ -12,6 +12,7 @@ const initialBarcodeDocumentFormats: Record<BarcodeDocumentFormat, boolean> = {
   SWISS_QR: true,
   VCARD: true,
   GS1: true,
+  HIBC: true,
 };
 
 interface BarcodeDocumentFormatsValue {

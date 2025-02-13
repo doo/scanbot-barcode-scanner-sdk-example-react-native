@@ -12,13 +12,12 @@ import {
 } from '@context';
 import {COLORS, NavigationTheme} from '@theme';
 import {FILE_ENCRYPTION_ENABLED, Screens, ScreenTitles} from '@utils';
-import {BarcodeDocumentFormatsScreen} from './src/screens/BarcodeDocumentFormatsScreen.tsx';
-import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen.tsx';
-import {BarcodeFormatsScreen} from './src/screens/BarcodeFormatsScreen.tsx';
-import {HomeScreen} from './src/screens/HomeScreen.tsx';
-import {ImageResultsScreen} from './src/screens/ImageResultsScreen.tsx';
-import {BarcodeResultScreen} from './src/screens/BarcodeResultScreen.tsx';
-import {BarcodeV2ResultsScreen} from './src/screens/BarcodeV2ResultsScreen.tsx';
+import {BarcodeDocumentFormatsScreen} from './src/screens/BarcodeDocumentFormatsScreen';
+import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen';
+import {BarcodeFormatsScreen} from './src/screens/BarcodeFormatsScreen';
+import {HomeScreen} from './src/screens/HomeScreen';
+import {ImageResultsScreen} from './src/screens/ImageResultsScreen';
+import {BarcodeResultsScreen} from './src/screens/BarcodeResultsScreen';
 
 import ScanbotBarcodeSDK, {
   ScanbotBarcodeSdkConfiguration,
@@ -63,7 +62,7 @@ export default function App() {
 
     ScanbotBarcodeSDK.initializeSdk(configuration)
       .then(result => {
-        console.log(result.data);
+        console.log(result);
       })
       .catch(error => {
         console.log('Initialization error: ', error.message);
@@ -94,11 +93,7 @@ export default function App() {
                   component={BarcodeCameraViewScreen}
                 />
                 <Stack.Screen name={Screens.IMAGE_RESULTS} component={ImageResultsScreen} />
-                <Stack.Screen
-                  name={Screens.BARCODE_RESULTS_LEGACY}
-                  component={BarcodeResultScreen}
-                />
-                <Stack.Screen name={Screens.BARCODE_RESULTS} component={BarcodeV2ResultsScreen} />
+                <Stack.Screen name={Screens.BARCODE_RESULTS} component={BarcodeResultsScreen} />
               </Stack.Navigator>
             </NavigationContainer>
             <ActivityIndicator

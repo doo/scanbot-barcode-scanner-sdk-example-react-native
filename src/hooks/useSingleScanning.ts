@@ -3,11 +3,12 @@ import {useNavigation} from '@react-navigation/native';
 import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
-import {
-  startBarcodeScanner,
-  BarcodeScannerConfiguration,
+import ScanbotBarcodeSDK, {
+  autorelease,
+  BarcodeScannerScreenConfiguration,
+  EncodeImageOptions,
   SingleScanningMode,
-} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useSingleScanning() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -27,7 +28,7 @@ export function useSingleScanning() {
        * Instantiate a configuration object of BarcodeScannerConfiguration and
        * start the barcode scanner with the configuration
        */
-      const config = new BarcodeScannerConfiguration();
+      const config = new BarcodeScannerScreenConfiguration();
 
       // Initialize the use case for single scanning.
       config.useCase = new SingleScanningMode();
@@ -60,18 +61,29 @@ export function useSingleScanning() {
       // Configure other parameters, pertaining to single-scanning mode as needed.
 
       // Set an array of accepted barcode types.
-      config.recognizerConfiguration.barcodeFormats = acceptedBarcodeFormats;
-      config.recognizerConfiguration.acceptedDocumentFormats = acceptedBarcodeDocumentFormats;
+      config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
+      config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
       // Configure other parameters as needed.
+      await autorelease(async () => {
+        const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
 
-      const result = await startBarcodeScanner(config);
-      /**
-       * Handle the result if result status is OK
-       */
-      if (result.status === 'OK' && result.data) {
-        navigation.navigate(Screens.BARCODE_RESULTS, result.data);
-      }
+        /**
+         * Handle the result if result status is OK
+         */
+        if (result.status === 'OK' && result.data) {
+          const barcodeContainers = await Promise.all(
+            result.data.items.map(async item => {
+              return {
+                ...item.barcode,
+                base64: await item.barcode.sourceImage?.encodeImage(new EncodeImageOptions({})),
+              };
+            }),
+          );
+
+          navigation.navigate(Screens.BARCODE_RESULTS, barcodeContainers);
+        }
+      });
     } catch (e: any) {
       errorMessageAlert(e.message);
     }

@@ -1,32 +1,38 @@
 import React from 'react';
-import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {BarcodeDocumentFormatField, BarcodeFieldRow} from '@components';
-import {BarcodeResultsScreenRouteProp} from '@utils';
+import {BarcodeItemResultContainer, BarcodeResultsScreenRouteProp} from '@utils';
 import {COLORS} from '@theme';
+import {PreviewImage} from '../components/PreviewImage.tsx';
 
-import {BarcodeItem} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+function BarcodeItemResult({item, index}: {item: BarcodeItemResultContainer; index: number}) {
+  const dimen = useWindowDimensions();
 
-function BarcodeItemResult({item, index}: {item: BarcodeItem; index: number}) {
   return (
     <View style={styles.barcodeContainer}>
       <Text style={styles.titleText}>{`Result ${index + 1}`}</Text>
       <View>
-        <BarcodeFieldRow title={'Type:'} value={item.type as string} />
-        <BarcodeFieldRow title={'Count:'} value={item.count} />
+        <BarcodeFieldRow title={'Format:'} value={item.format} />
         <BarcodeFieldRow title={'Text:'} value={item.text} />
-        <BarcodeFieldRow title={'With extension:'} value={item.textWithExtension} />
+        <BarcodeFieldRow title={'Extension:'} value={item.upcEanExtension} />
         <BarcodeFieldRow title={'Raw bytes:'} value={`${item.rawBytes}`} />
+        {item.base64!! && (
+          <PreviewImage
+            style={[{width: dimen.width, height: dimen.height / 2}, {resizeMode: 'contain'}]}
+            imageSource={`data:image/jpeg;base64,${item.base64}`}
+          />
+        )}
       </View>
-      {item.parsedDocument && <BarcodeDocumentFormatField document={item.parsedDocument} />}
+      {item.extractedDocument && <BarcodeDocumentFormatField document={item.extractedDocument} />}
     </View>
   );
 }
 
-export function BarcodeV2ResultsScreen() {
+export function BarcodeResultsScreen() {
   const {params} = useRoute<BarcodeResultsScreenRouteProp>();
 
-  if (!params.items || params.items.length === 0) {
+  if (!params || params.length === 0) {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.noBarcode}>No barcodes</Text>
@@ -37,8 +43,8 @@ export function BarcodeV2ResultsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={params.items}
-        keyExtractor={(item, index) => `${item.type}${index}`}
+        data={params}
+        keyExtractor={(item, index) => `${item.format}${index}`}
         renderItem={({item, index}) => <BarcodeItemResult item={item} index={index} />}
       />
     </SafeAreaView>

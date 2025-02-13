@@ -13,7 +13,13 @@ import {
   BarcodeFormatsContext,
 } from '@context';
 
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSDK, {
+  autorelease,
+  BarcodeFormatCode128Configuration,
+  BarcodeFormatCommonConfiguration,
+  BarcodeScannerConfiguration,
+  EncodeImageOptions,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useDetectBarcodesOnStillImage() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -44,19 +50,39 @@ export function useDetectBarcodesOnStillImage() {
        */
       const [imageFileUri] = selectedImage;
 
-      const result = await ScanbotBarcodeSDK.detectBarcodesOnImage({
-        acceptedDocumentFormats: acceptedBarcodeDocumentFormats,
-        barcodeFormats: acceptedBarcodeFormats,
-        imageFileUri: imageFileUri,
-        stripCheckDigits: true,
-        gs1HandlingMode: 'NONE',
+      const configuration = new BarcodeScannerConfiguration({
+        extractedDocumentFormats: acceptedBarcodeDocumentFormats,
+        barcodeFormatConfigurations: [
+          new BarcodeFormatCommonConfiguration({
+            formats: acceptedBarcodeFormats,
+            stripCheckDigits: true,
+            minimumTextLength: 5,
+          }),
+
+          // Configure different parameters for specific barcode format.
+          new BarcodeFormatCode128Configuration({
+            minimumTextLength: 10,
+          }),
+        ],
+
+        // Configure other parameters as needed.
       });
-      /**
-       * Handle the result if result status is OK
-       */
-      if (result.status === 'OK' && result.data) {
-        navigation.navigate(Screens.BARCODE_RESULTS_LEGACY, result.data);
-      }
+
+      await autorelease(async () => {
+        const result = await ScanbotBarcodeSDK.detectBarcodesOnImage({
+          imageFileUri: imageFileUri,
+          barcodeScannerConfiguration: configuration,
+        });
+
+        const barcodeContainers = await Promise.all(
+          result.barcodes.map(async item => ({
+            ...item,
+            base64: await item.sourceImage?.encodeImage(new EncodeImageOptions({})),
+          })),
+        );
+
+        navigation.navigate(Screens.BARCODE_RESULTS, barcodeContainers);
+      });
     } catch (e: any) {
       errorMessageAlert(e.message);
     } finally {

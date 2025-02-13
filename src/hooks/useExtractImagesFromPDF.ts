@@ -3,6 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {
   checkLicense,
   errorMessageAlert,
+  infoMessageAlert,
   PrimaryRouteNavigationProp,
   Screens,
   selectPDFFileUri,
@@ -36,17 +37,17 @@ export function useExtractImagesFromPDF() {
       /**
        * Extract the images from the pdf with the desired configuration options
        */
-      const sdkResult = await ScanbotBarcodeSDK.extractImagesFromPDF({
+      const imageFilesUrls = await ScanbotBarcodeSDK.extractImagesFromPDF({
         pdfFilePath: fileUrl,
       });
-      const imageFilesUrls = sdkResult.data;
-      if (sdkResult.status === 'CANCELED' || !imageFilesUrls) {
-        return;
-      }
       /**
        * Handle the result
        */
-      navigation.navigate(Screens.IMAGE_RESULTS, imageFilesUrls);
+      if (imageFilesUrls.length > 0) {
+        navigation.navigate(Screens.IMAGE_RESULTS, imageFilesUrls);
+      } else {
+        infoMessageAlert('No images extracted');
+      }
     } catch (e: any) {
       errorMessageAlert(e.message);
     } finally {
