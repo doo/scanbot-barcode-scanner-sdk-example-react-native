@@ -11,11 +11,9 @@ The SDK for React Native is available as an npm package:
 
 ## Trial License
 
-The Scanbot SDK will run without a license for one minute per session!
+The Scanbot SDK will run without a license for one minute per session! To get an unrestricted, "no-strings-attached" 7-day trial license, please submit the [Trial License Form](https://scanbot.io/trial/?utm_source=npmjs.com&utm_medium=referral&utm_campaign=dev_sites) on our website.
 
-After the trial period has expired, all SDK functions and UI components will stop working. You have to restart the app to get another one-minute trial period.
-
-To try the Scanbot SDK without a one-minute limit, you can get a free “no-strings-attached” trial license. Please submit the [Trial License Form](https://scanbot.io/trial/) on our website.
+Please kindly note that a trial license can only be used in a development and staging environment. You are not allowed to publish your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.
 
 ## Free Developer Support
 
