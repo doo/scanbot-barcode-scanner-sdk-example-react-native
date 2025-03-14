@@ -65,7 +65,7 @@ export default function App() {
         console.log(result);
       })
       .catch(error => {
-        console.log('Initialization error: ', error.message);
+        console.error('Initialization error: ', error.message);
       });
 
     console.log(`Using ${(global as any)?.nativeFabricUIManager ? 'New' : 'Old'} Architecture`);

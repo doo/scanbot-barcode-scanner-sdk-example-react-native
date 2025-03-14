@@ -4,9 +4,7 @@ import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} fr
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
 import ScanbotBarcodeSDK, {
-  autorelease,
   BarcodeScannerScreenConfiguration,
-  EncodeImageOptions,
   MultipleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
@@ -46,22 +44,18 @@ export function useMultiScanningAR() {
 
       // Configure other parameters as needed.
 
-      await autorelease(async () => {
-        const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
-        /**
-         * Handle the result if result status is OK
-         */
-        if (result.status === 'OK' && result.data) {
-          const barcodeContainers = await Promise.all(
-            result.data.items.map(async item => ({
-              ...item.barcode,
-              base64: await item.barcode.sourceImage?.encodeImage(new EncodeImageOptions({})),
-            })),
-          );
+      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+      /**
+       * Handle the result if result status is OK
+       */
+      if (result.status === 'OK' && result.data) {
+        const resultContainer = result.data.items.map(item => ({
+          ...item.barcode.serialize(),
+          count: item.count,
+        }));
 
-          navigation.navigate(Screens.BARCODE_RESULTS, barcodeContainers);
-        }
-      });
+        navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
+      }
     } catch (e: any) {
       errorMessageAlert(e.message);
     }

@@ -4,13 +4,11 @@ import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} fr
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
 import ScanbotBarcodeSDK, {
-  autorelease,
   BarcodeScannerScreenConfiguration,
-  EncodeImageOptions,
   SingleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-export function useSingleScanning() {
+export function useSingleScanning(returnImageResults: boolean) {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
   const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
@@ -64,28 +62,25 @@ export function useSingleScanning() {
       config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
       config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
+      // Specify if the scanned barcode images should be included in the results.
+      config.scannerConfiguration.returnBarcodeImage = returnImageResults;
+
       // Configure other parameters as needed.
-      await autorelease(async () => {
-        const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
 
-        /**
-         * Handle the result if result status is OK
-         */
-        if (result.status === 'OK' && result.data) {
-          const barcodeContainers = await Promise.all(
-            result.data.items.map(async item => {
-              return {
-                ...item.barcode,
-                base64: await item.barcode.sourceImage?.encodeImage(new EncodeImageOptions({})),
-              };
-            }),
-          );
+      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+      /**
+       * Handle the result if result status is OK
+       */
+      if (result.status === 'OK' && result.data) {
+        const resultContainer = result.data.items.map(item => ({
+          ...item.barcode.serialize(),
+          count: item.count,
+        }));
 
-          navigation.navigate(Screens.BARCODE_RESULTS, barcodeContainers);
-        }
-      });
+        navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
+      }
     } catch (e: any) {
       errorMessageAlert(e.message);
     }
-  }, [acceptedBarcodeDocumentFormats, acceptedBarcodeFormats, navigation]);
+  }, [returnImageResults, acceptedBarcodeDocumentFormats, acceptedBarcodeFormats, navigation]);
 }

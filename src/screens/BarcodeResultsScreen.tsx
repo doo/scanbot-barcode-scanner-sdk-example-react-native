@@ -5,26 +5,36 @@ import {BarcodeDocumentFormatField, BarcodeFieldRow} from '@components';
 import {BarcodeItemResultContainer, BarcodeResultsScreenRouteProp} from '@utils';
 import {COLORS} from '@theme';
 import {PreviewImage} from '../components/PreviewImage.tsx';
+import {BarcodeItem} from 'react-native-scanbot-barcode-scanner-sdk';
 
-function BarcodeItemResult({item, index}: {item: BarcodeItemResultContainer; index: number}) {
+type ResultsListItem = {
+  barcode: BarcodeItem;
+  count: number;
+  image?: string | undefined;
+};
+
+function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}) {
   const dimen = useWindowDimensions();
 
   return (
     <View style={styles.barcodeContainer}>
       <Text style={styles.titleText}>{`Result ${index + 1}`}</Text>
       <View>
-        <BarcodeFieldRow title={'Format:'} value={item.format} />
-        <BarcodeFieldRow title={'Text:'} value={item.text} />
-        <BarcodeFieldRow title={'Extension:'} value={item.upcEanExtension} />
-        <BarcodeFieldRow title={'Raw bytes:'} value={`${item.rawBytes}`} />
-        {item.base64!! && (
+        {item.image && (
           <PreviewImage
             style={[{width: dimen.width, height: dimen.height / 2}, {resizeMode: 'contain'}]}
-            imageSource={`data:image/jpeg;base64,${item.base64}`}
+            imageSource={`data:image/jpeg;base64,${item.image}`}
           />
         )}
+        <BarcodeFieldRow title={'Count:'} value={item.count} />
+        <BarcodeFieldRow title={'Format:'} value={item.barcode.format} />
+        <BarcodeFieldRow title={'Text:'} value={item.barcode.text} />
+        <BarcodeFieldRow title={'Extension:'} value={item.barcode.upcEanExtension} />
+        <BarcodeFieldRow title={'Raw bytes:'} value={`${item.barcode.rawBytes}`} />
       </View>
-      {item.extractedDocument && <BarcodeDocumentFormatField document={item.extractedDocument} />}
+      {item.barcode.extractedDocument && (
+        <BarcodeDocumentFormatField document={item.barcode.extractedDocument} />
+      )}
     </View>
   );
 }
@@ -40,12 +50,27 @@ export function BarcodeResultsScreen() {
     );
   }
 
+  const resultsList = params.map((resultContainer: BarcodeItemResultContainer) => {
+    /**
+     * Note: Creating a barcode item that contains the sourceImage
+     * and using this image to generate a base64 string or save it to a path need to be inside an autorelease function.
+     */
+    const barcodeItem = new BarcodeItem(resultContainer);
+
+    return {
+      barcode: barcodeItem,
+      count: resultContainer.count, //, image: await barcodeItem.sourceImage?.encodeImage()
+    } as ResultsListItem;
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={params}
-        keyExtractor={(item, index) => `${item.format}${index}`}
-        renderItem={({item, index}) => <BarcodeItemResult item={item} index={index} />}
+        data={resultsList}
+        keyExtractor={(item, index) => `${item.barcode.format}${index}`}
+        renderItem={({item, index}) => {
+          return <BarcodeItemResult item={item} index={index} />;
+        }}
       />
     </SafeAreaView>
   );

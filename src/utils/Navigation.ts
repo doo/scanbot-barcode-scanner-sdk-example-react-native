@@ -1,7 +1,7 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
 
-import {BarcodeItem} from 'react-native-scanbot-barcode-scanner-sdk';
+import {BarcodeItem, DeepPartial} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export enum Screens {
   HOME = 'home',
@@ -30,9 +30,8 @@ export type PrimaryRouteParamList = {
   [Screens.BARCODE_RESULTS]: BarcodeItemResultContainer[];
 };
 
-export type BarcodeItemResultContainer = Omit<BarcodeItem, 'sourceImage' | 'release'> & {
-  base64?: string;
-  imageUrl?: string;
+export type BarcodeItemResultContainer = DeepPartial<BarcodeItem> & {
+  count: number;
 };
 
 export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
