@@ -75,10 +75,12 @@ export function useDetectBarcodesOnStillImage() {
        * Handle the result if result status is OK
        */
       if (result.success) {
-        const resultContainer = result.barcodes.map(item => ({
-          ...item.serialize(),
-          count: 1,
-        }));
+        const resultContainer = await Promise.all(
+          result.barcodes.map(async item => ({
+            ...(await item.serialize()),
+            count: 1,
+          })),
+        );
 
         navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
       }

@@ -16,6 +16,7 @@ import {
   useMultiScanning,
   useMultiScanningAR,
   useSingleScanning,
+  useSingleScanningWithImageResults,
 } from '@hooks';
 import {FeatureHeader, FeatureItem, ScanbotLearnMore} from '@components';
 
@@ -23,8 +24,8 @@ import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function HomeScreen() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const onSingleScanPress = useSingleScanning(false);
-  const onSingleScanWithImagePress = useSingleScanning(true);
+  const onSingleScanPress = useSingleScanning();
+  const onSingleScanWithImageResultPress = useSingleScanningWithImageResults();
   const onMultiScanPress = useMultiScanning();
   const onMultiScanARPress = useMultiScanningAR();
   const onFindAndPickScanPress = useFindAndPickScanning();
@@ -64,7 +65,7 @@ export function HomeScreen() {
           <FeatureItem title={'RTU UI Single Scanning'} onPress={onSingleScanPress} />
           <FeatureItem
             title={'RTU UI Single Scanning With Image Result'}
-            onPress={onSingleScanWithImagePress}
+            onPress={onSingleScanWithImageResultPress}
           />
           <FeatureItem title={'RTU UI Multi Scanning'} onPress={onMultiScanPress} />
           <FeatureItem title={'RTU UI Multi AR Scanning'} onPress={onMultiScanARPress} />

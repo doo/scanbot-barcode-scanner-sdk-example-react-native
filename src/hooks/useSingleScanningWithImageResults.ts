@@ -1,14 +1,22 @@
 import {useCallback, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
+import {
+  BarcodeItemResultContainer,
+  checkLicense,
+  errorMessageAlert,
+  PrimaryRouteNavigationProp,
+  Screens,
+} from '@utils';
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
 import ScanbotBarcodeSDK, {
+  autorelease,
   BarcodeScannerScreenConfiguration,
   SingleScanningMode,
+  ToJsonConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-export function useSingleScanning() {
+export function useSingleScanningWithImageResults() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
   const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
@@ -62,22 +70,37 @@ export function useSingleScanning() {
       config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
       config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
+      // Specify if the scanned barcode images should be included in the result.
+      config.scannerConfiguration.returnBarcodeImage = true;
+
       // Configure other parameters as needed.
 
-      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
-      /**
-       * Handle the result if result status is OK
-       */
-      if (result.status === 'OK' && result.data) {
-        const resultContainer = await Promise.all(
-          result.data!.items.map(async item => ({
-            ...(await item.barcode.serialize()),
-            count: item.count,
-          })),
-        );
+      // An autorelease pool is mandatory only if image results are enabled.
+      await autorelease(async () => {
+        const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+        /**
+         * Handle the result if result status is OK
+         */
+        if (result.status === 'OK' && result.data) {
+          const resultContainer = await Promise.all(
+            result.data!.items.map(
+              async item =>
+                ({
+                  /**
+                   * By default, the REFERENCE imageSerializationMode is used. Initializing an object that contains a ScanbotImage instance as REFERENCE must be wrapped inside an autorelease pool.
+                   * On the results screens, we need only the base64 representation of our ScanbotImage. That’s why we serialize the ScanbotImage directly to BUFFER from here and avoid using an autorelease pool again there.
+                   */
+                  ...(await item.barcode.serialize(
+                    new ToJsonConfiguration({imageSerializationMode: 'BUFFER'}),
+                  )),
+                  count: item.count,
+                } as BarcodeItemResultContainer),
+            ),
+          );
 
-        navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
-      }
+          navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
+        }
+      });
     } catch (e: any) {
       errorMessageAlert(e.message);
     }

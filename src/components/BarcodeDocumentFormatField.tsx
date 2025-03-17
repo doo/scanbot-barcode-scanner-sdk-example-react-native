@@ -160,7 +160,7 @@ function extractGenericDocumentFields(document: GenericDocument) {
 
 export function BarcodeDocumentFormatField({
   document,
-  staticFields = false,
+  staticFields = true,
 }: {
   document: GenericDocument;
   staticFields?: boolean;
@@ -178,19 +178,7 @@ export function BarcodeDocumentFormatField({
    */
   let Document;
 
-  if (!staticFields) {
-    Document = (
-      <View>
-        {extractGenericDocumentFields(document).map((field, index) => (
-          <BarcodeFieldRow
-            key={field.type.name + index}
-            title={field.type.name.trim()}
-            value={field.value?.text}
-          />
-        ))}
-      </View>
-    );
-  } else {
+  if (staticFields) {
     switch (document.type.name as BarcodeDocumentModelRootType) {
       case 'AAMVA':
         Document = <AAMVADocumentFields document={new AAMVA(document)} />;
@@ -223,6 +211,18 @@ export function BarcodeDocumentFormatField({
         Document = <View />;
       }
     }
+  } else {
+    Document = (
+      <View>
+        {extractGenericDocumentFields(document).map((field, index) => (
+          <BarcodeFieldRow
+            key={field.type.name + index}
+            title={field.type.name.trim()}
+            value={field.value?.text}
+          />
+        ))}
+      </View>
+    );
   }
 
   return (
