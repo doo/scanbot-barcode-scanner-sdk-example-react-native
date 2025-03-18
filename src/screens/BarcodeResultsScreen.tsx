@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {FlatList, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {BarcodeDocumentFormatField, BarcodeFieldRow} from '@components';
@@ -41,6 +41,16 @@ function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}
 export function BarcodeResultsScreen() {
   const {params} = useRoute<BarcodeResultsScreenRouteProp>();
 
+  const results = useMemo(() => {
+    return params.map(
+      (resultContainer: BarcodeItemResultContainer) =>
+        ({
+          barcode: new BarcodeItem(resultContainer),
+          count: resultContainer.count,
+        } as ResultsListItem),
+    );
+  }, [params]);
+
   if (!params || params.length === 0) {
     return (
       <SafeAreaView style={styles.container}>
@@ -48,14 +58,6 @@ export function BarcodeResultsScreen() {
       </SafeAreaView>
     );
   }
-
-  const results = params.map(
-    (resultContainer: BarcodeItemResultContainer) =>
-      ({
-        barcode: new BarcodeItem(resultContainer),
-        count: resultContainer.count,
-      } as ResultsListItem),
-  );
 
   return (
     <SafeAreaView style={styles.container}>

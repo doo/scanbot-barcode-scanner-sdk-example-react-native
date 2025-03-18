@@ -97,7 +97,7 @@ export function useMultiScanning() {
        */
       if (result.status === 'OK' && result.data) {
         const resultContainer = await Promise.all(
-          result.data!.items.map(
+          result.data.items.map(
             async item =>
               ({
                 ...(await item.barcode.serialize()),

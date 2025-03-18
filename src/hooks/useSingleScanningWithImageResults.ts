@@ -43,7 +43,7 @@ export function useSingleScanningWithImageResults() {
       config.useCase.confirmationSheetEnabled = true;
       config.useCase.sheetColor = '#FFFFFF';
 
-      // Hide/unhide the barcode image.
+      // Hide/show the barcode image.
       config.useCase.barcodeImageVisible = true;
 
       // Configure the barcode title of the confirmation sheet.
@@ -83,7 +83,7 @@ export function useSingleScanningWithImageResults() {
          */
         if (result.status === 'OK' && result.data) {
           const resultContainer = await Promise.all(
-            result.data!.items.map(
+            result.data.items.map(
               async item =>
                 ({
                   /**
