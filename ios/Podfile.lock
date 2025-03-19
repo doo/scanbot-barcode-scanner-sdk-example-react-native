@@ -1609,7 +1609,7 @@ PODS:
     - React-utils (= 0.77.0)
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (6.2.0):
+  - RNScanbotBarcodeSDK (6.2.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1981,7 +1981,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 1baa534318b19e95fb0f02db0a1ae1e3c271944d
   ReactCommon: 6014af4276bb2debc350e2620ef1bd856b4d981c
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: e067652987bd1a8db6884b76c8f238069937f90b
+  RNScanbotBarcodeSDK: 1e2e37f4b76c5f228968f20a0b4e95867e336e00
   RNScreens: c8c0b69f667891d474ad1229054d514f06778772
   ScanbotBarcodeScannerSDK: 8b46b7204d07b0f07bb1589aa625f48327e93aa2
   ScanbotBarcodeSDKWrapper: 7b95221f5a068b97561f7e7f48e8a45adae56735
