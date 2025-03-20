@@ -1,129 +1,190 @@
-# Scanbot Barcode Scanner SDK Example Apps for React Native
-These example apps demonstrate how to integrate the [Scanbot Barcode Scanner SDK for React Native](https://scanbot.io/developer/react-native-barcode-scanner/) for Android and iOS.
+<p align="left">
+  <img src=".images/ScanbotSDKLogo.png#gh-light-mode-only" width="15%" />
+</p>
+<p align="left">
+  <img src=".images/ScanbotSDKLogo_darkmode.png#gh-dark-mode-only" width="15%" />
+</p>
 
+# Example App for the Scanbot React Native Barcode Scanner SDK
+
+This example app demonstrates how to integrate the Scanbot Barcode Scanner SDK into your React Native app.
 
 ## What is the Scanbot Barcode Scanner SDK?
 
-Scanbot Barcode Scanner SDK is a simple to use high level API, providing a collection of classes and functions for scanning and parsing 1D and 2D barcodes from your mobile device's camera or other image sources like your photo library.
+The Scanbot [Barcode Scanner SDK](https://scanbot.io/barcode-scanner-sdk/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) is a set of simple and intuitive high-level APIs that allows you to integrate fast and reliable barcode scanning into your iOS or Android application.
 
-The SDK for React Native is available as an npm package:
-- https://www.npmjs.com/package/react-native-scanbot-barcode-scanner-sdk
+The SDK utilizes your device's camera, which can be freely switched. You can also apply various filters to narrow down the results by barcode type or content, with regex pattern support to ensure you only capture the specific barcodes relevant to your application.
 
-## Trial License
+It operates entirely offline on the user's device and takes only 0.04 seconds per scan. Scans are accurate even under challenging conditions, including damaged, small, or distant barcodes and low-light environments.
 
-The Scanbot SDK will run without a license for one minute per session! To get an unrestricted, "no-strings-attached" 7-day trial license, please submit the [Trial License Form](https://scanbot.io/trial/?utm_source=npmjs.com&utm_medium=referral&utm_campaign=dev_sites) on our website.
+The SDK can be integrated into your app within minutes and comes with Ready-To-Use UI components, which allow you to customize the barcode scanner to your needs.
 
-Please kindly note that a trial license can only be used in a development and staging environment. You are not allowed to publish your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.
+💡 For more details about the Scanbot Barcode Scanner SDK for React Native, please check out our [documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
 
-## Free Developer Support
+## How to run the example app
 
-We provide free "no-strings-attached" developer support for the implementation & testing of the Scanbot SDK.
-If you encounter technical issues with integrating the Scanbot SDK or need advice on choosing the appropriate
-framework or features, please visit our [Support Page](https://docs.scanbot.io/support/).
+### Step 1: Set up Environment
 
+> **Note**: Make sure you have completed the React Native [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
-## Supported Barcode Types
-
-- [1D Barcodes](https://scanbot.io/products/barcode-software/1d-barcode-scanner/): [Codabar](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/codabar), [Code 39](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/code-39), [Code 93](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-93/), [Code 128](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-128/), [IATA 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/standard-2-of-5/), [Industrial 2 of 5](https://scanbot.io/products/barcode-software/1d-barcode-scanner/industrial-2-of-5/), [ITF](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/itf), [EAN-8](https://scanbot.io/products/barcode-software/1d-barcode-scanner/ean-8), [EAN-13](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/ean-code), [MSI Plessey](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/msi-plessey), [RSS 14](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/), [RSS Expanded (Databar)](https://scanbot.io/products/barcode-software/1d-barcode-scanner/rss-expanded/), [UPC-A](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc/), [UPC-E](https://scanbot.io/products/barcode-software/1d-barcode-scanner/upc-e/), [Code 25](https://scanbot.io/products/barcode-software/1d-barcode-scanner/code-25/), [USPS Intelligent Mail](https://scanbot.io/products/barcode-software/1d-barcode-scanner/intelligent-mail-barcode/), [RM4SCC](https://scanbot.io/products/barcode-software/1d-barcode-scanner/rm4scc/), [Japan Post 4-State](https://scanbot.io/products/barcode-software/1d-barcode-scanner/japan-post-4-state-customer-code/), [Australia Post 4-State](https://scanbot.io/products/barcode-software/1d-barcode-scanner/australia-post-4-state-customer-code/), [KIX](https://scanbot.io/products/barcode-software/1d-barcode-scanner/kix/), RSS Limited (Databar), GS1 Composite.
-- [2D Barcodes](https://scanbot.io/products/barcode-software/2d-barcode-scanner/): [Aztec](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/aztec), [Data Matrix](https://scanbot.io/en/sdk/scanner-sdk/barcode-scanner-sdk/datamatrix), [PDF417](https://scanbot.io/products/barcode-software/2d-barcode-scanner/pdf417/), [QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/qr-code/), [Micro QR Code](https://scanbot.io/products/barcode-software/2d-barcode-scanner/micro-qr-code/).
-
-💡 Also check out our blog post [Types of barcodes](https://scanbot.io/blog/types-of-barcodes/).
-
-
-## Supported Data Parsers:
-
-- [AAMVA](https://scanbot.io/blog/drivers-license-barcode-parser/): Parse the AAMVA data format from PDF-417 barcodes on US driver's licenses.
-- Boarding pass data from PDF417 barcodes.
-- Parser for German Medical Certificates (aka. Disability Certificate or AU-Bescheinigung) coded in a PDF-417 barcode.
-- [GS1](https://scanbot.io/products/barcode-software/1d-barcode-scanner/gs1-databar/) encoded data from barcodes.
-- Data from PDF-417 barcodes on ID Cards.
-- Parse and extract data from XML of Data Matrix barcodes on Medical Plans (German Medikationsplan).
-- Data parser of QR-Code values printed on SEPA pay forms.
-- vCard data from a QR-Code (e.g. on business cards).
-- [Swiss QR](https://scanbot.io/products/barcode-software/2d-barcode-scanner/swiss-qr/) data from a QR-Code for easy, automatic and efficient payments.
-
-For more details please refer to the SDK documentation.
-
-
-## Documentation
-
-For more details about the Scanbot Barcode Scanner SDK for React Native please see this
-[documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/).
-
-# How to run this app
-
-## Step 0: Install Command Line Tools
-
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
-## Step 1: Install Dependencies
+### Step 2: Install Dependencies
 
 To install the project dependencies, run the following commands
 
-```bash
+```
 # Install the required dependencies
 yarn install
+
 # OR using npm
 npm install
 ```
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+For iOS, remember to install the CocoaPods dependencies on the first clone and after updating native dependencies.
 
 The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
 
-```sh
+```
 bundle install
 ```
 
 Then, and every time you update your native dependencies, run:
 
-```sh
+```
 cd ios 
 bundle exec pod install
 ```
 
-## Step 2: Start your Application
+### Step 2: Start your Application
 
-Plugin in your physical device via USB and run the following command to start your _Android_ or _iOS_ app:
+Connect your physical device via USB and run the following command to start your Android or iOS app:
 
-### For Android
+#### For Android
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
+```
+# Using yarn
 yarn android
+
+# OR using npm
+npm run android
 ```
 
-### For iOS
+#### For iOS
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
+```
+# Using yarn
 yarn ios
+
+# OR using npm
+npm run ios
 ```
 
-If everything is set up correctly, you should see your new app running in new app running on your device.
+If everything is set up correctly, you should see your new app running on your device.
 
-This is not the only way to run your app — you can also run it directly from within Android Studio and Xcode respectively:
+This is not the only way to launch your app. You can also run it directly from within Android Studio and Xcode, respectively.
 
+#### What else can go wrong?
 
-### What else can go wrong?
+**Pod not found**
 
-###### Pod not found
-
-```bash
+```
 cd ios
 bundle exec pod repo update
 ```
 
-###### Still at a loss? It is probably a cache issue
+**Still at a loss? It is probably a cache issue**
 
-```bash
+```
 yarn run clean
 ```
+
 * `npm cache clean --force && watchman watch-del-all`
-* Restart metro server!
+* Restart the metro server!
+
+## Features of the React Native Barcode Scanner SDK
+
+### Out-of-the-box barcode scanning workflows
+
+The Scanbot Barcode Scanner SDK offers the following scan modes right out-of-the-box, in our ready-to-use UI:
+
+#### Single Scanning
+
+This is the default barcode scanning mode. It is optimized for detecting a single barcode at a time and is easily configurable to your needs. You can show a confirmation screen after scanning the barcode.
+
+#### Batch & Multi Scanning
+
+The barcode scanner can also be configured to scan multiple barcodes in succession (without closing the scanning screen each time), to capture multiple barcodes from the device's camera view at once, or to count the scanned items.
+
+#### Find & Pick
+
+Given one or more barcodes, the SDK will visually highlight and scan the correct items for your users. It automatically selects the barcode with the right barcode value from your camera feed.
+
+| ![Batch Scanning](.images/batch-scanning.png) | ![Multi Scanning](.images/multi-scanning.png) | ![Find and Pick](.images/find-pick.png) |
+| :-- | :-- | :-- |
+
+### AR Overlay
+
+The Scanbot React Native Barcode Scanner library includes an optional AR Overlay for all scanning modes. It provides real-time barcode highlighting, preview, and tap-to-select functionalities.
+
+Recognized barcodes are highlighted with a customizable frame and text, clearly distinguishing scanned from unscanned items. Users can select barcodes manually by tapping or instead rely on automatic selection.
+
+### Scanning barcodes from an image
+
+The Scanbot SDK also offers barcode scanning for still images, enabling barcode detection from JPG or other image files. It supports single-image and multi-image detection and returns a list with the recognized barcodes.
+
+### Supported barcodes
+
+The Scanbot React Native Barcode Scanner library supports all common 1D- or 2D barcodes and multiple postal symbologies, including:
+
+| Barcode type       | Barcode symbologies                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|:-------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1D Barcodes        | [EAN](https://scanbot.io/barcode-scanner-sdk/ean/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [UPC](https://scanbot.io/barcode-scanner-sdk/upc/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Code 128](https://scanbot.io/barcode-scanner-sdk/code-128/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [GS1-128](https://scanbot.io/barcode-scanner-sdk/gs1-128/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Code 39](https://scanbot.io/barcode-scanner-sdk/code-39/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Codabar](https://scanbot.io/barcode-scanner-sdk/codabar/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [ITF](https://scanbot.io/barcode-scanner-sdk/itf/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), Code 25, Code 32, Code 93, Code 11, MSI Plessey, Standard 2 of 5, IATA 2 of 5, Databar (RSS), GS1 Composite                                                                                                                                                                                                                                                                                                                        |
+| 2D Barcodes        | [QR Code](https://scanbot.io/glossary/qr-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Micro QR Code](https://scanbot.io/barcode-scanner-sdk/micro-qr-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Aztec Code](https://scanbot.io/barcode-scanner-sdk/aztec-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [PDF417 Code](https://scanbot.io/barcode-scanner-sdk/pdf417/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Data Matrix Code,](https://scanbot.io/barcode-scanner-sdk/data-matrix/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) [GiroCode](https://scanbot.io/glossary/giro-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [NTIN Code](https://scanbot.io/glossary/gtin/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [PPN](https://scanbot.io/glossary/ppn/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [UDI](https://scanbot.io/glossary/udi/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Royal Mail Mailmark](https://scanbot.io/barcode-scanner-sdk/royal-mail/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), MaxiCode |
+| Postal Symbologies | USPS Intelligent Mail Barcode (IMb), Royal Mail RM4SCC Barcode, Australia Post 4-State Customer Code, Japan Post 4-State Customer Code, KIX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+
+💡 Please visit our [docs](https://docs.scanbot.io/barcode-scanner-sdk/react-native/supported-barcodes/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) for a complete overview of the supported barcode symbologies.
+
+### Data Parsers
+
+The Scanbot Barcode Scanner SDK supports a variety of data parsers that extract structured information from 2D barcodes such as QR Codes and Data Matrix. These include parsers for documents such as driving licences (AAMVA), boarding passes, medical certificates, SEPA forms, Swiss QR codes and vCard business cards.
+
+💡 Please refer to our [documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/supported-barcodes/#data-parsers) for a full list of supported data parsers.
+
+## Additional information
+
+### Guides and Tutorials
+
+Integrating the Scanbot Barcode Scanner SDK into your app takes just a few minutes, and our step-by-step guides make the process even easier. 
+
+Whether you're a seasoned developer or just starting, our tutorials provide clear instructions for adding barcode scanning functionality with minimal effort.
+
+💡Check out our [developer blog](https://scanbot.io/techblog/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) for a collection of in-depth tutorials, use cases, and best practices.
+
+### Free integration support
+
+Need help integrating or testing our Barcode Scanner SDK? We offer [free developer support](https://docs.scanbot.io/support/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) via Slack, MS Teams, or email.
+
+As a customer, you also get access to a dedicated support Slack or Microsoft Teams channel to talk directly to your Customer Success Manager and our engineers.
+
+### Licensing and pricing
+
+The Scanbot SDK examples will run for one minute per session without a license. After that, all functionalities and UI components will stop working. 
+
+To try the React Native Barcode Scanner SDK without the one-minute limit, you can request a free, no-strings-attached [7-day trial license](https://scanbot.io/trial/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
+
+Our pricing model is simple: Unlimited barcode scanning for a flat annual license fee, full support included. There are no tiers, usage charges, or extra fees. [Contact](https://scanbot.io/contact-sales/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) our team to receive your quote.
+
+### Other supported platforms
+
+Besides React Native, the Scanbot Barcode Scanner SDK is also available on:
+
+* [Android (native)](https://github.com/doo/scanbot-barcode-scanner-sdk-example-android)
+* [iOS (native)](https://github.com/doo/scanbot-barcode-scanner-sdk-example-ios)
+* [JavaScript (web)](https://github.com/doo/scanbot-barcode-scanner-sdk-example-web)
+* [Flutter](https://github.com/doo/scanbot-barcode-scanner-sdk-example-flutter)
+* [Capacitor & Ionic](https://github.com/doo/scanbot-barcode-scanner-sdk-example-capacitor-ionic)
+* [Cordova & Ionic](https://github.com/doo/scanbot-barcode-scanner-sdk-example-cordova-ionic)
+* [.NET MAUI](https://github.com/doo/scanbot-barcode-sdk-maui-example)
+* [Compose Multiplatform / KMP](https://github.com/doo/scanbot-barcode-scanner-sdk-example-kmp)
+* [Xamarin & Xamarin.Forms](https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin)
+* [UWP](https://github.com/doo/scanbot-barcode-scanner-sdk-example-windows)
+* [Linux](https://github.com/doo/scanbot-sdk-example-linux)
