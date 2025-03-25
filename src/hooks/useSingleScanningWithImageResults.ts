@@ -1,19 +1,12 @@
 import {useCallback, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {
-  BarcodeItemResultContainer,
-  checkLicense,
-  errorMessageAlert,
-  PrimaryRouteNavigationProp,
-  Screens,
-} from '@utils';
+import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
 import ScanbotBarcodeSDK, {
   autorelease,
   BarcodeScannerScreenConfiguration,
   SingleScanningMode,
-  ToJsonConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useSingleScanningWithImageResults() {
@@ -82,23 +75,13 @@ export function useSingleScanningWithImageResults() {
          * Handle the result if result status is OK
          */
         if (result.status === 'OK' && result.data) {
-          const resultContainer = await Promise.all(
-            result.data.items.map(
-              async item =>
-                ({
-                  /**
-                   * By default, the REFERENCE imageSerializationMode is used. Initializing an object that contains a ScanbotImage instance as REFERENCE must be wrapped inside an autorelease pool.
-                   * On the results screens, we need only the base64 representation of our ScanbotImage. That’s why we serialize the ScanbotImage directly to BUFFER from here and avoid using an autorelease pool again there.
-                   */
-                  ...(await item.barcode.serialize(
-                    new ToJsonConfiguration({imageSerializationMode: 'BUFFER'}),
-                  )),
-                  count: item.count,
-                } as BarcodeItemResultContainer),
-            ),
-          );
+          /**
+           * When the autorelease pool finishes, images are released if they are not encoded or serialized beforehand.
+           * In this case, we encode the images so they can be displayed on the next screen.
+           */
+          await result.data.encodeImages();
 
-          navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
+          navigation.navigate(Screens.BARCODE_RESULTS, result.data);
         }
       });
     } catch (e: any) {

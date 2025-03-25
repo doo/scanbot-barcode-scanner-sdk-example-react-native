@@ -80,14 +80,7 @@ export function useFindAndPickScanning() {
        * Handle the result if result status is OK
        */
       if (result.status === 'OK' && result.data) {
-        const resultContainer = await Promise.all(
-          result.data.items.map(async item => ({
-            ...(await item.barcode.serialize()),
-            count: item.count,
-          })),
-        );
-
-        navigation.navigate(Screens.BARCODE_RESULTS, resultContainer);
+        navigation.navigate(Screens.BARCODE_RESULTS, result.data);
       }
     } catch (e: any) {
       errorMessageAlert(e.message);

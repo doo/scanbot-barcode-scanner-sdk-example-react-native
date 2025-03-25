@@ -2,10 +2,14 @@ import React, {useMemo} from 'react';
 import {FlatList, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import {BarcodeDocumentFormatField, BarcodeFieldRow} from '@components';
-import {BarcodeItemResultContainer, BarcodeResultsScreenRouteProp} from '@utils';
+import {BarcodeResultsScreenRouteProp} from '@utils';
 import {COLORS} from '@theme';
 import {PreviewImage} from '../components/PreviewImage.tsx';
-import {BarcodeItem} from 'react-native-scanbot-barcode-scanner-sdk';
+import {
+  BarcodeItem,
+  BarcodeScannerResult,
+  BarcodeScannerUiResult,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 type ResultsListItem = {
   barcode: BarcodeItem;
@@ -22,7 +26,7 @@ function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}
         {item.barcode.sourceImage && (
           <PreviewImage
             style={[{width: dimen.width, height: dimen.height / 3}, {objectFit: 'contain'}]}
-            imageSource={`data:image/jpeg;base64,${item.barcode.sourceImage.encodeImage()}`}
+            imageSource={`data:image/jpeg;base64,${item.barcode.sourceImage.buffer}`}
           />
         )}
         <BarcodeFieldRow title={'Count:'} value={item.count} />
@@ -41,17 +45,23 @@ function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}
 export function BarcodeResultsScreen() {
   const {params} = useRoute<BarcodeResultsScreenRouteProp>();
 
-  const results = useMemo(() => {
-    return params.map(
-      (resultContainer: BarcodeItemResultContainer) =>
-        ({
-          barcode: new BarcodeItem(resultContainer),
-          count: resultContainer.count,
-        } as ResultsListItem),
-    );
+  const results: ResultsListItem[] = useMemo(() => {
+    if (params instanceof BarcodeScannerUiResult) {
+      return params.items.map(item => ({
+        barcode: item.barcode,
+        count: item.count,
+      }));
+    } else if (params instanceof BarcodeScannerResult) {
+      return params.barcodes.map(item => ({
+        barcode: item,
+        count: 1,
+      }));
+    } else {
+      return [];
+    }
   }, [params]);
 
-  if (!params || params.length === 0) {
+  if (results.length === 0) {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.noBarcode}>No barcodes</Text>
