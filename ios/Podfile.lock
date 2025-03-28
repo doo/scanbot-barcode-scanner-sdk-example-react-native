@@ -1609,7 +1609,7 @@ PODS:
     - React-utils (= 0.77.0)
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (6.2.0):
+  - RNScanbotBarcodeSDK (7.0.0-rc.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1629,7 +1629,7 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScanbotBarcodeSDKWrapper (= 6.2.0.1)
+    - ScanbotBarcodeSDKWrapper (= 7.0.0.0)
     - Yoga
   - RNScreens (4.6.0):
     - DoubleConversion
@@ -1676,9 +1676,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - ScanbotBarcodeScannerSDK (6.2.0)
-  - ScanbotBarcodeSDKWrapper (6.2.0.1):
-    - ScanbotBarcodeScannerSDK (= 6.2.0)
+  - ScanbotBarcodeScannerSDK (7.0.0)
+  - ScanbotBarcodeSDKWrapper (7.0.0.0):
+    - ScanbotBarcodeScannerSDK (= 7.0.0)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
@@ -1981,10 +1981,10 @@ SPEC CHECKSUMS:
   ReactCodegen: 1baa534318b19e95fb0f02db0a1ae1e3c271944d
   ReactCommon: 6014af4276bb2debc350e2620ef1bd856b4d981c
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: e067652987bd1a8db6884b76c8f238069937f90b
+  RNScanbotBarcodeSDK: dda0b7e9c399968b34da86ac299ed75281d3fbbc
   RNScreens: c8c0b69f667891d474ad1229054d514f06778772
-  ScanbotBarcodeScannerSDK: 8b46b7204d07b0f07bb1589aa625f48327e93aa2
-  ScanbotBarcodeSDKWrapper: 7b95221f5a068b97561f7e7f48e8a45adae56735
+  ScanbotBarcodeScannerSDK: 2a0662658520207f8ab6e5769d661e5966779b8a
+  ScanbotBarcodeSDKWrapper: 12c70d47f2f726ba8535ccea788e60d6cfe71462
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: c0d8564af14a858f962607cd7306539cb2ace926
 
