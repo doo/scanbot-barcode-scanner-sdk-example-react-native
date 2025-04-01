@@ -4,11 +4,12 @@ import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} fr
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
 import ScanbotBarcodeSDK, {
+  autorelease,
   BarcodeScannerScreenConfiguration,
   SingleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-export function useSingleScanning() {
+export function useSingleScanningWithImageResults() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
   const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
@@ -62,15 +63,27 @@ export function useSingleScanning() {
       config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
       config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
+      // Specify if the scanned barcode images should be included in the result.
+      config.scannerConfiguration.returnBarcodeImage = true;
+
       // Configure other parameters as needed.
 
-      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
-      /**
-       * Handle the result if result status is OK
-       */
-      if (result.status === 'OK' && result.data) {
-        navigation.navigate(Screens.BARCODE_RESULTS, result.data);
-      }
+      // An autorelease pool is mandatory only if image results are enabled.
+      await autorelease(async () => {
+        const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+        /**
+         * Handle the result if result status is OK
+         */
+        if (result.status === 'OK' && result.data) {
+          /**
+           * When the autorelease pool finishes, images are released if they are not encoded or serialized beforehand.
+           * In this case, we encode the images so they can be displayed on the next screen.
+           */
+          await result.data.encodeImages();
+
+          navigation.navigate(Screens.BARCODE_RESULTS, result.data);
+        }
+      });
     } catch (e: any) {
       errorMessageAlert(e.message);
     }

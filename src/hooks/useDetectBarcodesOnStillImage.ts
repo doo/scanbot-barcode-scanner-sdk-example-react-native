@@ -13,7 +13,11 @@ import {
   BarcodeFormatsContext,
 } from '@context';
 
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSDK, {
+  BarcodeFormatCode128Configuration,
+  BarcodeFormatCommonConfiguration,
+  BarcodeScannerConfiguration,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useDetectBarcodesOnStillImage() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -44,18 +48,34 @@ export function useDetectBarcodesOnStillImage() {
        */
       const [imageFileUri] = selectedImage;
 
+      const scannerConfiguration = new BarcodeScannerConfiguration();
+      scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
+
+      const barcodeFormatCommonConfiguration = new BarcodeFormatCommonConfiguration();
+      barcodeFormatCommonConfiguration.formats = acceptedBarcodeFormats;
+      barcodeFormatCommonConfiguration.stripCheckDigits = true;
+      barcodeFormatCommonConfiguration.minimumTextLength = 5;
+
+      // Configure different parameters for specific barcode format.
+      const barcodeFormatCode128Configuration = new BarcodeFormatCode128Configuration();
+      barcodeFormatCode128Configuration.minimumTextLength = 10;
+
+      scannerConfiguration.barcodeFormatConfigurations = [
+        barcodeFormatCommonConfiguration,
+        barcodeFormatCode128Configuration,
+      ];
+
+      // Configure other parameters as needed.
+
       const result = await ScanbotBarcodeSDK.detectBarcodesOnImage({
-        acceptedDocumentFormats: acceptedBarcodeDocumentFormats,
-        barcodeFormats: acceptedBarcodeFormats,
         imageFileUri: imageFileUri,
-        stripCheckDigits: true,
-        gs1HandlingMode: 'NONE',
+        configuration: scannerConfiguration,
       });
       /**
        * Handle the result if result status is OK
        */
-      if (result.status === 'OK' && result.data) {
-        navigation.navigate(Screens.BARCODE_RESULTS_LEGACY, result.data);
+      if (result.success) {
+        navigation.navigate(Screens.BARCODE_RESULTS, result);
       }
     } catch (e: any) {
       errorMessageAlert(e.message);

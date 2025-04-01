@@ -1,6 +1,9 @@
 import {createContext, Dispatch, SetStateAction, useCallback, useState} from 'react';
 
-import {BarcodeDocumentFormat} from 'react-native-scanbot-barcode-scanner-sdk';
+import {
+  BarcodeDocumentFormat,
+  BarcodeDocumentFormats,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 const initialBarcodeDocumentFormats: Record<BarcodeDocumentFormat, boolean> = {
   AAMVA: true,
@@ -12,6 +15,7 @@ const initialBarcodeDocumentFormats: Record<BarcodeDocumentFormat, boolean> = {
   SWISS_QR: true,
   VCARD: true,
   GS1: true,
+  HIBC: true,
 };
 
 interface BarcodeDocumentFormatsValue {
@@ -25,7 +29,7 @@ interface BarcodeDocumentFormatsValue {
 export const BarcodeDocumentFormatContext = createContext<BarcodeDocumentFormatsValue>({
   barcodeDocumentFormats: initialBarcodeDocumentFormats,
   isFilteringEnabled: false,
-  acceptedBarcodeDocumentFormats: [],
+  acceptedBarcodeDocumentFormats: BarcodeDocumentFormats.all,
   toggleBarcodeDocumentFormats: (_updated: BarcodeDocumentFormat) => {},
   setIsFilteringEnabled(_value: ((prevState: boolean) => boolean) | boolean): void {},
 });
@@ -47,7 +51,7 @@ export function useBarcodeDocumentFormats() {
     ? Object.entries(barcodeDocumentFormats)
         .filter(([_, value]) => value)
         .map(([key]) => key as BarcodeDocumentFormat)
-    : [];
+    : BarcodeDocumentFormats.all;
 
   return {
     barcodeDocumentFormats,

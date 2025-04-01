@@ -1,8 +1,8 @@
-import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+import {BarcodeScannerScreenConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
 
-function rtuUiV2TopBarConfiguration() {
+function rtuUiTopBarConfiguration() {
   // Create the default configuration object.
-  const config = new BarcodeScannerConfiguration();
+  const config = new BarcodeScannerScreenConfiguration();
 
   // Configure the top bar.
 
