@@ -21,7 +21,7 @@ async function handleScanningResultWithImageRef() {
         // Check if sourceImage exists
         if (barcode.sourceImage) {
           // Saves the stored image at path with the given options
-          const path = DocumentDirectoryPath + '/my_custom_path';
+          const path = DocumentDirectoryPath + '/my_custom_path/my_file.jpg';
           await barcode.sourceImage.saveImage(path, new SaveImageOptions());
           // Returns the stored image as base64.
           const base64Image = await barcode.sourceImage.encodeImage(new EncodeImageOptions());
@@ -57,7 +57,7 @@ async function handleScanningResultWithSerializedImageRef() {
     barcodeResult.items.forEach(async ({barcode}) => {
       if (barcode.sourceImage) {
         // Saves the stored image at path with the given options
-        const path = DocumentDirectoryPath + '/my_custom_path';
+        const path = DocumentDirectoryPath + '/my_custom_path/my_file.jpg';
         await barcode.sourceImage.saveImage(path, new SaveImageOptions());
         // Returns the stored image as base64.
         const base64Image = await barcode.sourceImage.encodeImage(new EncodeImageOptions());
