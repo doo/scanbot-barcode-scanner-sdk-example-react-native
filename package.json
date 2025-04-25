@@ -21,7 +21,7 @@
     "react-native-fs": "^2.20.0",
     "react-native-image-picker": "^7.1.2",
     "react-native-safe-area-context": "^5.1.0",
-    "react-native-scanbot-barcode-scanner-sdk": "7.0.0-rc.1",
+    "react-native-scanbot-barcode-scanner-sdk": "7.0.0-rc.2",
     "react-native-screens": "4.6.0"
   },
   "devDependencies": {
