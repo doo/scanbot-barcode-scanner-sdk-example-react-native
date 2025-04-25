@@ -6,7 +6,6 @@ import {
 } from './Alerts.ts';
 import {selectImageFromLibrary, selectPDFFileUri} from './FileUtils.ts';
 import {
-  BarcodeItemResultContainer,
   BarcodeResultsScreenRouteProp,
   ImageResultsScreenRouteProp,
   PrimaryRouteNavigationProp,
@@ -34,5 +33,4 @@ export type {
   PrimaryRouteParamList,
   PrimaryRouteNavigationProp,
   BarcodeResultsScreenRouteProp,
-  BarcodeItemResultContainer,
 };
