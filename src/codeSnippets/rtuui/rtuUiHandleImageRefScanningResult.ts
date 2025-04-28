@@ -9,7 +9,7 @@ import ScanbotBarcodeSDK, {
 import {DocumentDirectoryPath} from 'react-native-fs';
 
 async function handleScanningResultWithImageRef() {
-  // Start the barcode RTU UI with a configuration that returns image reuslts
+  // Start the barcode RTU UI with a configuration that returns image results
   const config = new BarcodeScannerScreenConfiguration();
   config.scannerConfiguration.returnBarcodeImage = true;
   const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
@@ -36,7 +36,7 @@ async function handleScanningResultWithImageRef() {
 }
 
 async function handleScanningResultWithSerializedImageRef() {
-  // Start the barcode RTU UI with a configuration that returns image reuslts
+  // Start the barcode RTU UI with a configuration that returns image results
   const config = new BarcodeScannerScreenConfiguration();
   config.scannerConfiguration.returnBarcodeImage = true;
   const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
@@ -67,7 +67,7 @@ async function handleScanningResultWithSerializedImageRef() {
 }
 
 async function handleScanningResultWithEncodedImageRef() {
-  // Start the barcode RTU UI with a configuration that returns image reuslts
+  // Start the barcode RTU UI with a configuration that returns image results
   const config = new BarcodeScannerScreenConfiguration();
   config.scannerConfiguration.returnBarcodeImage = true;
   const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);

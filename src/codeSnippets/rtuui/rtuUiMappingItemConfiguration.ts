@@ -24,8 +24,8 @@ function rtuUiMappingItemConfiguration() {
 
     // If image from URL is used, on Android platform INTERNET permission is required.
     const image = 'https://avatars.githubusercontent.com/u/1454920';
-    // To show captured barcode image use BarcodeMappedData.barcodeImageKey
-    // const image = BarcodeMappedData.barcodeImageKey;
+    // To show captured barcode image use BarcodeMappedData.BARCODE_IMAGE_KEY
+    // const image = BarcodeMappedData.BARCODE_IMAGE_KEY;
 
     /** Call onError() in case of error during obtaining mapped data. */
     if (barcodeItem.text === 'Error occurred!') {
