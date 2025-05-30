@@ -1,44 +1,33 @@
-import React, {useCallback, useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import React, {useCallback} from 'react';
+import {SafeAreaView, StyleSheet, useWindowDimensions, View} from 'react-native';
 
 import {
   BarcodeScannerResult,
   ScanbotBarcodeCameraView,
 } from 'react-native-scanbot-barcode-scanner-sdk';
-import {BarcodeCameraViewResult} from '@components';
 
 export function BarcodeCameraViewScreen() {
-  const [lastDetectedBarcode, setLastDetectedBarcode] = useState('');
-  const [flashEnabled, setFlashEnabled] = useState(false);
-  const [finderEnabled, setFinderEnabled] = useState(false);
+  const dimen = useWindowDimensions();
 
   const onBarcodeScan = useCallback((result: BarcodeScannerResult) => {
     if (result.barcodes && result.barcodes.length > 0) {
       const text = result.barcodes
         .map(barcode => `${barcode.textWithExtension} (${barcode.type})`)
         .join('\n');
-      setLastDetectedBarcode(text);
+      console.log(text);
     }
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScanbotBarcodeCameraView
-        style={styles.cameraViewContainer}
-        finderConfig={{
-          viewFinderEnabled: finderEnabled,
-          overlayColor: '#000000A9',
+        style={{
+          width: dimen.width,
+          height: dimen.width,
         }}
-        flashEnabled={flashEnabled}
         onBarcodeScannerResult={onBarcodeScan}
       />
-      <BarcodeCameraViewResult
-        style={styles.resultContainer}
-        lastDetectedBarcode={lastDetectedBarcode}
-        flashEnabled={flashEnabled}
-        onFinderToggle={() => setFinderEnabled(!finderEnabled)}
-        onFlashToggle={() => setFlashEnabled(!flashEnabled)}
-      />
+      <View style={{flex: 1}} />
     </SafeAreaView>
   );
 }
@@ -49,8 +38,5 @@ const styles = StyleSheet.create({
   },
   cameraViewContainer: {
     justifyContent: 'flex-end',
-  },
-  resultContainer: {
-    flex: 0.75,
   },
 });
