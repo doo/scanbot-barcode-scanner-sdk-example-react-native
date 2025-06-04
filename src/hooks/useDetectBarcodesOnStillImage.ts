@@ -3,6 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import {
   checkLicense,
   errorMessageAlert,
+  infoMessageAlert,
   PrimaryRouteNavigationProp,
   Screens,
   selectImageFromLibrary,
@@ -76,6 +77,8 @@ export function useDetectBarcodesOnStillImage() {
        */
       if (result.success) {
         navigation.navigate(Screens.BARCODE_RESULTS, result);
+      } else {
+        infoMessageAlert('No barcodes found.');
       }
     } catch (e: any) {
       errorMessageAlert(e.message);

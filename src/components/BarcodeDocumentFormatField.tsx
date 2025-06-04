@@ -6,6 +6,7 @@ import {
   AAMVA,
   BarcodeDocumentModelRootType,
   BoardingPass,
+  DEMedicalPlan,
   Field,
   GenericDocument,
   GS1,
@@ -20,7 +21,7 @@ import {
 function AAMVADocumentFields({document}: {document: AAMVA}) {
   return (
     <View>
-      <BarcodeFieldRow title={'File type:'} value={document.issuerIdentificationNumber} />
+      <BarcodeFieldRow title={'File type:'} value={document.requiredDocumentType()} />
       <BarcodeFieldRow title={'Aamva version number'} value={document.version} />
       <BarcodeFieldRow
         title={'Issuer identification number'}
@@ -132,6 +133,15 @@ function VCardFields({document}: {document: VCard}) {
   );
 }
 
+function DeMedicalPlanFields({document}: {document: DEMedicalPlan}) {
+  return (
+    <View>
+      <BarcodeFieldRow title={'Patient Name'} value={document.patient.firstName} />
+      <BarcodeFieldRow title={'Doctor Number'} value={document.doctor.doctorNumber} />
+    </View>
+  );
+}
+
 function HIBCFields({document}: {document: HIBC}) {
   return (
     <View>
@@ -203,6 +213,9 @@ export function BarcodeDocumentFormatField({
         break;
       case 'VCard':
         Document = <VCardFields document={new VCard(document)} />;
+        break;
+      case 'DEMedicalPlan':
+        Document = <DeMedicalPlanFields document={new DEMedicalPlan(document)} />;
         break;
       case 'HIBC':
         Document = <HIBCFields document={new HIBC(document)} />;
