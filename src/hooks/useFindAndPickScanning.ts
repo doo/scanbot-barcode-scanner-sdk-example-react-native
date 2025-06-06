@@ -3,12 +3,11 @@ import {useNavigation} from '@react-navigation/native';
 import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
 import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
 
-import {
-  BarcodeScannerConfiguration,
+import ScanbotBarcodeSDK, {
+  BarcodeScannerScreenConfiguration,
   ExpectedBarcode,
   FindAndPickScanningMode,
-  startBarcodeScanner,
-} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useFindAndPickScanning() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -28,7 +27,7 @@ export function useFindAndPickScanning() {
        * Instantiate a configuration object of BarcodeScannerConfiguration and
        * start the barcode scanner with the configuration
        */
-      const config = new BarcodeScannerConfiguration();
+      const config = new BarcodeScannerScreenConfiguration();
 
       // Initialize the use case for find and pick scanning.
       config.useCase = new FindAndPickScanningMode();
@@ -71,12 +70,12 @@ export function useFindAndPickScanning() {
       ];
 
       // Set an array of accepted barcode types.
-      config.recognizerConfiguration.barcodeFormats = acceptedBarcodeFormats;
-      config.recognizerConfiguration.acceptedDocumentFormats = acceptedBarcodeDocumentFormats;
+      config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
+      config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
       // Configure other parameters as needed.
 
-      const result = await startBarcodeScanner(config);
+      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
       /**
        * Handle the result if result status is OK
        */

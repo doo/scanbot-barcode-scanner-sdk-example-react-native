@@ -1,12 +1,12 @@
-import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+import {BarcodeScannerScreenConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
 
-function rtuUiV2ActionBarConfiguration() {
+function rtuUiActionBarConfiguration() {
   // Create the default configuration object.
-  const config = new BarcodeScannerConfiguration();
+  const config = new BarcodeScannerScreenConfiguration();
 
   // Configure the action bar.
 
-  // Hide/unhide the flash button.
+  // Hide/show the flash button.
   config.actionBar.flashButton.visible = true;
 
   // Configure the inactive state of the flash button.
@@ -17,7 +17,7 @@ function rtuUiV2ActionBarConfiguration() {
   config.actionBar.flashButton.activeBackgroundColor = '#FFCE5C';
   config.actionBar.flashButton.activeForegroundColor = '#000000';
 
-  // Hide/unhide the zoom button.
+  // Hide/show the zoom button.
   config.actionBar.zoomButton.visible = true;
 
   // Configure the inactive state of the zoom button.
@@ -25,7 +25,7 @@ function rtuUiV2ActionBarConfiguration() {
   config.actionBar.zoomButton.foregroundColor = '#FFFFFF';
   // Zoom button has no active state - it only switches between zoom levels (for configuring those please refer to camera configuring).
 
-  // Hide/unhide the flip camera button.
+  // Hide/show the flip camera button.
   config.actionBar.flipCameraButton.visible = true;
 
   // Configure the inactive state of the flip camera button.

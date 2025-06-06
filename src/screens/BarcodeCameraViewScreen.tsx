@@ -1,10 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 
-import {
-  BarcodeScannerResult,
-  ScanbotBarcodeCameraView,
-} from 'react-native-scanbot-barcode-scanner-sdk';
+import {BarcodeItem, ScanbotBarcodeCameraView} from 'react-native-scanbot-barcode-scanner-sdk';
 import {BarcodeCameraViewResult} from '@components';
 
 export function BarcodeCameraViewScreen() {
@@ -12,11 +9,9 @@ export function BarcodeCameraViewScreen() {
   const [flashEnabled, setFlashEnabled] = useState(false);
   const [finderEnabled, setFinderEnabled] = useState(false);
 
-  const onBarcodeScan = useCallback((result: BarcodeScannerResult) => {
-    if (result.barcodes && result.barcodes.length > 0) {
-      const text = result.barcodes
-        .map(barcode => `${barcode.textWithExtension} (${barcode.type})`)
-        .join('\n');
+  const onBarcodeScan = useCallback((result: BarcodeItem[]) => {
+    if (result.length > 0) {
+      const text = result.map(barcode => `${barcode.text} (${barcode.format})`).join('\n');
       setLastDetectedBarcode(text);
     }
   }, []);

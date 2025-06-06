@@ -9,7 +9,7 @@ async function initScanbotBarcodeScannerSdkWithCustomStorage() {
 
   try {
     const result = await ScanbotBarcodeSDK.initializeSdk(config);
-    console.log(result.data);
+    console.log(result);
   } catch (error: any) {
     console.error(error);
   }

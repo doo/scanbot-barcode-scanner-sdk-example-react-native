@@ -1,10 +1,10 @@
-import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+import {BarcodeScannerScreenConfiguration} from 'react-native-scanbot-barcode-scanner-sdk';
 
-async function statRtuUiV2WithUserGuidanceConfiguration() {
+async function statRtuUiWithUserGuidanceConfiguration() {
   // Create the default configuration object.
-  const config = new BarcodeScannerConfiguration();
+  const config = new BarcodeScannerScreenConfiguration();
 
-  // Hide/unhide the user guidance.
+  // Hide/show the user guidance.
   config.userGuidance.visible = true;
 
   // Configure the title.
