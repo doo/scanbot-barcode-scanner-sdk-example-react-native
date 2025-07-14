@@ -39,9 +39,9 @@ function AAMVADocumentFields({document}: {document: AAMVA}) {
 function BoardingPassFields({document}: {document: BoardingPass}) {
   return (
     <View>
-      <BarcodeFieldRow title={'Name'} value={document.name} />
+      <BarcodeFieldRow title={'Name'} value={document.passengerName} />
       <BarcodeFieldRow title={'Security Data'} value={document.securityData} />
-      <BarcodeFieldRow title={'Electronic ticket'} value={document.electronicTicket} />
+      <BarcodeFieldRow title={'Electronic ticket'} value={document.electronicTicketIndicator} />
       <BarcodeFieldRow title={'Number of legs'} value={document.numberOfLegs} />
     </View>
   );
@@ -124,11 +124,11 @@ function VCardFields({document}: {document: VCard}) {
   return (
     <View>
       <BarcodeFieldRow title={'Name'} value={document.name?.rawValue} />
-      <BarcodeFieldRow title={'Title'} value={document.title?.rawValue} />
-      <BarcodeFieldRow title={'First Name'} value={document.firstName?.rawValue} />
+      <BarcodeFieldRow title={'Title'} value={document.titles[0]?.rawValue} />
+      <BarcodeFieldRow title={'First Name'} value={document.formattedName?.rawValue} />
       <BarcodeFieldRow title={'Birthday'} value={document.birthday?.rawValue} />
-      <BarcodeFieldRow title={'Email'} value={document.email?.rawValue} />
-      <BarcodeFieldRow title={'Role'} value={document.role?.rawValue} />
+      <BarcodeFieldRow title={'Email'} value={document.emails[0]?.rawValue} />
+      <BarcodeFieldRow title={'Role'} value={document.roles[0]?.rawValue} />
     </View>
   );
 }
