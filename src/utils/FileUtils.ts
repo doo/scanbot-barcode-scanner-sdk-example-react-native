@@ -8,7 +8,7 @@ import { errorCodes, isErrorWithCode, pick, types } from '@react-native-document
  * @return {Promise<string[]|undefined>} An array of image URI if the operation is successful or undefined otherwise
  */
 
-export async function selectImageFromLibrary(): Promise<string[] | undefined> {
+export async function selectImageFromLibrary(): Promise<string | undefined> {
   const imageResponse = await launchImageLibrary({
     mediaType: 'photo',
     selectionLimit: 1,
@@ -19,13 +19,14 @@ export async function selectImageFromLibrary(): Promise<string[] | undefined> {
     return undefined;
   }
 
-  const imageUri = imageResponse.assets.every(image => image.uri !== undefined);
+  const imageUri =
+    imageResponse.assets.length > 0 && imageResponse.assets.every(image => image.uri !== undefined);
 
   if (!imageUri) {
     errorMessageAlert('Error picking image from gallery!');
     return undefined;
   } else {
-    return imageResponse.assets.map(image => image.uri as string);
+    return imageResponse.assets[0].uri as string;
   }
 }
 
