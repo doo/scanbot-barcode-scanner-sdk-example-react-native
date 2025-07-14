@@ -1,6 +1,6 @@
-import {launchImageLibrary} from 'react-native-image-picker';
-import {errorMessageAlert} from './Alerts';
-import DocumentPicker from 'react-native-document-picker';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { errorMessageAlert } from './Alerts';
+import { errorCodes, isErrorWithCode, pick, types } from '@react-native-documents/picker';
 
 /**
  * Select single or multiple images form the Image Library.
@@ -35,14 +35,29 @@ export async function selectImageFromLibrary(): Promise<string[] | undefined> {
  */
 
 export async function selectPDFFileUri(): Promise<string | undefined> {
-  return DocumentPicker.pickSingle({
-    type: [DocumentPicker.types.pdf],
-  })
-    .then(result => result.uri)
-    .catch(err => {
-      if (!DocumentPicker.isCancel(err as Error & {code?: string | undefined})) {
-        errorMessageAlert(err.code ?? 'Error while using the document picker');
-      }
-      return undefined;
+  try {
+    const [pdfFile] = await pick({
+      mode: 'import',
+      type: types.pdf,
+      allowedExtensions: false,
+      allowMultiSelection: false,
     });
+
+    return pdfFile.uri;
+  } catch (e) {
+    if (isErrorWithCode(e)) {
+      switch (e.code) {
+        case errorCodes.UNABLE_TO_OPEN_FILE_TYPE: {
+          errorMessageAlert('Unable to open file');
+          break;
+        }
+        case errorCodes.IN_PROGRESS: {
+          errorMessageAlert(e.message);
+          break;
+        }
+      }
+    }
+
+    return undefined;
+  }
 }
