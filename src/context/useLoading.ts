@@ -1,4 +1,4 @@
-import {createContext, Dispatch, SetStateAction, useState} from 'react';
+import { createContext, Dispatch, SetStateAction, useState } from 'react';
 
 export const ActivityIndicatorContext = createContext<{
   setLoading: Dispatch<SetStateAction<boolean>>;

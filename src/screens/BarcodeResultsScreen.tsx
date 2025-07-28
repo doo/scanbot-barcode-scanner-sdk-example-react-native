@@ -1,10 +1,10 @@
-import React, {useMemo} from 'react';
-import {FlatList, SafeAreaView, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
-import {useRoute} from '@react-navigation/native';
-import {BarcodeDocumentFormatField, BarcodeFieldRow} from '@components';
-import {BarcodeResultsScreenRouteProp} from '@utils';
-import {COLORS} from '@theme';
-import {PreviewImage} from '../components/PreviewImage.tsx';
+import React, { useMemo } from 'react';
+import { FlatList, SafeAreaView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { BarcodeDocumentFormatField, BarcodeFieldRow } from '@components';
+import { BarcodeResultsScreenRouteProp } from '@utils';
+import { COLORS } from '@theme';
+import { PreviewImage } from '../components/PreviewImage.tsx';
 import {
   BarcodeItem,
   BarcodeScannerResult,
@@ -16,7 +16,7 @@ type ResultsListItem = {
   count: number;
 };
 
-function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}) {
+function BarcodeItemResult({ item, index }: { item: ResultsListItem; index: number }) {
   const dimen = useWindowDimensions();
 
   return (
@@ -25,7 +25,7 @@ function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}
       <View>
         {item.barcode.sourceImage && (
           <PreviewImage
-            style={[{width: dimen.width, height: dimen.height / 3}, {objectFit: 'contain'}]}
+            style={[{ width: dimen.width, height: dimen.height / 3 }, { objectFit: 'contain' }]}
             imageSource={`data:image/jpeg;base64,${item.barcode.sourceImage.buffer}`}
           />
         )}
@@ -43,7 +43,7 @@ function BarcodeItemResult({item, index}: {item: ResultsListItem; index: number}
 }
 
 export function BarcodeResultsScreen() {
-  const {params} = useRoute<BarcodeResultsScreenRouteProp>();
+  const { params } = useRoute<BarcodeResultsScreenRouteProp>();
 
   const results: ResultsListItem[] = useMemo(() => {
     if (params instanceof BarcodeScannerUiResult) {
@@ -74,7 +74,7 @@ export function BarcodeResultsScreen() {
       <FlatList
         data={results}
         keyExtractor={(item, index) => `${item.barcode.format}${index}`}
-        renderItem={({item, index}) => {
+        renderItem={({ item, index }) => {
           return <BarcodeItemResult item={item} index={index} />;
         }}
       />

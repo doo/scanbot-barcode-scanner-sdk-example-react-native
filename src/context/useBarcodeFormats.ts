@@ -1,6 +1,6 @@
-import {createContext, useCallback, useState} from 'react';
+import { createContext, useCallback, useState } from 'react';
 
-import {BarcodeFormat} from 'react-native-scanbot-barcode-scanner-sdk';
+import { BarcodeFormat } from 'react-native-scanbot-barcode-scanner-sdk';
 
 type SupportedBarcodeFormat = Exclude<BarcodeFormat, 'NONE'>;
 

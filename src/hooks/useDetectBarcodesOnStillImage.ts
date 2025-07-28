@@ -1,5 +1,5 @@
-import {useCallback, useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import { useCallback, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   checkLicense,
   errorMessageAlert,
@@ -22,9 +22,9 @@ import ScanbotBarcodeSDK, {
 
 export function useDetectBarcodesOnStillImage() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const {setLoading} = useContext(ActivityIndicatorContext);
-  const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
-  const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
+  const { setLoading } = useContext(ActivityIndicatorContext);
+  const { acceptedBarcodeDocumentFormats } = useContext(BarcodeDocumentFormatContext);
+  const { acceptedBarcodeFormats } = useContext(BarcodeFormatsContext);
 
   return useCallback(async () => {
     try {
@@ -40,15 +40,13 @@ export function useDetectBarcodesOnStillImage() {
        * Return early if no image is selected or there is an issue selecting an image
        **/
       setLoading(true);
-      const selectedImage = await selectImageFromLibrary();
-      if (!selectedImage) {
+      const imageFileUri = await selectImageFromLibrary();
+      if (!imageFileUri) {
         return;
       }
       /**
        * Detect the barcodes on the selected image
        */
-      const [imageFileUri] = selectedImage;
-
       const scannerConfiguration = new BarcodeScannerConfiguration();
       scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 

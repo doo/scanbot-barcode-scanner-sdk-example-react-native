@@ -1,4 +1,4 @@
-import {createContext, Dispatch, SetStateAction, useCallback, useState} from 'react';
+import { createContext, Dispatch, SetStateAction, useCallback, useState } from 'react';
 
 import {
   BarcodeDocumentFormat,

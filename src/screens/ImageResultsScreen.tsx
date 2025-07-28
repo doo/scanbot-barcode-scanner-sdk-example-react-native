@@ -1,12 +1,12 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, useWindowDimensions, View} from 'react-native';
-import {useRoute} from '@react-navigation/native';
-import {FILE_ENCRYPTION_ENABLED, ImageResultsScreenRouteProp} from '@utils';
-import {PreviewImage} from '../components/PreviewImage.tsx';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { FILE_ENCRYPTION_ENABLED, ImageResultsScreenRouteProp } from '@utils';
+import { PreviewImage } from '../components/PreviewImage.tsx';
 import ScanbotSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function ImageResultsScreen() {
-  const {params} = useRoute<ImageResultsScreenRouteProp>();
+  const { params } = useRoute<ImageResultsScreenRouteProp>();
   const [imageUris, setImageUri] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const dimen = useWindowDimensions();
@@ -42,11 +42,11 @@ export function ImageResultsScreen() {
   }, [params, setLoading]);
 
   const onRenderItem = useCallback(
-    ({item}: {item: string}) => {
+    ({ item }: { item: string }) => {
       return (
         <PreviewImage
           imageSource={item}
-          style={[{width: dimen.width, height: dimen.height / 2}, styles.imageContainer]}
+          style={[{ width: dimen.width, height: dimen.height / 2 }, styles.imageContainer]}
         />
       );
     },

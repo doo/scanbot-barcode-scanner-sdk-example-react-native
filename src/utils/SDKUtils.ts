@@ -1,4 +1,4 @@
-import {errorMessageAlert} from './Alerts';
+import { errorMessageAlert } from './Alerts';
 
 import ScanbotSDK from 'react-native-scanbot-barcode-scanner-sdk';
 

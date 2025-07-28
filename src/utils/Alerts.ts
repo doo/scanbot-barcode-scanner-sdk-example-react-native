@@ -1,4 +1,4 @@
-import {Alert} from 'react-native';
+import { Alert } from 'react-native';
 
 /**
  * An alert that displays an error message when an unexpected event occurs
