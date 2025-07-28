@@ -1,7 +1,7 @@
-import React, {useContext} from 'react';
-import {StyleSheet, Switch, Text, View} from 'react-native';
-import {BarcodeDocumentFormatContext} from '@context';
-import {SwitchOptionsList} from '@components';
+import React, { useContext } from 'react';
+import { StyleSheet, Switch, Text, View } from 'react-native';
+import { BarcodeDocumentFormatContext } from '@context';
+import { SwitchOptionsList } from '@components';
 
 export function BarcodeDocumentFormatsScreen() {
   const {

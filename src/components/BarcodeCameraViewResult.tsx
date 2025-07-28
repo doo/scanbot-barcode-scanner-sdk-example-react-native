@@ -1,7 +1,15 @@
 import React from 'react';
-import {Image, ScrollView, StyleProp, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {COLORS} from '@theme';
-import {ViewStyle} from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
+import {
+  Image,
+  ScrollView,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { COLORS } from '@theme';
+import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 
 export function BarcodeCameraViewResult(props: {
   lastDetectedBarcode: string;

@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Switch, Text, TouchableOpacity, View} from 'react-native';
+import { FlatList, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 
 interface SwitchOptionsList<T extends string> {
@@ -16,11 +16,12 @@ export function SwitchOptionsList<T extends string>({
     <FlatList
       style={styles.list}
       data={Object.keys(data)}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <TouchableOpacity
           disabled={isFilteringEnabled}
           activeOpacity={0.6}
-          onPress={() => onPress(item as T)}>
+          onPress={() => onPress(item as T)}
+        >
           <View style={styles.listItemContainer}>
             <Text style={styles.listItemText}>{item}</Text>
             <Switch

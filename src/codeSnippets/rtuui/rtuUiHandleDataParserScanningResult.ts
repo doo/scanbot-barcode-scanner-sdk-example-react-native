@@ -29,7 +29,7 @@ async function handleScanningResultWithDataParsers() {
   // Check if the status returned is ok and that the data is present
   if (scanningResult.status == 'OK' && scanningResult.data) {
     // Loop through the scanned barcode items and extract the desired barcode data
-    const requiredBarcodeInfo = scanningResult.data.items.map(({barcode}) => {
+    const requiredBarcodeInfo = scanningResult.data.items.map(({ barcode }) => {
       if (barcode.extractedDocument) {
         switch (barcode.extractedDocument.type.name) {
           case AAMVADocumentType:

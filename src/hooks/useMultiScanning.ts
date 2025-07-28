@@ -1,7 +1,7 @@
-import {useCallback, useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
-import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
+import { useCallback, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens } from '@utils';
+import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
 import ScanbotBarcodeSDK, {
   BarcodeMappedData,
@@ -11,8 +11,8 @@ import ScanbotBarcodeSDK, {
 
 export function useMultiScanning() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
-  const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
+  const { acceptedBarcodeFormats } = useContext(BarcodeFormatsContext);
+  const { acceptedBarcodeDocumentFormats } = useContext(BarcodeDocumentFormatContext);
 
   return useCallback(async () => {
     try {
@@ -73,7 +73,9 @@ export function useMultiScanning() {
         if (barcodeItem.text === 'Error occurred!') {
           onError();
         } else {
-          onResult(new BarcodeMappedData({title: title, subtitle: subtitle, barcodeImage: image}));
+          onResult(
+            new BarcodeMappedData({ title: title, subtitle: subtitle, barcodeImage: image }),
+          );
         }
       };
 
