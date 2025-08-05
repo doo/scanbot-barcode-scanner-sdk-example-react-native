@@ -6,12 +6,12 @@ These example apps demonstrate how to integrate the [Scanbot Barcode Scanner SDK
 
 Scanbot Barcode Scanner SDK is a simple to use high level API, providing a collection of classes and functions for scanning and parsing 1D and 2D barcodes from your mobile device's camera or other image sources like your photo library.
 
-The SDK for React Native is available as an npm package:
+The SDK for React Native is available as a npm package:
 - https://www.npmjs.com/package/react-native-scanbot-barcode-scanner-sdk
 
 ## Trial License
 
-The Scanbot SDK will run without a license for one minute per session! To get an unrestricted, "no-strings-attached" 7-day trial license, please submit the [Trial License Form](https://scanbot.io/trial/?utm_source=npmjs.com&utm_medium=referral&utm_campaign=dev_sites) on our website.
+The Scanbot SDK will run without a license for one minute per session! To get an unrestricted, "no-strings-attached" 7-day trial license, please submit the [Trial License Form](https://docs.scanbot.io/trial/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) on our website.
 
 Please kindly note that a trial license can only be used in a development and staging environment. You are not allowed to publish your app to the App Store, Play Store or any 3rd party Android App Store with a trial license.
 
@@ -42,13 +42,13 @@ framework or features, please visit our [Support Page](https://docs.scanbot.io/s
 - vCard data from a QR-Code (e.g. on business cards).
 - [Swiss QR](https://scanbot.io/products/barcode-software/2d-barcode-scanner/swiss-qr/) data from a QR-Code for easy, automatic and efficient payments.
 
-For more details please refer to the SDK documentation.
+For more details, please refer to the SDK documentation.
 
 
 ## Documentation
 
 For more details about the Scanbot Barcode Scanner SDK for React Native please see this
-[documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/).
+[documentation](https://docs.scanbot.io/react-native/barcode-scanner-sdk/introduction/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
 
 # How to run this app
 
