@@ -19,7 +19,7 @@ It operates entirely offline on the user's device and takes only 0.04 seconds pe
 
 The SDK can be integrated into your app within minutes and comes with Ready-To-Use UI components, which allow you to customize the barcode scanner to your needs.
 
-💡 For more details about the Scanbot Barcode Scanner SDK for React Native, please check out our [documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
+💡 For more details about the Scanbot Barcode Scanner SDK for React Native, please check out our [documentation](https://docs.scanbot.io/react-native/barcode-scanner-sdk/introduction/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
 
 ## How to run the example app
 
@@ -31,7 +31,7 @@ The SDK can be integrated into your app within minutes and comes with Ready-To-U
 
 To install the project dependencies, run the following commands
 
-```
+```bash
 # Install the required dependencies
 yarn install
 
@@ -86,14 +86,14 @@ This is not the only way to launch your app. You can also run it directly from w
 
 **Pod not found**
 
-```
+```bash
 cd ios
 bundle exec pod repo update
 ```
 
 **Still at a loss? It is probably a cache issue**
 
-```
+```bash
 yarn run clean
 ```
 
@@ -141,13 +141,13 @@ The Scanbot React Native Barcode Scanner library supports all common 1D- or 2D b
 | 2D Barcodes        | [QR Code](https://scanbot.io/glossary/qr-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Micro QR Code](https://scanbot.io/barcode-scanner-sdk/micro-qr-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Aztec Code](https://scanbot.io/barcode-scanner-sdk/aztec-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [PDF417 Code](https://scanbot.io/barcode-scanner-sdk/pdf417/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Data Matrix Code,](https://scanbot.io/barcode-scanner-sdk/data-matrix/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) [GiroCode](https://scanbot.io/glossary/giro-code/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [NTIN Code](https://scanbot.io/glossary/gtin/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [PPN](https://scanbot.io/glossary/ppn/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [UDI](https://scanbot.io/glossary/udi/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), [Royal Mail Mailmark](https://scanbot.io/barcode-scanner-sdk/royal-mail/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites), MaxiCode |
 | Postal Symbologies | USPS Intelligent Mail Barcode (IMb), Royal Mail RM4SCC Barcode, Australia Post 4-State Customer Code, Japan Post 4-State Customer Code, KIX                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-💡 Please visit our [docs](https://docs.scanbot.io/barcode-scanner-sdk/react-native/supported-barcodes/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) for a complete overview of the supported barcode symbologies.
+💡 Please visit our [docs](https://docs.scanbot.io/react-native/barcode-scanner-sdk/supported-barcodes/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) for a complete overview of the supported barcode symbologies.
 
 ### Data Parsers
 
 The Scanbot Barcode Scanner SDK supports a variety of data parsers that extract structured information from 2D barcodes such as QR Codes and Data Matrix. These include parsers for documents such as driving licences (AAMVA), boarding passes, medical certificates, SEPA forms, Swiss QR codes and vCard business cards.
 
-💡 Please refer to our [documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/supported-barcodes/#data-parsers) for a full list of supported data parsers.
+💡 Please refer to our [documentation](https://docs.scanbot.io/react-native/barcode-scanner-sdk/supported-barcodes/#data-parsers) for a full list of supported data parsers.
 
 ## Additional information
 
@@ -161,7 +161,7 @@ Whether you're a seasoned developer or just starting, our tutorials provide clea
 
 ### Free integration support
 
-Need help integrating or testing our Barcode Scanner SDK? We offer [free developer support](https://docs.scanbot.io/support/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) via Slack, MS Teams, or email.
+Need help integrating or testing our Barcode Scanner SDK? We offer [free developer support](https://docs.scanbot.io/support/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) via Slack, MS Teams, or email.
 
 As a customer, you also get access to a dedicated support Slack or Microsoft Teams channel to talk directly to your Customer Success Manager and our engineers.
 
@@ -171,11 +171,11 @@ The Scanbot SDK examples will run for one minute per session without a license. 
 
 To try the React Native Barcode Scanner SDK without the one-minute limit, you can request a free, no-strings-attached [7-day trial license](https://scanbot.io/trial/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
 
-Our pricing model is simple: Unlimited barcode scanning for a flat annual license fee, full support included. There are no tiers, usage charges, or extra fees. [Contact](https://scanbot.io/contact-sales/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) our team to receive your quote.
+Our pricing model is simple: Unlimited barcode scanning for a flat annual license fee, full support included. There are no tiers, usage charges, or extra fees.[Contact](https://scanbot.io/contact-sales/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) our team to receive your quote.
 
 ### Other supported platforms
 
-Besides React Native, the Scanbot Barcode Scanner SDK is also available on:
+Besides React Native, the Scanbot Barcode ScannerSDK is also available on:
 
 * [Android (native)](https://github.com/doo/scanbot-barcode-scanner-sdk-example-android)
 * [iOS (native)](https://github.com/doo/scanbot-barcode-scanner-sdk-example-ios)

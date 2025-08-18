@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, Image, ImageStyle, StyleProp, StyleSheet, View} from 'react-native';
+import { ActivityIndicator, Image, ImageStyle, StyleProp, StyleSheet, View } from 'react-native';
 
 type PreviewImageProps = {
   imageSource?: string;
@@ -7,7 +7,7 @@ type PreviewImageProps = {
   style?: StyleProp<ImageStyle>;
 };
 
-export function PreviewImage({imageSource, loading, style}: PreviewImageProps) {
+export function PreviewImage({ imageSource, loading, style }: PreviewImageProps) {
   if (!imageSource) {
     return null;
   }
@@ -20,9 +20,9 @@ export function PreviewImage({imageSource, loading, style}: PreviewImageProps) {
     );
   }
 
-  return <Image source={{uri: imageSource}} style={style} />;
+  return <Image source={{ uri: imageSource }} style={style} />;
 }
 
 const styles = StyleSheet.create({
-  activityIndicator: {alignItems: 'center', justifyContent: 'center'},
+  activityIndicator: { alignItems: 'center', justifyContent: 'center' },
 });

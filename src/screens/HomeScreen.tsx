@@ -1,6 +1,6 @@
-import React, {useCallback} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useCallback } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   deleteConfirmationAlert,
   errorMessageAlert,
@@ -18,7 +18,7 @@ import {
   useSingleScanning,
   useSingleScanningWithImageResults,
 } from '@hooks';
-import {FeatureHeader, FeatureItem, ScanbotLearnMore} from '@components';
+import { FeatureHeader, FeatureItem, ScanbotLearnMore } from '@components';
 
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 

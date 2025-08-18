@@ -6,7 +6,7 @@ import ScanbotBarcodeSDK, {
   EncodeImageOptions,
   SaveImageOptions,
 } from 'react-native-scanbot-barcode-scanner-sdk';
-import {DocumentDirectoryPath} from 'react-native-fs';
+import { DocumentDirectoryPath } from 'react-native-fs';
 
 async function handleScanningResultWithImageRef() {
   // Start the barcode RTU UI with a configuration that returns image results
@@ -17,7 +17,7 @@ async function handleScanningResultWithImageRef() {
   // Autorelease executes the given block and releases native resources
   await autorelease(() => {
     if (scanningResult.status == 'OK' && scanningResult.data) {
-      scanningResult.data.items.forEach(async ({barcode}) => {
+      scanningResult.data.items.forEach(async ({ barcode }) => {
         // Check if sourceImage exists
         if (barcode.sourceImage) {
           // Saves the stored image at path with the given options
@@ -54,7 +54,7 @@ async function handleScanningResultWithSerializedImageRef() {
   await autorelease(() => {
     const barcodeResult = new BarcodeScannerUiResult(serializedResult);
     // Continue working with ImageRefs
-    barcodeResult.items.forEach(async ({barcode}) => {
+    barcodeResult.items.forEach(async ({ barcode }) => {
       if (barcode.sourceImage) {
         // Saves the stored image at path with the given options
         const path = DocumentDirectoryPath + '/my_custom_path/my_file.jpg';
@@ -77,7 +77,7 @@ async function handleScanningResultWithEncodedImageRef() {
       // Encode all ImageRefs as base64
       await scanningResult.data.encodeImages();
 
-      const base64Buffers = scanningResult.data.items.map(({barcode}) => {
+      const base64Buffers = scanningResult.data.items.map(({ barcode }) => {
         // ImageRef.buffer contains the base64Representation of the image
         if (barcode.sourceImage?.buffer) {
           return barcode.sourceImage.buffer;

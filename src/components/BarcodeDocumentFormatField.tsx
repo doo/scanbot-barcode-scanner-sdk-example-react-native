@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {BarcodeFieldRow} from './BarcodeFieldRow.tsx';
+import { StyleSheet, View } from 'react-native';
+import { BarcodeFieldRow } from './BarcodeFieldRow.tsx';
 
 import {
   AAMVA,
@@ -18,7 +18,7 @@ import {
   VCard,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-function AAMVADocumentFields({document}: {document: AAMVA}) {
+function AAMVADocumentFields({ document }: { document: AAMVA }) {
   return (
     <View>
       <BarcodeFieldRow title={'File type:'} value={document.requiredDocumentType()} />
@@ -36,18 +36,18 @@ function AAMVADocumentFields({document}: {document: AAMVA}) {
   );
 }
 
-function BoardingPassFields({document}: {document: BoardingPass}) {
+function BoardingPassFields({ document }: { document: BoardingPass }) {
   return (
     <View>
-      <BarcodeFieldRow title={'Name'} value={document.name} />
+      <BarcodeFieldRow title={'Name'} value={document.passengerName} />
       <BarcodeFieldRow title={'Security Data'} value={document.securityData} />
-      <BarcodeFieldRow title={'Electronic ticket'} value={document.electronicTicket} />
+      <BarcodeFieldRow title={'Electronic ticket'} value={document.electronicTicketIndicator} />
       <BarcodeFieldRow title={'Number of legs'} value={document.numberOfLegs} />
     </View>
   );
 }
 
-function GS1Fields({document}: {document: GS1}) {
+function GS1Fields({ document }: { document: GS1 }) {
   return (
     <View>
       <BarcodeFieldRow title={'Fields'} value={''} style={styles.titleRow} />
@@ -64,7 +64,7 @@ function GS1Fields({document}: {document: GS1}) {
   );
 }
 
-function IDCardPDF417Fields({document}: {document: IDCardPDF417}) {
+function IDCardPDF417Fields({ document }: { document: IDCardPDF417 }) {
   return (
     <View>
       <BarcodeFieldRow title={'Document code'} value={document.documentCode} />
@@ -78,7 +78,7 @@ function IDCardPDF417Fields({document}: {document: IDCardPDF417}) {
   );
 }
 
-function MedicalCertificateFields({document}: {document: MedicalCertificate}) {
+function MedicalCertificateFields({ document }: { document: MedicalCertificate }) {
   return (
     <View>
       <BarcodeFieldRow title={'First name'} value={document.firstName} />
@@ -90,7 +90,7 @@ function MedicalCertificateFields({document}: {document: MedicalCertificate}) {
   );
 }
 
-function SepaFields({document}: {document: SEPA}) {
+function SepaFields({ document }: { document: SEPA }) {
   return (
     <View>
       <BarcodeFieldRow title={'Version'} value={document.version} />
@@ -107,7 +107,7 @@ function SepaFields({document}: {document: SEPA}) {
   );
 }
 
-function SwissQRFields({document}: {document: SwissQR}) {
+function SwissQRFields({ document }: { document: SwissQR }) {
   return (
     <View>
       <BarcodeFieldRow title={'Version'} value={document.majorVersion} />
@@ -120,20 +120,20 @@ function SwissQRFields({document}: {document: SwissQR}) {
   );
 }
 
-function VCardFields({document}: {document: VCard}) {
+function VCardFields({ document }: { document: VCard }) {
   return (
     <View>
       <BarcodeFieldRow title={'Name'} value={document.name?.rawValue} />
-      <BarcodeFieldRow title={'Title'} value={document.title?.rawValue} />
-      <BarcodeFieldRow title={'First Name'} value={document.firstName?.rawValue} />
+      <BarcodeFieldRow title={'Title'} value={document.titles[0]?.rawValue} />
+      <BarcodeFieldRow title={'First Name'} value={document.formattedName?.rawValue} />
       <BarcodeFieldRow title={'Birthday'} value={document.birthday?.rawValue} />
-      <BarcodeFieldRow title={'Email'} value={document.email?.rawValue} />
-      <BarcodeFieldRow title={'Role'} value={document.role?.rawValue} />
+      <BarcodeFieldRow title={'Email'} value={document.emails[0]?.rawValue} />
+      <BarcodeFieldRow title={'Role'} value={document.roles[0]?.rawValue} />
     </View>
   );
 }
 
-function DeMedicalPlanFields({document}: {document: DEMedicalPlan}) {
+function DeMedicalPlanFields({ document }: { document: DEMedicalPlan }) {
   return (
     <View>
       <BarcodeFieldRow title={'Patient Name'} value={document.patient.firstName} />
@@ -142,7 +142,7 @@ function DeMedicalPlanFields({document}: {document: DEMedicalPlan}) {
   );
 }
 
-function HIBCFields({document}: {document: HIBC}) {
+function HIBCFields({ document }: { document: HIBC }) {
   return (
     <View>
       <BarcodeFieldRow title={'Serial Number'} value={document.serialNumber} />

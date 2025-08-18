@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleProp, StyleSheet, Text, View, ViewStyle} from 'react-native';
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 
-import {Field} from 'react-native-scanbot-barcode-scanner-sdk';
+import { Field } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function BarcodeFieldRow(props: {
   title: string;

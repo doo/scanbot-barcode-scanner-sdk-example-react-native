@@ -29,7 +29,7 @@ async function handleScanningResultWithDataParsers() {
   // Check if the status returned is ok and that the data is present
   if (scanningResult.status == 'OK' && scanningResult.data) {
     // Loop through the scanned barcode items and extract the desired barcode data
-    const requiredBarcodeInfo = scanningResult.data.items.map(({barcode}) => {
+    const requiredBarcodeInfo = scanningResult.data.items.map(({ barcode }) => {
       if (barcode.extractedDocument) {
         switch (barcode.extractedDocument.type.name) {
           case AAMVADocumentType:
@@ -41,7 +41,7 @@ async function handleScanningResultWithDataParsers() {
           case BoardingPassDocumentType:
             const boardingPassDocument = new BoardingPass(barcode.extractedDocument);
             return {
-              name: boardingPassDocument.name,
+              name: boardingPassDocument.passengerName,
               securityData: boardingPassDocument.securityData,
             };
           case GS1DocumentType:
@@ -76,8 +76,8 @@ async function handleScanningResultWithDataParsers() {
           case VCardDocumentType:
             const vCardDocument = new VCard(barcode.extractedDocument);
             return {
-              name: vCardDocument.firstName,
-              number: vCardDocument.telephoneNumber,
+              name: vCardDocument.name,
+              number: vCardDocument.telephoneNumbers,
             };
           case HIBCDocumentType:
             const hibcDocument = new HIBC(barcode.extractedDocument);

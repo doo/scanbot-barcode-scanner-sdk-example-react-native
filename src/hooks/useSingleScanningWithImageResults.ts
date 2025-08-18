@@ -1,7 +1,7 @@
-import {useCallback, useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
-import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
+import { useCallback, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens } from '@utils';
+import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
 import ScanbotBarcodeSDK, {
   autorelease,
@@ -11,8 +11,8 @@ import ScanbotBarcodeSDK, {
 
 export function useSingleScanningWithImageResults() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
-  const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
+  const { acceptedBarcodeFormats } = useContext(BarcodeFormatsContext);
+  const { acceptedBarcodeDocumentFormats } = useContext(BarcodeDocumentFormatContext);
 
   return useCallback(async () => {
     try {

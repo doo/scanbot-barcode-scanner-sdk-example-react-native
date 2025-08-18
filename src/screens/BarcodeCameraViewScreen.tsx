@@ -1,8 +1,8 @@
-import React, {useCallback, useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
-import {BarcodeItem, ScanbotBarcodeCameraView} from 'react-native-scanbot-barcode-scanner-sdk';
-import {BarcodeCameraViewResult} from '@components';
+import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barcode-scanner-sdk';
+import { BarcodeCameraViewResult } from '@components';
 
 export function BarcodeCameraViewScreen() {
   const [lastDetectedBarcode, setLastDetectedBarcode] = useState('');
