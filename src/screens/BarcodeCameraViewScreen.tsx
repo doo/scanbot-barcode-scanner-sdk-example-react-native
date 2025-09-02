@@ -1,21 +1,14 @@
-import React, {useCallback} from 'react';
-import {SafeAreaView, StyleSheet, useWindowDimensions, View} from 'react-native';
+import React, { useCallback } from 'react';
+import { SafeAreaView, StyleSheet, useWindowDimensions, View } from 'react-native';
 
-import {
-  BarcodeScannerResult,
-  ScanbotBarcodeCameraView,
-} from 'react-native-scanbot-barcode-scanner-sdk';
+import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function BarcodeCameraViewScreen() {
   const dimen = useWindowDimensions();
 
-  const onBarcodeScan = useCallback((result: BarcodeScannerResult) => {
-    if (result.barcodes && result.barcodes.length > 0) {
-      const text = result.barcodes
-        .map(barcode => `${barcode.textWithExtension} (${barcode.type})`)
-        .join('\n');
-      console.log(text);
-    }
+  const onBarcodeScan = useCallback((result: BarcodeItem[]) => {
+    const text = result.map(barcode => `${barcode.text} (${barcode.format})`).join('\n');
+    console.log(text);
   }, []);
 
   return (
@@ -27,7 +20,7 @@ export function BarcodeCameraViewScreen() {
         }}
         onBarcodeScannerResult={onBarcodeScan}
       />
-      <View style={{flex: 1}} />
+      <View style={{ flex: 1 }} />
     </SafeAreaView>
   );
 }
