@@ -1,6 +1,6 @@
-import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useCallback} from 'react';
-import {COLORS} from '@theme';
+import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useCallback } from 'react';
+import { COLORS } from '@theme';
 
 export function SupportSection() {
   const onContactSupportPress = useCallback(() => {

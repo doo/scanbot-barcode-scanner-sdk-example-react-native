@@ -1,19 +1,20 @@
-import {useCallback, useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import { useCallback, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   checkLicense,
   errorMessageAlert,
+  infoMessageAlert,
   PrimaryRouteNavigationProp,
   Screens,
   selectPDFFileUri,
 } from '@utils';
-import {ActivityIndicatorContext} from '@context';
+import { ActivityIndicatorContext } from '@context';
 
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useExtractImagesFromPDF() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const {setLoading} = useContext(ActivityIndicatorContext);
+  const { setLoading } = useContext(ActivityIndicatorContext);
 
   return useCallback(async () => {
     try {
@@ -36,17 +37,17 @@ export function useExtractImagesFromPDF() {
       /**
        * Extract the images from the pdf with the desired configuration options
        */
-      const sdkResult = await ScanbotBarcodeSDK.extractImagesFromPDF({
+      const imageFilesUrls = await ScanbotBarcodeSDK.extractImagesFromPDF({
         pdfFilePath: fileUrl,
       });
-      const imageFilesUrls = sdkResult.data;
-      if (sdkResult.status === 'CANCELED' || !imageFilesUrls) {
-        return;
-      }
       /**
        * Handle the result
        */
-      navigation.navigate(Screens.IMAGE_RESULTS, imageFilesUrls);
+      if (imageFilesUrls.length > 0) {
+        navigation.navigate(Screens.IMAGE_RESULTS, imageFilesUrls);
+      } else {
+        infoMessageAlert('No images extracted');
+      }
     } catch (e: any) {
       errorMessageAlert(e.message);
     } finally {

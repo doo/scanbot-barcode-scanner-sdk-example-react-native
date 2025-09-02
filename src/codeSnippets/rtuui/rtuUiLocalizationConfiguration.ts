@@ -1,8 +1,8 @@
-import {BarcodeScannerConfiguration} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+import { BarcodeScannerScreenConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
-function rtuUiV2LocalizationConfiguration() {
+function rtuUiLocalizationConfiguration() {
   // Create the default configuration object.
-  const config = new BarcodeScannerConfiguration();
+  const config = new BarcodeScannerScreenConfiguration();
 
   // Configure localization parameters.
   config.localization.barcodeInfoMappingErrorStateCancelButton = 'Custom Cancel title';

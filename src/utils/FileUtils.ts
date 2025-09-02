@@ -1,6 +1,6 @@
-import {launchImageLibrary} from 'react-native-image-picker';
-import {errorMessageAlert} from './Alerts';
-import DocumentPicker from 'react-native-document-picker';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { errorMessageAlert } from './Alerts';
+import { errorCodes, isErrorWithCode, pick, types } from '@react-native-documents/picker';
 
 /**
  * Select single or multiple images form the Image Library.
@@ -8,7 +8,7 @@ import DocumentPicker from 'react-native-document-picker';
  * @return {Promise<string[]|undefined>} An array of image URI if the operation is successful or undefined otherwise
  */
 
-export async function selectImageFromLibrary(): Promise<string[] | undefined> {
+export async function selectImageFromLibrary(): Promise<string | undefined> {
   const imageResponse = await launchImageLibrary({
     mediaType: 'photo',
     selectionLimit: 1,
@@ -19,13 +19,14 @@ export async function selectImageFromLibrary(): Promise<string[] | undefined> {
     return undefined;
   }
 
-  const imageUri = imageResponse.assets.every(image => image.uri !== undefined);
+  const imageUri =
+    imageResponse.assets.length > 0 && imageResponse.assets.every(image => image.uri !== undefined);
 
   if (!imageUri) {
     errorMessageAlert('Error picking image from gallery!');
     return undefined;
   } else {
-    return imageResponse.assets.map(image => image.uri as string);
+    return imageResponse.assets[0].uri as string;
   }
 }
 
@@ -35,14 +36,29 @@ export async function selectImageFromLibrary(): Promise<string[] | undefined> {
  */
 
 export async function selectPDFFileUri(): Promise<string | undefined> {
-  return DocumentPicker.pickSingle({
-    type: [DocumentPicker.types.pdf],
-  })
-    .then(result => result.uri)
-    .catch(err => {
-      if (!DocumentPicker.isCancel(err as Error & {code?: string | undefined})) {
-        errorMessageAlert(err.code ?? 'Error while using the document picker');
-      }
-      return undefined;
+  try {
+    const [pdfFile] = await pick({
+      mode: 'import',
+      type: types.pdf,
+      allowedExtensions: false,
+      allowMultiSelection: false,
     });
+
+    return pdfFile.uri;
+  } catch (e) {
+    if (isErrorWithCode(e)) {
+      switch (e.code) {
+        case errorCodes.UNABLE_TO_OPEN_FILE_TYPE: {
+          errorMessageAlert('Unable to open file');
+          break;
+        }
+        case errorCodes.IN_PROGRESS: {
+          errorMessageAlert(e.message);
+          break;
+        }
+      }
+    }
+
+    return undefined;
+  }
 }

@@ -4,9 +4,8 @@ import {
   infoMessageAlert,
   resultMessageAlert,
 } from './Alerts.ts';
-import {selectImageFromLibrary, selectPDFFileUri} from './FileUtils.ts';
+import { selectImageFromLibrary, selectPDFFileUri } from './FileUtils.ts';
 import {
-  BarcodeResultsLegacyScreenRouteProp,
   BarcodeResultsScreenRouteProp,
   ImageResultsScreenRouteProp,
   PrimaryRouteNavigationProp,
@@ -14,7 +13,7 @@ import {
   Screens,
   ScreenTitles,
 } from './Navigation.ts';
-import {checkLicense, FILE_ENCRYPTION_ENABLED} from './SDKUtils.ts';
+import { checkLicense, FILE_ENCRYPTION_ENABLED } from './SDKUtils.ts';
 
 export {
   errorMessageAlert,
@@ -33,6 +32,5 @@ export type {
   ImageResultsScreenRouteProp,
   PrimaryRouteParamList,
   PrimaryRouteNavigationProp,
-  BarcodeResultsLegacyScreenRouteProp,
   BarcodeResultsScreenRouteProp,
 };

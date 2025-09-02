@@ -1,14 +1,16 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {BarcodeFieldRow} from './BarcodeFieldRow.tsx';
+import { StyleSheet, View } from 'react-native';
+import { BarcodeFieldRow } from './BarcodeFieldRow.tsx';
 
 import {
   AAMVA,
   BarcodeDocumentModelRootType,
   BoardingPass,
+  DEMedicalPlan,
   Field,
   GenericDocument,
   GS1,
+  HIBC,
   IDCardPDF417,
   MedicalCertificate,
   SEPA,
@@ -16,10 +18,10 @@ import {
   VCard,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-function AAMVADocumentFields({document}: {document: AAMVA}) {
+function AAMVADocumentFields({ document }: { document: AAMVA }) {
   return (
     <View>
-      <BarcodeFieldRow title={'File type:'} value={document.issuerIdentificationNumber} />
+      <BarcodeFieldRow title={'File type:'} value={document.requiredDocumentType()} />
       <BarcodeFieldRow title={'Aamva version number'} value={document.version} />
       <BarcodeFieldRow
         title={'Issuer identification number'}
@@ -34,18 +36,18 @@ function AAMVADocumentFields({document}: {document: AAMVA}) {
   );
 }
 
-function BoardingPassFields({document}: {document: BoardingPass}) {
+function BoardingPassFields({ document }: { document: BoardingPass }) {
   return (
     <View>
-      <BarcodeFieldRow title={'Name'} value={document.name} />
+      <BarcodeFieldRow title={'Name'} value={document.passengerName} />
       <BarcodeFieldRow title={'Security Data'} value={document.securityData} />
-      <BarcodeFieldRow title={'Electronic ticket'} value={document.electronicTicket} />
+      <BarcodeFieldRow title={'Electronic ticket'} value={document.electronicTicketIndicator} />
       <BarcodeFieldRow title={'Number of legs'} value={document.numberOfLegs} />
     </View>
   );
 }
 
-function GS1Fields({document}: {document: GS1}) {
+function GS1Fields({ document }: { document: GS1 }) {
   return (
     <View>
       <BarcodeFieldRow title={'Fields'} value={''} style={styles.titleRow} />
@@ -62,7 +64,7 @@ function GS1Fields({document}: {document: GS1}) {
   );
 }
 
-function IDCardPDF417Fields({document}: {document: IDCardPDF417}) {
+function IDCardPDF417Fields({ document }: { document: IDCardPDF417 }) {
   return (
     <View>
       <BarcodeFieldRow title={'Document code'} value={document.documentCode} />
@@ -76,7 +78,7 @@ function IDCardPDF417Fields({document}: {document: IDCardPDF417}) {
   );
 }
 
-function MedicalCertificateFields({document}: {document: MedicalCertificate}) {
+function MedicalCertificateFields({ document }: { document: MedicalCertificate }) {
   return (
     <View>
       <BarcodeFieldRow title={'First name'} value={document.firstName} />
@@ -88,7 +90,7 @@ function MedicalCertificateFields({document}: {document: MedicalCertificate}) {
   );
 }
 
-function SepaFields({document}: {document: SEPA}) {
+function SepaFields({ document }: { document: SEPA }) {
   return (
     <View>
       <BarcodeFieldRow title={'Version'} value={document.version} />
@@ -105,11 +107,11 @@ function SepaFields({document}: {document: SEPA}) {
   );
 }
 
-function SwissQRFields({document}: {document: SwissQR}) {
+function SwissQRFields({ document }: { document: SwissQR }) {
   return (
     <View>
-      <BarcodeFieldRow title={'Version'} value={document.version} />
-      <BarcodeFieldRow title={'Ammount'} value={document.amount} />
+      <BarcodeFieldRow title={'Version'} value={document.majorVersion} />
+      <BarcodeFieldRow title={'Amount'} value={document.amount} />
       <BarcodeFieldRow title={'Due date'} value={document.dueDate} />
       <BarcodeFieldRow title={'Currency'} value={document.currency} />
       <BarcodeFieldRow title={'Debtor Name'} value={document.debtorName} />
@@ -118,15 +120,34 @@ function SwissQRFields({document}: {document: SwissQR}) {
   );
 }
 
-function VCardFields({document}: {document: VCard}) {
+function VCardFields({ document }: { document: VCard }) {
   return (
     <View>
       <BarcodeFieldRow title={'Name'} value={document.name?.rawValue} />
-      <BarcodeFieldRow title={'Title'} value={document.title?.rawValue} />
-      <BarcodeFieldRow title={'First Name'} value={document.firstName?.rawValue} />
+      <BarcodeFieldRow title={'Title'} value={document.titles[0]?.rawValue} />
+      <BarcodeFieldRow title={'First Name'} value={document.formattedName?.rawValue} />
       <BarcodeFieldRow title={'Birthday'} value={document.birthday?.rawValue} />
-      <BarcodeFieldRow title={'Email'} value={document.email?.rawValue} />
-      <BarcodeFieldRow title={'Role'} value={document.role?.rawValue} />
+      <BarcodeFieldRow title={'Email'} value={document.emails[0]?.rawValue} />
+      <BarcodeFieldRow title={'Role'} value={document.roles[0]?.rawValue} />
+    </View>
+  );
+}
+
+function DeMedicalPlanFields({ document }: { document: DEMedicalPlan }) {
+  return (
+    <View>
+      <BarcodeFieldRow title={'Patient Name'} value={document.patient.firstName} />
+      <BarcodeFieldRow title={'Doctor Number'} value={document.doctor.doctorNumber} />
+    </View>
+  );
+}
+
+function HIBCFields({ document }: { document: HIBC }) {
+  return (
+    <View>
+      <BarcodeFieldRow title={'Serial Number'} value={document.serialNumber} />
+      <BarcodeFieldRow title={'Quantity'} value={document.quantity} />
+      <BarcodeFieldRow title={'Date Of Manufacture'} value={document.dateOfManufacture} />
     </View>
   );
 }
@@ -149,7 +170,7 @@ function extractGenericDocumentFields(document: GenericDocument) {
 
 export function BarcodeDocumentFormatField({
   document,
-  staticFields = false,
+  staticFields = true,
 }: {
   document: GenericDocument;
   staticFields?: boolean;
@@ -167,19 +188,7 @@ export function BarcodeDocumentFormatField({
    */
   let Document;
 
-  if (!staticFields) {
-    Document = (
-      <View>
-        {extractGenericDocumentFields(document).map((field, index) => (
-          <BarcodeFieldRow
-            key={field.type.name + index}
-            title={field.type.name.trim()}
-            value={field.value?.text}
-          />
-        ))}
-      </View>
-    );
-  } else {
+  if (staticFields) {
     switch (document.type.name as BarcodeDocumentModelRootType) {
       case 'AAMVA':
         Document = <AAMVADocumentFields document={new AAMVA(document)} />;
@@ -205,10 +214,28 @@ export function BarcodeDocumentFormatField({
       case 'VCard':
         Document = <VCardFields document={new VCard(document)} />;
         break;
+      case 'DEMedicalPlan':
+        Document = <DeMedicalPlanFields document={new DEMedicalPlan(document)} />;
+        break;
+      case 'HIBC':
+        Document = <HIBCFields document={new HIBC(document)} />;
+        break;
       default: {
         Document = <View />;
       }
     }
+  } else {
+    Document = (
+      <View>
+        {extractGenericDocumentFields(document).map((field, index) => (
+          <BarcodeFieldRow
+            key={field.type.name + index}
+            title={field.type.name.trim()}
+            value={field.value?.text}
+          />
+        ))}
+      </View>
+    );
   }
 
   return (

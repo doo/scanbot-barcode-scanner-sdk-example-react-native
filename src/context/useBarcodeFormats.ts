@@ -1,8 +1,10 @@
-import {createContext, useCallback, useState} from 'react';
+import { createContext, useCallback, useState } from 'react';
 
-import {BarcodeFormat} from 'react-native-scanbot-barcode-scanner-sdk';
+import { BarcodeFormat } from 'react-native-scanbot-barcode-scanner-sdk';
 
-const initialBarcodeFormats: Record<BarcodeFormat, boolean> = {
+type SupportedBarcodeFormat = Exclude<BarcodeFormat, 'NONE'>;
+
+const initialBarcodeFormats: Record<SupportedBarcodeFormat, boolean> = {
   AZTEC: true,
   CODABAR: true,
   CODE_25: true,
@@ -35,12 +37,16 @@ const initialBarcodeFormats: Record<BarcodeFormat, boolean> = {
   CODE_32: true,
   MAXI_CODE: true,
   RMQR_CODE: true,
+  PHARMA_CODE: true,
+  PHARMA_CODE_TWO_TRACK: true,
+  PZN_7: true,
+  PZN_8: true,
 };
 
 interface BarcodeFormatsContextValue {
-  barcodeFormats: Record<BarcodeFormat, boolean>;
-  toggleBarcodeFormat: (value: BarcodeFormat) => void;
-  acceptedBarcodeFormats: Array<BarcodeFormat>;
+  barcodeFormats: Record<SupportedBarcodeFormat, boolean>;
+  toggleBarcodeFormat: (value: SupportedBarcodeFormat) => void;
+  acceptedBarcodeFormats: Array<SupportedBarcodeFormat>;
 }
 
 export const BarcodeFormatsContext = createContext<BarcodeFormatsContextValue>({
@@ -52,7 +58,7 @@ export const BarcodeFormatsContext = createContext<BarcodeFormatsContextValue>({
 export function useBarcodeFormats() {
   const [barcodeFormats, setBarcodeFormats] = useState(initialBarcodeFormats);
 
-  const toggleBarcodeFormat = useCallback((updated: BarcodeFormat) => {
+  const toggleBarcodeFormat = useCallback((updated: SupportedBarcodeFormat) => {
     setBarcodeFormats(format => ({
       ...format,
       [updated]: !format[updated],
@@ -61,7 +67,7 @@ export function useBarcodeFormats() {
 
   const acceptedBarcodeFormats = Object.entries(barcodeFormats)
     .filter(([_, value]) => value)
-    .map(([key]) => key as BarcodeFormat);
+    .map(([key]) => key as SupportedBarcodeFormat);
 
   return {
     barcodeFormats,

@@ -1,19 +1,18 @@
-import {useCallback, useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens} from '@utils';
-import {BarcodeDocumentFormatContext, BarcodeFormatsContext} from '@context';
+import { useCallback, useContext } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens } from '@utils';
+import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
-import {
-  startBarcodeScanner,
+import ScanbotBarcodeSDK, {
   BarcodeMappedData,
-  BarcodeScannerConfiguration,
+  BarcodeScannerScreenConfiguration,
   MultipleScanningMode,
-} from 'react-native-scanbot-barcode-scanner-sdk/ui_v2';
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useMultiScanning() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const {acceptedBarcodeFormats} = useContext(BarcodeFormatsContext);
-  const {acceptedBarcodeDocumentFormats} = useContext(BarcodeDocumentFormatContext);
+  const { acceptedBarcodeFormats } = useContext(BarcodeFormatsContext);
+  const { acceptedBarcodeDocumentFormats } = useContext(BarcodeDocumentFormatContext);
 
   return useCallback(async () => {
     try {
@@ -28,7 +27,7 @@ export function useMultiScanning() {
        * Instantiate a configuration object of BarcodeScannerConfiguration and
        * start the barcode scanner with the configuration
        */
-      const config = new BarcodeScannerConfiguration();
+      const config = new BarcodeScannerScreenConfiguration();
 
       // Initialize the use case for multiple scanning.
       config.useCase = new MultipleScanningMode();
@@ -56,14 +55,14 @@ export function useMultiScanning() {
       config.useCase.barcodeInfoMapping.barcodeItemMapper = (barcodeItem, onResult, onError) => {
         /** TODO: process scan result as needed to get your mapped data,
          * e.g. query your server to get product image, title and subtitle.
-         * 
+         *
          * Note: The built-in fetch API won't work properly in this case.
          * To request from the server, please use XMLHttpRequest API or another 3rd party library such as axios.
-         * 
+         *
          * See example below.
          */
-        const title = `Some product ${barcodeItem.textWithExtension}`;
-        const subtitle = barcodeItem.type ?? 'Unknown';
+        const title = `Some product ${barcodeItem.text}`;
+        const subtitle = barcodeItem.format;
 
         // If image from URL is used, on Android platform INTERNET permission is required.
         const image = 'https://avatars.githubusercontent.com/u/1454920';
@@ -71,22 +70,24 @@ export function useMultiScanning() {
         // const image = BarcodeMappedData.barcodeImageKey;
 
         /** Call onError() in case of error during obtaining mapped data. */
-        if (barcodeItem.textWithExtension === 'Error occurred!') {
+        if (barcodeItem.text === 'Error occurred!') {
           onError();
         } else {
-          onResult(new BarcodeMappedData({title: title, subtitle: subtitle, barcodeImage: image}));
+          onResult(
+            new BarcodeMappedData({ title: title, subtitle: subtitle, barcodeImage: image }),
+          );
         }
       };
 
       // Configure other parameters, pertaining to multiple-scanning mode as needed.
 
       // Set an array of accepted barcode types.
-      config.recognizerConfiguration.barcodeFormats = acceptedBarcodeFormats;
-      config.recognizerConfiguration.acceptedDocumentFormats = acceptedBarcodeDocumentFormats;
+      config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
+      config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
       // Configure other parameters as needed.
 
-      const result = await startBarcodeScanner(config);
+      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
       /**
        * Handle the result if result status is OK
        */

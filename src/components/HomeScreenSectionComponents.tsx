@@ -1,8 +1,8 @@
-import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useCallback} from 'react';
-import {COLORS} from '@theme';
+import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useCallback } from 'react';
+import { COLORS } from '@theme';
 
-export function FeatureItem({onPress, title}: {title: string; onPress(): void}) {
+export function FeatureItem({ onPress, title }: { title: string; onPress(): void }) {
   return (
     <View style={styles.sectionItemContainer}>
       <TouchableOpacity onPress={onPress}>
@@ -12,7 +12,7 @@ export function FeatureItem({onPress, title}: {title: string; onPress(): void}) 
   );
 }
 
-export function FeatureHeader({title}: {title: string}) {
+export function FeatureHeader({ title }: { title: string }) {
   return <Text style={styles.sectionHeader}>{title.toUpperCase()}</Text>;
 }
 

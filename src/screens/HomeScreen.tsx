@@ -1,6 +1,6 @@
-import React, {useCallback} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useCallback } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   deleteConfirmationAlert,
   errorMessageAlert,
@@ -16,14 +16,16 @@ import {
   useMultiScanning,
   useMultiScanningAR,
   useSingleScanning,
+  useSingleScanningWithImageResults,
 } from '@hooks';
-import {FeatureHeader, FeatureItem, ScanbotLearnMore} from '@components';
+import { FeatureHeader, FeatureItem, ScanbotLearnMore } from '@components';
 
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function HomeScreen() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const onSingleScanPress = useSingleScanning();
+  const onSingleScanWithImageResultPress = useSingleScanningWithImageResults();
   const onMultiScanPress = useMultiScanning();
   const onMultiScanARPress = useMultiScanningAR();
   const onFindAndPickScanPress = useFindAndPickScanning();
@@ -33,7 +35,7 @@ export function HomeScreen() {
   const onClearStorage = useCallback(() => {
     deleteConfirmationAlert('Deleting storage', 'Are you sure you want to proceed?', () => {
       ScanbotBarcodeSDK.cleanup()
-        .then(result => resultMessageAlert(result.data))
+        .then(result => resultMessageAlert(result))
         .catch(error => errorMessageAlert(error.message));
     });
   }, []);
@@ -42,13 +44,14 @@ export function HomeScreen() {
     ScanbotBarcodeSDK.getLicenseInfo()
       .then(licenseInfo => {
         infoMessageAlert(
-          `Licence is ${licenseInfo.data?.isLicenseValid === true ? 'VALID' : 'NOT VALID'} \n` +
-            `Licence status: ${licenseInfo.data?.licenseStatus} \n` +
+          `Licence is ${licenseInfo.isLicenseValid ? 'VALID' : 'NOT VALID'} \n` +
+            `Licence status: ${licenseInfo.licenseStatus} \n` +
             `Expiration date: ${
-              licenseInfo.data?.licenseExpirationDate
-                ? new Date(licenseInfo.data.licenseExpirationDate).toLocaleDateString()
+              licenseInfo.licenseExpirationDate
+                ? new Date(licenseInfo.licenseExpirationDate).toLocaleDateString()
                 : 'N/A'
-            } \n`,
+            }\n` +
+            `Message: ${licenseInfo.licenseStatusMessage}`,
         );
       })
       .catch(error => errorMessageAlert(error.message));
@@ -60,6 +63,10 @@ export function HomeScreen() {
         <View style={styles.featureContainer}>
           <FeatureHeader title={'Barcode Scanner'} />
           <FeatureItem title={'RTU UI Single Scanning'} onPress={onSingleScanPress} />
+          <FeatureItem
+            title={'RTU UI Single Scanning With Image Result'}
+            onPress={onSingleScanWithImageResultPress}
+          />
           <FeatureItem title={'RTU UI Multi Scanning'} onPress={onMultiScanPress} />
           <FeatureItem title={'RTU UI Multi AR Scanning'} onPress={onMultiScanARPress} />
           <FeatureItem title={'RTU UI Find And Pick Scanning'} onPress={onFindAndPickScanPress} />
