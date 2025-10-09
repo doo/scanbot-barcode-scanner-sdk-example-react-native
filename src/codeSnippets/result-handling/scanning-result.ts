@@ -1,12 +1,11 @@
-import ScanbotBarcodeSDK, {
+import {
+  Barcode,
   BarcodeScannerScreenConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 async function handleScanningResult() {
   // Start the barcode RTU UI with default configuration
-  const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(
-    new BarcodeScannerScreenConfiguration(),
-  );
+  const scanningResult = await Barcode.startBarcodeScanner(new BarcodeScannerScreenConfiguration());
 
   // Check if the status returned is ok and that the data is present
   if (scanningResult.status == 'OK' && scanningResult.data) {

@@ -3,8 +3,9 @@ import { useNavigation } from '@react-navigation/native';
 import { checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens } from '@utils';
 import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
-import ScanbotBarcodeSDK, {
+import {
   autorelease,
+  Barcode,
   BarcodeScannerScreenConfiguration,
   SingleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
@@ -70,7 +71,7 @@ export function useSingleScanningWithImageResults() {
 
       // An autorelease pool is mandatory only if image results are enabled.
       await autorelease(async () => {
-        const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+        const result = await Barcode.startBarcodeScanner(config);
         /**
          * Handle the result if result status is OK
          */

@@ -10,7 +10,7 @@ import {
 } from '@utils';
 import { ActivityIndicatorContext } from '@context';
 
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import { ImageOperations } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useExtractImagesFromPDF() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -37,7 +37,7 @@ export function useExtractImagesFromPDF() {
       /**
        * Extract the images from the pdf with the desired configuration options
        */
-      const imageFilesUrls = await ScanbotBarcodeSDK.extractImagesFromPDF({
+      const imageFilesUrls = await ImageOperations.extractImagesFromPDF({
         pdfFilePath: fileUrl,
       });
       /**

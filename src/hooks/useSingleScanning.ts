@@ -3,7 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens } from '@utils';
 import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
-import ScanbotBarcodeSDK, {
+import {
+  Barcode,
   BarcodeScannerScreenConfiguration,
   SingleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
@@ -64,7 +65,7 @@ export function useSingleScanning() {
 
       // Configure other parameters as needed.
 
-      const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+      const result = await Barcode.startBarcodeScanner(config);
       /**
        * Handle the result if result status is OK
        */

@@ -16,6 +16,7 @@ const initialBarcodeDocumentFormats: Record<BarcodeDocumentFormat, boolean> = {
   VCARD: true,
   GS1: true,
   HIBC: true,
+  BRITISH_COLUMBIA_DRIVER_LICENSE: true,
 };
 
 interface BarcodeDocumentFormatsValue {

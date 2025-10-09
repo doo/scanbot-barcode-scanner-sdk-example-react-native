@@ -1,6 +1,7 @@
-import ScanbotBarcodeSDK, {
+import {
   AAMVA,
   AAMVADocumentType,
+  Barcode,
   BarcodeScannerScreenConfiguration,
   BoardingPass,
   BoardingPassDocumentType,
@@ -22,9 +23,7 @@ import ScanbotBarcodeSDK, {
 
 async function handleScanningResultWithDataParsers() {
   // Start the barcode RTU UI with default configuration
-  const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(
-    new BarcodeScannerScreenConfiguration(),
-  );
+  const scanningResult = await Barcode.startBarcodeScanner(new BarcodeScannerScreenConfiguration());
 
   // Check if the status returned is ok and that the data is present
   if (scanningResult.status == 'OK' && scanningResult.data) {

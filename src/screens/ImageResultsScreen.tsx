@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, StyleSheet, useWindowDimensions, View } fr
 import { useRoute } from '@react-navigation/native';
 import { FILE_ENCRYPTION_ENABLED, ImageResultsScreenRouteProp } from '@utils';
 import { PreviewImage } from '../components/PreviewImage.tsx';
-import ScanbotSDK from 'react-native-scanbot-barcode-scanner-sdk';
+import { ImageOperations } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function ImageResultsScreen() {
   const { params } = useRoute<ImageResultsScreenRouteProp>();
@@ -20,7 +20,7 @@ export function ImageResultsScreen() {
             await Promise.all(
               params.map(
                 async imageUrl =>
-                  `data:image/jpeg;base64,${await ScanbotSDK.getImageData(imageUrl)}`,
+                  `data:image/jpeg;base64,${await ImageOperations.readImageData(imageUrl)}`,
               ),
             ),
           );

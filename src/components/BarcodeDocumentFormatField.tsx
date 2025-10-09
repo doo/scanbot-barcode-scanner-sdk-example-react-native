@@ -4,7 +4,6 @@ import { BarcodeFieldRow } from './BarcodeFieldRow.tsx';
 
 import {
   AAMVA,
-  BarcodeDocumentModelRootType,
   BoardingPass,
   DEMedicalPlan,
   Field,
@@ -189,7 +188,7 @@ export function BarcodeDocumentFormatField({
   let Document;
 
   if (staticFields) {
-    switch (document.type.name as BarcodeDocumentModelRootType) {
+    switch (document.type.name) {
       case 'AAMVA':
         Document = <AAMVADocumentFields document={new AAMVA(document)} />;
         break;

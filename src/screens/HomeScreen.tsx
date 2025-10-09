@@ -36,8 +36,8 @@ export function HomeScreen() {
 
   const onClearStorage = useCallback(() => {
     deleteConfirmationAlert('Deleting storage', 'Are you sure you want to proceed?', () => {
-      ScanbotBarcodeSDK.cleanup()
-        .then(result => resultMessageAlert(result))
+      ScanbotBarcodeSDK.cleanupStorage()
+        .then(_ => resultMessageAlert('Cleared storage'))
         .catch(error => errorMessageAlert(error.message));
     });
   }, []);
@@ -46,11 +46,11 @@ export function HomeScreen() {
     ScanbotBarcodeSDK.getLicenseInfo()
       .then(licenseInfo => {
         infoMessageAlert(
-          `Licence is ${licenseInfo.isLicenseValid ? 'VALID' : 'NOT VALID'} \n` +
-            `Licence status: ${licenseInfo.licenseStatus} \n` +
+          `Licence is ${licenseInfo.isValid ? 'VALID' : 'NOT VALID'} \n` +
+            `Licence status: ${licenseInfo.licenseStatusMessage} \n` +
             `Expiration date: ${
-              licenseInfo.licenseExpirationDate
-                ? new Date(licenseInfo.licenseExpirationDate).toLocaleDateString()
+              licenseInfo.expirationTimestamp
+                ? new Date(licenseInfo.expirationTimestamp).toLocaleDateString()
                 : 'N/A'
             }\n` +
             `Message: ${licenseInfo.licenseStatusMessage}`,

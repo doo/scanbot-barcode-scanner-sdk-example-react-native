@@ -14,7 +14,8 @@ import {
   BarcodeFormatsContext,
 } from '@context';
 
-import ScanbotBarcodeSDK, {
+import {
+  Barcode,
   BarcodeFormatCode128Configuration,
   BarcodeFormatCommonConfiguration,
   BarcodeScannerConfiguration,
@@ -66,8 +67,8 @@ export function useDetectBarcodesOnStillImage() {
 
       // Configure other parameters as needed.
 
-      const result = await ScanbotBarcodeSDK.detectBarcodesOnImage({
-        imageFileUri: imageFileUri,
+      const result = await Barcode.scanFromImage({
+        image: imageFileUri,
         configuration: scannerConfiguration,
       });
       /**
