@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barcode-scanner-sdk';
 import { BarcodeCameraViewResult } from '@components';
@@ -17,7 +17,7 @@ export function BarcodeCameraViewScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScanbotBarcodeCameraView
         style={styles.cameraViewContainer}
         finderConfig={{
@@ -34,7 +34,7 @@ export function BarcodeCameraViewScreen() {
         onFinderToggle={() => setFinderEnabled(!finderEnabled)}
         onFlashToggle={() => setFlashEnabled(!flashEnabled)}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

@@ -67,12 +67,10 @@ export default function App() {
       .catch(error => {
         console.error('Initialization error: ', error.message);
       });
-
-    console.log(`Using ${(global as any)?.nativeFabricUIManager ? 'New' : 'Old'} Architecture`);
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaProvider>
       <BarcodeDocumentFormatContext.Provider value={barcodeDocumentFormatsValues}>
         <BarcodeFormatsContext.Provider value={barcodeFormatsValues}>
           <ActivityIndicatorContext.Provider value={{ setLoading }}>
@@ -106,14 +104,11 @@ export default function App() {
           </ActivityIndicatorContext.Provider>
         </BarcodeFormatsContext.Provider>
       </BarcodeDocumentFormatContext.Provider>
-    </View>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   loadingIndicator: {
     elevation: 6,
     position: 'absolute',

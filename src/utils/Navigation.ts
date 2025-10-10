@@ -2,10 +2,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 
 import {
-  BarcodeItem,
   BarcodeScannerResult,
   BarcodeScannerUiResult,
-  DeepPartial,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export enum Screens {

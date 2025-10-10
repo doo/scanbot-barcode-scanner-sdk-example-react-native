@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
   deleteConfirmationAlert,
@@ -60,7 +60,7 @@ export function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView style={[styles.container]}>
         <View style={styles.featureContainer}>
           <FeatureHeader title={'Barcode Scanner'} />
@@ -101,7 +101,7 @@ export function HomeScreen() {
       <Text style={styles.copyrightLabel}>
         Copyright {new Date().getFullYear()} Scanbot SDK GmbH. All rights reserved.
       </Text>
-    </SafeAreaView>
+    </View>
   );
 }
 
