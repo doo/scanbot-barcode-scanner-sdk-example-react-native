@@ -71,7 +71,7 @@ export function BarcodeResultsScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={results}
         keyExtractor={(item, index) => `${item.barcode.format}${index}`}
@@ -79,7 +79,7 @@ export function BarcodeResultsScreen() {
           return <BarcodeItemResult item={item} index={index} />;
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

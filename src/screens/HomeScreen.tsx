@@ -1,27 +1,20 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { PrimaryRouteNavigationProp, Screens } from '@utils';
 import {
-  deleteConfirmationAlert,
-  errorMessageAlert,
-  infoMessageAlert,
-  PrimaryRouteNavigationProp,
-  resultMessageAlert,
-  Screens,
-} from '@utils';
-import {
-  useDetectBarcodesOnStillImage,
-  useExtractImagesFromPDF,
+  useCleanupStorage,
   useFindAndPickScanning,
+  useLicenseInfo,
   useMultiScanning,
   useMultiScanningAR,
   useScanAndCount,
+  useScanBarcodesOnImage,
+  useScanBarcodesOnPDF,
   useSingleScanning,
   useSingleScanningWithImageResults,
 } from '@hooks';
 import { FeatureHeader, FeatureItem, ScanbotLearnMore } from '@components';
-
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function HomeScreen() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
@@ -31,33 +24,10 @@ export function HomeScreen() {
   const onScanAndCountPress = useScanAndCount();
   const onMultiScanARPress = useMultiScanningAR();
   const onFindAndPickScanPress = useFindAndPickScanning();
-  const onDetectBarcodesOnImage = useDetectBarcodesOnStillImage();
-  const onExtractImagesFromPDF = useExtractImagesFromPDF();
-
-  const onClearStorage = useCallback(() => {
-    deleteConfirmationAlert('Deleting storage', 'Are you sure you want to proceed?', () => {
-      ScanbotBarcodeSDK.cleanupStorage()
-        .then(_ => resultMessageAlert('Cleared storage'))
-        .catch(error => errorMessageAlert(error.message));
-    });
-  }, []);
-
-  const onViewLicenseInfo = useCallback(() => {
-    ScanbotBarcodeSDK.getLicenseInfo()
-      .then(licenseInfo => {
-        infoMessageAlert(
-          `Licence is ${licenseInfo.isValid ? 'VALID' : 'NOT VALID'} \n` +
-            `Licence status: ${licenseInfo.licenseStatusMessage} \n` +
-            `Expiration date: ${
-              licenseInfo.expirationTimestamp
-                ? new Date(licenseInfo.expirationTimestamp).toLocaleDateString()
-                : 'N/A'
-            }\n` +
-            `Message: ${licenseInfo.licenseStatusMessage}`,
-        );
-      })
-      .catch(error => errorMessageAlert(error.message));
-  }, []);
+  const onScanBarcodesOnImage = useScanBarcodesOnImage();
+  const onScanBarcodesOnPDF = useScanBarcodesOnPDF();
+  const onViewLicenseInfo = useLicenseInfo();
+  const onClearStorage = useCleanupStorage();
 
   return (
     <View style={styles.container}>
@@ -89,8 +59,8 @@ export function HomeScreen() {
             title={'Barcode Camera View (Classic UI)'}
             onPress={() => navigation.navigate(Screens.BARCODE_CAMERA_VIEW)}
           />
-          <FeatureItem title={'Recognize Barcodes on Image'} onPress={onDetectBarcodesOnImage} />
-          <FeatureItem title={'Extract images from PDF'} onPress={onExtractImagesFromPDF} />
+          <FeatureItem title={'Scan Barcodes on Image'} onPress={onScanBarcodesOnImage} />
+          <FeatureItem title={'Scan Barcodes on PDF'} onPress={onScanBarcodesOnPDF} />
 
           <FeatureHeader title={'MISCELLANEOUS'} />
           <FeatureItem title={'ScanbotSDK license info'} onPress={onViewLicenseInfo} />

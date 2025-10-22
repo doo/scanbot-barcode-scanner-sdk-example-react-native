@@ -1,6 +1,6 @@
 import {
-  Barcode,
   BarcodeScannerScreenConfiguration,
+  ScanbotBarcode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 async function startBarcodeScanner() {
@@ -8,5 +8,5 @@ async function startBarcodeScanner() {
   const config = new BarcodeScannerScreenConfiguration();
   // See further customization configs...
 
-  const result = await Barcode.startBarcodeScanner(config);
+  const result = await ScanbotBarcode.startBarcodeScanner(config);
 }

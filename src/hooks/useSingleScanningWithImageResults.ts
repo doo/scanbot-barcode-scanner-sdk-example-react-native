@@ -5,8 +5,9 @@ import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
 import {
   autorelease,
-  Barcode,
+  BarcodeFormatCommonConfiguration,
   BarcodeScannerScreenConfiguration,
+  ScanbotBarcode,
   SingleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
@@ -18,14 +19,14 @@ export function useSingleScanningWithImageResults() {
   return useCallback(async () => {
     try {
       /**
-       * Check license status and return early
+       * Check the license status and return early
        * if the license is not valid
        */
       if (!(await checkLicense())) {
         return;
       }
       /**
-       * Instantiate a configuration object of BarcodeScannerConfiguration and
+       * Instantiate a configuration object of BarcodeScannerScreenConfiguration and
        * start the barcode scanner with the configuration
        */
       const config = new BarcodeScannerScreenConfiguration();
@@ -61,7 +62,9 @@ export function useSingleScanningWithImageResults() {
       // Configure other parameters, pertaining to single-scanning mode as needed.
 
       // Set an array of accepted barcode types.
-      config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
+      config.scannerConfiguration.barcodeFormatConfigurations = [
+        new BarcodeFormatCommonConfiguration({ formats: acceptedBarcodeFormats }),
+      ];
       config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
       // Specify if the scanned barcode images should be included in the result.
@@ -71,7 +74,7 @@ export function useSingleScanningWithImageResults() {
 
       // An autorelease pool is mandatory only if image results are enabled.
       await autorelease(async () => {
-        const result = await Barcode.startBarcodeScanner(config);
+        const result = await ScanbotBarcode.startScanner(config);
         /**
          * Handle the result if result status is OK
          */

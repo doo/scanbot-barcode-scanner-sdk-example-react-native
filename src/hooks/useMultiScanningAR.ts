@@ -4,9 +4,10 @@ import { checkLicense, errorMessageAlert, PrimaryRouteNavigationProp, Screens } 
 import { BarcodeDocumentFormatContext, BarcodeFormatsContext } from '@context';
 
 import {
-  Barcode,
+  BarcodeFormatCommonConfiguration,
   BarcodeScannerScreenConfiguration,
   MultipleScanningMode,
+  ScanbotBarcode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useMultiScanningAR() {
@@ -17,14 +18,14 @@ export function useMultiScanningAR() {
   return useCallback(async () => {
     try {
       /**
-       * Check license status and return early
+       * Check the license status and return early
        * if the license is not valid
        */
       if (!(await checkLicense())) {
         return;
       }
       /**
-       * Instantiate a configuration object of BarcodeScannerConfiguration and
+       * Instantiate a configuration object of BarcodeScannerScreenConfiguration and
        * start the barcode scanner with the configuration
        */
       const config = new BarcodeScannerScreenConfiguration();
@@ -40,12 +41,14 @@ export function useMultiScanningAR() {
       // Configure other parameters, pertaining to use case as needed.
 
       // Set an array of accepted barcode types.
-      config.scannerConfiguration.barcodeFormats = acceptedBarcodeFormats;
+      config.scannerConfiguration.barcodeFormatConfigurations = [
+        new BarcodeFormatCommonConfiguration({ formats: acceptedBarcodeFormats }),
+      ];
       config.scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
 
       // Configure other parameters as needed.
 
-      const result = await Barcode.startBarcodeScanner(config);
+      const result = await ScanbotBarcode.startScanner(config);
       /**
        * Handle the result if result status is OK
        */
