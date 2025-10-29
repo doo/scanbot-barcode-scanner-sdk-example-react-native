@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@react-native-documents/picker": "^10.1.5",
-    "@react-native/new-app-screen": "0.80.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "react": "19.1.0",
@@ -22,7 +21,7 @@
     "react-native-fs": "^2.20.0",
     "react-native-image-picker": "^7.1.2",
     "react-native-safe-area-context": "^5.4.0",
-    "react-native-scanbot-barcode-scanner-sdk": "7.1.2-rc.1",
+    "react-native-scanbot-barcode-scanner-sdk": "7.1.2-rc.2",
     "react-native-screens": "^4.11.1"
   },
   "devDependencies": {
