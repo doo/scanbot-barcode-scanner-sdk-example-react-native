@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import {ActivityIndicator, StyleSheet, View} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   ActivityIndicatorContext,
   BarcodeDocumentFormatContext,
@@ -10,14 +10,14 @@ import {
   useBarcodeFormats,
   useLoading,
 } from '@context';
-import {COLORS, NavigationTheme} from '@theme';
-import {FILE_ENCRYPTION_ENABLED, Screens, ScreenTitles} from '@utils';
-import {BarcodeDocumentFormatsScreen} from './src/screens/BarcodeDocumentFormatsScreen';
-import {BarcodeCameraViewScreen} from './src/screens/BarcodeCameraViewScreen';
-import {BarcodeFormatsScreen} from './src/screens/BarcodeFormatsScreen';
-import {HomeScreen} from './src/screens/HomeScreen';
-import {ImageResultsScreen} from './src/screens/ImageResultsScreen';
-import {BarcodeResultsScreen} from './src/screens/BarcodeResultsScreen';
+import { COLORS, NavigationTheme } from '@theme';
+import { FILE_ENCRYPTION_ENABLED, Screens, ScreenTitles } from '@utils';
+import { BarcodeDocumentFormatsScreen } from './src/screens/BarcodeDocumentFormatsScreen';
+import { BarcodeCameraViewScreen } from './src/screens/BarcodeCameraViewScreen';
+import { BarcodeFormatsScreen } from './src/screens/BarcodeFormatsScreen';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { ImageResultsScreen } from './src/screens/ImageResultsScreen';
+import { BarcodeResultsScreen } from './src/screens/BarcodeResultsScreen';
 
 import ScanbotBarcodeSDK, {
   ScanbotBarcodeSdkConfiguration,
@@ -75,13 +75,14 @@ export default function App() {
     <View style={styles.container}>
       <BarcodeDocumentFormatContext.Provider value={barcodeDocumentFormatsValues}>
         <BarcodeFormatsContext.Provider value={barcodeFormatsValues}>
-          <ActivityIndicatorContext.Provider value={{setLoading}}>
+          <ActivityIndicatorContext.Provider value={{ setLoading }}>
             <NavigationContainer theme={NavigationTheme}>
               <Stack.Navigator
                 screenOptions={navigation => ({
                   title: ScreenTitles[navigation.route.name as Screens],
                   headerBackTitleVisible: false,
-                })}>
+                })}
+              >
                 <Stack.Screen name={Screens.HOME} component={HomeScreen} />
                 <Stack.Screen name={Screens.BARCODE_FORMATS} component={BarcodeFormatsScreen} />
                 <Stack.Screen

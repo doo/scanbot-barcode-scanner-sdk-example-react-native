@@ -2248,20 +2248,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/new-app-screen@npm:0.80.1":
-  version: 0.80.1
-  resolution: "@react-native/new-app-screen@npm:0.80.1"
-  peerDependencies:
-    "@types/react": ^19.0.0
-    react: "*"
-    react-native: "*"
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 7cab8f2e6887a753fe5eab954f1a23fbb0b63fa4ae9ae0e3932df857ed230bfa707b987022a14d378f674d509bf44366cd71722d81488f24797193eff68b6b73
-  languageName: node
-  linkType: hard
-
 "@react-native/normalize-colors@npm:0.80.1":
   version: 0.80.1
   resolution: "@react-native/normalize-colors@npm:0.80.1"
@@ -2774,7 +2760,6 @@ __metadata:
     "@react-native/babel-preset": 0.80.1
     "@react-native/eslint-config": 0.80.1
     "@react-native/metro-config": 0.80.1
-    "@react-native/new-app-screen": 0.80.1
     "@react-native/typescript-config": 0.80.1
     "@react-navigation/native": ^6.1.17
     "@react-navigation/native-stack": ^6.9.26
@@ -2788,7 +2773,7 @@ __metadata:
     react-native-fs: ^2.20.0
     react-native-image-picker: ^7.1.2
     react-native-safe-area-context: ^5.4.0
-    react-native-scanbot-barcode-scanner-sdk: 7.1.1
+    react-native-scanbot-barcode-scanner-sdk: 7.1.2
     react-native-screens: ^4.11.1
     typescript: 5.0.4
   languageName: unknown
@@ -7352,15 +7337,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-scanbot-barcode-scanner-sdk@npm:7.1.1":
-  version: 7.1.1
-  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:7.1.1"
+"react-native-scanbot-barcode-scanner-sdk@npm:7.1.2":
+  version: 7.1.2
+  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:7.1.2"
   dependencies:
     "@expo/config-plugins": 11.0.7
   peerDependencies:
     react: "*"
     react-native: ">=0.73"
-  checksum: c990ac5cfb319cb12ac91368e3650f2ecee7b7a8106e8524a863d9b46f5ab882f19fecc28773836fce839ff121f485220c9693bbb39b70c58986b15d636d7fd4
+  checksum: 770af52d649fc584a3968fedcedf21a5f8064922fd7bc7ed57362455f74b3a31ec4823790bd97acffb405fe15a873244b8ba2d3b5c00854f9487aab433c644e4
   languageName: node
   linkType: hard
 
