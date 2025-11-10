@@ -15,6 +15,7 @@ import {
   useFindAndPickScanning,
   useMultiScanning,
   useMultiScanningAR,
+  useScanAndCount,
   useSingleScanning,
   useSingleScanningWithImageResults,
 } from '@hooks';
@@ -27,6 +28,7 @@ export function HomeScreen() {
   const onSingleScanPress = useSingleScanning();
   const onSingleScanWithImageResultPress = useSingleScanningWithImageResults();
   const onMultiScanPress = useMultiScanning();
+  const onScanAndCountPress = useScanAndCount();
   const onMultiScanARPress = useMultiScanningAR();
   const onFindAndPickScanPress = useFindAndPickScanning();
   const onDetectBarcodesOnImage = useDetectBarcodesOnStillImage();
@@ -68,6 +70,7 @@ export function HomeScreen() {
             onPress={onSingleScanWithImageResultPress}
           />
           <FeatureItem title={'RTU UI Multi Scanning'} onPress={onMultiScanPress} />
+          <FeatureItem title={'RTU UI Scan And Count'} onPress={onScanAndCountPress} />
           <FeatureItem title={'RTU UI Multi AR Scanning'} onPress={onMultiScanARPress} />
           <FeatureItem title={'RTU UI Find And Pick Scanning'} onPress={onFindAndPickScanPress} />
 

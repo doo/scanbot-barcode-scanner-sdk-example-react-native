@@ -9,7 +9,7 @@ import ScanbotBarcodeSDK, {
   MultipleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-export function useMultiScanning() {
+export function useScanAndCount() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const { acceptedBarcodeFormats } = useContext(BarcodeFormatsContext);
   const { acceptedBarcodeDocumentFormats } = useContext(BarcodeDocumentFormatContext);
@@ -33,7 +33,7 @@ export function useMultiScanning() {
       config.useCase = new MultipleScanningMode();
 
       // Set the counting mode.
-      config.useCase.mode = 'UNIQUE';
+      config.useCase.mode = 'COUNTING';
 
       // Set the sheet mode for the barcodes preview.
       config.useCase.sheet.mode = 'COLLAPSED_SHEET';
