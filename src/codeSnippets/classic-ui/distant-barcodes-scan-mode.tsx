@@ -4,6 +4,9 @@ import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barc
 export default function BarcodeScanner() {
   return (
     <ScanbotBarcodeCameraView
+      finderConfig={{
+        viewFinderEnabled: true,
+      }}
       cameraConfig={{
         cameraZoomFactor: 1,
       }}
