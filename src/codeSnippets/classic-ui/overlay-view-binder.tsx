@@ -7,10 +7,6 @@ import {
 export function BarcodeCameraViewWithOverlayViewBinder() {
   return (
     <ScanbotBarcodeCameraView
-      finderConfig={{
-        viewFinderEnabled: true,
-        overlayColor: '#000000A9',
-      }}
       selectionOverlayConfig={{
         overlayEnabled: true,
         loadingTextValue: 'Please wait...', // Optional property, useful if you query your server to check the barcode.
