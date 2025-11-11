@@ -2,7 +2,7 @@ import ScanbotBarcodeSDK, {
   ScanbotBarcodeSdkConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-async function initScanbotBarcodeScannerSdkWithLogging() {
+async function logging() {
   const config: ScanbotBarcodeSdkConfiguration = {
     licenseKey: '',
     loggingEnabled: true,

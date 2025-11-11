@@ -2,9 +2,10 @@ import ScanbotBarcodeSDK, {
   ScanbotBarcodeSdkConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-async function initScanbotBarcodeScannerSdkWithCustomStorage() {
+async function encryption() {
   const config: ScanbotBarcodeSdkConfiguration = {
-    storageBaseDirectory: 'file:///some/custom/storage-dir/',
+    fileEncryptionPassword: 'SomeSecretPa$$w0rdForFileEncryption',
+    fileEncryptionMode: 'AES256',
   };
 
   try {
