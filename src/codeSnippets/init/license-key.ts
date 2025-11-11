@@ -2,7 +2,7 @@ import ScanbotBarcodeSDK, {
   ScanbotBarcodeSdkConfiguration,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-async function initScanbotBarcodeScannerSdkWithLicenseKey() {
+async function licenseKey() {
   // Please note: this is just an example license key string (it is not a valid license)
   const myLicenseKey =
     'fXbN2PmyqEAZ+btdkSIS36TuX2j/EE5qxVNcZMXYErbLQ' +

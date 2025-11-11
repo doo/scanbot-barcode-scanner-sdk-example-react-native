@@ -7,6 +7,5 @@ async function defaultConfiguration() {
   const config = new BarcodeScannerScreenConfiguration();
 
   // See further customization configs...
-
   const result = await ScanbotBarcodeSDK.startBarcodeScanner(config);
 }
