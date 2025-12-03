@@ -7,9 +7,10 @@ async function handleScanningResultWithEncodedImageRef() {
   // Start the barcode RTU UI with a configuration that returns image results
   const config = new BarcodeScannerScreenConfiguration();
   config.scannerConfiguration.returnBarcodeImage = true;
-  const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
 
   await autorelease(async () => {
+    const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+
     if (scanningResult.status == 'OK' && scanningResult.data) {
       // Encode all ImageRefs as base64
       await scanningResult.data.encodeImages();
