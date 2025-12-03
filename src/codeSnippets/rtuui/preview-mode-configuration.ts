@@ -21,6 +21,4 @@ function rtuUiPreviewModeConfiguration() {
   config.useCase.sheetContent.submitButton.foreground.color = '#000000';
 
   // Configure other parameters, pertaining to multiple-scanning mode as needed.
-
-  // Configure other parameters as needed.
 }
