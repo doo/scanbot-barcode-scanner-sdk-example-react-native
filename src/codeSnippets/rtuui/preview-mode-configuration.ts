@@ -3,7 +3,7 @@ import {
   MultipleScanningMode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-function rtuUiPreviewModeConfiguration() {
+function configureResultsPreviewMode() {
   // Create the default configuration object.
   const config = new BarcodeScannerScreenConfiguration();
 

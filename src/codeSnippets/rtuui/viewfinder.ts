@@ -4,7 +4,7 @@ import {
   FinderCorneredStyle,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-function rtuUiViewfinderConfiguration() {
+function configureViewfinder() {
   // Create the default configuration object.
   const config = new BarcodeScannerScreenConfiguration();
 
