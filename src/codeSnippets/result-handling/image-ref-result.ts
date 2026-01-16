@@ -1,8 +1,9 @@
-import ScanbotBarcodeSDK, {
+import {
   autorelease,
   BarcodeScannerScreenConfiguration,
   EncodeImageOptions,
   SaveImageOptions,
+  ScanbotBarcode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 import { DocumentDirectoryPath } from 'react-native-fs';
 
@@ -13,7 +14,7 @@ async function handleScanningResultWithImageRef() {
 
   // Autorelease executes the given block and releases native resources
   await autorelease(async () => {
-    const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+    const scanningResult = await ScanbotBarcode.startScanner(config);
 
     if (scanningResult.status == 'OK' && scanningResult.data) {
       for (const { barcode } of scanningResult.data.items) {

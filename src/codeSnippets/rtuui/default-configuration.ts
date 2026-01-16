@@ -8,5 +8,5 @@ async function startBarcodeScanner() {
   const config = new BarcodeScannerScreenConfiguration();
   // See further customization configs...
 
-  const result = await ScanbotBarcode.startBarcodeScanner(config);
+  const result = await ScanbotBarcode.startScanner(config);
 }
