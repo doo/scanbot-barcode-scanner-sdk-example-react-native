@@ -12,6 +12,9 @@ export default function BarcodeScanner() {
         textContainerColor: '#ff0000',
         strokeColor: '#0027ff',
       }}
+      barcodeScannerConfiguration={{
+        optimizedForOverlays: true,
+      }}
       onBarcodeScannerResult={(result: BarcodeItem[]) => {
         console.log(result);
       }}

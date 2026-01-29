@@ -10,6 +10,9 @@ export default function BarcodeScanner() {
       cameraConfig={{
         minFocusDistanceLock: true,
       }}
+      barcodeScannerConfiguration={{
+        engineMode: 'NEXT_GEN_FAR_DISTANCE',
+      }}
       onBarcodeScannerResult={(result: BarcodeItem[]) => {
         console.log(result);
       }}
