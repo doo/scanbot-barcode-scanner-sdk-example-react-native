@@ -1,6 +1,6 @@
 import { BarcodeScannerScreenConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
-function rtuUiActionBarConfiguration() {
+function configureActionBar() {
   // Create the default configuration object.
   const config = new BarcodeScannerScreenConfiguration();
 
