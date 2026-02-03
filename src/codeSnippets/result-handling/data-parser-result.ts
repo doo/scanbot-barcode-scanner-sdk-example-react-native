@@ -2,6 +2,7 @@ import {
   AAMVA,
   BarcodeScannerScreenConfiguration,
   BoardingPass,
+  BritishColumbiaDriverLicense,
   GS1,
   HIBC,
   IDCardPDF417,
@@ -17,7 +18,7 @@ async function handleScanningResultWithDataParsers() {
   const scanningResult = await ScanbotBarcode.startScanner(new BarcodeScannerScreenConfiguration());
 
   // Check if the status returned is ok and that the data is present
-  if (scanningResult.status == 'OK' && scanningResult.data) {
+  if (scanningResult.status == 'OK') {
     // Loop through the scanned barcode items and extract the desired barcode data
     const requiredBarcodeInfo = scanningResult.data.items.map(({ barcode }) => {
       if (barcode.extractedDocument) {
@@ -74,6 +75,14 @@ async function handleScanningResultWithDataParsers() {
             return {
               dateOfManufacture: hibcDocument.dateOfManufacture,
               primaryData: hibcDocument.hasPrimaryData,
+            };
+          case BritishColumbiaDriverLicense.DOCUMENT_TYPE:
+            const britishColumbiaDriverLicenseDocument = new BritishColumbiaDriverLicense(
+              barcode.extractedDocument,
+            );
+            return {
+              address: britishColumbiaDriverLicenseDocument.address,
+              cardExpiry: britishColumbiaDriverLicenseDocument.cardExpiry,
             };
         }
       }

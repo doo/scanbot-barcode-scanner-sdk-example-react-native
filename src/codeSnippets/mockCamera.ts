@@ -1,8 +1,6 @@
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 async function mockCamera() {
-  const config = {};
-
   try {
     /**
      * For Android:

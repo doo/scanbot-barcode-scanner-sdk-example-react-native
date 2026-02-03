@@ -46,11 +46,7 @@ export default function App() {
       enableNativeLogging: false,
       licenseKey: LICENSE_KEY,
       // Optional custom storage directory
-      // storageBaseDirectory: Platform.select({
-      //   ios: DocumentDirectoryPath + '/my-custom-storage',
-      //   android: ExternalDirectoryPath + '/my-custom-storage',
-      //   default: undefined,
-      // }),
+      // storageBaseDirectory: DocumentDirectoryPath + '/my-custom-storage',
     });
 
     // Set the following properties to enable encryption.

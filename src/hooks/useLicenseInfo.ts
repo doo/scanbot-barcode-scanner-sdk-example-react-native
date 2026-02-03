@@ -10,12 +10,7 @@ export function useLicenseInfo() {
     infoMessageAlert(
       `Licence is ${licenseInfo.isValid ? 'VALID' : 'NOT VALID'} \n` +
         `Licence status: ${licenseInfo.licenseStatusMessage} \n` +
-        `Expiration date: ${
-          licenseInfo.expirationTimestamp
-            ? new Date(licenseInfo.expirationTimestamp).toLocaleDateString()
-            : 'N/A'
-        }\n` +
-        `Message: ${licenseInfo.licenseStatusMessage}`,
+        `Expiration date: ${licenseInfo.expirationDateString}`,
     );
     try {
     } catch (error: any) {

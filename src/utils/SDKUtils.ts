@@ -10,9 +10,7 @@ export async function checkLicense(): Promise<boolean> {
     return true;
   }
 
-  errorMessageAlert(
-    info.licenseStatusMessage ?? 'There is a problem with the license of the Scanbot SDK',
-  );
+  errorMessageAlert(info.licenseStatusMessage);
 
   return false;
 }

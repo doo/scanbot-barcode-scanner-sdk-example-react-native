@@ -19,7 +19,7 @@ async function handleScanningResultWithSerializedImageRef() {
   await autorelease(async () => {
     const scanningResult = await ScanbotBarcode.startScanner(config);
 
-    if (scanningResult.status == 'OK' && scanningResult.data) {
+    if (scanningResult.status == 'OK') {
       // Serialized the scanned result in order to move the data outside the autorelease block
       serializedResult = await scanningResult.data.serialize();
     }

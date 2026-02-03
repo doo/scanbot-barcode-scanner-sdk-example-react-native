@@ -5,6 +5,7 @@ import { BarcodeFieldRow } from './BarcodeFieldRow.tsx';
 import {
   AAMVA,
   BoardingPass,
+  BritishColumbiaDriverLicense,
   DEMedicalPlan,
   Field,
   GenericDocument,
@@ -151,6 +152,20 @@ function HIBCFields({ document }: { document: HIBC }) {
   );
 }
 
+function BritishColumbiaDriverLicenseFields({
+  document,
+}: {
+  document: BritishColumbiaDriverLicense;
+}) {
+  return (
+    <View>
+      <BarcodeFieldRow title={'Last Name'} value={document.lastName} />
+      <BarcodeFieldRow title={'Address'} value={document.address} />
+      <BarcodeFieldRow title={'City'} value={document.city} />
+    </View>
+  );
+}
+
 function extractGenericDocumentFields(document: GenericDocument) {
   let fields: Field[] = [];
 
@@ -189,35 +204,42 @@ export function BarcodeDocumentFormatField({
 
   if (staticFields) {
     switch (document.type.name) {
-      case 'AAMVA':
+      case AAMVA.DOCUMENT_TYPE:
         Document = <AAMVADocumentFields document={new AAMVA(document)} />;
         break;
-      case 'BoardingPass':
+      case BoardingPass.DOCUMENT_TYPE:
         Document = <BoardingPassFields document={new BoardingPass(document)} />;
         break;
-      case 'GS1':
+      case GS1.DOCUMENT_TYPE:
         Document = <GS1Fields document={new GS1(document)} />;
         break;
-      case 'IDCardPDF417':
+      case IDCardPDF417.DOCUMENT_TYPE:
         Document = <IDCardPDF417Fields document={new IDCardPDF417(document)} />;
         break;
-      case 'MedicalCertificate':
+      case MedicalCertificate.DOCUMENT_TYPE:
         Document = <MedicalCertificateFields document={new MedicalCertificate(document)} />;
         break;
-      case 'SEPA':
+      case SEPA.DOCUMENT_TYPE:
         Document = <SepaFields document={new SEPA(document)} />;
         break;
-      case 'SwissQR':
+      case SwissQR.DOCUMENT_TYPE:
         Document = <SwissQRFields document={new SwissQR(document)} />;
         break;
-      case 'VCard':
+      case VCard.DOCUMENT_TYPE:
         Document = <VCardFields document={new VCard(document)} />;
         break;
-      case 'DEMedicalPlan':
+      case DEMedicalPlan.DOCUMENT_TYPE:
         Document = <DeMedicalPlanFields document={new DEMedicalPlan(document)} />;
         break;
-      case 'HIBC':
+      case HIBC.DOCUMENT_TYPE:
         Document = <HIBCFields document={new HIBC(document)} />;
+        break;
+      case BritishColumbiaDriverLicense.DOCUMENT_TYPE:
+        Document = (
+          <BritishColumbiaDriverLicenseFields
+            document={new BritishColumbiaDriverLicense(document)}
+          />
+        );
         break;
       default: {
         Document = <View />;

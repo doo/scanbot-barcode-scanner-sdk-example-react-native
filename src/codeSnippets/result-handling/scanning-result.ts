@@ -8,7 +8,7 @@ async function handleScanningResult() {
   const scanningResult = await ScanbotBarcode.startScanner(new BarcodeScannerScreenConfiguration());
 
   // Check if the status returned is ok and that the data is present
-  if (scanningResult.status == 'OK' && scanningResult.data) {
+  if (scanningResult.status == 'OK') {
     // Loop through the scanned barcode items and extract the desired barcode data
     return scanningResult.data.items.map(({ barcode }) => ({
       format: barcode.format, // The format of the scanned barcode

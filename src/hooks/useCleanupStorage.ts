@@ -5,9 +5,9 @@ import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function useCleanupStorage() {
   return useCallback(() => {
-    deleteConfirmationAlert('Deleting storage', 'Are you sure you want to proceed?', () => {
+    deleteConfirmationAlert('Cleanup SDK storage ?', 'Cleanup', () => {
       ScanbotBarcodeSDK.cleanupStorage()
-        .then(_ => resultMessageAlert('Cleared storage'))
+        .then(_ => resultMessageAlert('Storage cleaned up successfully'))
         .catch(error => errorMessageAlert(error.message));
     });
   }, []);
