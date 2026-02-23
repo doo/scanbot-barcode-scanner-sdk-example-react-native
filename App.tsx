@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import {
@@ -10,18 +10,17 @@ import {
   useBarcodeFormats,
   useLoading,
 } from '@context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { COLORS, NavigationTheme } from '@theme';
 import { FILE_ENCRYPTION_ENABLED, Screens, ScreenTitles } from '@utils';
+
 import { BarcodeDocumentFormatsScreen } from './src/screens/BarcodeDocumentFormatsScreen';
 import { BarcodeCameraViewScreen } from './src/screens/BarcodeCameraViewScreen';
 import { BarcodeFormatsScreen } from './src/screens/BarcodeFormatsScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
-import { ImageResultsScreen } from './src/screens/ImageResultsScreen';
 import { BarcodeResultsScreen } from './src/screens/BarcodeResultsScreen';
 
-import ScanbotBarcodeSDK, {
-  ScanbotBarcodeSdkConfiguration,
-} from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSDK, { SdkConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,18 +40,14 @@ export default function App() {
   const [loading, setLoading] = useLoading();
 
   useEffect(() => {
-    const configuration: ScanbotBarcodeSdkConfiguration = {
+    const configuration = new SdkConfiguration({
       // Consider switching logging OFF in production builds for security and performance reasons!
       loggingEnabled: true,
       enableNativeLogging: false,
       licenseKey: LICENSE_KEY,
       // Optional custom storage directory
-      // storageBaseDirectory: Platform.select({
-      //   ios: DocumentDirectoryPath + '/my-custom-storage',
-      //   android: ExternalDirectoryPath + '/my-custom-storage',
-      //   default: undefined,
-      // }),
-    };
+      // storageBaseDirectory: DocumentDirectoryPath + '/my-custom-storage',
+    });
 
     // Set the following properties to enable encryption.
     if (FILE_ENCRYPTION_ENABLED) {
@@ -60,19 +55,17 @@ export default function App() {
       configuration.fileEncryptionPassword = 'SomeSecretPa$$w0rdForFileEncryption';
     }
 
-    ScanbotBarcodeSDK.initializeSdk(configuration)
+    ScanbotBarcodeSDK.initialize(configuration)
       .then(result => {
         console.log(result);
       })
       .catch(error => {
         console.error('Initialization error: ', error.message);
       });
-
-    console.log(`Using ${(global as any)?.nativeFabricUIManager ? 'New' : 'Old'} Architecture`);
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaProvider>
       <BarcodeDocumentFormatContext.Provider value={barcodeDocumentFormatsValues}>
         <BarcodeFormatsContext.Provider value={barcodeFormatsValues}>
           <ActivityIndicatorContext.Provider value={{ setLoading }}>
@@ -93,7 +86,6 @@ export default function App() {
                   name={Screens.BARCODE_CAMERA_VIEW}
                   component={BarcodeCameraViewScreen}
                 />
-                <Stack.Screen name={Screens.IMAGE_RESULTS} component={ImageResultsScreen} />
                 <Stack.Screen name={Screens.BARCODE_RESULTS} component={BarcodeResultsScreen} />
               </Stack.Navigator>
             </NavigationContainer>
@@ -106,14 +98,11 @@ export default function App() {
           </ActivityIndicatorContext.Provider>
         </BarcodeFormatsContext.Provider>
       </BarcodeDocumentFormatContext.Provider>
-    </View>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   loadingIndicator: {
     elevation: 6,
     position: 'absolute',

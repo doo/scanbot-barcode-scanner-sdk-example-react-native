@@ -35,7 +35,7 @@ export async function selectImageFromLibrary(): Promise<string | undefined> {
  * @return {Promise<string|undefined>} URI of the selected PDF if the operation is successful or undefined otherwise
  */
 
-export async function selectPDFFileUri(): Promise<string | undefined> {
+export async function selectPDFFile(): Promise<string | undefined> {
   try {
     const [pdfFile] = await pick({
       mode: 'import',

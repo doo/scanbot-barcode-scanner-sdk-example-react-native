@@ -4,7 +4,7 @@ import {
   infoMessageAlert,
   resultMessageAlert,
 } from './Alerts.ts';
-import { selectImageFromLibrary, selectPDFFileUri } from './FileUtils.ts';
+import { selectImageFromLibrary, selectPDFFile } from './FileUtils.ts';
 import {
   BarcodeResultsScreenRouteProp,
   ImageResultsScreenRouteProp,
@@ -20,7 +20,7 @@ export {
   infoMessageAlert,
   resultMessageAlert,
   deleteConfirmationAlert,
-  selectPDFFileUri,
+  selectPDFFile,
   selectImageFromLibrary,
   Screens,
   ScreenTitles,

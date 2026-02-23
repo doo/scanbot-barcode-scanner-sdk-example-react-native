@@ -6,21 +6,21 @@ import {
   infoMessageAlert,
   PrimaryRouteNavigationProp,
   Screens,
-  selectImageFromLibrary,
+  selectPDFFile,
 } from '@utils';
 import {
   ActivityIndicatorContext,
   BarcodeDocumentFormatContext,
   BarcodeFormatsContext,
 } from '@context';
-
-import ScanbotBarcodeSDK, {
+import {
   BarcodeFormatCode128Configuration,
   BarcodeFormatCommonConfiguration,
   BarcodeScannerConfiguration,
+  ScanbotBarcode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
-export function useDetectBarcodesOnStillImage() {
+export function useScanBarcodesOnPDF() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
   const { setLoading } = useContext(ActivityIndicatorContext);
   const { acceptedBarcodeDocumentFormats } = useContext(BarcodeDocumentFormatContext);
@@ -29,7 +29,7 @@ export function useDetectBarcodesOnStillImage() {
   return useCallback(async () => {
     try {
       /**
-       * Check license status and return early
+       * Check the license status and return early
        * if the license is not valid
        */
       if (!(await checkLicense())) {
@@ -40,12 +40,12 @@ export function useDetectBarcodesOnStillImage() {
        * Return early if no image is selected or there is an issue selecting an image
        **/
       setLoading(true);
-      const imageFileUri = await selectImageFromLibrary();
-      if (!imageFileUri) {
+      const pdfFileUri = await selectPDFFile();
+      if (!pdfFileUri) {
         return;
       }
       /**
-       * Detect the barcodes on the selected image
+       * Scan barcodes on the selected PDF
        */
       const scannerConfiguration = new BarcodeScannerConfiguration();
       scannerConfiguration.extractedDocumentFormats = acceptedBarcodeDocumentFormats;
@@ -65,9 +65,8 @@ export function useDetectBarcodesOnStillImage() {
       ];
 
       // Configure other parameters as needed.
-
-      const result = await ScanbotBarcodeSDK.detectBarcodesOnImage({
-        imageFileUri: imageFileUri,
+      const result = await ScanbotBarcode.scanFromPdf({
+        pdfFileUri: pdfFileUri,
         configuration: scannerConfiguration,
       });
       /**

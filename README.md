@@ -159,12 +159,6 @@ Whether you're a seasoned developer or just starting, our tutorials provide clea
 
 💡Check out our [developer blog](https://scanbot.io/techblog/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) for a collection of in-depth tutorials, use cases, and best practices.
 
-### Free integration support
-
-Need help integrating or testing our Barcode Scanner SDK? We offer [free developer support](https://docs.scanbot.io/support/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) via Slack, MS Teams, or email.
-
-As a customer, you also get access to a dedicated support Slack or Microsoft Teams channel to talk directly to your Customer Success Manager and our engineers.
-
 ### Licensing and pricing
 
 The Scanbot SDK examples will run for one minute per session without a license. After that, all functionalities and UI components will stop working. 

@@ -1,6 +1,7 @@
-import ScanbotBarcodeSDK, {
+import {
   autorelease,
   BarcodeScannerScreenConfiguration,
+  ScanbotBarcode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 
 async function handleScanningResultWithEncodedImageRef() {
@@ -9,9 +10,9 @@ async function handleScanningResultWithEncodedImageRef() {
   config.scannerConfiguration.returnBarcodeImage = true;
 
   await autorelease(async () => {
-    const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+    const scanningResult = await ScanbotBarcode.startScanner(config);
 
-    if (scanningResult.status == 'OK' && scanningResult.data) {
+    if (scanningResult.status == 'OK') {
       // Encode all ImageRefs as base64
       await scanningResult.data.encodeImages();
 

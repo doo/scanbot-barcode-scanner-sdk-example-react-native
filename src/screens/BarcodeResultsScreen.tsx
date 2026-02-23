@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { FlatList, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute } from '@react-navigation/native';
 import { BarcodeDocumentFormatField, BarcodeFieldRow } from '@components';
 import { BarcodeResultsScreenRouteProp } from '@utils';
@@ -70,7 +71,7 @@ export function BarcodeResultsScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={results}
         keyExtractor={(item, index) => `${item.barcode.format}${index}`}
@@ -78,7 +79,7 @@ export function BarcodeResultsScreen() {
           return <BarcodeItemResult item={item} index={index} />;
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

@@ -1,10 +1,11 @@
-import ScanbotBarcodeSDK, {
+import {
   autorelease,
   BarcodeScannerScreenConfiguration,
   BarcodeScannerUiResult,
   DeepPartial,
   EncodeImageOptions,
   SaveImageOptions,
+  ScanbotBarcode,
 } from 'react-native-scanbot-barcode-scanner-sdk';
 import { DocumentDirectoryPath } from 'react-native-fs';
 
@@ -16,9 +17,9 @@ async function handleScanningResultWithSerializedImageRef() {
   let serializedResult: DeepPartial<BarcodeScannerUiResult>;
 
   await autorelease(async () => {
-    const scanningResult = await ScanbotBarcodeSDK.startBarcodeScanner(config);
+    const scanningResult = await ScanbotBarcode.startScanner(config);
 
-    if (scanningResult.status == 'OK' && scanningResult.data) {
+    if (scanningResult.status == 'OK') {
       // Serialized the scanned result in order to move the data outside the autorelease block
       serializedResult = await scanningResult.data.serialize();
     }

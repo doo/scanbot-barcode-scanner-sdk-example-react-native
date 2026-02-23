@@ -4,7 +4,7 @@ export const COLORS = {
   LIGHT_GRAY: '#f5f5f5',
 };
 
-export const NavigationTheme = {
+export const NavigationTheme: ReactNavigation.Theme = {
   dark: false,
   colors: {
     primary: COLORS.NEAR_WHITE,
@@ -13,5 +13,23 @@ export const NavigationTheme = {
     text: COLORS.NEAR_WHITE,
     border: COLORS.NEAR_WHITE,
     notification: COLORS.SCANBOT_RED,
+  },
+  fonts: {
+    regular: {
+      fontFamily: '',
+      fontWeight: 'normal',
+    },
+    medium: {
+      fontFamily: '',
+      fontWeight: 'normal',
+    },
+    bold: {
+      fontFamily: '',
+      fontWeight: 'normal',
+    },
+    heavy: {
+      fontFamily: '',
+      fontWeight: 'normal',
+    },
   },
 };

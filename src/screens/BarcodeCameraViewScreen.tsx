@@ -1,8 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-
-import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barcode-scanner-sdk';
+import { StyleSheet, View } from 'react-native';
 import { BarcodeCameraViewResult } from '@components';
+
+import {
+  BarcodeItem,
+  SBError,
+  ScanbotBarcodeCameraView,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export function BarcodeCameraViewScreen() {
   const [lastDetectedBarcode, setLastDetectedBarcode] = useState('');
@@ -16,8 +20,12 @@ export function BarcodeCameraViewScreen() {
     }
   }, []);
 
+  const onError = useCallback((error: SBError) => {
+    console.error(error.type, error.message);
+  }, []);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScanbotBarcodeCameraView
         style={styles.cameraViewContainer}
         finderConfig={{
@@ -26,6 +34,7 @@ export function BarcodeCameraViewScreen() {
         }}
         flashEnabled={flashEnabled}
         onBarcodeScannerResult={onBarcodeScan}
+        onError={onError}
       />
       <BarcodeCameraViewResult
         style={styles.resultContainer}
@@ -34,7 +43,7 @@ export function BarcodeCameraViewScreen() {
         onFinderToggle={() => setFinderEnabled(!finderEnabled)}
         onFlashToggle={() => setFlashEnabled(!flashEnabled)}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

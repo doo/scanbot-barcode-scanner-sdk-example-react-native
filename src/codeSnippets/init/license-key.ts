@@ -1,6 +1,4 @@
-import ScanbotBarcodeSDK, {
-  ScanbotBarcodeSdkConfiguration,
-} from 'react-native-scanbot-barcode-scanner-sdk';
+import ScanbotBarcodeSDK, { SdkConfiguration } from 'react-native-scanbot-barcode-scanner-sdk';
 
 // Please note: this is just an example license key string (it is not a valid license)
 const myLicenseKey =
@@ -15,9 +13,9 @@ const myLicenseKey =
   '2FuYm90LmRlbW8ueGFtYXJpbgoxNDg0NjExMTk5CjcxNjc' +
   'KMw==\n';
 
-const config: ScanbotBarcodeSdkConfiguration = {
+const config = new SdkConfiguration({
   licenseKey: myLicenseKey,
   loggingEnabled: true,
-};
+});
 
-const result = await ScanbotBarcodeSDK.initializeSdk(config);
+const result = await ScanbotBarcodeSDK.initialize(config);
