@@ -1407,10 +1407,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.28.4":
-  version: 7.28.4
-  resolution: "@babel/runtime@npm:7.28.4"
-  checksum: 934b0a0460f7d06637d93fcd1a44ac49adc33518d17253b5a0b55ff4cb90a45d8fe78bf034b448911dbec7aff2a90b918697559f78d21c99ff8dbadae9565b55
+"@babel/runtime@npm:^7.28.6":
+  version: 7.28.6
+  resolution: "@babel/runtime@npm:7.28.6"
+  checksum: 42d8a868c2fc2e9a77927945a6daa7ec03c7ea49e611e0d15442933cdabb12f20e3a6849c729259076c10a4247adec229331d1f94c2d0073ea0979d7853e29fd
   languageName: node
   linkType: hard
 
@@ -2748,7 +2748,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.25.2
     "@babel/preset-env": ^7.25.3
-    "@babel/runtime": ^7.28.4
+    "@babel/runtime": ^7.28.6
     "@react-native-community/cli": 20.0.0
     "@react-native-community/cli-platform-android": 20.0.0
     "@react-native-community/cli-platform-ios": 20.0.0
@@ -2769,7 +2769,7 @@ __metadata:
     react-native-fs: ^2.20.0
     react-native-image-picker: ^7.1.2
     react-native-safe-area-context: ^5.6.1
-    react-native-scanbot-barcode-scanner-sdk: 8.0.0-rc.3
+    react-native-scanbot-barcode-scanner-sdk: 8.0.0
     react-native-screens: ^4.16.0
     typescript: ^5.8.3
   languageName: unknown
@@ -7287,15 +7287,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-scanbot-barcode-scanner-sdk@npm:8.0.0-rc.3":
-  version: 8.0.0-rc.3
-  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:8.0.0-rc.3"
+"react-native-scanbot-barcode-scanner-sdk@npm:8.0.0":
+  version: 8.0.0
+  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:8.0.0"
   dependencies:
     "@expo/config-plugins": 11.0.7
   peerDependencies:
     react: "*"
     react-native: ">=0.73"
-  checksum: 0b8a94484a4efb3ae6566c5eac1df536dc89beebc36a524cc1f55d419c5d5182082bae36c2067ef1603630f0ee46f2c48205e5a6835ee113f6ebfcaeb2127775
+  checksum: 89eafcedd7d7e66a0cbffeb559002ab443c1e5d18b969487c0003021136396848ba87cf181805907f6fabf70631cc8cab24e13cd1144f297a03771b5c746baed
   languageName: node
   linkType: hard
 
