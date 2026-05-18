@@ -1,6 +1,6 @@
-Open Source libraries used in the Scanbot Barcode SDK for React Native version 8.0.0
+Open Source libraries used in the Scanbot Barcode SDK for React Native version 9.0.0
 
-Open Source libraries used in ScanbotBarcodeScannerSDK for iOS version 8.0.1:
+Open Source libraries used in ScanbotBarcodeScannerSDK for iOS version 9.0.0:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -3313,7 +3313,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ------------------------------------------------------------------------------------------------------------------------
 
-Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 8.0.1
+Open Source libraries used in the Scanbot Barcode Scanner SDK for Android version 9.0.0
 
 CWAC-Camera
 
