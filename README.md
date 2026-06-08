@@ -178,7 +178,7 @@ Besides React Native, the Scanbot Barcode ScannerSDK is also available on:
 * [Capacitor & Ionic](https://github.com/doo/scanbot-barcode-scanner-sdk-example-capacitor-ionic)
 * [Cordova & Ionic](https://github.com/doo/scanbot-barcode-scanner-sdk-example-cordova-ionic)
 * [.NET MAUI](https://github.com/doo/scanbot-barcode-sdk-maui-example)
-* [Compose Multiplatform / KMP](https://github.com/doo/scanbot-barcode-scanner-sdk-example-kmp)
+* [Kotlin Multiplatform](https://github.com/doo/scanbot-barcode-scanner-sdk-example-kmp)
 * [Xamarin & Xamarin.Forms](https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin)
 * [UWP](https://github.com/doo/scanbot-barcode-scanner-sdk-example-windows)
 * [Linux](https://github.com/doo/scanbot-sdk-example-linux)
