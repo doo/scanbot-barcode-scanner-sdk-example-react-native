@@ -182,3 +182,4 @@ Besides React Native, the Scanbot Barcode ScannerSDK is also available on:
 * [Xamarin & Xamarin.Forms](https://github.com/doo/scanbot-barcode-scanner-sdk-example-xamarin)
 * [UWP](https://github.com/doo/scanbot-barcode-scanner-sdk-example-windows)
 * [Linux](https://github.com/doo/scanbot-sdk-example-linux)
+
