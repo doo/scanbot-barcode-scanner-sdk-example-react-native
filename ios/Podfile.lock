@@ -1804,7 +1804,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context (5.6.1):
+  - react-native-safe-area-context (5.7.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -1822,8 +1822,8 @@ PODS:
     - React-graphics
     - React-ImageManager
     - React-jsi
-    - react-native-safe-area-context/common (= 5.6.1)
-    - react-native-safe-area-context/fabric (= 5.6.1)
+    - react-native-safe-area-context/common (= 5.7.0)
+    - react-native-safe-area-context/fabric (= 5.7.0)
     - React-NativeModulesApple
     - React-RCTFabric
     - React-renderercss
@@ -1834,7 +1834,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/common (5.6.1):
+  - react-native-safe-area-context/common (5.7.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -1862,7 +1862,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/fabric (5.6.1):
+  - react-native-safe-area-context/fabric (5.7.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2398,7 +2398,7 @@ PODS:
     - SocketRocket
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (8.0.0):
+  - RNScanbotBarcodeSDK (9.0.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2424,7 +2424,7 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScanbotBarcodeSDKNativeWrapper (= 8.0.1.1)
+    - ScanbotBarcodeSDKNativeWrapper (= 9.0.5)
     - SocketRocket
     - Yoga
   - RNScreens (4.16.0):
@@ -2486,9 +2486,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - ScanbotBarcodeScannerSDK (8.0.1)
-  - ScanbotBarcodeSDKNativeWrapper (8.0.1.1):
-    - ScanbotBarcodeScannerSDK (= 8.0.1)
+  - ScanbotBarcodeScannerSDK (9.0.0)
+  - ScanbotBarcodeSDKNativeWrapper (9.0.5):
+    - ScanbotBarcodeScannerSDK (= 9.0.0)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
@@ -2779,7 +2779,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 44b44a4d3cd6ffb85d928abf741acdc26722de2e
   react-native-document-picker: ca6edbcee0abb1b92a06d34fc42ee31e9d559534
   react-native-image-picker: 9665511bb624306115691f50adf0435b92e32db8
-  react-native-safe-area-context: 6d8a7b750e496e37bda47c938320bf2c734d441f
+  react-native-safe-area-context: 0f4986a88ec555aff660503b483d6e4bd6980a9a
   React-NativeModulesApple: b5d18bc109c45c9a1c6b71664991b5cc3adc4e48
   React-oscompat: 93b5535ea7f7dff46aaee4f78309a70979bdde9d
   React-perflogger: a03d913e3205b00aee4128082abe42fd45ce0c98
@@ -2811,13 +2811,13 @@ SPEC CHECKSUMS:
   ReactCodegen: 58dc2eb138a27145826ad7d5568610159dfcadee
   ReactCommon: 00df7b9f859c9d02181844255bb89a8bca544374
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: a858a5763f5c85f30f68230ad0b975dcbb83bdd1
+  RNScanbotBarcodeSDK: 2c7b42d68b2b77bba66d2e4952fdb50d6f280b90
   RNScreens: 74985ca8e102294a60cec7513fa84c936fa0b20b
-  ScanbotBarcodeScannerSDK: c0270115558662cc6af89991d79f724848fd480f
-  ScanbotBarcodeSDKNativeWrapper: 307bbacd4b52ad8f3714976050d3e7b724eed4e7
+  ScanbotBarcodeScannerSDK: e592c50cffe2f85a514f4e69413bc62f30a0b23b
+  ScanbotBarcodeSDKNativeWrapper: 78d4e4ac76a0129ee9dcc8f8bf69d03ebefdf977
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 922d794dce2af9c437f864bf4093abfa7a131adb
 
-PODFILE CHECKSUM: 3ac82e7e6e466a7cc432cc724a5ffaba48d74d32
+PODFILE CHECKSUM: a4cfa167368e497e6e2cd729c2b96d37536bf725
 
 COCOAPODS: 1.14.3

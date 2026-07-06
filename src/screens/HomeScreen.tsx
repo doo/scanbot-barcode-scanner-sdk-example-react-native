@@ -40,8 +40,8 @@ export function HomeScreen() {
             onPress={onSingleScanWithImageResultPress}
           />
           <FeatureItem title={'RTU UI Multi Scanning'} onPress={onMultiScanPress} />
-          <FeatureItem title={'RTU UI Scan And Count'} onPress={onScanAndCountPress} />
           <FeatureItem title={'RTU UI Multi AR Scanning'} onPress={onMultiScanARPress} />
+          <FeatureItem title={'RTU UI Scan And Count'} onPress={onScanAndCountPress} />
           <FeatureItem title={'RTU UI Find And Pick Scanning'} onPress={onFindAndPickScanPress} />
 
           <FeatureHeader title={'Barcode Formats'} />

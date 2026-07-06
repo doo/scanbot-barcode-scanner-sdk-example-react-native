@@ -1,6 +1,6 @@
 {
   "name": "ScanbotBarcodeExampleReact",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android --terminal ./",
@@ -14,15 +14,15 @@
   },
   "dependencies": {
     "@react-native-documents/picker": "10.1.7",
-    "@react-navigation/native": "7.1.18",
+    "@react-navigation/native": "7.2.3",
     "@react-navigation/native-stack": "7.3.27",
     "react": "19.1.0",
     "react-native": "0.81.4",
     "react-native-fs": "^2.20.0",
     "react-native-image-picker": "^7.1.2",
     "react-native-safe-area-context": "^5.6.1",
-    "react-native-scanbot-barcode-scanner-sdk": "8.0.0",
-    "react-native-screens": "^4.16.0"
+    "react-native-scanbot-barcode-scanner-sdk": "9.0.0",
+    "react-native-screens": "4.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -43,7 +43,7 @@
     "typescript": "^5.8.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@4.16.0"
 }
