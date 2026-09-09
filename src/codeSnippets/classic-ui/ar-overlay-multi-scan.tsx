@@ -1,7 +1,17 @@
-import React from 'react';
-import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barcode-scanner-sdk';
+import React, { useState } from 'react';
+import {
+  BarcodeItem,
+  BarcodeScannerConfiguration,
+  ScanbotBarcodeCameraView,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export default function BarcodeScanner() {
+  const [barcodeScannerConfiguration] = useState(
+    new BarcodeScannerConfiguration({
+      optimizedForOverlays: true,
+    }),
+  );
+
   return (
     <ScanbotBarcodeCameraView
       selectionOverlayConfig={{
@@ -12,9 +22,7 @@ export default function BarcodeScanner() {
         textContainerColor: '#ff0000',
         strokeColor: '#0027ff',
       }}
-      barcodeScannerConfiguration={{
-        optimizedForOverlays: true,
-      }}
+      barcodeScannerConfiguration={barcodeScannerConfiguration}
       onBarcodeScannerResult={(result: BarcodeItem[]) => {
         console.log(result);
       }}
