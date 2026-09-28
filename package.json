@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android --terminal ./",
     "ios": "react-native run-ios --device --terminal ./",
+    "typecheck": "tsc --noEmit",
     "lint": " eslint --fix --ext .ts,.tsx .",
     "format": "prettier src --write",
     "start": "react-native start",
