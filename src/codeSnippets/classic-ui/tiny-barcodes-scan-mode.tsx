@@ -1,7 +1,17 @@
-import React from 'react';
-import { BarcodeItem, ScanbotBarcodeCameraView } from 'react-native-scanbot-barcode-scanner-sdk';
+import React, { useState } from 'react';
+import {
+  BarcodeItem,
+  BarcodeScannerConfiguration,
+  ScanbotBarcodeCameraView,
+} from 'react-native-scanbot-barcode-scanner-sdk';
 
 export default function BarcodeScanner() {
+  const [barcodeScannerConfiguration] = useState(
+    new BarcodeScannerConfiguration({
+      engineMode: 'NEXT_GEN_FAR_DISTANCE',
+    }),
+  );
+
   return (
     <ScanbotBarcodeCameraView
       finderConfig={{
@@ -10,9 +20,7 @@ export default function BarcodeScanner() {
       cameraConfig={{
         minFocusDistanceLock: true,
       }}
-      barcodeScannerConfiguration={{
-        engineMode: 'NEXT_GEN_FAR_DISTANCE',
-      }}
+      barcodeScannerConfiguration={barcodeScannerConfiguration}
       onBarcodeScannerResult={(result: BarcodeItem[]) => {
         console.log(result);
       }}
