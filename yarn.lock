@@ -2273,7 +2273,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/core@npm:^7.17.3":
+"@react-navigation/core@npm:^7.23.0":
   version: 7.23.0
   resolution: "@react-navigation/core@npm:7.23.0"
   dependencies:
@@ -2289,7 +2289,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/elements@npm:^2.6.5":
+"@react-navigation/elements@npm:^2.9.44":
   version: 2.9.44
   resolution: "@react-navigation/elements@npm:2.9.44"
   dependencies:
@@ -2309,35 +2309,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/native-stack@npm:7.3.27":
-  version: 7.3.27
-  resolution: "@react-navigation/native-stack@npm:7.3.27"
+"@react-navigation/native-stack@npm:7.20.0":
+  version: 7.20.0
+  resolution: "@react-navigation/native-stack@npm:7.20.0"
   dependencies:
-    "@react-navigation/elements": "npm:^2.6.5"
+    "@react-navigation/elements": "npm:^2.9.44"
+    color: "npm:^4.2.3"
+    sf-symbols-typescript: "npm:^2.1.0"
     warn-once: "npm:^0.1.1"
   peerDependencies:
-    "@react-navigation/native": ^7.1.18
+    "@react-navigation/native": ^7.5.0
     react: ">= 18.2.0"
     react-native: "*"
     react-native-safe-area-context: ">= 4.0.0"
     react-native-screens: ">= 4.0.0"
-  checksum: 10/89f13700464d8938210471f4c9c4599e0070e7159b0659aef2f78f328684f73f00021e3bccc3b86f6bd83a26f7e91512292dab1e433409b0143bbc80f2f58689
+  checksum: 10/eb997f4c51694aee7b8f6ecb75b9c7417acf7034a73038f0a3714634a74690c8e2580a200d55c28ab50d8d01c2417dbfa4942d75b133332e6ab794eb0522059c
   languageName: node
   linkType: hard
 
-"@react-navigation/native@npm:7.2.3":
-  version: 7.2.3
-  resolution: "@react-navigation/native@npm:7.2.3"
+"@react-navigation/native@npm:7.5.0":
+  version: 7.5.0
+  resolution: "@react-navigation/native@npm:7.5.0"
   dependencies:
-    "@react-navigation/core": "npm:^7.17.3"
+    "@react-navigation/core": "npm:^7.23.0"
     escape-string-regexp: "npm:^4.0.0"
     fast-deep-equal: "npm:^3.1.3"
     nanoid: "npm:^3.3.11"
+    standard-navigation: "npm:^0.0.8"
     use-latest-callback: "npm:^0.2.4"
   peerDependencies:
     react: ">= 18.2.0"
     react-native: "*"
-  checksum: 10/576dd0bf934ff3059c3be63567f7441f576bfd3c53f41adfea5dea784cc46053d36a8489c30dcbfac9941f09ddb1c843d4f56d59c91b7e9678bfa6834ea2a6c4
+  checksum: 10/b3bf4533c63d7b22ebda98a5b766f9382b80f2fbf1bd7fd42748969dc9f27bb6b8f0088e202e1260e3ce93b88b76420a1f201b1077a240ed9b6e35ad4fc43f70
   languageName: node
   linkType: hard
 
@@ -2762,8 +2765,8 @@ __metadata:
     "@react-native/eslint-config": "npm:0.81.4"
     "@react-native/metro-config": "npm:0.81.4"
     "@react-native/typescript-config": "npm:0.81.4"
-    "@react-navigation/native": "npm:7.2.3"
-    "@react-navigation/native-stack": "npm:7.3.27"
+    "@react-navigation/native": "npm:7.5.0"
+    "@react-navigation/native-stack": "npm:7.20.0"
     "@types/jest": "npm:^29.5.13"
     "@types/react": "npm:^19.1.0"
     babel-plugin-module-resolver: "npm:^5.0.2"
@@ -2774,7 +2777,7 @@ __metadata:
     react-native-fs: "npm:^2.20.0"
     react-native-image-picker: "npm:^7.1.2"
     react-native-safe-area-context: "npm:^5.6.1"
-    react-native-scanbot-barcode-scanner-sdk: "npm:10.0.0-rc.1"
+    react-native-scanbot-barcode-scanner-sdk: "npm:10.0.0-rc.2"
     react-native-screens: "npm:4.16.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -7154,15 +7157,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-scanbot-barcode-scanner-sdk@npm:10.0.0-rc.1":
-  version: 10.0.0-rc.1
-  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:10.0.0-rc.1"
+"react-native-scanbot-barcode-scanner-sdk@npm:10.0.0-rc.2":
+  version: 10.0.0-rc.2
+  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:10.0.0-rc.2"
   dependencies:
     "@expo/config-plugins": "npm:11.0.7"
   peerDependencies:
     react: "*"
-    react-native: ">=0.73"
-  checksum: 10/9e5d0d8367bdc86f646ae1bf85178e1a9d669e80374d68e68b12be615f82f4d1596ec2c16d82e495319d34de63a77ac17247ae673e9c900506ef29321b8f9187
+    react-native: ">=0.76"
+  checksum: 10/7aabdfc2aae903be0ff69bcaa19c9b1558f321a8a72c454abdd66429ae57f1f31e98d5f47f357ca68649c7e268b90760f8512b75516d7091fbc09b714a0f6059
   languageName: node
   linkType: hard
 
@@ -7643,6 +7646,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sf-symbols-typescript@npm:^2.1.0":
+  version: 2.2.0
+  resolution: "sf-symbols-typescript@npm:2.2.0"
+  checksum: 10/8623e148bf86151692d3ccb3149122c091b256162a39f4c4f78472811ffe92e3c77a83841a7381a5dc0bc6505ebb73e7ca8901cb077004872d7ee1cb4e5be9d4
+  languageName: node
+  linkType: hard
+
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
@@ -7833,6 +7843,15 @@ __metadata:
   dependencies:
     type-fest: "npm:^0.7.1"
   checksum: 10/1120cf716606ec6a8e25cc9b6ada79d7b91e6a599bba1a6664e6badc8b5f37987d7df7d9ad0344f717a042781fd8e1e999de08614a5afea451b68902421036b5
+  languageName: node
+  linkType: hard
+
+"standard-navigation@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "standard-navigation@npm:0.0.8"
+  peerDependencies:
+    react: "*"
+  checksum: 10/06f45f2a7dacf88e42ac675b6ae33efd30bb3d81d44e5470d2ea9eb206bf6d5fb2c1546c75c463034a98c6761f099be933d8813ed6d581196854c65946d35bb9
   languageName: node
   linkType: hard
 

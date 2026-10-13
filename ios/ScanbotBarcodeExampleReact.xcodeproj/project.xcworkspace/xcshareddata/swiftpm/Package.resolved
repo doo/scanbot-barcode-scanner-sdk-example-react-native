@@ -1,0 +1,15 @@
+{
+  "originHash" : "a4db9c15799d8a59cf329af966cdaf75d744c0edf224c28462ec63494ff9c393",
+  "pins" : [
+    {
+      "identity" : "scanbot-barcode-sdk-native-wrapper-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doo/scanbot-barcode-sdk-native-wrapper-spm",
+      "state" : {
+        "revision" : "b0f14d77dc4414b649c6c6c3f11427a65c821ed0",
+        "version" : "10.0.5"
+      }
+    }
+  ],
+  "version" : 3
+}
