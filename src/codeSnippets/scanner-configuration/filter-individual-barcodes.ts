@@ -47,7 +47,7 @@ export default function filterIndividualBarcodes() {
     stripCheckDigits: false,
     minimumTextLength: 0,
     maximumTextLength: 0,
-    checksum: true,
+    useCheckDigits: true,
   });
   configs.push(code11Config);
 
