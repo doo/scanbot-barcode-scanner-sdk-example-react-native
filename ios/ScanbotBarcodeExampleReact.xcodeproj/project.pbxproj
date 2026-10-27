@@ -505,7 +505,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-barcode-sdk-native-wrapper-spm";
 			requirement = {
 				kind = exactVersion;
-				version = 10.0.10;
+				version = 10.0.12;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
