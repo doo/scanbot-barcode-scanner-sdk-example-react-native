@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		004AB53CD012E2ED17F1DB75 /* ScanbotBarcodeScannerSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 3BCAC7CF55418D00901A01D5 /* ScanbotBarcodeScannerSDK */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		715D818E6EA8A67E8431CE70 /* libPods-ScanbotBarcodeExampleReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6C2CEA7A77ACC54B781009 /* libPods-ScanbotBarcodeExampleReact.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8E958BCC2D491BC600B136F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E958BCB2D491BC600B136F4 /* AppDelegate.swift */; };
 		91DCB60ED7FCBB0E8AA4C30B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8AB82825513051193A7F76FF /* PrivacyInfo.xcprivacy */; };
+		9AF9F809077254555E861BB3 /* ScanbotBarcodeSDKWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 2797259FD7143DBF3C0A6F4F /* ScanbotBarcodeSDKWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				715D818E6EA8A67E8431CE70 /* libPods-ScanbotBarcodeExampleReact.a in Frameworks */,
+				9AF9F809077254555E861BB3 /* ScanbotBarcodeSDKWrapper in Frameworks */,
+				004AB53CD012E2ED17F1DB75 /* ScanbotBarcodeScannerSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,10 @@
 			dependencies = (
 			);
 			name = ScanbotBarcodeExampleReact;
+			packageProductDependencies = (
+				2797259FD7143DBF3C0A6F4F /* ScanbotBarcodeSDKWrapper */,
+				3BCAC7CF55418D00901A01D5 /* ScanbotBarcodeScannerSDK */,
+			);
 			productName = ScanbotBarcodeExampleReact;
 			productReference = 13B07F961A680F5B00A75B9A /* ScanbotBarcodeExampleReact.app */;
 			productType = "com.apple.product-type.application";
@@ -146,6 +154,9 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			packageReferences = (
+				B49F37BFB00967B6DC3E8C69 /* XCRemoteSwiftPackageReference "scanbot-barcode-sdk-native-wrapper-spm" */,
+			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,9 +204,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -210,9 +225,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -265,7 +284,7 @@
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ScanbotBarcodeExampleReact/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,7 +312,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				INFOPLIST_FILE = ScanbotBarcodeExampleReact/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -436,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -487,6 +506,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B49F37BFB00967B6DC3E8C69 /* XCRemoteSwiftPackageReference "scanbot-barcode-sdk-native-wrapper-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doo/scanbot-barcode-sdk-native-wrapper-spm";
+			requirement = {
+				kind = exactVersion;
+				version = 10.0.12;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2797259FD7143DBF3C0A6F4F /* ScanbotBarcodeSDKWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B49F37BFB00967B6DC3E8C69 /* XCRemoteSwiftPackageReference "scanbot-barcode-sdk-native-wrapper-spm" */;
+			productName = ScanbotBarcodeSDKWrapper;
+		};
+		3BCAC7CF55418D00901A01D5 /* ScanbotBarcodeScannerSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B49F37BFB00967B6DC3E8C69 /* XCRemoteSwiftPackageReference "scanbot-barcode-sdk-native-wrapper-spm" */;
+			productName = ScanbotBarcodeScannerSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }

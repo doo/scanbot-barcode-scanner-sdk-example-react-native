@@ -1776,7 +1776,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-image-picker (7.2.3):
+  - react-native-image-picker (8.3.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -1804,7 +1804,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context (5.7.0):
+  - react-native-safe-area-context (5.10.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -1822,8 +1822,8 @@ PODS:
     - React-graphics
     - React-ImageManager
     - React-jsi
-    - react-native-safe-area-context/common (= 5.7.0)
-    - react-native-safe-area-context/fabric (= 5.7.0)
+    - react-native-safe-area-context/common (= 5.10.1)
+    - react-native-safe-area-context/fabric (= 5.10.1)
     - React-NativeModulesApple
     - React-RCTFabric
     - React-renderercss
@@ -1834,7 +1834,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/common (5.7.0):
+  - react-native-safe-area-context/common (5.10.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -1862,7 +1862,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-safe-area-context/fabric (5.7.0):
+  - react-native-safe-area-context/fabric (5.10.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2398,7 +2398,7 @@ PODS:
     - SocketRocket
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (9.0.1):
+  - RNScanbotBarcodeSDK (10.0.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2424,7 +2424,6 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScanbotBarcodeSDKNativeWrapper (= 9.0.5)
     - SocketRocket
     - Yoga
   - RNScreens (4.16.0):
@@ -2486,9 +2485,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - ScanbotBarcodeScannerSDK (9.0.0)
-  - ScanbotBarcodeSDKNativeWrapper (9.0.5):
-    - ScanbotBarcodeScannerSDK (= 9.0.0)
   - SocketRocket (0.7.1)
   - Yoga (0.0.0)
 
@@ -2575,8 +2571,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - ScanbotBarcodeScannerSDK
-    - ScanbotBarcodeSDKNativeWrapper
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -2778,8 +2772,8 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 33f678ee25b6c0ee2b01b1ecec08e3e02424cefe
   React-microtasksnativemodule: 44b44a4d3cd6ffb85d928abf741acdc26722de2e
   react-native-document-picker: ca6edbcee0abb1b92a06d34fc42ee31e9d559534
-  react-native-image-picker: 9665511bb624306115691f50adf0435b92e32db8
-  react-native-safe-area-context: 0f4986a88ec555aff660503b483d6e4bd6980a9a
+  react-native-image-picker: 1f95a8cad673aad3983e1c288f79c39d31986730
+  react-native-safe-area-context: 67fe53f3dae94f028ed6a8c5ac50e0359781dda7
   React-NativeModulesApple: b5d18bc109c45c9a1c6b71664991b5cc3adc4e48
   React-oscompat: 93b5535ea7f7dff46aaee4f78309a70979bdde9d
   React-perflogger: a03d913e3205b00aee4128082abe42fd45ce0c98
@@ -2811,13 +2805,11 @@ SPEC CHECKSUMS:
   ReactCodegen: 58dc2eb138a27145826ad7d5568610159dfcadee
   ReactCommon: 00df7b9f859c9d02181844255bb89a8bca544374
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: 1dcd880a25b1fe452ebad21f44a01179d609b5d5
+  RNScanbotBarcodeSDK: 58278629fbfd84027c81d5235a522704a999b601
   RNScreens: 74985ca8e102294a60cec7513fa84c936fa0b20b
-  ScanbotBarcodeScannerSDK: e592c50cffe2f85a514f4e69413bc62f30a0b23b
-  ScanbotBarcodeSDKNativeWrapper: 78d4e4ac76a0129ee9dcc8f8bf69d03ebefdf977
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 922d794dce2af9c437f864bf4093abfa7a131adb
 
-PODFILE CHECKSUM: a4cfa167368e497e6e2cd729c2b96d37536bf725
+PODFILE CHECKSUM: b53370189c98bb3b9f36ad93006ecc4700d53b9a
 
 COCOAPODS: 1.14.3
