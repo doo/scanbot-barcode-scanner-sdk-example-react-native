@@ -2775,9 +2775,9 @@ __metadata:
     react: "npm:19.1.0"
     react-native: "npm:0.81.4"
     react-native-fs: "npm:^2.20.0"
-    react-native-image-picker: "npm:^7.1.2"
+    react-native-image-picker: "npm:8.3.0"
     react-native-safe-area-context: "npm:^5.6.1"
-    react-native-scanbot-barcode-scanner-sdk: "npm:10.0.0-rc.4"
+    react-native-scanbot-barcode-scanner-sdk: "npm:10.0.0"
     react-native-screens: "npm:4.16.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -7127,13 +7127,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-image-picker@npm:^7.1.2":
-  version: 7.2.3
-  resolution: "react-native-image-picker@npm:7.2.3"
+"react-native-image-picker@npm:8.3.0":
+  version: 8.3.0
+  resolution: "react-native-image-picker@npm:8.3.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10/62c6cc3c88edb29f2b17b4cdaa098b32efd23a5faf4380171c2ccfb1706c732a50553f2ce447e1df1ea48197dde3af42dd67584c60e2c4577ee1b7769152475d
+  checksum: 10/e81588a1b1f3f509c3ce624ab66a9f1e2d8e43df4f52887dd287ba0687e298f31bac33900fa01aa252ea5b8bf00751fd17f028e515ed32bc527439b111265bc8
   languageName: node
   linkType: hard
 
@@ -7157,15 +7157,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-scanbot-barcode-scanner-sdk@npm:10.0.0-rc.4":
-  version: 10.0.0-rc.4
-  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:10.0.0-rc.4"
+"react-native-scanbot-barcode-scanner-sdk@npm:10.0.0":
+  version: 10.0.0
+  resolution: "react-native-scanbot-barcode-scanner-sdk@npm:10.0.0"
   dependencies:
     "@expo/config-plugins": "npm:11.0.7"
   peerDependencies:
     react: "*"
     react-native: ">=0.76"
-  checksum: 10/d4333d56b056f493d134e561382d50d0492c1f4bb9e09a004cf47c1f839443f8d2e2ffb2da37735286bb5fc8d60113a7937186886b70daa2bf2413b78c56cf18
+  checksum: 10/37fac8146983f75ca888e6204b3092d0365754a11095b66a7b77efbac47f1e91daa0b4007c6f14178c263c3ade38a37cc6dee6d16d83a6007039c841bf29650e
   languageName: node
   linkType: hard
 

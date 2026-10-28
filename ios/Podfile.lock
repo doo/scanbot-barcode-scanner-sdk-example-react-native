@@ -1776,7 +1776,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - react-native-image-picker (7.2.3):
+  - react-native-image-picker (8.3.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2398,7 +2398,7 @@ PODS:
     - SocketRocket
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (10.0.0-rc.4):
+  - RNScanbotBarcodeSDK (10.0.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2772,7 +2772,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 33f678ee25b6c0ee2b01b1ecec08e3e02424cefe
   React-microtasksnativemodule: 44b44a4d3cd6ffb85d928abf741acdc26722de2e
   react-native-document-picker: ca6edbcee0abb1b92a06d34fc42ee31e9d559534
-  react-native-image-picker: 9665511bb624306115691f50adf0435b92e32db8
+  react-native-image-picker: 1f95a8cad673aad3983e1c288f79c39d31986730
   react-native-safe-area-context: 67fe53f3dae94f028ed6a8c5ac50e0359781dda7
   React-NativeModulesApple: b5d18bc109c45c9a1c6b71664991b5cc3adc4e48
   React-oscompat: 93b5535ea7f7dff46aaee4f78309a70979bdde9d
@@ -2805,7 +2805,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 58dc2eb138a27145826ad7d5568610159dfcadee
   ReactCommon: 00df7b9f859c9d02181844255bb89a8bca544374
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: f8d8355529f68831ff0981c29b0051e04fc1f9e0
+  RNScanbotBarcodeSDK: 58278629fbfd84027c81d5235a522704a999b601
   RNScreens: 74985ca8e102294a60cec7513fa84c936fa0b20b
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 922d794dce2af9c437f864bf4093abfa7a131adb
