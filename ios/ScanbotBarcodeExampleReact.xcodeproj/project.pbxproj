@@ -120,8 +120,6 @@
 			dependencies = (
 			);
 			name = ScanbotBarcodeExampleReact;
-			packageProductDependencies = (
-			);
 			productName = ScanbotBarcodeExampleReact;
 			productReference = 13B07F961A680F5B00A75B9A /* ScanbotBarcodeExampleReact.app */;
 			productType = "com.apple.product-type.application";
@@ -148,8 +146,6 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
-			packageReferences = (
-			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -197,13 +193,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -218,13 +210,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ScanbotBarcodeExampleReact/Pods-ScanbotBarcodeExampleReact-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

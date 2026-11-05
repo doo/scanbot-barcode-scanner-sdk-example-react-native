@@ -2398,7 +2398,7 @@ PODS:
     - SocketRocket
   - RNFS (2.20.0):
     - React-Core
-  - RNScanbotBarcodeSDK (10.0.1-rc.1):
+  - RNScanbotBarcodeSDK (10.0.1):
     - boost
     - DoubleConversion
     - fast_float
@@ -2805,7 +2805,7 @@ SPEC CHECKSUMS:
   ReactCodegen: 58dc2eb138a27145826ad7d5568610159dfcadee
   ReactCommon: 00df7b9f859c9d02181844255bb89a8bca544374
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
-  RNScanbotBarcodeSDK: 1bd90e5df2433658c1f6ddbe45ac381f3bbb7c72
+  RNScanbotBarcodeSDK: 5e7469376036790aee7064468cb4a1d11e6cf390
   RNScreens: 74985ca8e102294a60cec7513fa84c936fa0b20b
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 922d794dce2af9c437f864bf4093abfa7a131adb
